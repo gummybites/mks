@@ -9,24 +9,79 @@ exit;
 
 
 }else{
-                if(isset($_POST['submit'])){
-                  $username=$_POST['username'];
 
-                if(!isset($_POST['discount'])){
-                  $discount = "2";
-                }else{
-                  $discount = $_POST['discount'];
+                $tuition="SELECT * from tbl_tuition";
+                $tuition_result= mysql_query($tuition);
+
+
+                while($tuition=mysql_fetch_array($tuition_result)){
+                 $id=$tuition['id'];
+                 $tfee=$tuition['tuition'];
+                 $reg=$tuition['registration'];
+                 $med=$tuition['medical'];
+                 $lib=$tuition['library'];
+                 $ath=$tuition['athletics'];
+                 $sgf=$tuition['student_government_fee'];
+                 $pris=$tuition['prisaa_fee'];
+                 $bulp=$tuition['bulprisa_fee'];
+                 $apri=$tuition['aprism_fee'];
+                 $studid=$tuition['student_id'];
+                 $hand=$tuition['handbook'];
+                 $ener=$tuition['energy_fee'];
+                 $insu=$tuition['insurance_fee'];
+                 $orgfee=$tuition['organization_fee'];
+                 $comlab=$tuition['computer_lab'];
+                 $scilab=$tuition['science_lab'];
+                 $tlelab=$tuition['tle_lab'];
+                 $saf=$tuition['school_activities_fee'];
+
+
+                 $total_misc= $reg+ $med+ $lib+ $ath+ $sgf+ $pris+ $bulp +$apri +$studid+ $hand +$ener+ $insu + $orgfee+ $comlab+ $scilab+ $tlelab+ $saf; 
+
+                 $total= $tfee+ $total_misc;
+
                 }
 
+
+
+                if(isset($_POST['submit'])){
+                  $username=$_POST['username'];
 
                 if(!isset($_POST['cash'])){
                   $select= "0";
                 }else{
                   $select= $_POST['cash'];
                 }
+
+                $info="SELECT * from tbl_prospectivestudents where username='$username'";
+                $info_result= mysql_query($info);
+
+                while($info=mysql_fetch_array($info_result)){
+                  $balance= $info['Balance'];
+                  $fee=$info['Fee'];
+
+                }
+
+
+
+
+
                 mysql_query("update tbl_prospectivestudents set Mode = $select where username='$username'");
                 header("Refresh: 1; url=tuition.php?tuition=$username");
-                //This is for special previleges
+                   
+                   if($select=='1'){
+                       $payment= $total-($total*(5/100));
+                       mysql_query("update tbl_prospectivestudents set Fee = $payment where username='$username'");
+                     }elseif($select=='2'){
+                       $payment= $total+(544.50);
+                       mysql_query("update tbl_prospectivestudents set Fee = $payment where username='$username'");
+                     }elseif($select=='3'){
+                       $payment= $total+(923.75);
+                       mysql_query("update tbl_prospectivestudents set Fee = $payment where username='$username'");
+                     }elseif($select=='4'){
+                       $payment= $total+(3170);
+                       mysql_query("update tbl_prospectivestudents set Fee = $payment where username='$username'");
+                     }
                 }
 
 
@@ -34,19 +89,180 @@ exit;
                 elseif(isset($_POST['update'])){
                   $username=$_POST['username'];
 
-                if(!isset($_POST['discount'])){
-                  $discount = "2";
-                }else{
-                  $discount = $_POST['discount'];
-                  
+                $info="SELECT * from tbl_prospectivestudents where username='$username'";
+                $info_result= mysql_query($info);
 
+                while($info=mysql_fetch_array($info_result)){
+                  $fee= $info['Fee'];
 
                 }
 
-                mysql_query("update tbl_prospectivestudents set Discount = $discount where username='$username'");
-                header("Refresh: 1; url=tuition.php?tuition=$username");
-             
-                //This is for mode of payment
+                  
+                  
+               $honordiscount = $_POST['honordiscount'];
+               $nonediscount= $_POST['nonediscount'];           
+               $transferdiscount=$_POST['transferdiscount'];
+               $olddiscount=$_POST['olddiscount'];
+               $siblingdiscount=$_POST['siblingdiscount'];
+               
+                          //kapag ang discount ay naka set ng nonediscount
+                          if($nonediscount=='0'){
+                          $payment= $fee-($fee*(0/100));
+                          mysql_query("update tbl_prospectivestudents set Discount = $nonediscount where username='$username'");
+                          mysql_query("update tbl_prospectivestudents set Fee = $payment where username='$username'");
+                          mysql_query("update tbl_prospectivestudents set honors = 'No discount' where username='$username'");
+                          }
+
+                          //kapag ang discount ay naka set ng honor discount
+                          if($honordiscount=='100'){
+                           $payment= $fee-($fee*(100/100));
+                            mysql_query("update tbl_prospectivestudents set Discount = '$honordiscount' where username='$username'");
+                            mysql_query("update tbl_prospectivestudents set honors = 'Valedictorian' where username='$username'");
+                            mysql_query("update tbl_prospectivestudents set Fee = '$payment' where username='$username'");
+                          }elseif($honordiscount=='50'){
+                             $payment= $fee-($fee*(50/100));
+                             mysql_query("UPDATE tbl_prospectivestudents set Fee = '$payment' where username='$username'");
+                             mysql_query("UPDATE tbl_prospectivestudents set Discount = '$honordiscount' where username='$username'");
+                             mysql_query("UPDATE tbl_prospectivestudents set honors = 'Salutatorian' where username='$username'");   
+                          }elseif($honordiscount=='55'){
+                             $payment= $fee-($fee*(55/100));
+                             mysql_query("update tbl_prospectivestudents set Discount = '$honordiscount' where username='$username'");
+                             mysql_query("update tbl_prospectivestudents set honors = 'Salutatorian w/ 3rd siblings enrolled' where username='$username'");
+                             mysql_query("update tbl_prospectivestudents set Fee = '$payment' where username='$username'");
+                          }elseif($honordiscount=='57'){
+                             $payment= $fee-($fee*(57/100));
+                             mysql_query("update tbl_prospectivestudents set Discount = '$honordiscount' where username='$username'");
+                             mysql_query("update tbl_prospectivestudents set honors = 'Salutatorian w/ 2nd siblings enrolled' where username='$username'");
+                             mysql_query("update tbl_prospectivestudents set Fee = '$payment' where username='$username'");
+                          }
+                  
+
+                          //kapag ang discount ay naka set ng transfer discount
+                          if($transferdiscount=='30'){
+                               $payment= $fee-($fee*(30/100));
+                              mysql_query("update tbl_prospectivestudents set Discount = '$transferdiscount' where username='$username'");
+                              mysql_query("update tbl_prospectivestudents set honors = '1st honors' where username='$username'");
+                              mysql_query("update tbl_prospectivestudents set Fee = '$payment' where username='$username'");
+                          
+                          }elseif($transferdiscount=='35'){
+                               $payment= $fee-($fee*(35/100));
+                              mysql_query("update tbl_prospectivestudents set Discount = '$transferdiscount' where username='$username'");
+                              mysql_query("update tbl_prospectivestudents set honors = '1st honor w/ 3rd siblings enrolled' where username='$username'");
+                              mysql_query("update tbl_prospectivestudents set Fee = '$payment' where username='$username'");
+                          
+                          }elseif($transferdiscount=='37'){
+                               $payment= $fee-($fee*(37/100));
+                              mysql_query("update tbl_prospectivestudents set Discount = '$transferdiscount' where username='$username'");
+                              mysql_query("update tbl_prospectivestudents set honors = '1st honors w/ 2nd siblings enrolled' where username='$username'");
+                              mysql_query("update tbl_prospectivestudents set Fee = '$payment' where username='$username'");
+                          
+                          }elseif($transferdiscount=='20'){
+                              $payment= $fee-($fee*(20/100));
+                              mysql_query("update tbl_prospectivestudents set Discount = '$transferdiscount' where username='$username'");
+                              mysql_query("update tbl_prospectivestudents set honors = '2nd honors' where username='$username'");
+                              mysql_query("update tbl_prospectivestudents set Fee = '$payment' where username='$username'");
+                          
+                          }elseif($transferdiscount=='25'){
+                              $payment= $fee-($fee*(25/100));
+                              mysql_query("update tbl_prospectivestudents set Discount = '$transferdiscount' where username='$username'");
+                              mysql_query("update tbl_prospectivestudents set honors = '2nd honors w/ 3rd siblings enrolled' where username='$username'");
+                              mysql_query("update tbl_prospectivestudents set Fee = '$payment' where username='$username'");
+                          
+                          }elseif($transferdiscount=='27'){
+                              $payment= $fee-($fee*(27/100));
+                              mysql_query("update tbl_prospectivestudents set Discount = '$transferdiscount' where username='$username'");
+                              mysql_query("update tbl_prospectivestudents set honors = '2nd honors w/ 2nd siblings enrolled' where username='$username'");
+                              mysql_query("update tbl_prospectivestudents set Fee = '$payment' where username='$username'");
+                          
+                          }elseif($transferdiscount=='10'){
+                              $payment= $fee-($fee*(10/100));
+                              mysql_query("update tbl_prospectivestudents set Discount = '$transferdiscount' where username='$username'");
+                              mysql_query("update tbl_prospectivestudents set honors = '3rd honors' where username='$username'");
+                              mysql_query("update tbl_prospectivestudents set Fee = '$payment' where username='$username'");
+                         
+                          }elseif($transferdiscount=='15'){
+                              $payment= $fee-($fee*(15/100));
+                              mysql_query("update tbl_prospectivestudents set Discount = '$transferdiscount' where username='$username'");
+                              mysql_query("update tbl_prospectivestudents set honors = '3rd honors w/ 3rd siblings enrolled' where username='$username'");
+                              mysql_query("update tbl_prospectivestudents set Fee = '$payment' where username='$username'");
+                          
+                          }elseif($transferdiscount=='17'){
+                              $payment= $fee-($fee*(17/100));
+                              mysql_query("update tbl_prospectivestudents set Discount = '$transferdiscount' where username='$username'");
+                              mysql_query("update tbl_prospectivestudents set honors = '3rd honors w/ 2nd siblings enrolled' where username='$username'");
+                              mysql_query("update tbl_prospectivestudents set Fee = '$payment' where username='$username'");
+                          }
+
+                          //kapag ang discount ay naka set ng old discount
+                          if($olddiscount=='50'){
+                              $payment= $fee-($fee*(50/100));
+                              mysql_query("update tbl_prospectivestudents set Discount = '$olddiscount' where username='$username'");
+                              mysql_query("update tbl_prospectivestudents set honors = '1st honors' where username='$username'");
+                              mysql_query("update tbl_prospectivestudents set Fee = '$payment' where username='$username'");
+                        }elseif($olddiscount=='55'){
+                              $payment= $fee-($fee*(55/100));
+                              mysql_query("update tbl_prospectivestudents set Discount = '$olddiscount' where username='$username'");
+                              mysql_query("update tbl_prospectivestudents set honors = '1st honors w/ 3rd siblings enrolled' where username='$username'");
+                              mysql_query("update tbl_prospectivestudents set Fee = '$payment' where username='$username'");
+                        }elseif($olddiscount=='57'){
+                              $payment= $fee-($fee*(57/100));
+                              mysql_query("update tbl_prospectivestudents set Discount = '$olddiscount' where username='$username'");
+                              mysql_query("update tbl_prospectivestudents set honors = '1st honors w/ 2nd siblings enrolled' where username='$username'");
+                              mysql_query("update tbl_prospectivestudents set Fee = '$payment' where username='$username'");
+                        }elseif($olddiscount=='30'){
+                              $payment= $fee-($fee*(30/100));
+                              mysql_query("update tbl_prospectivestudents set Discount = '$olddiscount' where username='$username'");
+                              mysql_query("update tbl_prospectivestudents set honors = '2nd honors' where username='$username'");
+                              mysql_query("update tbl_prospectivestudents set Fee = '$payment' where username='$username'");
+                        }elseif($olddiscount=='35'){
+                              $payment= $fee-($fee*(35/100));
+                              mysql_query("update tbl_prospectivestudents set Discount = '$olddiscount' where username='$username'");
+                              mysql_query("update tbl_prospectivestudents set honors = '3rd honors w/ 3rd siblings enrolled' where username='$username'");
+                              mysql_query("update tbl_prospectivestudents set Fee = '$payment' where username='$username'");
+                        }elseif($olddiscount=='37'){
+                              $payment= $fee-($fee*(37/100));
+                              mysql_query("update tbl_prospectivestudents set Discount = '$olddiscount' where username='$username'");
+                              mysql_query("update tbl_prospectivestudents set honors = '2nd honors' w/ 2nd siblings enrolled where username='$username'");
+                              mysql_query("update tbl_prospectivestudents set Fee = '$payment' where username='$username'");
+                        }elseif($olddiscount=='20'){
+                              $payment= $fee-($fee*(20/100));
+                              mysql_query("update tbl_prospectivestudents set Discount = '$olddiscount' where username='$username'");
+                              mysql_query("update tbl_prospectivestudents set honors = '3rd honors' where username='$username'");
+                              mysql_query("update tbl_prospectivestudents set Fee = '$payment' where username='$username'");
+                        }elseif($olddiscount=='25'){
+                              $payment= $fee-($fee*(25/100));
+                              mysql_query("update tbl_prospectivestudents set Discount = '$olddiscount' where username='$username'");
+                              mysql_query("update tbl_prospectivestudents set honors = '3rd honors w/ 3rd siblings enrolled' where username='$username'");
+                              mysql_query("update tbl_prospectivestudents set Fee = '$payment' where username='$username'");
+                        }elseif($olddiscount=='27'){
+                              $payment= $fee-($fee*(27/100));
+                              mysql_query("update tbl_prospectivestudents set Discount = '$olddiscount' where username='$username'");
+                              mysql_query("update tbl_prospectivestudents set honors = '3rd honors w/ 2nd siblings enrolled' where username='$username'");
+                              mysql_query("update tbl_prospectivestudents set Fee = '$payment' where username='$username'");
+                        }
+
+
+                        //kapag ang discount ay naka set ng sibling discount
+                        if($siblingdiscount=='5'){
+                              $payment= $fee-($fee*(5/100));
+                              mysql_query("update tbl_prospectivestudents set Discount = '$siblingdiscount' where username='$username'");
+                              mysql_query("update tbl_prospectivestudents set honors = '2nd Child' where username='$username'");
+                              mysql_query("update tbl_prospectivestudents set Fee = '$payment' where username='$username'");
+                          }elseif($siblingdiscount=='7'){
+                              $payment= $fee-($fee*(7/100));
+                              mysql_query("update tbl_prospectivestudents set Discount = '$siblingdiscount' where username='$username'");
+                              mysql_query("update tbl_prospectivestudents set honors = '3rd Child' where username='$username'");
+                              mysql_query("update tbl_prospectivestudents set Fee = '$payment' where username='$username'");
+                          }elseif($siblingdiscount=='100'){
+                              $payment= $fee-($fee*(100/100));
+                              mysql_query("update tbl_prospectivestudents set Discount = '$siblingdiscount' where username='$username'");
+                              mysql_query("update tbl_prospectivestudents set honors = '4th Child' where username='$username'");
+                              mysql_query("update tbl_prospectivestudents set Fee = '$payment' where username='$username'");
+                        }
+                  
+
+                  header("Location:tuition.php?tuition=$username");
+
                 }
 
 
@@ -63,7 +279,20 @@ exit;
                 }
                 mysql_query("update tbl_prospectivestudents set Mode = $select where username='$username'");
                 header("Refresh: 1; url=tuition.php?tuition=$username");
-             
+                 
+                     if($select=='1'){
+                       $payment= $total-($total*(5/100));
+                       mysql_query("update tbl_prospectivestudents set Fee = $payment where username='$username'");
+                     }elseif($select=='2'){
+                       $payment= $total+(544.50);
+                       mysql_query("update tbl_prospectivestudents set Fee = $payment where username='$username'");
+                     }elseif($select=='3'){
+                       $payment= $total+(923.75);
+                       mysql_query("update tbl_prospectivestudents set Fee = $payment where username='$username'");
+                     }elseif($select=='4'){
+                       $payment= $total+(3170);
+                       mysql_query("update tbl_prospectivestudents set Fee = $payment where username='$username'");
+                     }
 
                 }
 
@@ -369,7 +598,7 @@ td{
                 <ol class="breadcrumb bread-warning">
                   <li class='active'>Prospective</li>
                   <li ><a href='tuitionfortransferee.php'>Transferee</a></li>
-                  <li><a href='tuitionfees.php'>Tuition Advisey</a></li>
+                  <li><a href='tuitionfees.php'><img src='Money.png' width='50px' height="30px"></a></li>
 
                 </ol>
                 <form  onsubmit="return payment()" id='form' class='col-md-12 col-xs-12' method="POST">
@@ -485,7 +714,9 @@ td{
                                     <select class='selectpicker' id='modeofpayment'  name='cash' value='0'>
                                       <option></option>
                                       <option value='1'>full</option>
-                                      <option value='2'>Installment</option>
+                                      <option value='2'>Semestral</option>
+                                      <option value='3'>Quarterly</option>
+                                      <option value='4'>Monthly A</option>
                                     </select>
                                </div>";
                   }else{
@@ -496,7 +727,15 @@ td{
 
                           }elseif($mode=='2'){
 
-                            echo "<div>Mode of Payment: Installment</div>";
+                            echo "<div>Mode of Payment: Semestral</div>";
+                          }elseif($mode=='3'){
+                            echo "<div>Mode of Payment: Quarterly</div>";
+
+
+                          }elseif($mode=='4'){
+                            echo "<div>Mode of Payment: Monthly A</div>";
+
+
                           }
 
                       }
@@ -564,54 +803,53 @@ td{
 
                   echo "<div style='display:none;' id='stud1'>
                         <ol>
-                        <li><input type='radio' name='discount' value='0' checked='checked'/>Students -<b>0%</b> No discount on Tuition Fee</li>
+                        <li><input type='radio' name='nonediscount' value='0' checked='checked'/>Students -<b>0%</b> No discount on Tuition Fee</li>
                             
                         </ol>
                         </div></div>";// End of Student doesn't have discount
 
-                   //For Honor Student
-                   echo "<div class='row'> 
-                   <div><a href='#' id='honor'>For Honor Student: </a></div>
-                         
+                    //For Honor Student
+                    echo "<div class='row'> 
+                    <div><a href='#' id='honor'>For Honor Student: </a></div>
                     <div style='display:none;' id='honor1'>
                     <ol>
-                    <li><input type='radio' name='discount' value='100'>Valedictorian-<b>100%</b> discount on Tuition Fee</li>
-                    <li><input type='radio' name='discount' value='50'>Salutatorian-<b>50%</b> discount on Tuition Fee</li>
+                    <li><input type='radio' name='honordiscount' value='100'>Valedictorian-<b>100%</b> discount on Tuition Fee</li>
+                    <li><input type='radio' name='honordiscount' value='50'>Salutatorian-<b>50%</b> discount on Tuition Fee</li>
                      <ul>
-                    <li><input type='radio' name='discount' value='55'>+5 w/ 3rd Siblings Enrolled <b>55%</b> discount on Tuition Fee</li>
-                    <li><input type='radio' name='discount' value='57'>+7 w/ 2nd Siblings Enrolled <b>57%</b> discount on Tuition Fee</li>
-                    
+                    <li><input type='radio' name='honordiscount' value='55'>+5 w/ 3rd Siblings Enrolled <b>55%</b> discount on Tuition Fee</li>
+                    <li><input type='radio' name='honordiscount' value='57'>+7 w/ 2nd Siblings Enrolled <b>57%</b> discount on Tuition Fee</li>
                     </ul>
                     </ol>
-
-              
                     </div></div>";//End of Honor Student
 
+
+
                     //For transferees
-                  echo "<div class='row'> 
+                   echo "<div class='row'> 
                    <div><a href='#' id='transfer'>For Transferees: </a></div>
                          
                     <div style='display:none;' id='transfer1'>
                     <ol>
 
-                    <li><input type='radio' name='discount' value='30'>1st Honors-<b>30%</b> discount on Tuition Fee</li>
-                          <ul><li><input type='radio' name='discount' value='35'>+5 w/ 3rd Siblings Enrolled<b>35%</b> discount on Tuition Fee</li>
-                              <li><input type='radio' name='discount' value='37'>+7 w/ 2nd Siblings Enrolled<b>37%</b> discount on Tuition Fee</li>
+                    <li><input type='radio' name='transferdiscount' value='30'>1st Honors-<b>30%</b> discount on Tuition Fee</li>
+                          <ul><li><input type='radio' name='transferdiscount' value='35'>+5 w/ 3rd Siblings Enrolled<b>35%</b> discount on Tuition Fee</li>
+                              <li><input type='radio' name='transferdiscount' value='37'>+7 w/ 2nd Siblings Enrolled<b>37%</b> discount on Tuition Fee</li>
                           </ul>
-                    <li><input type='radio' name='discount' value='20'>2nd Honors-<b>20%</b> discount on Tuition Fee</li>
-                          <ul><li><input type='radio' name='discount' value='25'>+5 w/ 3rd Siblings Enrolled<b>25%</b> discount on Tuition Fee</li>
-                              <li><input type='radio' name='discount' value='27'>+7 w/ 2nd Siblings Enrolled<b>27%</b> discount on Tuition Fee</li>
+                    <li><input type='radio' name='transferdiscount' value='20'>2nd Honors-<b>20%</b> discount on Tuition Fee</li>
+                          <ul><li><input type='radio' name='transferdiscount' value='25'>+5 w/ 3rd Siblings Enrolled<b>25%</b> discount on Tuition Fee</li>
+                              <li><input type='radio' name='transferdiscount' value='27'>+7 w/ 2nd Siblings Enrolled<b>27%</b> discount on Tuition Fee</li>
                           </ul>
 
-                    <li><input type='radio' name='discount' value='10'>3rd Honors-<b>10%</b> discount on Tuition Fee</li>
+                    <li><input type='radio' name='transferdiscount' value='10'>3rd Honors-<b>10%</b> discount on Tuition Fee</li>
 
                     <ul>
-                    <li><input type='radio' name='discount' value='15'>+5 w/ 3rd Siblings Enrolled<b>15%</b> discount on Tuition Fee</li>
-                    <li><input type='radio' name='discount' value='17'>+7 w/ 2nd Siblings Enrolled<b>17%</b> discount on Tuition Fee</li>
+                    <li><input type='radio' name='transferdiscount' value='15'>+5 w/ 3rd Siblings Enrolled<b>15%</b> discount on Tuition Fee</li>
+                    <li><input type='radio' name='transferdiscount' value='17'>+7 w/ 2nd Siblings Enrolled<b>17%</b> discount on Tuition Fee</li>
                     </ul>
                     </ol>
 
                     </div></div>";//End of Transferees
+
 
 
                     //For Old students
@@ -621,20 +859,20 @@ td{
                      <div style='display:none;' id='old1'>
                     <ol>
 
-                    <li><input type='radio' name='discount' value='50'>1st Honors-<b>50%</b> discount on Tuition Fee</li>
-                          <ul><li><input type='radio' name='discount' value='55'>+5 w/ 3rd Siblings Enrolled<b>55%</b> discount on Tuition Fee</li>
-                              <li><input type='radio' name='discount' value='57'>+7 w/ 2nd Siblings Enrolled<b>57%</b> discount on Tuition Fee</li>
+                    <li><input type='radio' name='olddiscount' value='50'>1st Honors-<b>50%</b> discount on Tuition Fee</li>
+                          <ul><li><input type='radio' name='olddiscount' value='55'>+5 w/ 3rd Siblings Enrolled<b>55%</b> discount on Tuition Fee</li>
+                              <li><input type='radio' name='olddiscount' value='57'>+7 w/ 2nd Siblings Enrolled<b>57%</b> discount on Tuition Fee</li>
                           </ul>
-                    <li><input type='radio' name='discount' value='30'> 2nd Honors-<b>30%</b> discount on Tuition Fee</li>
-                          <ul><li><input type='radio' name='discount' value='35'>+5 w/ 3rd Siblings Enrolled<b>35%</b> discount on Tuition Fee</li>
-                              <li><input type='radio' name='discount' value='37'>+7 w/ 2nd Siblings Enrolled<b>37%</b> discount on Tuition Fee</li>
+                    <li><input type='radio' name='olddiscount' value='30'> 2nd Honors-<b>30%</b> discount on Tuition Fee</li>
+                          <ul><li><input type='radio' name='olddiscount' value='35'>+5 w/ 3rd Siblings Enrolled<b>35%</b> discount on Tuition Fee</li>
+                              <li><input type='radio' name='olddiscount' value='37'>+7 w/ 2nd Siblings Enrolled<b>37%</b> discount on Tuition Fee</li>
                           </ul>
 
-                    <li><input type='radio' name='discount' value='20'>3rd Honors-<b>20%</b> discount on Tuition Fee</li>
+                    <li><input type='radio' name='olddiscount' value='20'>3rd Honors-<b>20%</b> discount on Tuition Fee</li>
 
                     <ul>
-                    <li><input type='radio' name='discount' value='25'>+5 w/ 3rd Siblings Enrolled<b>25%</b> discount on Tuition Fee</li>
-                    <li><input type='radio' name='discount' value='27'>+7 w/ 2nd Siblings Enrolled<b>27%</b> discount on Tuition Fee</li>
+                    <li><input type='radio' name='olddiscount' value='25'>+5 w/ 3rd Siblings Enrolled<b>25%</b> discount on Tuition Fee</li>
+                    <li><input type='radio' name='olddiscount' value='27'>+7 w/ 2nd Siblings Enrolled<b>27%</b> discount on Tuition Fee</li>
                     </ul>
                     </ol>
 
@@ -648,12 +886,12 @@ td{
                      <div style='display:none;' id='sibling1'>
                     <ol>
 
-                    <li><input type='radio' name='discount' value='5'>2nd Child-<b>5%</b> discount on Tuition Fee</li>
+                    <li><input type='radio' name='siblingdiscount' value='5'>2nd Child-<b>5%</b> discount on Tuition Fee</li>
                          
-                    <li><input type='radio' name='discount' value='7'>3rd Child-<b>7%</b> discount on Tuition Fee</li>
+                    <li><input type='radio' name='siblingdiscount' value='7'>3rd Child-<b>7%</b> discount on Tuition Fee</li>
                      
 
-                    <li><input type='radio' name='discount' value='100'>4th Child-<b>100%</b> discount on Tuition Fee</li>
+                    <li><input type='radio' name='siblingdiscount' value='100'>4th Child-<b>100%</b> discount on Tuition Fee</li>
 
                   
                     </ol>
@@ -714,9 +952,27 @@ td{
                                     "; 
                                     if($mode=='1'){
                                       echo "<option value='1'>full</option>";
-                                      echo "<option value='2'>Installment</option>";
+                                      echo "<option value='2'>Semester</option>";
+                                      echo "<option value='4'>Monthly A</option>";
+                                      echo "<option value='3'>Quarterly</option>";
                                       
                                     }elseif($mode='2'){
+                                      echo "<option value='2'>Semester</option>";
+                                      echo "<option value='1'>full</option>";
+                                      echo "<option value='4'>Monthly A</option>";
+                                      echo "<option value='3'>Quarterly</option>";
+                                      
+
+                                    }elseif($mode='3'){
+                                      echo "<option value='3'>Quarterly</option>";
+                                      echo "<option value='4'>Monthly A</option>";
+                                      echo "<option value='2'>Installment</option>";
+                                      echo "<option value='1'>full</option>";
+                                      
+
+                                    }elseif($mode='4'){
+                                      echo "<option value='4'>Monthly A</option>";
+                                      echo "<option value='3'>Quarterly</option>";
                                       echo "<option value='2'>Installment</option>";
                                       echo "<option value='1'>full</option>";
                                       

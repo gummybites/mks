@@ -1,16 +1,17 @@
 <?php 
-include('config.php');
+include('../config.php');
 
 if(isset($_POST['login'])) 
 {
-    $email= mysql_real_escape_string(trim(htmlspecialchars($_POST['email'])));
+    $username= mysql_real_escape_string(trim(htmlspecialchars($_POST['username'])));
     $pass= mysql_real_escape_string(trim(htmlspecialchars($_POST['password'])));
     $enc_password=mysql_real_escape_string(sha1(md5(trim(htmlspecialchars($pass)))));
 
-$qry = "SELECT * FROM tbl_studentregistration WHERE email= '$email' and seeking='Grade 7'";
+$qry = "SELECT * FROM tbl_studentregistration WHERE username= '$username' and seeking='Grade 7' and prospectivestatus='pending'";
 $result = mysql_query($qry);
 
 while($qry=mysql_fetch_array($result)){
+  $db_username=$qry['username'];
   $db_email=$qry['email'];
   $db_password=$qry['password'];
   $db_code=$qry['code'];
@@ -20,26 +21,23 @@ while($qry=mysql_fetch_array($result)){
 
 
         
-         if (preg_match("/^[_\.0-9a-zA-Z-]+@([0-9a-zA-Z][0-9a-zA-Z-]+\.)+[a-zA-Z]{2,6}$/i", $email)) {
+         if($username==$db_username) {
                
                if($enc_password==$db_password){
 
-                                if($db_code=='1'){
+                               
                                     session_start();
-                                    $_SESSION['email']=$db_email;
+                                    $_SESSION['username']=$db_username;
                                     header("Location: freshmanapplicationform.php");
                                   
 
-                                }else{
-                                  header( "Location: freshmanlogin.php?YourAccountIsNotActivated=error!");   
-
-                                }
+                                
                         }else{
-                           header( "Location: freshmanlogin.php?PleaseInputcorrectpassword=error!");  
+                           header( "Location: freshmanlogin.php?InvalidUsernameOrPassword");  
 
                         }
              }else{
-               header( "Location: freshmanlogin.php?PleaseInputvalidEmail=error!");  
+               header( "Location: freshmanlogin.php?InvalidUsernameorPassword");  
 
              }                   
                 
@@ -61,9 +59,12 @@ while($qry=mysql_fetch_array($result)){
                     <meta charset="utf-8">
                     <meta http-equiv="X-UA-Compatible" content="IE=edge">
                     <meta name="viewport" content="width=device-width, initial-scale=1">
-                    <title>Login</title>
+                    <title>Freshmen Login Account</title>
                     <link rel="stylesheet" href="../../css/bootstrap.min.css"></link>
+                    <link rel="stylesheet" href="../../css/bootstrap.css"></link>
                     <link rel="stylesheet" href="../../css/style.css"></link>
+                    <link rel="stylesheet" href="../../css/font-awesome.css"></link>
+                     <link rel="stylesheet" href="../../css/font-awesome.min.css"></link>
 
                     <script src="../../js/dropdown.js"></script>
                     <script src="../../js/bootstrap.min.js"></script>
@@ -72,64 +73,69 @@ while($qry=mysql_fetch_array($result)){
                     <script src="../../js/validation.js"></script>
 
 <style>
-                  body{
+                 
+                      body{ background: url(../../images/45.gif); background-size: cover; color:#838383; font: 13px/1.7em 'Calibri';}
+                 
+
+                    #panel{
+                      box-shadow: 10px 10px 5px #888888;;
                     
-                   }
-                    #login-form {
-
-                    min-height: 65vh;
-
-                   }
-
-                   #login-inputs{
-                     margin-top: 55px;
-                      
-                   }
-                    #main{
-                      margin-top: 55px;
 
                     }
 
-                  .btn{
-                      border-radius: 1px;
-                     
-
+                 
+            
+                    /* Shutter Out Horizontal */
+                     .next {
+                      display: inline-block;
+                      vertical-align: middle;
+                      padding: 0.9em 2.3em;
+                      color:#fff;
+                      -webkit-transform: translateZ(0);
+                      transform: translateZ(0);
+                      box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+                      -webkit-backface-visibility: hidden;
+                      backface-visibility: hidden;
+                      -moz-osx-font-smoothing: grayscale;
+                      position: relative;
+                      background:#f5af02;
+                      -webkit-transition-property: color;
+                      transition-property: color;
+                      -webkit-transition-duration: 0.3s;
+                      transition-duration: 0.3s;
+                      text-decoration:none;
+                      margin:1em 0 0;
+                      border: transparent;
+                    }
+                    .next:before {
+                      content: "";
+                      position: absolute;
+                      z-index: -1;
+                      top: 0;
+                      bottom: 0;
+                      left: 0;
+                      right: 0;
+                      background: #0064d2;
+                      -webkit-transform: scaleX(0);
+                      transform: scaleX(0);
+                      -webkit-transform-origin: 50%;
+                      transform-origin: 50%;
+                      -webkit-transition-property: transform;
+                      transition-property: transform;
+                      -webkit-transition-duration: 0.3s;
+                      transition-duration: 0.3s;
+                      -webkit-transition-timing-function: ease-out;
+                      transition-timing-function: ease-out;
+                      text-decoration:none;
                     }
 
-                    
-                   
-                
-                     /* footer Section */  
-                    #footer{
-                     margin: 1%;
-                     margin-top: 50px;
-                    }
-
-                    #password{
-                      border-right: none;
-                      box-shadow: none;
-                      border-color: #d9edf7;
-
-                    }
-                    #email{
-                      border-right: none;
-                      box-shadow: none;
-
-                      border-color: #d9edf7;
-                    }
-
-                    #password-addon{
-                      border-left: none;
-                       background-color: #fff;
-                       border-color: #d9edf7;
-                    }
-                    #email-addon{
-                      border-left: none;
-                       background-color: #fff;
-                       border-color: #d9edf7;
-
-                    }
-
+                    .next:hover, .next:focus, .next:active {
+                          color: #fff;
+                        }
+                        .next:hover:before, .next:focus:before, .next:active:before {
+                          -webkit-transform: scaleX(1);
+                          transform: scaleX(1);
+                        }
 </style>
 
 
@@ -140,202 +146,104 @@ while($qry=mysql_fetch_array($result)){
 
 
 
- <nav id='menu' class="navbar navbar-default navbar-fixed-top">
-        <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                </button>
-               
-            </div>
+  <nav class="navbar-inner navbar-fixed-top">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+    
+      <a class="navbar-brand" href="#">MKS</a>
+    </div>
 
-           <!-- Collect the nav links, forms, and other content for toggling -->
-          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-          <ul class="nav navbar-nav navbar-right">
-            <li>
-              <a href="#page-top"></a>
-            </li>
-            <li>
-              <a class="page-scroll" href="../../mks.php">Home</a>
-            </li>
-            <li>
-              <a class="page-scroll" href="../../mks.php?#admission ">Admission</a>
-            </li>
-            <li>
-              <a class="page-scroll" href="../../mks.php?#about">About</a>
-            </li>
-            <li>
-              <a class="page-scroll" href="../../mks.php?#link">Link</a>
-            </li>
-            <li>
-              <a class="page-scroll" href="../../mks.php?#contact">Contact</a>
-            </li>
-          </ul>
-        </div><!-- /.navbar-collapse -->
-    </div><!-- /.container-fluid -->
-    </nav>    	
-
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    
+     
+      <ul class="nav navbar-nav navbar-right">
+        <li> <a href="../../index.php"><i class="glyphicon glyphicon-chevron-left"></i>Back to Home Page</a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
 
  
-<section class="light-bg" id="login-form">
-<div id="main" class="container-fluid ">
-        <div class='container' class="col-md-12 col-xs-12 content">
 
+
+     <div class="container">
+     <br><br>                                                     
+     <div class="row text-center pad-top ">
+                                                          <div class="col-md-12">
+                                                              <strong>IF YOU ALREADY HAVE AN ACCOUNT PLEASE PROCEED LOGIN/ FOR FRESHMEN ONLY</strong>  
+                                                                                 
+                                                          </div>
+                                                      </div>
+                                                       <div class="row">
+                                                             
+                                                              <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1">
+                                                                      <div class="panel panel-default" id="panel">
+                                                                          <div class="panel-heading">
+                                                                      <b>   (*) Note: Required Fields </b>  
+                                                                          </div>
+                                                                          <div class="panel-body">
+                                                                            <div align="center"> <img src="../../images/login-icon.png" height="100px" width="100px"></div>
+                                                                               <h4>Please provide your details</h4>
+                                                                              <form role="form" method="POST" onsubmit="return freshmanlogin()"  action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+                                                                                      
+                                                                                      <?php if(isset($_GET['InvalidUsernameOrPassword'])){
+                                                                                              ?>
+                                                                                              <div style='color: red;'>Invalid Username or Password...</div>
+                                                                                              <?php
+                                                                                        }elseif(isset($_GET['InvalidUsernameorPassword'])){
+                                                                                              ?>
+                                                                                              <div style='color: red;'>Invalid Username or Password...</div>
+                                                                                              <?php
+
+
+
+                                                                                          } ?>
+
+                                                                                      <i  id="error" style="color: Red; display: none"></i>
+
+                                                                                      <div class="form-group input-group"><!--Username Validation -->
+                                                                                      <i id='validateusername' ></i>
+                                                                                      <i id='user'></i>
+                                                                                      </div>
+                                                                                      
+                                                                                      <input type='text' value='' class='form-control input' maxlength='25'  onkeypress="return forusernamelogin(event);" ondrop="return false;" onpaste="return false;" id='username' name='username' placeholder="Your Username *"/>
+                                                                                  
+
+
+
+                                                                                      <div class="form-group input-group"><!--Password Validation -->
+                                                                                      <i id='validatepassword' ></i>
+                                                                                      <i id='pass'></i>
+                                                                                      </div>
+                                                                                    
+                                                                                      <input type='password' value='' maxlength="25" class='form-control'  onkeypress="return forpasswordlogin(event);" ondrop="return false;" onpaste="return false;" id='password' name='password' placeholder='Your password *'/>
+                                                                                
+
+
+
+                                                                                      
+
+                                                                                  <button type="submit"  name="login" class="next" value="Submit"   >Login</button>
+                                                                                  <hr />
+                                                                                  Don't have an account yet?   <a href='freshmanregister.php'>Register Here</a>
+                                                                                  </form>
+                                                                          </div>
+                                                                         
+                                                                      </div>
+                                                                  </div>
+                                                              
+                                                              
+                                                      </div>
+                                                  </div>
 
         
 
-          <form id='login-inputs' method="POST" onsubmit="return freshmanlogin(event)" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-           
+         
 
 
 
-                                <strong>IF YOU ALREADY HAVE AN ACCOUNT PLEASE PROCEED LOGIN/ FOR FRESHMAN ONLY</strong>
-                                <!--Displaying error message if the inputs are in special character -->
-                                          
-                                    <div class='row'>
-                                            <div class='col-md-6'>
-                                            <div><p><i>(*) Fields are required</i></p><i  id="error" style="color: Red; display: none"></i><i id='validateemail' ></i></div>
-                                            </div></div>
-                                            <br>         
-                                
-                              <?php
-                              if(isset($_GET['YourAccountIsNotActivated'])){
-                                echo "<div class='row'>
-                                            <div class='col-md-6'>
-                                                <div class='alert alert-danger' >
-                                                <a href='' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
-                                                <span class='glyphicon glyphicon-lock'></span> Your account is not activated! Please confirm in your email first before login!</div>
-                                                </div></div>";
-
-                              }elseif(isset($_GET['PleaseInputcorrectpassword'])){
-                                echo "<div class='row'>
-                                            <div class='col-md-6'>
-                                                <div class='alert alert-danger'>
-                                                <a href='' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
-                                                <span class='glyphicon glyphicon-'></span>Invalid! Please type your correct password!</div>
-                                                </div></div>";
-
-                              }elseif(isset($_GET['PleaseInputvalidEmail'])){
-                                echo "<div class='row'>
-                                            <div class='col-md-6'>
-                                                <div class='alert alert-danger'>
-                                                <a href='' class='close' data-dismiss='alert' aria-label='close'>&times;</a>
-                                                <span class='glyphicon glyphicon-'></span>Invalid! Please type your valid Email!</div>
-                                                </div></div>";
-
-                              }
-
-                               ?>           
-
-                                        
-                                                 
-                                           
-
-
-                                            <!-- Input text email-->
-                                            <div class='row'>
-
-                                            <div class='col-md-6'>
-                                            <div class="input-group input-group-lg">
-                                              <span class="input-group-addon">
-                                                <span class="glyphicon glyphicon-envelope"></span>
-                                              </span>
-
-                                               <input type='text' value='' class='form-control input' maxlength='35'  onkeypress="return foremail(event);" ondrop="return false;" onpaste="return false;" id='email' name='email' placeholder="Email address * ex. juandelacruz@yahoo.com"/>
-                                              
-                                              <span id='email-addon' class="input-group-addon">
-                                                <i id='mail'></i>
-                                              </span>
-                                            
-
-                                            </div>
-                                            </div>
-                                            </div>
-                                            <br>
-                          
-
-                                            
-                                             <div class='row'>
-                                            <div class='col-md-6'>
-
-                                            <div class="input-group input-group-lg">
-                                              <span class="input-group-addon">
-                                                <span class="glyphicon glyphicon-lock"></span>
-                                              </span>
-                                              
-                                               <input type='password' value='' maxlength="9" class='form-control'  onkeypress="return forpassword(event);" ondrop="return false;" onpaste="return false;" id='password' name='password' placeholder='Password *'/>
-                                                <span id='password-addon' class="input-group-addon">
-                                                <i id='pass'></i>
-                                              </span>
-
-                                               <span  class="input-group-btn">
-                                                 <button type='button' id='togglebuttonpassword' class='btn btn-default' onclick="togglepassword()" ><span class='glyphicon glyphicon-eye-open'></span></button>
-                                              </span>
-                                            </div>
-                                            </div>
-                                            </div>
-                                            <br>  
-
-                                            <div class='row'>
-                                            <div class='col-md-1'> </div>
-                                            <div class='col-md-2'>          
-                                            <button type="submit" name="login" value="Submit" class='btn btn-danger ' class=""  >Login</button>
-                                            </div>
-                                            <div class='col-md-3'>
-                                            Don’t have an account yet? 
-                                            <br>
-                                            <a href='freshmanregister.php'>It’s FREE, Sign Up Here</a>
-                                            </div>
-                                            </div>
-                                            
-
-                                         
-                                              
-          </form>	
-</div> <!-- //Collect the nav links, forms, and other content for toggling -->
-</div>
-</section>
-
-
-<section class='white-bg' >
-  <div class="container" id="contact">
-        <div class="row">
-          
-        </div>
-        <div class="row">
-          <div class="col-md-5">
-            <div class="section-text">
-              <h4>Location:</h4>
-              <p>#10 Mendoza St., Saog,, 3019 Marilao, Bulacan</p>
-              <p><i class="glyphicon glyphicon-phone"></i> 09063710368</p>
-              <p><i class="glyphicon glyphicon-ok-sign"></i> Recognize by the government through the Department of Education.</p>
-            </div>
-          </div>
-          <div class="col-md-5">
-            <div class="section-text">
-              <h4>School Hours</h4>
-              <p><i class="glyphicon glyphicon-clock"></i><span class="day">Monday-Friday:  </span><span>07:00am - 5:00pm</span></p>
-            
-            </div>
-          </div>
-
-        </div>
-      </div>
-    
-  </section>  
-    
-    <footer>
-      <div class="container text-center">
-        <p><?php  $curYear= Date('Y');
-                                        echo "Copyright &COPY; $curYear <a href=''>MKS</a>";
-                                      ?></p>
-      </div>
-    </footer>
 
 
 

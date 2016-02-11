@@ -1,28 +1,26 @@
-
-
-
 <!DOCTYPE html>
 <html>
 <head>
-                    <meta charset="utf-8">
+                    <!--Compatibility -->
                     <meta http-equiv="X-UA-Compatible" content="IE=edge">
                     <meta name="viewport" content="width=device-width, initial-scale=1">
+                    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
                     <title>About_mks</title>
-                    <link rel="stylesheet" href="../css/bootstrap.min.css"></link>
-                    <link rel="stylesheet" href="../css/style.css"></link>
 
-                    <script src=".././js/dropdown.js"></script>
-                    <script src=".././js/bootstrap.min.js"></script>
-                    <script src="../js/jquery.1.11.1.js"></script>
-                    <script src="../js/bootstrap.js"></script>
+                   <!--Stylesheet for design -->
+                    <link href="../css/bootstrap.css" rel="stylesheet" type="text/css" media="all">
+                    <link href="../css/style.css" rel="stylesheet" type="text/css" media="all" />
+                    
 
-<style>     
-                    #content{
-                      margin-top: 50px;
+                     <!-- Custom styles for this template -->
+                    <link href="../css/owl.carousel.css" rel="stylesheet">
+                    <link href="../css/owl.theme.default.min.css"  rel="stylesheet">
 
-                    }
-</style>
+                    <script src="../js/jquery.min.js"></script>
+                    <script src="../js/modernizr.custom.js"></script>
+
+
 
 
 </head>
@@ -31,46 +29,26 @@
 
 
 
- <nav id='menu' class="navbar navbar-default navbar-fixed-top">
-        <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                </button>
-               
-            </div>
+<!--header start here-->
+  <nav class="navbar-inner navbar-fixed-top">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+    
+      <a class="navbar-brand" href="#">MKS</a>
+    </div>
 
-           <!-- Collect the nav links, forms, and other content for toggling -->
-          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-          <ul class="nav navbar-nav navbar-right">
-            <li>
-              <a href="#page-top"></a>
-            </li>
-            <li>
-              <a class="page-scroll" href="../mks.php">Home</a>
-            </li>
-            <li>
-              <a class="page-scroll" href="../mks.php?#admission ">Admission</a>
-            </li>
-            <li>
-              <a class="page-scroll" href="../mks.php?#about">About</a>
-            </li>
-            <li>
-              <a class="page-scroll" href="../mks.php?#link">Link</a>
-            </li>
-            <li>
-              <a class="page-scroll" href="../mks.php?#contact">Contact</a>
-            </li>
-          </ul>
-        </div><!-- /.navbar-collapse -->
-    </div><!-- /.container-fluid -->
-    </nav>   	
-
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    
+     
+      <ul class="nav navbar-nav navbar-right">
+        <li> <a href="../index.php"><i class="glyphicon glyphicon-chevron-left"></i>Back to Home Page</a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+<!--header end here-->  
 
   
 
@@ -194,7 +172,7 @@
           </div>
 
           <div>
-            <h3>Mks hymn</h3>  
+            <h3>MKS hymn</h3>  
             <ul>
               <li><a href="hymn_mks.php?#lupanghinirang">Lupang hinirang</a></li>
               <li><a href="hymn_mks.php?#panatangmakabayan">Panatang Makabayan</a></li>
@@ -209,40 +187,7 @@
   </div>
 
 
-<section id='white-bg' >
-  <div class="container" id="contact">
-        <div class="row">
-          
-        </div>
-        <div class="row">
-          <div class="col-md-5">
-            <div class="section-text">
-              <h4>Location:</h4>
-              <p>#10 Mendoza St., Saog,, 3019 Marilao, Bulacan</p>
-              <p><i class="glyphicon glyphicon-phone"></i> 09063710368</p>
-              <p><i class="glyphicon glyphicon-ok-sign"></i> Recognize by the government through the Department of Education.</p>
-            </div>
-          </div>
-          <div class="col-md-5">
-            <div class="section-text">
-              <h4>School Hours</h4>
-              <p><i class="glyphicon glyphicon-clock"></i> <span class="day">Mon-Fri: </span><span>07:30 - 17:00</span></p>
-            
-            </div>
-          </div>
 
-        </div>
-      </div>
-    
-  </section>  
-    
-    <footer>
-      <div class="container text-center">
-        <p><?php  $curYear= Date('Y');
-                                        echo "Copyright &COPY; $curYear <a href=''>MKS</a>";
-                                      ?></p>
-      </div>
-    </footer>
 
 
 
@@ -250,11 +195,48 @@
       
 
 
-</div>
+
+<!-- footer -->
+  <div class="footer" id="footer">
+    <div class="container">
+      <div class="col-md-3 footer-left">
+        <h3>Location</h3>
+        <ul>
+          <li><a href="#"><span></span>#10 Mendoza St., Saog,, 3019 Marilao, Bulacan</a></li>
+           <li><a href="#"><span></span>Recognize by the government through the Department of Education.</a></li>
+
+        </ul>
+      </div>
+      <div class="col-md-3 footer-left">
+        <h3>Contact</h3>
+        <ul>
+          <li><a href="#"><span></span><i class="glyphicon glyphicon-phone"></i> 09063710368</a></li>
+        </ul>
+      </div>
+      <div class="col-md-3 footer-left">
+        <h3>School hours</h3>
+        <ul>
+        <li><a href="#"><span></span>Monday-Friday: 07:00am - 5:00pm</a></li>
+        </ul>
+          <div class="clearfix"> </div>
+      </div>
+      
+        <div class="col-md-12">
+        <div class="foot-bottom">
+          <p>SMIS-MKS | Developed by the Students of STI College-Caloocan | <a href="#"><?php  $curYear= Date('Y');
+                                        echo "$curYear";
+                                      ?></a></p>
+        </div>
+        </div>
+    
+  </div>
+<!-- footer -->
 
 
 
-
-
+<!-- footer -->
+    <script src="../js/jquery.1.11.1.js"></script>
+    <script src="../js/owl.carousel.min.js"></script>
+    <script src="../js/mooz.themes.scripts.js"></script>
 </body>
 </html>

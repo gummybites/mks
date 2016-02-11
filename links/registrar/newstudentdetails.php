@@ -131,6 +131,7 @@ Registrar
                       background: #fff;
                       border-radius: 0px;
                       height: 34px;
+                      width: 85px;
                       -webkit-box-shadow: #d9edf7;
                       box-shadow: #d9edf7;
                       -webkit-transition: none;
@@ -141,6 +142,7 @@ Registrar
                     #years{
                       border-radius: 0px;
                       height: 34px;
+                      width: 85px;
                       border-right: none;
                       background: #fff;
                       -webkit-box-shadow: #d9edf7;
@@ -150,57 +152,126 @@ Registrar
                       transition: none;
                     
                     }
-#footer{
-	margin-top: 380px;
 
-}
+               
+                    #footer{
+                    	margin-top: 380px;
 
-p::first-letter {
-   
- 
-}
+                    }
 
-th{
-text-align: center;
+                    p::first-letter {
+                       
+                     
+                    }
 
-}
+                    th{
+                    text-align: center;
 
-td{
-text-align: center;
+                    }
 
-}
+                    td{
+                    text-align: center;
 
-#line{
-	border-bottom: 1px solid black;
+                    }
 
-}
+                    #line{
+                    	border-bottom: 1px solid black;
 
-legend a {
-  color: inherit;
-}
-legend.legendStyle {
-padding-left: 5px;
-padding-right: 5px;
-}
-fieldset.fsStyle {
-font-family: Verdana, Arial, sans-serif;
-font-size: small;
-font-weight: normal;
-border: 1px solid #999999;
-padding: 20px;
+                    }
 
-}
-legend.legendStyle {
-font-size: 90%;
-color: #888888;
-background-color: transparent;
-font-weight: bold;
-}
+                    legend a {
+                      color: inherit;
+                    }
+                    legend.legendStyle {
+                    padding-left: 5px;
+                    padding-right: 5px;
+                    }
+                    fieldset.fsStyle {
+                    font-family: Verdana, Arial, sans-serif;
+                    font-size: small;
+                    font-weight: normal;
+                    border: 1px solid #999999;
+                    padding: 20px;
 
-legend {
-width: auto;
-border-bottom: 0px;
-}
+                    }
+                    legend.legendStyle {
+                    font-size: 90%;
+                    color: #888888;
+                    background-color: transparent;
+                    font-weight: bold;
+                    }
+
+                    legend {
+                    width: auto;
+                    border-bottom: 0px;
+                    }
+
+                    .btn-default{
+                      width: 150px;
+                      height: 40px;
+                    }
+
+
+
+                    .cover-new
+                      {
+                        background-image: url('prospective.png');
+                        background-repeat: no-repeat;
+                        background-size: 150px 40px;
+                        color: #000;
+                      }
+
+                      .cover-new:hover
+                      {
+                        background-image: url('addstudent.png');
+                        background-repeat: no-repeat;
+                        background-size: 150px 40px;
+                        color: #000;
+                      }
+
+                    .cover-transfer
+                      {
+                        background-image: url('transferee.png');
+                        background-repeat: no-repeat;
+                        background-size: 150px 40px;
+                        color: #000;
+                      }
+
+                      .cover-transfer:hover
+                      {
+                        background-image: url('addstudent.png');
+                        background-repeat: no-repeat;
+                        background-size: 150px 40px;
+                        color: #000;
+                      }
+
+                      .cover-senior
+                      {
+                        background-image: url('senior.png');
+                        background-repeat: no-repeat;
+                        background-size: 150px 40px;
+                        color: #000;
+                      }
+
+                      .cover-senior:hover
+                      {
+                        background-image: url('addstudent.png');
+                        background-repeat: no-repeat;
+                        background-size: 150px 40px;
+                        color: #000;
+                      }
+
+                    #validation-addon{
+
+                      border-left: none;
+                                           background-color: #fff;
+                                           border-color: #d9edf7;
+
+                    }
+
+
+
+
 </style>
 <script type="text/javascript">
 
@@ -2408,9 +2479,9 @@ function myFunction(){
               }else{
 
               ?>
-               <button name='new' id='new'class='btn btn-danger'>New Student <span class='badge'>+</span></button> 
-               <button name='transfer' id='transfer'class='btn btn-danger'>Transferee <span class='badge'>+</span></button> 
-               <button name='senior' id='senior'class='btn btn-danger'>Senior High <span class='badge'>+</span></button>   
+               <button name='new' id='new'class='btn btn-default cover-new'></button> 
+               <button name='transfer' id='transfer'class='btn btn-default cover-transfer'></button> 
+               <button name='senior' id='senior'class='btn btn-default cover-senior'></button>   
 
               <div class='demo_jui'>
                         <table cellpadding='0' cellspacing='1' border='1' class='display' id='tbl' class='jtable'>

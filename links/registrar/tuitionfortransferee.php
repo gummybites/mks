@@ -368,7 +368,7 @@ td{
                 <ol class="breadcrumb bread-warning">
                   <li ><a href='tuition.php'>Prospective</a></li>
                   <li class='active'>Transferee</li>
-                  <li><a href='tuitionfees.php'>Tuition Advisey</a></li>
+                  <li><a href='tuitionfees.php'><img src='Money.png' width='50px' height="30px"></a></li>
 
                 </ol>
                 <form  onsubmit="return payment()" id='form' class='col-md-12 col-xs-12' method="POST">

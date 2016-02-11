@@ -1,21 +1,27 @@
 <?php
-#######################################################################
-#				PHP Simple Captcha Script
-#	Script Url: http://toolspot.org/php-simple-captcha.php
-#	Author: Sunny Verma
-#	Website: http://toolspot.org
-#	License: GPL 2.0, @see http://www.gnu.org/licenses/gpl-2.0.html
-########################################################################
 session_start();
-$code=rand(1000,9999);
-$_SESSION["code"]=$code;
-$im = imagecreatetruecolor(50, 24);
-$bg = imagecolorallocate($im, 22, 86, 165);
-$fg = imagecolorallocate($im, 255, 255, 255);
-imagefill($im, 0, 0, $bg);
-imagestring($im, 5, 5, 5,  $code, $fg);
+
 header("Cache-Control: no-cache, must-revalidate");
 header('Content-type: image/png');
-imagepng($im);
-imagedestroy($im);
+
+$chars = "012345678901234567abcdefghijklmnopqrstuvwxyz
+ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+$captcha_text = '';
+ 
+for ($i = 0; $i < 6; $i++) 
+{
+    $captcha_text .= $chars[rand(0, strlen($chars)-1)];
+}	
+
+$captcha_bg = @imagecreatefrompng("../../images/captcha.png"); 
+	
+imagettftext( $captcha_bg, 85, 0, 0, 300, imagecolorallocate ($captcha_bg, 0, 40, 10),
+ 'larabiefont rg.ttf', $captcha_text );
+
+$_SESSION['code'] = $captcha_text;
+
+imagepng($captcha_bg, NULL, 0);
+imagedestroy($captcha_bg);
+
 ?>
