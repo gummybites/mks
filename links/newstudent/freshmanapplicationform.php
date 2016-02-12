@@ -382,9 +382,9 @@ mail($email,"$email Confirm Email",$message,'From: $email');
 
 
 //kapag naka click yung EMAIL confirmation
-if(isset($_GET['emailconfirmed']&&['code'])){
+if(isset($_GET['emailconfirmed'])){
     $email=$_GET['emailconfirmed'];
-    $code=$_GET['code'];
+
 
     $qry="SELECT * from tbl_studentregistration where email='$email'";
     $res=mysql_query($qry);
