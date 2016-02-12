@@ -385,7 +385,7 @@ mail($email,"$email Confirm Email",$message,'From: $email');
 
 
 //kapag naka click yung EMAIL confirmation
-if(isset($_GET['emailconfirmed'])&&['code']){
+if(isset($_GET['emailconfirmed']&&['code'])){
     $email=$_GET['emailconfirmed'];
     $code=$_GET['code'];
 
