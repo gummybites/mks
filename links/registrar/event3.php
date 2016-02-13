@@ -445,7 +445,7 @@ $(document).ready(function(){
  <?php
                             $qry="SELECT * from tbl_event";
                             $res=mysql_query($qry);
-
+                            if(mysql_num_rows($res)>=0){
                             while($qry=mysql_fetch_array($res)){
 
                               $event1image= $qry['event3_image'];
@@ -548,7 +548,7 @@ $(document).ready(function(){
                             <?php
                                    
                               }
-
+                            }
 
                              ?>            
 
