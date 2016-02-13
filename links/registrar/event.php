@@ -375,7 +375,8 @@ $(document).ready(function(){
  <?php
                             $qry="SELECT * from tbl_event";
                             $res=mysql_query($qry);
-                            if(mysql_num_rows($res)>=0){
+
+                            if(mysql_num_rows($res)>0){
                             while($qry=mysql_fetch_array($res)){
 
                               $event1image= $qry['event1_image'];
@@ -387,9 +388,10 @@ $(document).ready(function(){
                            
 
                              ?>
-                              <form method="POST" onsubmit="return event1(event)"  enctype='multipart/form-data' action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+                                      <div class="row">
+                             <form method="POST" onsubmit="return event1(event)"  enctype='multipart/form-data' action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
                               <br>
-                              <div class="row">
+                     
                                 <div class="col-md-8">
 
                                  <div class="col-md-12">      
@@ -451,7 +453,7 @@ $(document).ready(function(){
                                 </form>
 
 
-                                <form method="POST" enctype='multipart/form-data'>
+                                <form method="POST" enctype="multipart/form-data">
                                 <div class="col-md-4">
                                  <p id="message"></p>
                                 </div>
@@ -473,15 +475,11 @@ $(document).ready(function(){
                                     </span>
                                   </div>
                                 </div>
-                              </div>
-                            </form>
-                            <?php
-                                   
+                            </form> 
+                            </div>
+                             <?php  
                               }
-
                             }
-
-
                              ?>            
 
 

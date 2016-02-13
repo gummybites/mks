@@ -284,6 +284,7 @@ p {   word-wrap: break-word; }
                                            $res_event=mysql_query($event);
 
                                            if(mysql_num_rows($res_event)>0){
+
                                            while($event=mysql_fetch_array($res_event)){
                                            	            $eventimage1= $event['event1_image'];
                               							$eventdate1= $event['event1_date'];
@@ -352,8 +353,9 @@ p {   word-wrap: break-word; }
 														</li>
                                                       </ul>
                                                       <?php
+                                                  }
                                                  }
-                                             }
+                                             
 
                                            ?>
                                           	
