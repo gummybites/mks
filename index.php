@@ -1,3 +1,6 @@
+<?php 
+	include('./links/config.php');
+?>
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -9,6 +12,7 @@
 
 	<!--Stylesheet for design -->
 	<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all">
+	<link href="css/font-awesome.css" rel="stylesheet" type="text/css" media="all">
 	<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
 
 	 <!-- Custom styles for this template -->
@@ -151,6 +155,7 @@
     color: #fff;
     transition: all 0.5s ease 0s;
 }
+p {   word-wrap: break-word; }
 </style>
 <body>
 
@@ -274,19 +279,44 @@
 			</div>
 		<div class="col-md-6">
 				
-                                           
+                                           <?php
+                                           $event="SELECT * from tbl_event";
+                                           $res_event=mysql_query($event);
+
+                                           if(mysql_num_rows($res_event)>0){
+                                           while($event=mysql_fetch_array($res_event)){
+                                           	            $eventimage1= $event['event1_image'];
+                              							$eventdate1= $event['event1_date'];
+                              							$eventtitle1= $event['event1_title'];
+                              							$eventdescription1= $event['event1_description'];
+
+
+                              							$eventimage2= $event['event2_image'];
+                              							$eventdate2= $event['event2_date'];
+                              							$eventtitle2= $event['event2_title'];
+                              							$eventdescription2= $event['event2_description'];
+
+
+                              							$eventimage3= $event['event3_image'];
+                              							$eventdate3= $event['event3_date'];
+                              							$eventtitle3= $event['event3_title'];
+                              							$eventdescription3= $event['event3_description'];
+
+                                                   ?>
                                                     <ul class="event-list">
 	                                                      <li>
 	                                                        <time datetime="2014-07-20">
-	                                                          <span class="day">4</span>
-	                                                          <span class="month">Jul</span>
-	                                                          <span class="year">2014</span>
-	                                                          <span class="time">ALL DAY</span>
+	                                                  
+	                                                          
+	                                                          <i class="fa fa-calendar fa-fw fa-5x" ></i>
+	                                                          <h5>D/M/Y</h5>
+	                                                   		  <h5><?php echo $eventdate1?></h5>
+	                                                        
 	                                                        </time>
-	                                                       
+	                                                       <img alt="Event1" src="./photos/<?php echo $eventimage1?>" />
 	                                                        <div class="info">
-	                                                          <h2 class="title">Independence Day</h2>
-	                                                          <p class="desc">United States Holiday
+	                                                          <p class="title"><?php echo $eventtitle1?></p>
+	                                                          <p class="desc"><?php echo $eventdescription1?>
 	                                                       
 	                                                          </p>
 	                                                        </div>
@@ -294,32 +324,38 @@
 
                                                        <li>
 															<time datetime="2014-07-20 0000">
-																<span class="day">8</span>
-																<span class="month">Jul</span>
-																<span class="year">2014</span>
-																<span class="time">12:00 AM</span>
+															
+															  <i class="fa fa-calendar fa-fw fa-5x" ></i>
+	                                                          <h5>D/M/Y</h5>
+	                                                   		  <h5><?php echo $eventdate2?></h5>
+															
 															</time>
+															<img alt="Event2" src="./photos/<?php echo $eventimage2?>" />
 															<div class="info">
-																<h2 class="title">One Piece Unlimited World Red</h2>
-																<p class="desc">PS Vita</p>
+																<p class="title"><?php echo $eventtitle2?></p>
+	                                                          <p class="desc"><?php echo $eventdescription2?>
 															</div>
 														</li>
 
 
 														<li>
 															<time datetime="2014-07-20 2000">
-																<span class="day">20</span>
-																<span class="month">Jan</span>
-																<span class="year">2014</span>
-																<span class="time">8:00 PM</span>
+															  <i class="fa fa-calendar fa-fw fa-5x" ></i>
+	                                                          <h5>D/M/Y</h5>
+	                                                   		  <h5><?php echo $eventdate3?></h5>
 															</time>
-														
+															<img alt="Event3" src="./photos/<?php echo $eventimage3?>" />
 															<div class="info">
-																<h2 class="title">Mouse0270's 24th Birthday!</h2>
-																<p class="desc">Bar Hopping in Erie, Pa.</p>
+																<p class="title"><?php echo $eventtitle3?></p>
+	                                                          <p class="desc"><?php echo $eventdescription3?>
 															</div>
 														</li>
                                                       </ul>
+                                                      <?php
+                                                 }
+                                             }
+
+                                           ?>
                                           	
                                               
 			</div>
@@ -337,7 +373,7 @@
 		<div class="container">
 
 		<?php 
-				include('./links/config.php');
+			
 			  $form="SELECT * from tbl_applicationform";
 			  $result=mysql_query($form);
 

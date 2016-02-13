@@ -34,7 +34,7 @@ $db_password=$qry['password'];
                 
                     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
                     <meta name="viewport" content="width=device-width, initial-scale=1">
-                    <title>Event 1</title>
+                    <title>Event 2</title>
 
                     <link rel="stylesheet" href="../../css/bootstrap.min.css"></link>
                     <link rel="stylesheet" href="../../css/bootstrap.css"></link>
@@ -166,66 +166,69 @@ $db_password=$qry['password'];
                       }
 </style>  
 <script>
-function event1(){
 
-var eventdays1=document.getElementById('eventdays1').value;        
-var eventmonths1=document.getElementById('eventmonths1').value;   
-var eventyears1=document.getElementById('eventyears1').value;
 
-        if((eventmonths1 && eventdays1 && eventyears1) == ""){
-          document.getElementById('evntdays1').innerHTML="<span style ='color: red;'>If you want to change, Event Date are required!</span>";
+
+function event2(){
+
+var eventdays2=document.getElementById('eventdays2').value;        
+var eventmonths2=document.getElementById('eventmonths2').value;   
+var eventyears2=document.getElementById('eventyears2').value;
+
+        if((eventmonths2 && eventdays2 && eventyears2) == ""){
+          document.getElementById('evntdays2').innerHTML="<span style ='color: red;'>If you want to change, Event Date are required!</span>";
           return false;
 
        }else{
-           document.getElementById('evntdays1').innerHTML="<span style ='color: green;'>Event date <i class='glyphicon glyphicon-ok'></i></span>";
+           document.getElementById('evntdays2').innerHTML="<span style ='color: green;'>Event date <i class='glyphicon glyphicon-ok'></i></span>";
        }//birthdate
 
 
 
 
- var eventitle1= document.getElementById('title1').value.length;
+ var eventitle2= document.getElementById('title2').value.length;
 
 
 
- if(eventitle1==""){
-  document.getElementById('evnttitle1').innerHTML="<span style ='color: red;'>Event title are required!</span>";
+ if(eventitle2==""){
+  document.getElementById('evnttitle2').innerHTML="<span style ='color: red;'>Event title are required!</span>";
   return false;
 
 }else{
 
 
-          if(eventitle1>=12 && eventitle1<=100) {
-            document.getElementById('evnttitle1').innerHTML="<span style ='color: green;'>Event Title <i class='glyphicon glyphicon-ok'></i></span>";
+          if(eventitle2>=12 && eventitle2<=100) {
+            document.getElementById('evnttitle2').innerHTML="<span style ='color: green;'>Event Title <i class='glyphicon glyphicon-ok'></i></span>";
    
-                document.getElementById('validateeventtitle1').style.display = "none";
+                document.getElementById('validateeventtitle2').style.display = "none";
                 
              
                }else{
-                  document.getElementById('validateeventtitle1').innerHTML="<i style ='color: red;'>Atleast 12 to 200 characters for Event Title!</i>";
+                  document.getElementById('validateeventtitle2').innerHTML="<i style ='color: red;'>Atleast 12 to 200 characters for Event Title!</i>";
                 return false;
                }
 }
 
 
- var evenmessage1= document.getElementById('message1').value.length;
+ var evenmessage2= document.getElementById('message2').value.length;
 
 
 
- if(evenmessage1==""){
-  document.getElementById('evntmessage1').innerHTML="<span style ='color: red;'>Event title are required!</span>";
+ if(evenmessage2==""){
+  document.getElementById('evntmessage2').innerHTML="<span style ='color: red;'>Event title are required!</span>";
   return false;
 
 }else{
 
 
-          if(evenmessage1>=12 && evenmessage1<=200) {
-            document.getElementById('evntmessage1').innerHTML="<span style ='color: green;'>Event Title <i class='glyphicon glyphicon-ok'></i></span>";
+          if(evenmessage2>=12 && evenmessage2<=200) {
+            document.getElementById('evntmessage2').innerHTML="<span style ='color: green;'>Event Title <i class='glyphicon glyphicon-ok'></i></span>";
    
-                document.getElementById('validateeventmessage1').style.display = "none";
+                document.getElementById('validateeventmessage2').style.display = "none";
                 
              
                }else{
-                  document.getElementById('validateeventmessage1').innerHTML="<i style ='color: red;'>Atleast 12 to 200 characters for Event Title!</i>";
+                  document.getElementById('validateeventmessage2').innerHTML="<i style ='color: red;'>Atleast 12 to 200 characters for Event Title!</i>";
                 return false;
                }
 }
@@ -237,8 +240,76 @@ var eventyears1=document.getElementById('eventyears1').value;
 
 }
 
+function event3(){
+
+var eventdays3=document.getElementById('eventdays3').value;        
+var eventmonths3=document.getElementById('eventmonths3').value;   
+var eventyears3=document.getElementById('eventyears3').value;
+
+        if((eventmonths3 && eventdays3 && eventyears3) == ""){
+          document.getElementById('evntdays3').innerHTML="<span style ='color: red;'>If you want to change, Event Date are required!</span>";
+          return false;
+
+       }else{
+           document.getElementById('evntdays3').innerHTML="<span style ='color: green;'>Event date <i class='glyphicon glyphicon-ok'></i></span>";
+       }//birthdate
 
 
+
+
+ var eventitle3= document.getElementById('title3').value.length;
+
+
+
+ if(eventitle3==""){
+  document.getElementById('evnttitle3').innerHTML="<span style ='color: red;'>Event title are required!</span>";
+  return false;
+
+}else{
+
+
+          if(eventitle3>=12 && eventitle3<=100) {
+            document.getElementById('evnttitle3').innerHTML="<span style ='color: green;'>Event Title <i class='glyphicon glyphicon-ok'></i></span>";
+   
+                document.getElementById('validateeventtitle3').style.display = "none";
+                
+             
+               }else{
+                  document.getElementById('validateeventtitle3').innerHTML="<i style ='color: red;'>Atleast 12 to 200 characters for Event Title!</i>";
+                return false;
+               }
+}
+
+
+ var evenmessage3= document.getElementById('message3').value.length;
+
+
+
+ if(evenmessage3==""){
+  document.getElementById('evntmessage3').innerHTML="<span style ='color: red;'>Event title are required!</span>";
+  return false;
+
+}else{
+
+
+          if(evenmessage3>=12 && evenmessage3<=200) {
+            document.getElementById('evntmessage3').innerHTML="<span style ='color: green;'>Event Title <i class='glyphicon glyphicon-ok'></i></span>";
+   
+                document.getElementById('validateeventmessage3').style.display = "none";
+                
+             
+               }else{
+                  document.getElementById('validateeventmessage3').innerHTML="<i style ='color: red;'>Atleast 12 to 200 characters for Event Title!</i>";
+                return false;
+               }
+}
+
+
+
+
+
+
+}
 
 
 
@@ -250,17 +321,17 @@ var eventyears1=document.getElementById('eventyears1').value;
     //populate our years select box
       for (i = new Date().getFullYear()+1; i >  new Date().getFullYear()-1; i--){
 
-        $('#eventyears1').append($('<option />').val(i).html(i));
+        $('#eventyears2').append($('<option />').val(i).html(i));
     }
     //populate our months select box
     for (i = 1; i < 13; i++){
-        $('#eventmonths1').append($('<option />').val(i).html(i));
+        $('#eventmonths2').append($('<option />').val(i).html(i));
     }
     //populate our Days select box
     updateNumberOfDays(); 
 
     //"listen" for change events
-    $('#event1years, #eventmonths1').change(function(){
+    $('#eventyears2, #eventmonths2').change(function(){
         updateNumberOfDays(); 
     });
 
@@ -268,13 +339,13 @@ var eventyears1=document.getElementById('eventyears1').value;
 
   //function to update the days based on the current values of month and year
   function updateNumberOfDays(){
-    $('#eventdays1').html('');
-      month = $('#eventmonths1').val();
-      year = $('#eventyears1').val();
+    $('#eventdays2').html('');
+      month = $('#eventmonths2').val();
+      year = $('#eventyears2').val();
       days = daysInMonth(month, year);
 
       for(i=1; i < days+1 ; i++){
-              $('#eventdays1').append($('<option />').val(i).html(i));
+              $('#eventdays2').append($('<option />').val(i).html(i));
     
 
       }
@@ -288,7 +359,7 @@ var eventyears1=document.getElementById('eventyears1').value;
 
 $(document).ready(function(){
 
-    $('#eventyears1').change(function(){
+    $('#eventyears2').change(function(){
     var selectedValue=$(this).val();
     var date= new Date();
     var year = date.getFullYear();
@@ -304,7 +375,6 @@ $(document).ready(function(){
     
      });
 });
-
 
 
 
@@ -332,7 +402,7 @@ $(document).ready(function(){
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
-</nav>	
+</nav>  
 
 
 
@@ -365,10 +435,10 @@ $(document).ready(function(){
 <div class="container">
 
                 
-  <ul class="nav nav-tabs" role="tablist">
-    <li class="active"><a href="#">Event 1</a></li>
-    <li><a href="event2.php">Event 2</a></li>
-    <li><a href="event3.php">Event 3</a></li> 
+   <ul class="nav nav-tabs" role="tablist">
+    <li ><a href="event.php">Event 1</a></li>
+    <li class="active"><a href="#">Event 2</a></li>
+    <li><a href="event3.php">Event 3</a></li>
     <li><a href="imagelist.php">Gallery</a></li> 
   </ul>
 
@@ -378,10 +448,10 @@ $(document).ready(function(){
 
                             while($qry=mysql_fetch_array($res)){
 
-                              $event1image= $qry['event1_image'];
-                               $event1date= $qry['event1_date'];
-                                $event1title= $qry['event1_title'];
-                                 $event1description= $qry['event1_description'];
+                              $event1image= $qry['event2_image'];
+                               $event1date= $qry['event2_date'];
+                                $event1title= $qry['event2_title'];
+                                 $event1description= $qry['event2_description'];
 
 
                            
@@ -400,17 +470,17 @@ $(document).ready(function(){
                                   <div class="form-group">
 
                                          <div class="col-md-4">
-                                              Days<select  class="form-control" id='eventdays1' name="eventdays1">
+                                              Days<select  class="form-control" id='eventdays2' name="eventdays2">
                                                     <option></option>
                                               </select>
                                           </div>         
                                           <div class="col-md-4">    
-                                              Months<select class="form-control"  id='eventmonths1' name="eventmonths1">
+                                              Months<select class="form-control"  id='eventmonths2' name="eventmonths2">
                                                   <option></option>
                                               </select>
                                           </div>
                                           <div class="col-md-4">                                                     
-                                              Years<select class="form-control"   id='eventyears1' name="eventyears1">
+                                              Years<select class="form-control"   id='eventyears2' name="eventyears2">
                                                     <option></option>
                                               </select> 
                                           </div>
@@ -429,7 +499,7 @@ $(document).ready(function(){
 
                                   <div class="col-md-12">
                                   <div class="form-group">
-                                    title<input type="text" class="form-control" placeholder="Title here.." name="title1" id="title1" maxlength="100" value="<?php echo $event1title?>">
+                                    title<input type="text" class="form-control" placeholder="Title here.." name="title2" id="title2" maxlength="100" value="<?php echo $event1title?>">
                                     </div>
                                   </div>
 
@@ -440,12 +510,12 @@ $(document).ready(function(){
                                  </div>
                                   <div class="col-md-12">
                                   <div class="form-group">
-                                  Description<textarea placeholder="Description here.." id="message1" name="message1" class="form-control input-lg" rows="3" maxlength="200"><?php echo $event1description?></textarea>
+                                  Description<textarea placeholder="Description here.." id="message2" name="message2" class="form-control input-lg" rows="3" maxlength="200"><?php echo $event1description?></textarea>
                                   </div>
                                   </div>
 
                                     <div class="col-md-12">
-                                    <button type="submit" name="buttonevent1" id='next'>Update</button>
+                                    <button type="submit" name="buttonevent2" id='next'>Update</button>
                                     </div>
                                 </div>
                                 </form>
@@ -464,12 +534,12 @@ $(document).ready(function(){
                                     <div class='form-group input-group'>
                                     <span class='input-group-btn'>
                                         <span class=' btn btn-default btn-file'>
-                                            Browse... <input type='file' name='eventfile'>
+                                            Browse... <input type='file' name='eventfile2'>
                                         </span>
                                     </span>
                                     <input type='text' id='valdfil' class='form-control' readonly />
                                     <span class='input-group-btn'>
-                                            <button class='btn btn-default' name='buttonuploadevent1'>Upload</button>
+                                            <button class='btn btn-default' name='buttonuploadevent2'>Upload</button>
                                     </span>
                                   </div>
                                 </div>
@@ -491,34 +561,34 @@ $(document).ready(function(){
 </body>
 </html>
 <?php
-if(isset($_POST['buttonevent1'])){
+if(isset($_POST['buttonevent2'])){
 
-                              $eventdays1= $_POST['eventdays1'];
-                              $eventmonths1= $_POST['eventmonths1'];
-                              $eventyears1= $_POST['eventyears1'];
+                              $eventdays2= $_POST['eventdays2'];
+                              $eventmonths2= $_POST['eventmonths2'];
+                              $eventyears2= $_POST['eventyears2'];
 
-                              $title1= $_POST['title1'];
-                              $message1= $_POST['message1'];
-                              $totalevents= $eventdays1.'/'.$eventmonths1.'/'.$eventyears1;
+                              $title2= $_POST['title2'];
+                              $message2= $_POST['message2'];
+                              $totalevents= $eventdays2.'/'.$eventmonths2.'/'.$eventyears2;
 
-                              $sql="UPDATE tbl_event set event1_date='$totalevents', event1_title='$title1', event1_description='$message1' where id>=0";
+                              $sql="UPDATE tbl_event set event2_date='$totalevents', event2_title='$title2', event2_description='$message2' where id>=0";
                               mysql_query($sql);
 
                                                                                 ?>
                                                                                 <script type="text/javascript">
-                                                                                document.getElementById("messagesuccess").innerHTML="<font color='green'>SUCCESSFULLY UPDATED.</font>";
+                                                                                document.getElementById("messagesuccess2").innerHTML="<font color='green'>SUCCESSFULLY UPDATED.</font>";
                                                                                 </script>
                                                                                 <?php
                                                                                  echo '<meta http-equiv="refresh" content= "1;" />';
 
 
 
-}elseif(isset($_POST['buttonuploadevent1'])){
-                                                 $file= $_FILES['eventfile']['name'];    
-                                                 $file_name = rand(1000,100000)."-".$_FILES['eventfile']['name'];
-                                                 $file_data = $_FILES['eventfile']['tmp_name'];
-                                                 $file_size = $_FILES['eventfile']['size'];
-                                                 $file_type = $_FILES['eventfile']['type'];
+}elseif(isset($_POST['buttonuploadevent2'])){
+                                                 $file= $_FILES['eventfile2']['name'];    
+                                                 $file_name = rand(1000,100000)."-".$_FILES['eventfile2']['name'];
+                                                 $file_data = $_FILES['eventfile2']['tmp_name'];
+                                                 $file_size = $_FILES['eventfile2']['size'];
+                                                 $file_type = $_FILES['eventfile2']['type'];
                                                  $file_folder="../../photos/"; 
                                                  // new file size in KB
                                                  $new_size = $file_size/1024;  
@@ -531,7 +601,7 @@ if(isset($_POST['buttonevent1'])){
                                                   if($file==""){
                                                                                 ?>
                                                                                 <script type="text/javascript">
-                                                                                document.getElementById("message").innerHTML="<font color='red'>PLEASE SELECT A FILE.</font>";
+                                                                                document.getElementById("message2").innerHTML="<font color='red'>PLEASE SELECT A FILE.</font>";
                                                                                 </script>
                                                                                 <?php
                                                                                  echo '<meta http-equiv="refresh" content= "1;" />';
@@ -543,12 +613,12 @@ if(isset($_POST['buttonevent1'])){
 
                                                              if(move_uploaded_file($file_data,$file_folder.$final_file)){
                                                                //inserting photo
-                                                              $sql="UPDATE tbl_event set event1_image='$final_file' where id>=0";
+                                                              $sql="UPDATE tbl_event set event2_image='$final_file' where id>=0";
                                                               mysql_query($sql);
 
                                                                                 ?>
                                                                                 <script type="text/javascript">
-                                                                                document.getElementById("messagesuccess").innerHTML="<font color='green'>SUCCESSFULLY UPLOADED!</font>";
+                                                                                document.getElementById("messagesuccess2").innerHTML="<font color='green'>SUCCESSFULLY UPLOADED!</font>";
                                                                                 </script>
                                                                                 <?php
                                                                                  echo '<meta http-equiv="refresh" content= "1;" />';
@@ -558,7 +628,7 @@ if(isset($_POST['buttonevent1'])){
 
                                                                                 ?>
                                                                                 <script type="text/javascript">
-                                                                                document.getElementById("message").innerHTML="<font color='red'>ERROR WHILE UPLOADING!</font>";
+                                                                                document.getElementById("message2").innerHTML="<font color='red'>ERROR WHILE UPLOADING!</font>";
                                                                                 </script>
                                                                                 <?php
                                                                                  echo '<meta http-equiv="refresh" content= "1;" />';
@@ -568,7 +638,7 @@ if(isset($_POST['buttonevent1'])){
                                                          }else{
                                                                                 ?>
                                                                                 <script type="text/javascript">
-                                                                                document.getElementById("message").innerHTML="<font color='red'>YOUR FILE IS LARGER THEN 150KB. PLEASE CHOOSE A DIFFERENT PICTURE!</font>";
+                                                                                document.getElementById("message2").innerHTML="<font color='red'>YOUR FILE IS LARGER THEN 150KB. PLEASE CHOOSE A DIFFERENT PICTURE!</font>";
                                                                                 </script>
                                                                                 <?php
                                                                                  echo '<meta http-equiv="refresh" content= "1;" />';
@@ -580,7 +650,7 @@ if(isset($_POST['buttonevent1'])){
 
                                                                                 ?>
                                                                                 <script type="text/javascript">
-                                                                                document.getElementById("message").innerHTML="<font color='red'>INVALID FILE FORMAT. PLEASE CHOOSE A DIFFERENT FILE FORMAT. IT SHOULD BE IN JPEG OR PNG FORMAT!</font>";
+                                                                                document.getElementById("message2").innerHTML="<font color='red'>INVALID FILE FORMAT. PLEASE CHOOSE A DIFFERENT FILE FORMAT. IT SHOULD BE IN JPEG OR PNG FORMAT!</font>";
                                                                                 </script>
                                                                                 <?php
                                                                                  echo '<meta http-equiv="refresh" content= "1;" />';
@@ -588,6 +658,102 @@ if(isset($_POST['buttonevent1'])){
 
                                                        }
                                               }
+elseif(isset($_POST['buttonevent3'])){
 
+                              $eventdays3= $_POST['eventdays3'];
+                              $eventmonths3= $_POST['eventmonths3'];
+                              $eventyears3= $_POST['eventyears3'];
+
+                              $title3= $_POST['title3'];
+                              $message3= $_POST['message3'];
+                              $totalevents= $eventdays3.'/'.$eventmonths3.'/'.$eventyears3;
+
+                              $sql="UPDATE tbl_event set event3_date='$totalevents', event3_title='$title3', event3_description='$message3' where id>=0";
+                              mysql_query($sql);
+
+                                                                                ?>
+                                                                                <script type="text/javascript">
+                                                                                document.getElementById("messagesuccess3").innerHTML="<font color='green'>SUCCESSFULLY UPDATED.</font>";
+                                                                                </script>
+                                                                                <?php
+                                                                                 echo '<meta http-equiv="refresh" content= "1;" />';
+
+
+
+}elseif(isset($_POST['buttonuploadevent3'])){
+                                                 $file= $_FILES['eventfile3']['name'];    
+                                                 $file_name = rand(1000,100000)."-".$_FILES['eventfile3']['name'];
+                                                 $file_data = $_FILES['eventfile3']['tmp_name'];
+                                                 $file_size = $_FILES['eventfile3']['size'];
+                                                 $file_type = $_FILES['eventfile3']['type'];
+                                                 $file_folder="../../photos/"; 
+                                                 // new file size in KB
+                                                 $new_size = $file_size/1024;  
+                                                 // new file size in KB
+                                                 // make file name in lower case
+                                                 $new_file_name = strtolower($file_name);
+                                                 // make file name in lower case
+                                                 $final_file=str_replace(' ','-',$new_file_name);
+
+                                                  if($file==""){
+                                                                                ?>
+                                                                                <script type="text/javascript">
+                                                                                document.getElementById("message3").innerHTML="<font color='red'>PLEASE SELECT A FILE.</font>";
+                                                                                </script>
+                                                                                <?php
+                                                                                 echo '<meta http-equiv="refresh" content= "1;" />';
+
+                                                  }else{  
+                                                    if(($file_type)=="image/jpeg"||($file_type)=="image/png"){
+
+                                                     if($file_size<=153600){
+
+                                                             if(move_uploaded_file($file_data,$file_folder.$final_file)){
+                                                               //inserting photo
+                                                              $sql="UPDATE tbl_event set event3_image='$final_file' where id>=0";
+                                                              mysql_query($sql);
+
+                                                                                ?>
+                                                                                <script type="text/javascript">
+                                                                                document.getElementById("messagesuccess3").innerHTML="<font color='green'>SUCCESSFULLY UPLOADED!</font>";
+                                                                                </script>
+                                                                                <?php
+                                                                                 echo '<meta http-equiv="refresh" content= "1;" />';
+
+
+                                                             }else{
+
+                                                                                ?>
+                                                                                <script type="text/javascript">
+                                                                                document.getElementById("message3").innerHTML="<font color='red'>ERROR WHILE UPLOADING!</font>";
+                                                                                </script>
+                                                                                <?php
+                                                                                 echo '<meta http-equiv="refresh" content= "1;" />';
+
+                                                             }
+
+                                                         }else{
+                                                                                ?>
+                                                                                <script type="text/javascript">
+                                                                                document.getElementById("message3").innerHTML="<font color='red'>YOUR FILE IS LARGER THEN 150KB. PLEASE CHOOSE A DIFFERENT PICTURE!</font>";
+                                                                                </script>
+                                                                                <?php
+                                                                                 echo '<meta http-equiv="refresh" content= "1;" />';
+
+                                                         }
+
+
+                                                         }else{
+
+                                                                                ?>
+                                                                                <script type="text/javascript">
+                                                                                document.getElementById("message3").innerHTML="<font color='red'>INVALID FILE FORMAT. PLEASE CHOOSE A DIFFERENT FILE FORMAT. IT SHOULD BE IN JPEG OR PNG FORMAT!</font>";
+                                                                                </script>
+                                                                                <?php
+                                                                                 echo '<meta http-equiv="refresh" content= "1;" />';
+                                                         }
+
+                                                       }
+                                              }
                                               ?>
     <?php }?>

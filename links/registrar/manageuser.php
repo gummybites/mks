@@ -50,7 +50,7 @@ $db_password=$qry['password'];
 <style>
           body{
 
-                   background: url(../../images/body-bg.png); color:#838383; font: 13px/1.7em 'Calibri';
+                   background: url(../../images/registrationbackground.png); color:#838383; font: 13px/1.7em 'Calibri';
                     }
 
 
@@ -316,7 +316,7 @@ if(password.type=="password"){
       <ul class="mainnav">
         <li><a href="registrar.php"><i class="fa fa-dashboard"></i><span>Home</span> </a> </li>
         <li><a href="reports.html"><i class="fa fa-plus"></i><span>Create acount</span> </a> </li>
-        <li><a href="guidely.html"><i class="fa fa-code"></i><span>Admission</span> </a></li>
+        <li><a href="admission.php"><i class="fa fa-code"></i><span>Admission</span> </a></li>
         <li><a href="charts.html"><i class="fa fa-bar-chart"></i><span>Inquiry</span> </a> </li>
         <li><a href="shortcodes.html"><i class="fa fa-code"></i><span>Course & Subjects</span> </a> </li>
         <li><a href="form.php"><i class="fa fa-file"></i><span>Form</span> </a> </li>
@@ -525,13 +525,15 @@ if ($checkpassword != 0){
                                                                                 <script type="text/javascript">
                                                                                 document.getElementById("message").innerHTML="<font color='green'>Update has been successful</font>";
                                                                                 </script>
-                                                                                <?php                                                                              
+                                                                                <?php   
+                                                                                 echo '<meta http-equiv="refresh" content= "1;" />';                                                                           
 }else{
                                                                                 ?>
                                                                                 <script type="text/javascript">
                                                                                 document.getElementById("message").innerHTML="<font color='red'>Update failed! Old Password don't match</font>";
                                                                                 </script>
                                                                                 <?php
+                                                                                 echo '<meta http-equiv="refresh" content= "1;" />';
 }
 
 
@@ -559,6 +561,7 @@ if ($checkpassword != 0){
                                                                                 document.getElementById("message").innerHTML="<font color='red'>PLEASE SELECT A FILE.</font>";
                                                                                 </script>
                                                                                 <?php
+                                                                                 echo '<meta http-equiv="refresh" content= "1;" />';
 
                                                   }else{  
                                                     if(($file_type)=="image/jpeg"||($file_type)=="image/png"){
@@ -575,6 +578,7 @@ if ($checkpassword != 0){
                                                                                 document.getElementById("message").innerHTML="<font color='green'>SUCCESSFULLY UPLOADED!</font>";
                                                                                 </script>
                                                                                 <?php
+                                                                                 echo '<meta http-equiv="refresh" content= "1;" />';
 
 
                                                              }else{
@@ -584,6 +588,7 @@ if ($checkpassword != 0){
                                                                                 document.getElementById("message").innerHTML="<font color='red'>ERROR WHILE UPLOADING!</font>";
                                                                                 </script>
                                                                                 <?php
+                                                                                 echo '<meta http-equiv="refresh" content= "1;" />';
 
                                                              }
 
@@ -593,6 +598,7 @@ if ($checkpassword != 0){
                                                                                 document.getElementById("message").innerHTML="<font color='red'>YOUR FILE IS LARGER THEN 150KB. PLEASE CHOOSE A DIFFERENT PICTURE!</font>";
                                                                                 </script>
                                                                                 <?php
+                                                                                 echo '<meta http-equiv="refresh" content= "1;" />';
 
                                                          }
 
@@ -604,6 +610,7 @@ if ($checkpassword != 0){
                                                                                 document.getElementById("message").innerHTML="<font color='red'>INVALID FILE FORMAT. PLEASE CHOOSE A DIFFERENT FILE FORMAT. IT SHOULD BE IN JPEG OR PNG FORMAT!</font>";
                                                                                 </script>
                                                                                 <?php
+                                                                                 echo '<meta http-equiv="refresh" content= "1;" />';
                                                          }
 
                                                        }

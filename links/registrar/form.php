@@ -51,7 +51,8 @@ $db_password=$qry['password'];
 <style>
           body{
 
-                   background: url(../../images/body-bg.png); color:#838383; font: 13px/1.7em 'Calibri';
+                   
+                   background: url(../../images/registrationbackground.png); color:#838383; font: 13px/1.7em 'Calibri';
                     }
 
 
@@ -206,7 +207,7 @@ $db_password=$qry['password'];
       <ul class="mainnav">
         <li><a href="registrar.php"><i class="fa fa-dashboard"></i><span>Home</span> </a> </li>
         <li><a href="reports.html"><i class="fa fa-plus"></i><span>Create acount</span> </a> </li>
-        <li><a href="guidely.html"><i class="fa fa-code"></i><span>Admission</span> </a></li>
+        <li><a href="admission.php"><i class="fa fa-code"></i><span>Admission</span> </a></li>
         <li><a href="charts.html"><i class="fa fa-bar-chart"></i><span>Inquiry</span> </a> </li>
         <li><a href="shortcodes.html"><i class="fa fa-code"></i><span>Course & Subjects</span> </a> </li>
         <li class="active"><a href="form.php"><i class="fa fa-file"></i><span>Form</span> </a> </li>
@@ -233,8 +234,7 @@ $db_password=$qry['password'];
                             <ul class="nav nav-tabs">
                                 <li class="active"><a href="#profile" data-toggle="tab">Profile</a>
                                 </li>
-                                <li class=""><a href="#loginhistory" data-toggle="tab">Login History</a>
-                                </li>
+                         
                                
                             </ul>
 
@@ -326,7 +326,7 @@ $db_password=$qry['password'];
                                                                                               }
 
 
-                                                              echo "<tr><td><center><a  href='../../applicationform/$db_newstudentform' >View</a></center></td> <td><center><a  href='../../applicationform/$db_transfereeform' >View</a></center></td> <td><center><a  href='../../applicationform/$db_seniorhighform' >View</a></center></td>  <td><center><a  href='form.php?editform=$db_id' >Edit</a></center></td></tr>";
+                                                              echo "<tr><td><center><a  href='../../applicationform/$db_newstudentform' ><i class='fa fa-file fa-lg'></i></a></center></td> <td><center><a  href='../../applicationform/$db_transfereeform' ><i class='fa fa-file fa-lg'></i></a></center></td> <td><center><a  href='../../applicationform/$db_seniorhighform' ><i class='fa fa-file fa-lg'></i></a></center></td>  <td><center><a  href='form.php?editform=$db_id' >Edit</a></center></td></tr>";
                                                   
                                         ?>
                                       </table>
@@ -384,6 +384,7 @@ if(isset($_POST['buttonform1'])){
                                                                                 document.getElementById("message").innerHTML="<font color='red'>PLEASE SELECT A APPLICATION FORM FOR NEW STUDENT!</font>";
                                                                                 </script>
                                                                                 <?php
+                                                                                 echo '<meta http-equiv="refresh" content= "1;" />';
                               
 
                                                   }else{  
@@ -401,6 +402,7 @@ if(isset($_POST['buttonform1'])){
                                                                                 document.getElementById("message").innerHTML="<font color='green'>SUCCESSFULLY UPLOADED</font>";
                                                                                 </script>
                                                                                 <?php
+                                                                                 echo '<meta http-equiv="refresh" content= "1;" />';
 
                                                              }else{
 
@@ -409,6 +411,7 @@ if(isset($_POST['buttonform1'])){
                                                                                 document.getElementById("message").innerHTML="<font color='red'>ERROR WHILE UPLOADING!</font>";
                                                                                 </script>
                                                                                 <?php
+                                                                                 echo '<meta http-equiv="refresh" content= "1;" />';
 
                                                              }
 
@@ -418,6 +421,7 @@ if(isset($_POST['buttonform1'])){
                                                                                 document.getElementById("message").innerHTML="<font color='red'>INVALID! APPLICATION FORM FOR NEW STUDENT IS GREATER THAN 150 KB. PLEASE CHOOSE A DIFFERENT FILE SIZE.</font>";
                                                                                 </script>
                                                                                 <?php
+                                                                                 echo '<meta http-equiv="refresh" content= "1;" />';
 
                                                          }
 
@@ -429,6 +433,7 @@ if(isset($_POST['buttonform1'])){
                                                                                 document.getElementById("message").innerHTML="<font color='red'>INVALID FILE FORMAT. PLEASE CHOOSE A PDF TYPE ONLY.</font>";
                                                                                 </script>
                                                                                 <?php
+                                                                                 echo '<meta http-equiv="refresh" content= "1;" />';
                                                          }
 
                                                        }
@@ -455,6 +460,7 @@ if(isset($_POST['buttonform1'])){
                                                                                 document.getElementById("message").innerHTML="<font color='red'>PLEASE SELECT A APPLICATION FORM FOR TRANSFEREE STUDENT!</font>";
                                                                                 </script>
                                                                                 <?php
+                                                                                 echo '<meta http-equiv="refresh" content= "1;" />';
 
                                                   }else{  
                                                      if(($file_type)=="application/pdf"){
@@ -471,6 +477,7 @@ if(isset($_POST['buttonform1'])){
                                                                                 document.getElementById("message").innerHTML="<font color='green'>SUCCESSFULLY UPLOADED</font>";
                                                                                 </script>
                                                                                 <?php
+                                                                                 echo '<meta http-equiv="refresh" content= "1;" />';
 
                                                              }else{
 
@@ -479,6 +486,7 @@ if(isset($_POST['buttonform1'])){
                                                                                 document.getElementById("message").innerHTML="<font color='red'>ERROR WHILE UPLOADING!</font>";
                                                                                 </script>
                                                                                 <?php
+                                                                                 echo '<meta http-equiv="refresh" content= "1;" />';
 
                                                              }
 
@@ -488,6 +496,7 @@ if(isset($_POST['buttonform1'])){
                                                                                 document.getElementById("message").innerHTML="<font color='red'>INVALID! APPLICATION FORM FOR TRANSFEREE STUDENT IS GREATER THAN 150 KB. PLEASE CHOOSE A DIFFERENT FILE SIZE.</font>";
                                                                                 </script>
                                                                                 <?php
+                                                                                 echo '<meta http-equiv="refresh" content= "1;" />';
 
                                                          }
 
@@ -499,6 +508,7 @@ if(isset($_POST['buttonform1'])){
                                                                                 document.getElementById("message").innerHTML="<font color='red'>INVALID FILE FORMAT. PLEASE CHOOSE A PDF TYPE ONLY.</font>";
                                                                                 </script>
                                                                                 <?php
+                                                                                 echo '<meta http-equiv="refresh" content= "1;" />';
                                                          }
 
                                                        }
@@ -525,6 +535,7 @@ if(isset($_POST['buttonform1'])){
                                                                                 document.getElementById("message").innerHTML="<font color='red'>PLEASE SELECT A APPLICATION FORM FOR SENIOR HIGH STUDENT!</font>";
                                                                                 </script>
                                                                                 <?php
+                                                                                 echo '<meta http-equiv="refresh" content= "1;" />';
 
 
                                                   }else{  
@@ -542,6 +553,7 @@ if(isset($_POST['buttonform1'])){
                                                                                 document.getElementById("message").innerHTML="<font color='green'>SUCCESSFULLY UPLOADED</font>";
                                                                                 </script>
                                                                                 <?php
+                                                                                 echo '<meta http-equiv="refresh" content= "1;" />';
 
                                                              }else{
 
@@ -550,6 +562,7 @@ if(isset($_POST['buttonform1'])){
                                                                                 document.getElementById("message").innerHTML="<font color='red'>ERROR WHILE UPLOADING!</font>";
                                                                                 </script>
                                                                                 <?php
+                                                                                 echo '<meta http-equiv="refresh" content= "1;" />';
 
                                                              }
 
@@ -559,7 +572,7 @@ if(isset($_POST['buttonform1'])){
                                                                                 document.getElementById("message").innerHTML="<font color='red'>INVALID! APPLICATION FORM FOR SENIOR HIGH STUDENT IS GREATER THAN 150 KB. PLEASE CHOOSE A DIFFERENT FILE SIZE.</font>";
                                                                                 </script>
                                                                                 <?php
-
+                                                                                 echo '<meta http-equiv="refresh" content= "1;" />';
                                                          }
 
 
@@ -570,6 +583,7 @@ if(isset($_POST['buttonform1'])){
                                                                                 document.getElementById("message").innerHTML="<font color='red'>INVALID FILE FORMAT. PLEASE CHOOSE A PDF TYPE ONLY.</font>";
                                                                                 </script>
                                                                                 <?php
+                                                                                 echo '<meta http-equiv="refresh" content= "1;" />';
                                                          }
 
                                                        }

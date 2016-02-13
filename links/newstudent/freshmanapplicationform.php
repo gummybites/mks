@@ -363,7 +363,7 @@ mysql_query("UPDATE tbl_studentregistration set confirm_code='$confirmed' where 
 
 $message= "Confirm your email
   Click the link below to verify your account 
-    http://www.sims-mks.com/freshmanapplicationform.php?emailconfirmed=$email&code=$confirmed
+    http://www.sims-mks.com/links/newstudent/freshmanapplicationform.php?emailconfirmed=$email&code=$confirmed
 ";  
 
 mail($email,"$email Confirm Email",$message,'From: $email');
@@ -382,9 +382,9 @@ mail($email,"$email Confirm Email",$message,'From: $email');
 
 
 //kapag naka click yung EMAIL confirmation
-if(isset($_GET['emailconfirmed'])){
+if(isset($_GET['emailconfirmed'])&& isset($_GET['code'])){
     $email=$_GET['emailconfirmed'];
-
+     $code=$_GET['code'];
 
     $qry="SELECT * from tbl_studentregistration where email='$email'";
     $res=mysql_query($qry);
