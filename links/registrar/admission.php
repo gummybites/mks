@@ -19,6 +19,7 @@ while($qry = mysql_fetch_array($result))
 $db_id=$qry['id'];
 $db_username = $qry['username'];
 $db_password=$qry['password'];
+$db_photofile=$qry['photo_file'];
 }
 
 
@@ -91,10 +92,16 @@ if(isset($_POST['submit']))
 
                                         header('url=newstudentdetails.php?Success!');
 
-                              
+                        }
 
-                             
-    
+
+                        if(isset($_POST['deleteok'])){
+                          $deleteid=$_POST['deleteid'];
+
+                          mysql_query("UPDATE tbl_prospectivestudents set prospectivestatus='recycle' where id='$deleteid'");
+
+                          header("Location: admission.php?detailsdeleted");
+
 
                         }
 ?>
@@ -127,7 +134,7 @@ if(isset($_POST['submit']))
 <style>
           body{
 
-                   background: url(../../images/registrationbackground.png); color:#838383; font: 13px/1.7em 'Calibri';
+                   background: url(../../images/registrationbackground.png);  font: 13px/1.7em 'Calibri';
                     }
 
 
@@ -240,10 +247,12 @@ if(isset($_POST['submit']))
                       textarea {
                           resize: none;
                       }
+
+                      
+                  
 </style>  
 
 <script type="text/javascript">
-
 
 $(document).ready(function(){
 
@@ -787,7 +796,8 @@ function myFunction(){
     
      
       <ul class="nav navbar-nav navbar-right">
-        <li> <a href="logout.php?logout=<?php echo $db_id ?>"><?php echo $db_username?>, <i class="glyphicon glyphicon-log-out"> </i> Logout</a></li>
+        <li><a href="manageuser.php"><img src="../../photos /<?php echo $db_photofile?>" class="img-circle" width="20px" height="20px"> <?php echo $db_username?>  </a></li>
+        <li> <a href="logout.php?logout=<?php echo $db_id ?>"> <i class="glyphicon glyphicon-log-out"> </i> Logout</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
@@ -804,12 +814,12 @@ function myFunction(){
         <li class="active"><a href="admission.php"><i class="fa fa-code"></i><span>Admission</span> </a></li>
         <li><a href="charts.html"><i class="fa fa-bar-chart"></i><span>Inquiry</span> </a> </li>
         <li><a href="shortcodes.html"><i class="fa fa-code"></i><span>Course & Subjects</span> </a> </li>
-        <li><a href="form.php"><i class="fa fa-file"></i><span>Form</span> </a> </li>
+        <li><a href="form.php"><i class="fa fa-file-pdf-o"></i><span>Form</span> </a> </li>
         <li><a href="event.php"><i class="fa fa-calendar"></i><span>Event & Annoucement</span> </a> </li>
         <li class="dropdown"><a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"> <i class="fa fa-long-arrow-down"></i><span>Manage User</span> <b class="caret"></b></a>
           <ul class="dropdown-menu">
-            <li class="active"><a href="manageuser.php">Profile</a></li>
-            <li><a href="faq.html">Accounts</a></li>
+            <li><a href="manageuser.php">Profile</a></li>
+            <li><a href="deleteddetails.php">Deleted details</a></li>
           </ul>
         </li>
       </ul>
@@ -820,14 +830,8 @@ function myFunction(){
 </div>
 
 
-  		<div class="container">
-
-  	
-				  			  
-  							
-
-			  <form   onsubmit='return freshmanapplication()' action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST"  enctype="multipart/form-data">
-		                
+  		<div class="container">	
+			  <form   onsubmit='return freshmanapplication()' action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST"  enctype="multipart/form-data">            
 			  <i  id="error" style="color: Red; display: none"></i>	                
               	
               <?php
@@ -839,8 +843,8 @@ function myFunction(){
                     <div class="container">
                     <div class="col-sm-12 col-md-12 ">
                     <div class="alert alert-success">
-                         <legend>Edit Application</legend>
-                    <a href='admission.php?details=$edit' id='next'>Back</a>
+                         <h5>Edit Application</h5>
+                    <a href='admission.php?details=<?php echo $edit?>' id='next'>Back</a>
                     
                  
                     </div>
@@ -1051,7 +1055,21 @@ function myFunction(){
 
                         <input type='hidden' name='id' value="<?php echo $id ?>">
                         <input type='hidden' name='email' value="<?php echo $db_email ?>">
-                       <button type="submit"  name="edit_update"  value="Submit" id='next'>Update</button>
+                      
+
+                               <div class='row'>
+                      <div class="col-sm-4 col-md-4 ">
+                      </div>
+                      
+                      <div class="col-sm-4 col-md-4">
+                      </div>
+
+                      <div class="col-sm-4 col-md-4 ">
+                             <button type="submit"  name="edit_update"  value="Submit" id='next'>Update</button>
+                      </div>
+                      </div><!--row-->
+
+                  
                        </form>
                   </div>
         </div>
@@ -1462,7 +1480,7 @@ function myFunction(){
               				<?php
 
 
-              }elseif(isset($_POST['new']) ||isset($_POST['transfer'])||isset($_POST['senior'])){
+              }elseif(isset($_POST['new']) ||isset($_POST['transfer'])){
                
 
                 ?>
@@ -1507,23 +1525,6 @@ function myFunction(){
 
                                 <?php
 
-
-                                  }elseif(isset($_POST['senior'])){
-                                     ?>
-                                <div class="container">
-                                <div class="col-sm-12 col-md-12 ">
-                                          <div class="alert alert-success">
-                                              <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                                                <strong>SENIOR HIGH APPLICATION FORM</strong><br>
-                                                 <a href="admission.php" id="next"><i class="fa fa-mail-reply"></i>Back</a>
-                                              
-                                          </div>
-                                </div>
-                                </div>
-
-
-
-                                <?php
 
                                   }
                                 ?>
@@ -1580,8 +1581,7 @@ function myFunction(){
                                                                     <option>Grade 8</option>
                                                                     <option>Grade 9</option>
                                                                     <option>Grade 10</option>
-                                                                    <option>Grade 11</option>
-                                                                    <option>Grade 12</option>
+                                                      
                                                                   
 
                                                       </select> 
@@ -1589,13 +1589,7 @@ function myFunction(){
                                                       <?php
 
 
-                                                        }elseif(isset($_POST['senior'])){
-                                                           ?>
-                                                            <input type="text" class='form-control' id="seeking" readonly="readonly"value="Grade 11">
-
-                                                            <?php
-
-                                                              }
+                                                        }
                                                             ?>
                                             </div>
                                             </div><!--row-->
@@ -1627,13 +1621,7 @@ function myFunction(){
                                                       <?php
 
 
-                                                        }elseif(isset($_POST['senior'])){
-                                                           ?>
-                                                            <input type="text" class='form-control' name="status"  readonly="readonly"value="new student">
-
-                                                            <?php
-
-                                                              }
+                                                        }
                                                             ?>
                                               </div>
                                               </div><!--row-->
@@ -1820,6 +1808,7 @@ function myFunction(){
                                                  <button type="submit"  name="submit"  value="Submit" id='next'>Submit</button>
                                               </div>
                                               </div><!--row-->
+                                              <br>
                                             </div>
                                             </div>
                                             </div>
@@ -1834,15 +1823,22 @@ function myFunction(){
               }else{
 
               ?>
-               <button name='new' id='next' >New Student</button> 
-               <button name='transfer' id='next'>Transferee</button> 
-               <button name='senior' id='next'>Senior High</button>   
+              <?php if(isset($_GET['detailsdeleted'])){
+                    ?>
+                    <center><p style="color:green">Details Succesfully Deleted!</p></center>
+                    <?php
+                }?>
+              <p style="color: green" id="message"></p>
+               <button name='new' id='next' ><span class="glyphicon glyphicon-add">+</span> New Student</button> 
+               <button name='transfer' id='next'><span class="glyphicon glyphicon-add">+</span> Transferee</button> 
+   
 
               <div class='demo_jui'>
                         <table cellpadding='0' cellspacing='1' border='1' class='display' id='tbl' class='jtable'>
                         <thead>
 
                                           <tr>
+                                              <th bgcolor='#FCAC45'><center>Requirements</center></th>
                                               <th bgcolor='#FCAC45'><center>Date</center></th>
                                               <th bgcolor='#FCAC45'><center>Grade level</center></th>
                                               <th bgcolor='#FCAC45'><center>Surname</center></th>
@@ -1858,7 +1854,7 @@ function myFunction(){
 
                         <?php
 
-                        $details="SELECT * from tbl_prospectivestudents ";
+                        $details="SELECT * from tbl_prospectivestudents inner join tbl_studentrequirements on tbl_prospectivestudents.id=tbl_studentrequirements.id where prospectivestatus= 'PENDING' or prospectivestatus='Accepted' ";
                         $res_details=mysql_query($details);
 
 
@@ -1877,11 +1873,27 @@ function myFunction(){
                             $mname=$details['middlename'];
                             $pstatus=$details['prospectivestatus'];
 
-                       
+                            $form138=$details['Form138'];
+                            $goodmoral=$details['GoodMoral'];
+                            $birthcertificate=$details['BirthCertificate'];
+                              
+                            $totalrequirements=$form138+ $goodmoral+$birthcertificate; 
 
-                           
-                            echo "<tr><td><center>$date</center></td><td><center>$level</center></td><td><center>$sname</center></td><td><center>$fname</center></td> <td><center>$mname</center></td> <td><center><a href='?details=$id' id=''>details</a></center></td></tr>";
+                            if($form138||$goodmoral||$birthcertificate=='1'){
+                                if($totalrequirements=='1'){
+                                   echo "<tr><td><center style='background-color:green; color: white;'>1 requirements</center></td><td><center>$date</center></td><td><center>$level</center></td><td><center>$sname</center></td><td><center>$fname</center></td> <td><center>$mname</center></td> <td><center><a href='?details=$id' id=''>Details</a></center></td></tr>";
+                                }elseif($totalrequirements=='2'){
+                                     echo "<tr><td><center style='background-color:green; color: white;'>2 requirements</center></td><td><center>$date</center></td><td><center>$level</center></td><td><center>$sname</center></td><td><center>$fname</center></td> <td><center>$mname</center></td> <td><center><a href='?details=$id' id=''>Details</a></center></td></tr>";
+                                }elseif($totalrequirements=='3'){
+                                     echo "<tr><td><center style='background-color:green; color: white;'>3 requirements</center></td><td><center>$date</center></td><td><center>$level</center></td><td><center>$sname</center></td><td><center>$fname</center></td> <td><center>$mname</center></td> <td><center><a href='?details=$id' id=''>Details</a></center></td></tr>";
 
+                                }
+                             
+                            }else{
+                               echo "<tr><td><center style='background-color:red; color: white;'>none</center></td><td><center>$date</center></td><td><center>$level</center></td><td><center>$sname</center></td><td><center>$fname</center></td> <td><center>$mname</center></td> <td><center><a href='?details=$id' id=''>Details</a> | <a href='?delete=$id' >Delete</a></center></td></tr>";
+                            }
+
+              
                         
                         }
 
@@ -1899,7 +1911,10 @@ function myFunction(){
   		</div>
 
 
-								
+
+
+      
+
 	  	
 <style type="text/css" title="currentStyle">
             @import "../../css/demo_table_jui.css";
@@ -1914,7 +1929,67 @@ function myFunction(){
 
                 });     
         </script>
+<script>
+ $(document).ready(function(){
+  $('#myModal').show();
 
+
+     $("#close").click(function(){
+        $('#myModal').hide();
+     });
+
+      $("#cancel").click(function(){
+        $('#myModal').hide();
+     });
+  });
+
+</script>
 </body>
 </html>
+
+<?php 
+if(isset($_GET['delete'])){
+$id=$_GET['delete'];
+
+$details="SELECT * from tbl_prospectivestudents where id='$id' ";
+$res_details=mysql_query($details);
+
+  while($details=mysql_fetch_assoc($res_details)){
+                            $id=$details['id'];
+                            $sname=$details['surname'];
+                            $fname=$details['firstname'];
+                            $mname=$details['middlename'];
+                            }
+?>
+
+<!-- The Modal -->
+<div id="myModal" style="display: none;" class="modal">
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <span id="close">×</span>
+
+    </div>
+    <div class="modal-body">
+      <p>Are you sure you want to delete details of <?php echo $sname.','. $fname. ','. $mname?>?</p>
+    
+    </div>
+    <div class="modal-footer">
+    <form method="POST">
+    <button id='ok' name='deleteok'>Ok</button>
+    <input type="hidden" name="deleteid" value="<?php echo $id?>">
+    </form>
+
+    </div>
+  </div>
+
+</div>
+
+
+
+<?php
+}
+
+
+?>  
     <?php }?>

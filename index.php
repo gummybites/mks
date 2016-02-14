@@ -199,6 +199,9 @@ p {   word-wrap: break-word; }
 		<div class="container">
 
 			<div class="row">
+				<div class="col-md-2">
+				
+				</div>
 				<div class="col-md-4">
 					<div class="team text-center">
 						<div class="cover" style="background:url('images/3.jpg'); background-size:cover;">
@@ -226,19 +229,8 @@ p {   word-wrap: break-word; }
 						<a href="./links/newstudent/transfereeregister.php" class="btn btn-blue-fill ripple">Register</a>	
 					</div>
 				</div>
-				<div class="col-md-4">
-					<div class="team text-center">
-						<div class="cover" style="background:url('images/1.jpg'); background-size:cover;">
-							<div class="overlay text-center">
-
-							</div>
-						</div>
-						<div class="title">
-							 <h4>Online Registration</h4>
-							<h5 class="muted regular">For Senior High</h5>
-						</div>
-						<a href="./links/newstudent/seniorhighregister.php" class="btn btn-blue-fill ripple">Register</a>	
-					</div>
+				<div class="col-md-2">
+				
 				</div>
 			</div>
 		</div>
@@ -386,12 +378,15 @@ p {   word-wrap: break-word; }
 
 			  		$db_newstudentform=$form['newstudentform'];
 			  		$db_transfereeform=$form['transfereeform'];
-			  		$db_seniorhighform=$form['seniorhighform'];
+
 
 			
 
 			?>
 			<div class="row">
+				<div class="col-md-2">
+
+				</div>
 				<div class="col-md-4">
 					<div class="team text-center">
 						<div class="cover" style="background:url('images/pdf_icon.png'); background-size:cover;">
@@ -419,20 +414,8 @@ p {   word-wrap: break-word; }
 						<a href='./applicationform/<?php echo $db_transfereeform ?>' download class="btn btn-blue-fill ripple">DOWNLOAD</a>
 					</div>
 				</div>
-				<div class="col-md-4">
-					<div class="team text-center">
-						<div class="cover" style="background:url('images/pdf_icon.png'); background-size:cover;">
-							<div class="overlay text-center">
+				<div class="col-md-2">
 
-							</div>
-						</div>
-						<div class="title">
-							 <h4>Application Form</h4>
-							<h5 class="muted regular">For Senior High</h5>
-						</div>
-					
-						<a href='./applicationform/<?php echo $db_seniorhighform ?>'  download class="btn btn-blue-fill ripple">Download</a>	
-					</div>
 				</div>
 			</div>
 			<?php

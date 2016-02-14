@@ -73,15 +73,6 @@
 
 
 
-        <h1 class="lead"> Senior High/ Transferee</h1>
-        <ul>
-           <li>Application Form</li>
-           <li>NSO Issued Birth Certificate. Present original copy for verification</li>
-           <li>Good moral character certificate</li>
-            <li>Must have passed both written and oral examinations conducted by the Admission Office</li>
-            <li>For the Grade 11 applicants – Present the unofficial Form 137 or certified true copy of the Junior Completion Report Card  .</li>
-            <li>For the Grade 12 applicants – Present the unofficial Form 137 or certified true copy of the Junior Completion and Grade 11 Report Card  .</li>
-        </ul>
 
 
          <h1 class="lead"> Admission Procedure</h1>

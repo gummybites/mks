@@ -19,6 +19,7 @@ while($qry = mysql_fetch_array($result))
 $db_id=$qry['id'];
 $db_username = $qry['username'];
 $db_password=$qry['password'];
+$db_photofile=$qry['photo_file'];
 }
   ?>
 
@@ -302,7 +303,8 @@ if(password.type=="password"){
     
      
       <ul class="nav navbar-nav navbar-right">
-        <li> <a href="logout.php?logout=<?php echo $db_id ?>"><?php echo $db_username?>, <i class="glyphicon glyphicon-log-out"> </i> Logout</a></li>
+      <li><a href=""><img src="../../photos /<?php echo $db_photofile?>" class="img-circle" width="20px" height="20px"> <?php echo $db_username?>  </a></li>
+        <li> <a href="logout.php?logout=<?php echo $db_id ?>"> <i class="glyphicon glyphicon-log-out"> </i> Logout</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
@@ -319,12 +321,12 @@ if(password.type=="password"){
         <li><a href="admission.php"><i class="fa fa-code"></i><span>Admission</span> </a></li>
         <li><a href="charts.html"><i class="fa fa-bar-chart"></i><span>Inquiry</span> </a> </li>
         <li><a href="shortcodes.html"><i class="fa fa-code"></i><span>Course & Subjects</span> </a> </li>
-        <li><a href="form.php"><i class="fa fa-file"></i><span>Form</span> </a> </li>
+        <li><a href="form.php"><i class="fa fa-file-pdf-o"></i><span>Form</span> </a> </li>
         <li><a href="event.php"><i class="fa fa-calendar"></i><span>Event & Annoucement</span> </a> </li>
         <li class="dropdown"><a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"> <i class="fa fa-long-arrow-down"></i><span>Manage User</span> <b class="caret"></b></a>
           <ul class="dropdown-menu">
-            <li ><a href="manageuser.php">Profile</a></li>
-            <li><a href="faq.html">Accounts</a></li>
+            <li class='active'><a href="#">Profile</a></li>
+            <li><a href="deleteddetails.php">Deleted details</a></li>
           </ul>
         </li>
       </ul>

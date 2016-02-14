@@ -19,6 +19,7 @@ while($qry = mysql_fetch_array($result))
 $db_id=$qry['id'];
 $db_username = $qry['username'];
 $db_password=$qry['password'];
+$db_photofile=$qry['photo_file'];
 }
   ?>
 
@@ -193,7 +194,8 @@ $db_password=$qry['password'];
     
      
       <ul class="nav navbar-nav navbar-right">
-        <li> <a href="logout.php?logout=<?php echo $db_id ?>"><?php echo $db_username?>, <i class="glyphicon glyphicon-log-out"> </i> Logout</a></li>
+        <li><a href="manageuser.php"><img src="../../photos /<?php echo $db_photofile?>" class="img-circle" width="20px" height="20px"> <?php echo $db_username?>  </a></li>
+        <li> <a href="logout.php?logout=<?php echo $db_id ?>"><i class="glyphicon glyphicon-log-out"> </i> Logout</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
@@ -210,12 +212,12 @@ $db_password=$qry['password'];
         <li><a href="admission.php"><i class="fa fa-code"></i><span>Admission</span> </a></li>
         <li><a href="charts.html"><i class="fa fa-bar-chart"></i><span>Inquiry</span> </a> </li>
         <li><a href="shortcodes.html"><i class="fa fa-code"></i><span>Course & Subjects</span> </a> </li>
-        <li class="active"><a href="form.php"><i class="fa fa-file"></i><span>Form</span> </a> </li>
+        <li class="active"><a href="form.php"><i class="fa fa-file-pdf-o"></i><span>Form</span> </a> </li>
         <li><a href="event.php"><i class="fa fa-calendar"></i><span>Event & Annoucement</span> </a> </li>
         <li class="dropdown"><a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"> <i class="fa fa-long-arrow-down"></i><span>Manage User</span> <b class="caret"></b></a>
           <ul class="dropdown-menu">
-            <li class="active"><a href="manageuser.php">Profile</a></li>
-            <li><a href="faq.html">Accounts</a></li>
+            <li><a href="manageuser.php">Profile</a></li>
+            <li><a href="deleteddetails.php">Deleted details</a></li>
           </ul>
         </li>
       </ul>
@@ -278,20 +280,7 @@ $db_password=$qry['password'];
                                                       <button name="buttonform2"  class='btn btn-default'>Upload</button>
                                                   </span>
                                           </div>
-                                          <!-- -->
-                                          <br>
-                                          <h5>Senior High Application Form</h5>
-                                          <div class="input-group">
-                                              <span class="input-group-btn">
-                                                  <span class=" btn btn-default btn-file2">
-                                                      Browse... <input type="file" name="form3" id="data">
-                                                  </span>
-                                              </span>
-                                              <input type="text" id="valdfil2" class="form-control" readonly />
-                                              <span class="input-group-btn">
-                                                      <button name="buttonform3"  class='btn btn-default'>Upload</button>
-                                                  </span>
-                                          </div>
+                                         
                                           
                                           <input type="hidden" name="editformid" value="<?php echo $id?>">
                                           <?php
@@ -308,7 +297,6 @@ $db_password=$qry['password'];
                                                        
                                                         <td bgcolor='#FCAC45'><center>Newstudent Application Form</center></td>
                                                         <td bgcolor='#FCAC45'><center>Transferee Application Form</center></td>
-                                                        <td bgcolor='#FCAC45'><center>Senior High Application Form</center></td>
                                                         <td bgcolor='#FCAC45'><center>Action</center></td>
                                                         </tr>
 
@@ -321,12 +309,12 @@ $db_password=$qry['password'];
                                                     $db_id=$applicationform['id'];
                                                     $db_newstudentform=$applicationform['newstudentform'];
                                                     $db_transfereeform=$applicationform['transfereeform'];
-                                                    $db_seniorhighform=$applicationform['seniorhighform'];
+                                                 
                                                        
                                                                                               }
 
 
-                                                              echo "<tr><td><center><a  href='../../applicationform/$db_newstudentform' ><i class='fa fa-file fa-lg'></i></a></center></td> <td><center><a  href='../../applicationform/$db_transfereeform' ><i class='fa fa-file fa-lg'></i></a></center></td> <td><center><a  href='../../applicationform/$db_seniorhighform' ><i class='fa fa-file fa-lg'></i></a></center></td>  <td><center><a  href='form.php?editform=$db_id' >Edit</a></center></td></tr>";
+                                                              echo "<tr><td><center><a  href='../../applicationform/$db_newstudentform' ><i class='fa fa-file-pdf-o fa-lg'></i></a></center></td> <td><center><a  href='../../applicationform/$db_transfereeform' ><i class='fa fa-file-pdf-o fa-lg'></i></a></center></td>   <td><center><a  href='form.php?editform=$db_id' >Edit</a></center></td></tr>";
                                                   
                                         ?>
                                       </table>
@@ -498,81 +486,6 @@ if(isset($_POST['buttonform1'])){
                                                                                 <?php
                                                                                  echo '<meta http-equiv="refresh" content= "1;" />';
 
-                                                         }
-
-
-                                                         }else{
-
-                                                                                ?>
-                                                                                <script type="text/javascript">
-                                                                                document.getElementById("message").innerHTML="<font color='red'>INVALID FILE FORMAT. PLEASE CHOOSE A PDF TYPE ONLY.</font>";
-                                                                                </script>
-                                                                                <?php
-                                                                                 echo '<meta http-equiv="refresh" content= "1;" />';
-                                                         }
-
-                                                       }
-                                              }elseif(isset($_POST['buttonform3'])){ 
-                                                $formid=$_POST['editformid'];
-
-                                                 $file= $_FILES['form3']['name'];    
-                                                 $file_name = rand(1000,100000)."-".$_FILES['form3']['name'];
-                                                 $file_data = $_FILES['form3']['tmp_name'];
-                                                 $file_size = $_FILES['form3']['size'];
-                                                 $file_type = $_FILES['form3']['type'];
-                                                 $file_folder="../../applicationform/"; 
-                                                 // new file size in KB
-                                                 $new_size = $file_size/1024;  
-                                                 // new file size in KB
-                                                 // make file name in lower case
-                                                 $new_file_name = strtolower($file_name);
-                                                 // make file name in lower case
-                                                 $final_file=str_replace(' ','-',$new_file_name);
-
-                                                  if($file==""){
-                                                                                ?>
-                                                                                <script type="text/javascript">
-                                                                                document.getElementById("message").innerHTML="<font color='red'>PLEASE SELECT A APPLICATION FORM FOR SENIOR HIGH STUDENT!</font>";
-                                                                                </script>
-                                                                                <?php
-                                                                                 echo '<meta http-equiv="refresh" content= "1;" />';
-
-
-                                                  }else{  
-                                                     if(($file_type)=="application/pdf"){
-
-                                                     if($file_size<=150000){
-
-                                                             if(move_uploaded_file($file_data,$file_folder.$final_file)){
-                                                               //inserting photo
-                                                              $sql="UPDATE tbl_applicationform set seniorhighform='$final_file' where id='$formid'";
-                                                              mysql_query($sql);
-
-                                                                                ?>
-                                                                                <script type="text/javascript">
-                                                                                document.getElementById("message").innerHTML="<font color='green'>SUCCESSFULLY UPLOADED</font>";
-                                                                                </script>
-                                                                                <?php
-                                                                                 echo '<meta http-equiv="refresh" content= "1;" />';
-
-                                                             }else{
-
-                                                                                ?>
-                                                                                <script type="text/javascript">
-                                                                                document.getElementById("message").innerHTML="<font color='red'>ERROR WHILE UPLOADING!</font>";
-                                                                                </script>
-                                                                                <?php
-                                                                                 echo '<meta http-equiv="refresh" content= "1;" />';
-
-                                                             }
-
-                                                         }else{
-                                                                                ?>
-                                                                                <script type="text/javascript">
-                                                                                document.getElementById("message").innerHTML="<font color='red'>INVALID! APPLICATION FORM FOR SENIOR HIGH STUDENT IS GREATER THAN 150 KB. PLEASE CHOOSE A DIFFERENT FILE SIZE.</font>";
-                                                                                </script>
-                                                                                <?php
-                                                                                 echo '<meta http-equiv="refresh" content= "1;" />';
                                                          }
 
 

@@ -19,6 +19,7 @@ while($qry = mysql_fetch_array($result))
 $db_id=$qry['id'];
 $db_username = $qry['username'];
 $db_password=$qry['password'];
+$db_photofile=$qry['photo_file'];
 }
   ?>
 
@@ -240,76 +241,7 @@ var eventyears2=document.getElementById('eventyears2').value;
 
 }
 
-function event3(){
 
-var eventdays3=document.getElementById('eventdays3').value;        
-var eventmonths3=document.getElementById('eventmonths3').value;   
-var eventyears3=document.getElementById('eventyears3').value;
-
-        if((eventmonths3 && eventdays3 && eventyears3) == ""){
-          document.getElementById('evntdays3').innerHTML="<span style ='color: red;'>If you want to change, Event Date are required!</span>";
-          return false;
-
-       }else{
-           document.getElementById('evntdays3').innerHTML="<span style ='color: green;'>Event date <i class='glyphicon glyphicon-ok'></i></span>";
-       }//birthdate
-
-
-
-
- var eventitle3= document.getElementById('title3').value.length;
-
-
-
- if(eventitle3==""){
-  document.getElementById('evnttitle3').innerHTML="<span style ='color: red;'>Event title are required!</span>";
-  return false;
-
-}else{
-
-
-          if(eventitle3>=12 && eventitle3<=100) {
-            document.getElementById('evnttitle3').innerHTML="<span style ='color: green;'>Event Title <i class='glyphicon glyphicon-ok'></i></span>";
-   
-                document.getElementById('validateeventtitle3').style.display = "none";
-                
-             
-               }else{
-                  document.getElementById('validateeventtitle3').innerHTML="<i style ='color: red;'>Atleast 12 to 200 characters for Event Title!</i>";
-                return false;
-               }
-}
-
-
- var evenmessage3= document.getElementById('message3').value.length;
-
-
-
- if(evenmessage3==""){
-  document.getElementById('evntmessage3').innerHTML="<span style ='color: red;'>Event title are required!</span>";
-  return false;
-
-}else{
-
-
-          if(evenmessage3>=12 && evenmessage3<=200) {
-            document.getElementById('evntmessage3').innerHTML="<span style ='color: green;'>Event Title <i class='glyphicon glyphicon-ok'></i></span>";
-   
-                document.getElementById('validateeventmessage3').style.display = "none";
-                
-             
-               }else{
-                  document.getElementById('validateeventmessage3').innerHTML="<i style ='color: red;'>Atleast 12 to 200 characters for Event Title!</i>";
-                return false;
-               }
-}
-
-
-
-
-
-
-}
 
 
 
@@ -398,7 +330,8 @@ $(document).ready(function(){
     
      
       <ul class="nav navbar-nav navbar-right">
-        <li> <a href="logout.php?logout=<?php echo $db_id ?>"><?php echo $db_username?>, <i class="glyphicon glyphicon-log-out"> </i> Logout</a></li>
+            <li><a href="manageuser.php"><img src="../../photos /<?php echo $db_photofile?>" class="img-circle" width="20px" height="20px"> <?php echo $db_username?>  </a></li>
+        <li> <a href="logout.php?logout=<?php echo $db_id ?>"> <i class="glyphicon glyphicon-log-out"> </i> Logout</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
@@ -415,12 +348,12 @@ $(document).ready(function(){
         <li><a href="admission.php"><i class="fa fa-code"></i><span>Admission</span> </a></li>
         <li><a href="charts.html"><i class="fa fa-bar-chart"></i><span>Inquiry</span> </a> </li>
         <li><a href="shortcodes.html"><i class="fa fa-code"></i><span>Course & Subjects</span> </a> </li>
-        <li><a href="form.php"><i class="fa fa-file"></i><span>Form</span> </a> </li>
+        <li><a href="form.php"><i class="fa fa-file-pdf-o"></i><span>Form</span> </a> </li>
         <li class="active"><a href="event.php"><i class="fa fa-calendar"></i><span>Event & Annoucement</span> </a> </li>
         <li class="dropdown"><a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"> <i class="fa fa-long-arrow-down"></i><span>Manage User</span> <b class="caret"></b></a>
           <ul class="dropdown-menu">
-            <li class="active"><a href="manageuser.php">Profile</a></li>
-            <li><a href="faq.html">Accounts</a></li>
+            <li><a href="manageuser.php">Profile</a></li>
+            <li><a href="deleteddetails.php">Deleted details</a></li>
           </ul>
         </li>
       </ul>
@@ -458,13 +391,13 @@ $(document).ready(function(){
 
                              ?>
                              <div class="row">
-                              <form method="POST" onsubmit="return event1(event)"  enctype='multipart/form-data' action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+                              <form method="POST" onsubmit="return event2(event)"  enctype='multipart/form-data' action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
                               <br>
                               
                                 <div class="col-md-8">
 
                                  <div class="col-md-12">      
-                                  <p id="evntdays1"></p>
+                                  <p id="evntdays2"></p>
                                   <center><p id="messagesuccess"></p></center>
                                  </div>
 
@@ -494,8 +427,8 @@ $(document).ready(function(){
                                   </div>
                                             
                                  <div class="col-md-12">      
-                                  <p id="evnttitle1"></p>
-                                  <p id="validateeventtitle1"></p>
+                                  <p id="evnttitle2"></p>
+                                  <p id="validateeventtitle2"></p>
                                  </div>
 
                                   <div class="col-md-12">
@@ -506,8 +439,8 @@ $(document).ready(function(){
 
                               
                                    <div class="col-md-12">      
-                                  <p id="evntmessage1"></p>
-                                  <p id="validateeventmessage1"></p>
+                                  <p id="evntmessage2"></p>
+                                  <p id="validateeventmessage2"></p>
                                  </div>
                                   <div class="col-md-12">
                                   <div class="form-group">
@@ -578,7 +511,7 @@ if(isset($_POST['buttonevent2'])){
 
                                                                                 ?>
                                                                                 <script type="text/javascript">
-                                                                                document.getElementById("messagesuccess2").innerHTML="<font color='green'>SUCCESSFULLY UPDATED.</font>";
+                                                                                document.getElementById("messagesuccess").innerHTML="<font color='green'>SUCCESSFULLY UPDATED.</font>";
                                                                                 </script>
                                                                                 <?php
                                                                                  echo '<meta http-equiv="refresh" content= "1;" />';
@@ -603,7 +536,7 @@ if(isset($_POST['buttonevent2'])){
                                                   if($file==""){
                                                                                 ?>
                                                                                 <script type="text/javascript">
-                                                                                document.getElementById("message2").innerHTML="<font color='red'>PLEASE SELECT A FILE.</font>";
+                                                                                document.getElementById("message").innerHTML="<font color='red'>PLEASE SELECT A FILE.</font>";
                                                                                 </script>
                                                                                 <?php
                                                                                  echo '<meta http-equiv="refresh" content= "1;" />';
@@ -620,7 +553,7 @@ if(isset($_POST['buttonevent2'])){
 
                                                                                 ?>
                                                                                 <script type="text/javascript">
-                                                                                document.getElementById("messagesuccess2").innerHTML="<font color='green'>SUCCESSFULLY UPLOADED!</font>";
+                                                                                document.getElementById("messagesuccess").innerHTML="<font color='green'>SUCCESSFULLY UPLOADED!</font>";
                                                                                 </script>
                                                                                 <?php
                                                                                  echo '<meta http-equiv="refresh" content= "1;" />';
@@ -630,7 +563,7 @@ if(isset($_POST['buttonevent2'])){
 
                                                                                 ?>
                                                                                 <script type="text/javascript">
-                                                                                document.getElementById("message2").innerHTML="<font color='red'>ERROR WHILE UPLOADING!</font>";
+                                                                                document.getElementById("message").innerHTML="<font color='red'>ERROR WHILE UPLOADING!</font>";
                                                                                 </script>
                                                                                 <?php
                                                                                  echo '<meta http-equiv="refresh" content= "1;" />';
@@ -640,7 +573,7 @@ if(isset($_POST['buttonevent2'])){
                                                          }else{
                                                                                 ?>
                                                                                 <script type="text/javascript">
-                                                                                document.getElementById("message2").innerHTML="<font color='red'>YOUR FILE IS LARGER THEN 150KB. PLEASE CHOOSE A DIFFERENT PICTURE!</font>";
+                                                                                document.getElementById("message").innerHTML="<font color='red'>YOUR FILE IS LARGER THEN 150KB. PLEASE CHOOSE A DIFFERENT PICTURE!</font>";
                                                                                 </script>
                                                                                 <?php
                                                                                  echo '<meta http-equiv="refresh" content= "1;" />';
@@ -652,7 +585,7 @@ if(isset($_POST['buttonevent2'])){
 
                                                                                 ?>
                                                                                 <script type="text/javascript">
-                                                                                document.getElementById("message2").innerHTML="<font color='red'>INVALID FILE FORMAT. PLEASE CHOOSE A DIFFERENT FILE FORMAT. IT SHOULD BE IN JPEG OR PNG FORMAT!</font>";
+                                                                                document.getElementById("message").innerHTML="<font color='red'>INVALID FILE FORMAT. PLEASE CHOOSE A DIFFERENT FILE FORMAT. IT SHOULD BE IN JPEG OR PNG FORMAT!</font>";
                                                                                 </script>
                                                                                 <?php
                                                                                  echo '<meta http-equiv="refresh" content= "1;" />';
@@ -700,7 +633,7 @@ elseif(isset($_POST['buttonevent3'])){
                                                   if($file==""){
                                                                                 ?>
                                                                                 <script type="text/javascript">
-                                                                                document.getElementById("message3").innerHTML="<font color='red'>PLEASE SELECT A FILE.</font>";
+                                                                                document.getElementById("message").innerHTML="<font color='red'>PLEASE SELECT A FILE.</font>";
                                                                                 </script>
                                                                                 <?php
                                                                                  echo '<meta http-equiv="refresh" content= "1;" />';
@@ -727,7 +660,7 @@ elseif(isset($_POST['buttonevent3'])){
 
                                                                                 ?>
                                                                                 <script type="text/javascript">
-                                                                                document.getElementById("message3").innerHTML="<font color='red'>ERROR WHILE UPLOADING!</font>";
+                                                                                document.getElementById("message").innerHTML="<font color='red'>ERROR WHILE UPLOADING!</font>";
                                                                                 </script>
                                                                                 <?php
                                                                                  echo '<meta http-equiv="refresh" content= "1;" />';
@@ -737,7 +670,7 @@ elseif(isset($_POST['buttonevent3'])){
                                                          }else{
                                                                                 ?>
                                                                                 <script type="text/javascript">
-                                                                                document.getElementById("message3").innerHTML="<font color='red'>YOUR FILE IS LARGER THEN 150KB. PLEASE CHOOSE A DIFFERENT PICTURE!</font>";
+                                                                                document.getElementById("message").innerHTML="<font color='red'>YOUR FILE IS LARGER THEN 150KB. PLEASE CHOOSE A DIFFERENT PICTURE!</font>";
                                                                                 </script>
                                                                                 <?php
                                                                                  echo '<meta http-equiv="refresh" content= "1;" />';
@@ -749,7 +682,7 @@ elseif(isset($_POST['buttonevent3'])){
 
                                                                                 ?>
                                                                                 <script type="text/javascript">
-                                                                                document.getElementById("message3").innerHTML="<font color='red'>INVALID FILE FORMAT. PLEASE CHOOSE A DIFFERENT FILE FORMAT. IT SHOULD BE IN JPEG OR PNG FORMAT!</font>";
+                                                                                document.getElementById("message").innerHTML="<font color='red'>INVALID FILE FORMAT. PLEASE CHOOSE A DIFFERENT FILE FORMAT. IT SHOULD BE IN JPEG OR PNG FORMAT!</font>";
                                                                                 </script>
                                                                                 <?php
                                                                                  echo '<meta http-equiv="refresh" content= "1;" />';
