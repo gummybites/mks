@@ -1963,3 +1963,37 @@ disp_setting+="scrollbars=yes,width=650, height=600, left=100, top=25";
 
          
     });
+
+            $(document).ready(function () {
+        $(document).on('change', '.btn-file3 :file', function () {
+            var input = $(this),
+                numFiles = input.get(0).files ? input.get(0).files.length : 1,
+                label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+            input.trigger('fileselect', [numFiles, label]);
+        });
+
+        $('.btn-file3 :file').on('fileselect', function (event, numFiles, label) {
+            console.log(numFiles);
+            console.log(label);
+            $("#valdfil3").val(label);
+        });
+
+         
+    });
+
+                     $(document).ready(function () {
+        $(document).on('change', '.btn-file4 :file', function () {
+            var input = $(this),
+                numFiles = input.get(0).files ? input.get(0).files.length : 1,
+                label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+            input.trigger('fileselect', [numFiles, label]);
+        });
+
+        $('.btn-file4 :file').on('fileselect', function (event, numFiles, label) {
+            console.log(numFiles);
+            console.log(label);
+            $("#valdfil4").val(label);
+        });
+
+         
+    });

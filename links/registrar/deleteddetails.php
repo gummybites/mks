@@ -77,7 +77,7 @@ $db_photofile=$qry['photo_file'];
 <style>
           body{
 
-                   background: url(../../images/registrationbackground.png); color:#838383; font: 13px/1.7em 'Calibri';
+                   background: url(../../images/45.gif); background-size: cover;  font: 15px/1.7em 'Calibri';
                     }
 
 
@@ -229,10 +229,11 @@ $db_photofile=$qry['photo_file'];
         <li><a href="shortcodes.html"><i class="fa fa-code"></i><span>Course & Subjects</span> </a> </li>
         <li><a href="form.php"><i class="fa fa-file"></i><span>Form</span> </a> </li>
         <li><a href="event.php"><i class="fa fa-calendar"></i><span>Event & Annoucement</span> </a> </li>
-        <li class="dropdown"><a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"> <i class="fa fa-long-arrow-down"></i><span>Manage User</span> <b class="caret"></b></a>
+        <li class="dropdown"><a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"> <i class="fa fa-long-arrow-down"></i><span>Manage</span> <b class="caret"></b></a>
           <ul class="dropdown-menu">
-            <li ><a href="manageuser.php">Profile</a></li>
-            <li class="active"><a href="#">Accounts</a></li>
+            <li><a href="manageuser.php">Admin Profile</a></li>
+            <li class="active"><a href="deleteddetails.php">Deleted details</a></li>
+            <li><a href="breakdownoftuitionfees.php">Breakdown of tuition Fees</a></li>
           </ul>
         </li>
       </ul>
@@ -265,12 +266,12 @@ $db_photofile=$qry['photo_file'];
                         <thead>
 
                                           <tr>
-                                              <th bgcolor='#FCAC45'><center>Date</center></th>
-                                              <th bgcolor='#FCAC45'><center>Grade level</center></th>
-                                              <th bgcolor='#FCAC45'><center>Surname</center></th>
-                                              <th bgcolor='#FCAC45'><center>Firstname</center></th>
-                                              <th bgcolor='#FCAC45'><center>Middlename</center></th>
-                                              <th bgcolor='#FCAC45'><center>Action</center></th>
+                                              <th><center>Date</center></th>
+                                              <th><center>Grade level</center></th>
+                                              <th><center>Surname</center></th>
+                                              <th><center>Firstname</center></th>
+                                              <th><center>Middlename</center></th>
+                                              <th><center>Action</center></th>
                  
                                               </tr>
 

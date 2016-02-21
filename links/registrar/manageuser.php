@@ -51,7 +51,7 @@ $db_photofile=$qry['photo_file'];
 <style>
           body{
 
-                   background: url(../../images/registrationbackground.png); color:#838383; font: 13px/1.7em 'Calibri';
+                   background: url(../../images/45.gif); background-size: cover;  font: 15px/1.7em 'Calibri';
                     }
 
 
@@ -133,19 +133,12 @@ $db_photofile=$qry['photo_file'];
 </head>
 <script type="text/javascript">
 
-(function(e,t,n){
-
-      var r=e.querySelectorAll("html")[0];r.className=r.className.replace(/(^|\s)no-js(\s|$)/,"$1js$2")})(document,window,0);
 
 
-
-function adminprofile(){
+function usernameprofile(){
     var username= document.getElementById('username').value.length;
     var oldpassword= document.getElementById('oldpassword').value.length;
-    var password= document.getElementById('password').value.length;
-    var password1=document.getElementById('password').value;
-    var cpassword=document.getElementById('confirmpassword').value;
-    
+
 
 
 if(username==""){
@@ -156,7 +149,7 @@ if(username==""){
 
 
           if(username>=12 && username<=25) {
-            document.getElementById('user').innerHTML="<span style ='color: green;'>Username <i class='glyphicon glyphicon-ok'></i></span>";
+           document.getElementById('user').innerHTML="<span style ='color: green;'>Username <i class='glyphicon glyphicon-ok'></i></span>";
    
                 document.getElementById('validateusername').style.display = "none";
                 
@@ -166,6 +159,28 @@ if(username==""){
                 return false;
                }
 }
+
+  if(oldpassword==""){
+  document.getElementById('oldpass').innerHTML="<span style ='color: red;'>Old password are required!</span>";
+  return false;
+
+}else{
+            document.getElementById('oldpass').innerHTML="<span style ='color: green;'>Old password <i class='glyphicon glyphicon-ok'></i></span>";              
+}
+
+
+}
+
+
+function adminprofile(){
+
+    var oldpassword= document.getElementById('oldpassword').value.length;
+    var password= document.getElementById('password').value.length;
+    var password1=document.getElementById('password').value;
+    var cpassword=document.getElementById('confirmpassword').value;
+    
+
+
 
 	if(oldpassword==""){
   document.getElementById('oldpass').innerHTML="<span style ='color: red;'>Old password are required!</span>";
@@ -319,14 +334,15 @@ if(password.type=="password"){
         <li><a href="registrar.php"><i class="fa fa-dashboard"></i><span>Home</span> </a> </li>
         <li><a href="reports.html"><i class="fa fa-plus"></i><span>Create acount</span> </a> </li>
         <li><a href="admission.php"><i class="fa fa-code"></i><span>Admission</span> </a></li>
-        <li><a href="charts.html"><i class="fa fa-bar-chart"></i><span>Inquiry</span> </a> </li>
+        <li><a href="inquiry.php"><i class="fa fa-bar-chart"></i><span>Inquiry</span> </a> </li>
         <li><a href="shortcodes.html"><i class="fa fa-code"></i><span>Course & Subjects</span> </a> </li>
         <li><a href="form.php"><i class="fa fa-file-pdf-o"></i><span>Form</span> </a> </li>
         <li><a href="event.php"><i class="fa fa-calendar"></i><span>Event & Annoucement</span> </a> </li>
-        <li class="dropdown"><a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"> <i class="fa fa-long-arrow-down"></i><span>Manage User</span> <b class="caret"></b></a>
+        <li class="dropdown"><a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"> <i class="fa fa-long-arrow-down"></i><span>Manage</span> <b class="caret"></b></a>
           <ul class="dropdown-menu">
-            <li class='active'><a href="#">Profile</a></li>
+            <li class="active"><a href="manageuser.php">Admin Profile</a></li>
             <li><a href="deleteddetails.php">Deleted details</a></li>
+            <li><a href="breakdownoftuitionfees.php">Breakdown of tuition Fees</a></li>
           </ul>
         </li>
       </ul>
@@ -354,7 +370,42 @@ if(password.type=="password"){
                                 <div class="tab-pane fade active in" id="profile">
 
                                       <div class="row">
+                                        <div class="col-md-4">
+                                        </div>
                                       <div class="col-md-4">
+                                      <?php if(isset($_GET['editusername'])){
+                                        ?>
+                                    
+                                     <form  method="POST" onsubmit="return usernameprofile(event)" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">   
+                                      
+
+                                        
+
+                                            <p class="pull-right">Change username</p>
+                                            <input type='text' class='form-control' placeholder='Username here.. *' maxlength="25" name='' id='' value='<?php echo $db_username ?>' readonly="readonly">
+
+                                            <div class="form-group input-group"><!--Username Validation -->
+                                            <i id='validateusername' ></i>
+                                            <i id='user'></i>
+                                            </div>
+
+                                             <input type='text' class='form-control' placeholder='New Username here.. *' maxlength="25" name='changeusername' id='username' value='' onkeypress="return forusername(event);" ondrop="return false;" onpaste="return false;">
+
+
+
+                                             <div class="form-group input-group"><!--Username Validation -->
+                                            <i id='oldpass'></i>
+                                            </div>
+                                            <input type='password' class='form-control' placeholder='Old password here..*' maxlength="25" name='checkoldpassword' id='oldpassword' value='' onkeypress="return foroldpassword(event);" ondrop="return false;" onpaste="return false;" >
+                                             <a href="manageuser.php" id="next">Back</a>
+                                             <button type='submit' name='update_username' id='next'>Update</button>
+                                            </form>
+
+                                        <?php
+
+                                        }else{?>
+
+
                                        <p><i>(*) Fields are required</i></p><i  id="error" style="color: Red; display: none"></i>           
                                             <i  id="error" style="color: Red; display: none"></i>
                                             <center><p id="message"></p></center>
@@ -370,9 +421,9 @@ if(password.type=="password"){
                                                 $file_type1=$photo['photo_type'];
                                                     echo "
                                                     <form method='POST' enctype='multipart/form-data'>
-                                                    <div class='form-group input-group'>
-                                                    <img src='../../photos/$filephoto' width='110px' height='110px'>
-                                                    </div>
+                                                    <center><div class='form-group input-group'>
+                                                    <img src='../../photos/$filephoto' width='110px' class='img-circle' height='110px'>
+                                                    </div></center>
 
                                                       <div class='form-group input-group'>
                                                         <span class='input-group-btn'>
@@ -391,9 +442,9 @@ if(password.type=="password"){
                                                 }else{
                                                     echo "
                                                     <form method='POST' enctype='multipart/form-data'>
-                                                    <div class='form-group input-group'>
-                                                    <img src='../../images/user.png' width='110px' height='110px' class='img-polaroid'>
-                                                    </div>
+                                                    <center><div class='form-group input-group'>
+                                                    <img src='../../images/user.png' width='110px' height='110px' class='img-circle'>
+                                                    </div></center>
 
                                                       <div class='form-group input-group'>
                                                         <span class='input-group-btn'>
@@ -411,18 +462,25 @@ if(password.type=="password"){
                                                     ";
                                                   }?>
 
+
+
+
+
                                       <form  method="POST" onsubmit="return adminprofile(event)" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">    
                                             <div class="form-group input-group"><!--Username Validation -->
                                             <i id='validateusername' ></i>
                                             <i id='user'></i>
                                             </div>
-                                            <input type='text' class='form-control' placeholder='Username here.. *' maxlength="25" name='username' id='username' value='<?php echo $db_username ?>' onkeypress="return forusername(event);" ondrop="return false;" onpaste="return false;" >
-                                            
-                                            
 
+                                            <a href="manageuser.php?editusername=<?php echo $db_id?>" class="pull-right">Change username</a>
+                                            <input type='text' class='form-control' placeholder='Username here.. *' maxlength="25" name='username' id='username' value='<?php echo $db_username ?>' onkeypress="return forusername(event);" ondrop="return false;" onpaste="return false;" readonly="readonly" >
+                                            
+                                            
+                                            <p href="" class="pull-right">Change password</p>
                                             <div class="form-group input-group"><!--Username Validation -->
                                             <i id='oldpass'></i>
                                             </div>
+                                         
                                             <input type='password' class='form-control' placeholder='Old password here..*' maxlength="25" name='oldpassword' id='oldpassword' value='' onkeypress="return foroldpassword(event);" ondrop="return false;" onpaste="return false;" >
                                  
                                                                  
@@ -449,21 +507,27 @@ if(password.type=="password"){
                                             </span>
                                             </div>     
                                             <button type='submit' name='update_profile' id='next'>Update</button>
+
                                             </form>
+                                            <?php }?>
+
                                             </div>
                                             </div>
+                                              <div class="col-md-4">
+                                              </div>
 
                                 </div>
+                                <br>
                                 <div class="tab-pane fade" id="loginhistory">
 
                                        <div class='demo_jui'>
-                                        <table class='display' id='tbl' class='jtable'>
+                                    <table cellpadding='0' cellspacing='1' border='1' class='display' id='tbl' class='jtable'>
                                         <thead>
                                                         <tr>
-                                                        <td bgcolor='#FCAC45'><center>ID</center></td>
-                                                        <td bgcolor='#FCAC45'><center>Username</center></td>
-                                                        <td bgcolor='#FCAC45'><center>Time Logged_in</center></td>
-                                                        <td bgcolor='#FCAC45'><center>Time Logged_out</center></td>
+                                                        <td><center>ID</center></td>
+                                                        <td><center>Username</center></td>
+                                                        <td><center>Time Logged_in</center></td>
+                                                        <td><center>Time Logged_out</center></td>
                                                         </tr>
 
                                         </thead>
@@ -506,7 +570,35 @@ if(password.type=="password"){
 
 
 <?php 
-if(isset($_POST['update_profile'])){
+if(isset($_POST['update_username'])){
+
+$username=mysql_real_escape_string(trim(htmlspecialchars($_POST['changeusername'])));
+$oldpassword=mysql_real_escape_string(trim(htmlspecialchars($_POST['checkoldpassword'])));
+$old_enc_password=mysql_real_escape_string(trim(htmlspecialchars(sha1(md5($oldpassword)))));
+//Checking email if it has already registered
+$repassword = mysql_query("SELECT password FROM tbl_registrar WHERE password='$old_enc_password'");
+$checkpassword = mysql_num_rows($repassword);
+if ($checkpassword != 0){
+
+                                                                                $updateuser=mysql_query("UPDATE tbl_registrar SET username='$username' where id='$db_id'  ");
+                                                                               
+                                                                                ?>
+                                                                                <script type="text/javascript">
+                                                                                document.getElementById("message").innerHTML="<font color='green'>Update has been successful</font>";
+                                                                                </script>
+                                                                                <?php   
+                                                                                 echo '<meta http-equiv="refresh" content= "1;" />';                                                                           
+}else{
+                                                                                ?>
+                                                                                <script type="text/javascript">
+                                                                                document.getElementById("message").innerHTML="<font color='red'>Update failed! Old Password don't match</font>";
+                                                                                </script>
+                                                                                <?php
+                                                                                 echo '<meta http-equiv="refresh" content= "1;" />';
+}
+
+
+}elseif(isset($_POST['update_profile'])){
 
 $username=mysql_real_escape_string(trim(htmlspecialchars($_POST['username'])));
 

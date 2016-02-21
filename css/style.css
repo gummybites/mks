@@ -177,7 +177,7 @@ Subnavbar
 
 /*School image*/
 .banner {
-  background: url(../images/mkschool.jpg) no-repeat;
+  background: url(../images/mkschool.jpeg) no-repeat;
   background-size: cover;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -297,7 +297,7 @@ Subnavbar
   color:#f5af02;
 }
 .introduction p{
-  color: #999;
+  color: white;
   font-size: 1em;
   line-height: 1.8em;
   margin:1em 0;

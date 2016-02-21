@@ -10,6 +10,7 @@ if (!isset($_SESSION['id'])){
 	include('../config.php');
 	if(isset($_GET['logout'])){
 		$id=$_GET['logout'];
+    date_default_timezone_set('Asia/Manila');
     $time= Date('F d, Y, g:ia'); 
                        
 

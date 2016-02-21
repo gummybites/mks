@@ -31,7 +31,8 @@
                               $expire = time()+86400;
                               setcookie('mks', $_SESSION['id'], $expire);
                               }
-                              $curYear= Date('F d, Y, h:ia');  
+                              date_default_timezone_set('Asia/Manila');
+                              $curYear= Date('F d, Y, g:i:a');  
                               mysql_query("UPDATE tbl_registrar set time_in='$curYear' where id='$db_id'");                
 
                               header("Location:registrar.php");

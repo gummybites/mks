@@ -24,14 +24,6 @@ $db_photofile=$qry['photo_file'];
 
 
 
-
-
-
-
-
-
-
-
 if(isset($_POST['submit']))
                           {
                              
@@ -104,6 +96,16 @@ if(isset($_POST['submit']))
 
 
                         }
+
+                        if(isset($_POST['acceptok'])){
+                          $acceptid=$_POST['acceptid'];
+
+                          mysql_query("UPDATE tbl_prospectivestudents set prospectivestatus='accepted' where id='$acceptid'");
+
+                          header("Location: admission.php?Accepted");
+
+
+                        }
 ?>
 
 
@@ -114,8 +116,10 @@ if(isset($_POST['submit']))
 <head>
 
                 
-                        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+                                        <!--Compatibility -->
+                    <meta http-equiv="X-UA-Compatible" content="IE=edge">
                     <meta name="viewport" content="width=device-width, initial-scale=1">
+                    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
                     <title>Admission</title>
 
                     <link rel="stylesheet" href="../../css/bootstrap.min.css"></link>
@@ -134,7 +138,7 @@ if(isset($_POST['submit']))
 <style>
           body{
 
-                   background: url(../../images/registrationbackground.png);  font: 13px/1.7em 'Calibri';
+                  background: url(../../images/45.gif); background-size: cover;  font: 15px/1.7em 'Calibri';
                     }
 
 
@@ -189,67 +193,7 @@ if(isset($_POST['submit']))
                           -webkit-transform: scaleX(1);
                           transform: scaleX(1);
                         }
-                      
 
-                      .btn-file {
-                          position: relative;
-                          overflow: hidden;
-                      }
-                      .btn-file input[type=file] {
-                          position: absolute;
-                          top: 0;
-                          right: 0;
-                          min-width: 100%;
-                          min-height: 100%;
-                          font-size: 100px;
-                          text-align: right;
-                          filter: alpha(opacity=0);
-                          opacity: 0;
-                          outline: none;
-                          background: white;
-                          cursor: inherit;
-                          display: block;
-                      }
-
-                      .btn-file1 input[type=file] {
-                          position: absolute;
-                          top: 0;
-                          right: 0;
-                          min-width: 100%;
-                          min-height: 100%;
-                          font-size: 100px;
-                          text-align: right;
-                          filter: alpha(opacity=0);
-                          opacity: 0;
-                          outline: none;
-                          background: white;
-                          cursor: inherit;
-                          display: block;
-                      }
-
-                      .btn-file2 input[type=file] {
-                          position: absolute;
-                          top: 0;
-                          right: 0;
-                          min-width: 100%;
-                          min-height: 100%;
-                          font-size: 100px;
-                          text-align: right;
-                          filter: alpha(opacity=0);
-                          opacity: 0;
-                          outline: none;
-                          background: white;
-                          cursor: inherit;
-                          display: block;
-                      }
-
-
-                      textarea {
-                          resize: none;
-                      }
-
-                      
-                  
 </style>  
 
 <script type="text/javascript">
@@ -812,14 +756,15 @@ function myFunction(){
         <li><a href="registrar.php"><i class="fa fa-dashboard"></i><span>Home</span> </a> </li>
         <li><a href="reports.html"><i class="fa fa-plus"></i><span>Create acount</span> </a> </li>
         <li class="active"><a href="admission.php"><i class="fa fa-code"></i><span>Admission</span> </a></li>
-        <li><a href="charts.html"><i class="fa fa-bar-chart"></i><span>Inquiry</span> </a> </li>
+        <li><a href="inquiry.php"><i class="fa fa-bar-chart"></i><span>Inquiry</span> </a> </li>
         <li><a href="shortcodes.html"><i class="fa fa-code"></i><span>Course & Subjects</span> </a> </li>
         <li><a href="form.php"><i class="fa fa-file-pdf-o"></i><span>Form</span> </a> </li>
         <li><a href="event.php"><i class="fa fa-calendar"></i><span>Event & Annoucement</span> </a> </li>
-        <li class="dropdown"><a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"> <i class="fa fa-long-arrow-down"></i><span>Manage User</span> <b class="caret"></b></a>
+        <li class="dropdown"><a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"> <i class="fa fa-long-arrow-down"></i><span>Manage</span> <b class="caret"></b></a>
           <ul class="dropdown-menu">
-            <li><a href="manageuser.php">Profile</a></li>
+            <li><a href="manageuser.php">Admin Profile</a></li>
             <li><a href="deleteddetails.php">Deleted details</a></li>
+            <li><a href="breakdownoftuitionfees.php">Breakdown of tuition Fees</a></li>
           </ul>
         </li>
       </ul>
@@ -1827,7 +1772,11 @@ function myFunction(){
                     ?>
                     <center><p style="color:green">Details Succesfully Deleted!</p></center>
                     <?php
-                }?>
+                    }elseif(isset($_GET['Accepted'])){
+                      ?>
+                    <center><p style="color:green">New student Added</p></center>
+                    <?php 
+                      }?>
               <p style="color: green" id="message"></p>
                <button name='new' id='next' ><span class="glyphicon glyphicon-add">+</span> New Student</button> 
                <button name='transfer' id='next'><span class="glyphicon glyphicon-add">+</span> Transferee</button> 
@@ -1838,13 +1787,12 @@ function myFunction(){
                         <thead>
 
                                           <tr>
-                                              <th bgcolor='#FCAC45'><center>Requirements</center></th>
-                                              <th bgcolor='#FCAC45'><center>Date</center></th>
-                                              <th bgcolor='#FCAC45'><center>Grade level</center></th>
-                                              <th bgcolor='#FCAC45'><center>Surname</center></th>
-                                              <th bgcolor='#FCAC45'><center>Firstname</center></th>
-                                              <th bgcolor='#FCAC45'><center>Middlename</center></th>
-                                              <th bgcolor='#FCAC45'><center>Action</center></th>
+                                              <th><center>Requirements Completed</center></th>
+                                              <th><center>Date</center></th>
+                                              <th><center>Grade level</center></th>
+                                              <th><center>Full name</center></th>
+                                              <th><center>Details</center></th>
+                                              <th><center>Action</center></th>
                  
                                               </tr>
 
@@ -1854,7 +1802,7 @@ function myFunction(){
 
                         <?php
 
-                        $details="SELECT * from tbl_prospectivestudents inner join tbl_studentrequirements on tbl_prospectivestudents.id=tbl_studentrequirements.id where prospectivestatus= 'PENDING' or prospectivestatus='Accepted' ";
+                        $details="SELECT * from tbl_prospectivestudents inner join tbl_studentrequirements on tbl_prospectivestudents.id=tbl_studentrequirements.id where prospectivestatus!='recycle' ";
                         $res_details=mysql_query($details);
 
 
@@ -1880,17 +1828,37 @@ function myFunction(){
                             $totalrequirements=$form138+ $goodmoral+$birthcertificate; 
 
                             if($form138||$goodmoral||$birthcertificate=='1'){
+
                                 if($totalrequirements=='1'){
-                                   echo "<tr><td><center style='background-color:green; color: white;'>1 requirements</center></td><td><center>$date</center></td><td><center>$level</center></td><td><center>$sname</center></td><td><center>$fname</center></td> <td><center>$mname</center></td> <td><center><a href='?details=$id' id=''>Details</a></center></td></tr>";
+                                   if($pstatus=='PENDING'){
+                                            echo "<tr><td><center style='background-color:green; color: white;'>1 requirements</center></td><td><center>$date</center></td><td><center>$level</center></td><td><center>$sname, $fname, $mname</center></td> <td><center><a href='?details=$id' id=''>View Details</a></center></td><td><center><a href='admission.php?accept=$id'>Accept</a> | <a href='?delete=$id' >Delete</a></center></td></tr>";
+                                   }elseif($pstatus=='accepted'){
+                                               echo "<tr><td><center style='background-color:green; color: white;'>1 requirements</center></td><td><center>$date</center></td><td><center>$level</center></td><td><center>$sname, $fname, $mname</center></td> <td><center><a href='?details=$id' id=''>View Details</a></center></td><td><center>--</center></td></tr>";
+
+                                   }
+                           
                                 }elseif($totalrequirements=='2'){
-                                     echo "<tr><td><center style='background-color:green; color: white;'>2 requirements</center></td><td><center>$date</center></td><td><center>$level</center></td><td><center>$sname</center></td><td><center>$fname</center></td> <td><center>$mname</center></td> <td><center><a href='?details=$id' id=''>Details</a></center></td></tr>";
+                                      if($pstatus=='PENDING'){
+                                            echo "<tr><td><center style='background-color:green; color: white;'>2 requirements</center></td><td><center>$date</center></td><td><center>$level</center></td><td><center>$sname, $fname, $mname</center></td> <td><center><a href='?details=$id' id=''>View Details</a></center></td><td><center><a href='admission.php?accept=$id'>Accept</a> | <a href='?delete=$id' >Delete</a></center></td></tr>";
+                                   }elseif($pstatus=='accepted'){
+                                               echo "<tr><td><center style='background-color:green; color: white;'>2 requirements</center></td><td><center>$date</center></td><td><center>$level</center></td><td><center>$sname, $fname, $mname</center></td> <td><center><a href='?details=$id' id=''>View Details</a></center></td><td><center>--</center></td></tr>";
+
+                                   }
+                           
                                 }elseif($totalrequirements=='3'){
-                                     echo "<tr><td><center style='background-color:green; color: white;'>3 requirements</center></td><td><center>$date</center></td><td><center>$level</center></td><td><center>$sname</center></td><td><center>$fname</center></td> <td><center>$mname</center></td> <td><center><a href='?details=$id' id=''>Details</a></center></td></tr>";
+                                     if($pstatus=='PENDING'){
+                                            echo "<tr><td><center style='background-color:green; color: white;'>3 requirements</center></td><td><center>$date</center></td><td><center>$level</center></td><td><center>$sname, $fname, $mname</center></td> <td><center><a href='?details=$id' id=''>View Details</a></center></td><td><center><a href='admission.php?accept=$id'>Accept</a> | <a href='?delete=$id' >Delete</a></center></td></tr>";
+                                   }elseif($pstatus=='accepted'){
+                                               echo "<tr><td><center style='background-color:green; color: white;'>3 requirements</center></td><td><center>$date</center></td><td><center>$level</center></td><td><center>$sname, $fname, $mname</center></td> <td><center><a href='?details=$id' id=''>View Details</a></center></td><td><center>--</center></td></tr>";
+
+                                   }
 
                                 }
                              
                             }else{
-                               echo "<tr><td><center style='background-color:red; color: white;'>none</center></td><td><center>$date</center></td><td><center>$level</center></td><td><center>$sname</center></td><td><center>$fname</center></td> <td><center>$mname</center></td> <td><center><a href='?details=$id' id=''>Details</a> | <a href='?delete=$id' >Delete</a></center></td></tr>";
+                               echo "<tr><td><center style='background-color:red; color: white;'>none</center></td><td><center>$date</center></td><td><center>$level</center></td><td><center>$sname, $fname, $mname</center></td><td><center><a href='?details=$id' id=''>View Details</a></center></td>
+
+                               <td><center> <a href='?delete=$id' >Delete</a></center></td></tr>";
                             }
 
               
@@ -1910,10 +1878,9 @@ function myFunction(){
   									
   		</div>
 
+   
 
 
-
-      
 
 	  	
 <style type="text/css" title="currentStyle">
@@ -1978,6 +1945,46 @@ $res_details=mysql_query($details);
     <form method="POST">
     <button id='ok' name='deleteok'>Ok</button>
     <input type="hidden" name="deleteid" value="<?php echo $id?>">
+    </form>
+
+    </div>
+  </div>
+
+</div>
+
+
+
+<?php
+}elseif(isset($_GET['accept'])){
+$id=$_GET['accept'];
+
+$details="SELECT * from tbl_prospectivestudents where id='$id' ";
+$res_details=mysql_query($details);
+
+  while($details=mysql_fetch_assoc($res_details)){
+                            $id=$details['id'];
+                            $sname=$details['surname'];
+                            $fname=$details['firstname'];
+                            $mname=$details['middlename'];
+                            }
+?>
+
+<!-- The Modal -->
+<div id="myModal" style="display: none;" class="modal">
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <span id="close">×</span>
+
+    </div>
+    <div class="modal-body">
+      <p>Are you sure you want to accept <?php echo $sname.','. $fname. ','. $mname?> as new student?</p>
+    
+    </div>
+    <div class="modal-footer">
+    <form method="POST">
+    <button id='ok' name='acceptok'>Ok</button>
+    <input type="hidden" name="acceptid" value="<?php echo $id?>">
     </form>
 
     </div>

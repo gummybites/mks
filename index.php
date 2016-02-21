@@ -31,7 +31,7 @@
 <style>
 .introduction {
 
-  background: url(./images/b1.png); background-size:cover; color:#838383; font: 13px/1.7em 'Calibri';
+  background: url(./images/b1.png); background-size:cover; color:white; font: 13px/1.7em 'Calibri';
 }
 .portal {
 
@@ -189,7 +189,7 @@ p {   word-wrap: break-word; }
 
 <div class="banner" id="home">
 	<div class="banner-top">
-			<div class="heading">MARIA KATRINA SCHOOL</div>
+			<div class="heading"></div>
 	</div>
 	</div><!--This is for mks home page banner -->
 

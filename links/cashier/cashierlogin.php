@@ -1,350 +1,245 @@
-<?php 
-include('config.php');
 
-if(isset($_POST['login'])) 
-{
-    $userName = $_POST['username'];
-    $pass =  $_POST['password'];
-$qry ="SELECT * FROM tbl_cashier WHERE username = '$userName' AND password = '$pass'";
-$result = mysql_query($qry);
-while($qry = mysql_fetch_array($result)){
-    $ID = $qry['username'];
-}
+          <?php 
+          include('../config.php');
+          if(isset($_POST['login'])) 
+          {
+              $userName = mysql_real_escape_string(trim(htmlspecialchars($_POST['username'])));
+              $pass =  mysql_real_escape_string(trim(htmlspecialchars($_POST['password'])));
+              $enc_password=mysql_real_escape_string(trim(htmlspecialchars(sha1(md5($pass)))));
 
-if(mysql_num_rows($result) > 0)
-{
-session_start();
-$_SESSION['username']=$ID;
-$_SESSION['password'] = $pass;
-                if(($_POST['remember']) == 'on'){
-                    $expire = time()+86400;
-                    setcookie('mks', $_SESSION['username'], $expire);
-                }
 
-header("Location:cashier.php");
-}
-else 
-{
-                echo'<script>alert("INCORRECT USERNAME OR PASSWORD");</script>';
-           
- 
-     
-         
-}
-}
+          $qry ="SELECT * FROM tbl_cashieradmin WHERE username = '$userName'";
+          $result = mysql_query($qry);
+          while($qry = mysql_fetch_array($result)){
+              $db_id=$qry['id'];
+              $db_password=$qry['password'];
+              $db_username=$qry['username'];
+          }
 
-?>
+          if($userName==$db_username){
+
+          if($enc_password==$db_password){
+          session_start();
+          $_SESSION['id'] = $db_id;
+
+          $qry="SELECT id from tbl_cashieradmin";
+          $res=mysql_query($qry);
+                               if(mysql_num_rows($res) > 0) 
+                                {
+                                
+                                if(($_POST['remember']) == 'on'){
+                                $expire = time()+86400;
+                                setcookie('mks', $_SESSION['id'], $expire);
+                                }
+                                date_default_timezone_set('Asia/Manila');
+                                $curYear= Date('F d, Y, g:i:a');  
+                                mysql_query("UPDATE tbl_cashieradmin set time_in='$curYear' where id='$db_id'");                
+
+                                header("Location:cashier.php");
+                                }
+
+                       
+        
+          }else{
+            header( "Location: cashierlogin.php?InvalidUsernameOrPassword");  
+
+
+          }
+        }else{
+
+            header( "Location: cashierlogin.php?InvalidUsernameorPassword");  
+        }
+
+
+        }
+
+
+          ?>
+             
 
 <?php
 
 if(isset($_COOKIE['mks'])){
+
 
    include ('session.php');
 
 }else{
 
 ?>
+
+
 <!DOCTYPE html>
 <html>
-<title>
-Cashier Login
-</title>
-<link rel="stylesheet" href="../../css/bootstrap.min.css"></link>
-<link rel="stylesheet" href="../../css/style.css"></link>
-<script src="../../js/jquery.1.11.1.js"></script>
-                    <script src="../../js/bootstrap.js"></script>
+<head>
+
+                    <meta charset="utf-8">
+                    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+                    <meta name="viewport" content="width=device-width, initial-scale=1">
+                    <title>Cashier Login Account</title>
+                    <link rel="stylesheet" href="../../css/bootstrap.min.css"></link>
+                    <link rel="stylesheet" href="../../css/bootstrap.css"></link>
+                    <link rel="stylesheet" href="../../css/style.css"></link>
+                    <link rel="stylesheet" href="../../css/font-awesome.css"></link>
+                     <link rel="stylesheet" href="../../css/font-awesome.min.css"></link>
+
                     <script src="../../js/dropdown.js"></script>
                     <script src="../../js/bootstrap.min.js"></script>
-<head>
+                    <script src="../../js/jquery.1.11.1.js"></script>
+                    <script src="../../js/bootstrap.js"></script>
+                    <script src="../../js/validation.js"></script>
+
 <style>
         body{
 
-          background-image: url('../../img/registrar.png');
-        }
-
-          #password-addon{
-                      border-left: none;
-                       background-color: #fff;
-                       border-color: #d9edf7;
+                    background: url(../../images/45.gif); background-size: cover;  font: 15px/1.7em 'Calibri';
                     }
-          #password{
-                      border-right: none;
-                      box-shadow: none;
-                      border-color: #d9edf7;
+
+                      #panel{
+                      box-shadow: 10px 10px 5px #888888;;
+                    
 
                     }
 
-          #username-addon{
-                      border-left: none;
-                       background-color: #fff;
-                       border-color: #d9edf7;
-
+                    /* Shutter Out Horizontal */
+                     .next {
+                      display: inline-block;
+                      vertical-align: middle;
+                      padding: 0.9em 2.3em;
+                      color:#fff;
+                      -webkit-transform: translateZ(0);
+                      transform: translateZ(0);
+                      box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+                      -webkit-backface-visibility: hidden;
+                      backface-visibility: hidden;
+                      -moz-osx-font-smoothing: grayscale;
+                      position: relative;
+                      background:#f5af02;
+                      -webkit-transition-property: color;
+                      transition-property: color;
+                      -webkit-transition-duration: 0.3s;
+                      transition-duration: 0.3s;
+                      text-decoration:none;
+                      margin:1em 0 0;
+                      border: transparent;
                     }
-          #username{
-                      border-right: none;
-                      box-shadow: none;
-                      border-color: #d9edf7;
+                    .next:before {
+                      content: "";
+                      position: absolute;
+                      z-index: -1;
+                      top: 0;
+                      bottom: 0;
+                      left: 0;
+                      right: 0;
+                      background: #0064d2;
+                      -webkit-transform: scaleX(0);
+                      transform: scaleX(0);
+                      -webkit-transform-origin: 50%;
+                      transform-origin: 50%;
+                      -webkit-transition-property: transform;
+                      transition-property: transform;
+                      -webkit-transition-duration: 0.3s;
+                      transition-duration: 0.3s;
+                      -webkit-transition-timing-function: ease-out;
+                      transition-timing-function: ease-out;
+                      text-decoration:none;
                     }
 
-            button.btn {
-              height: 50px;
-                margin: 0;
-                padding: 0 20px;
-                vertical-align: middle;
-                background: #de995e;
-                border: 0;
-                font-family: 'Roboto', sans-serif;
-                font-size: 16px;
-                font-weight: 300;
-                line-height: 50px;
-                color: #fff;
-                -moz-border-radius: 4px; -webkit-border-radius: 4px; border-radius: 4px;
-                text-shadow: none;
-                -moz-box-shadow: none; -webkit-box-shadow: none; box-shadow: none;
-                -o-transition: all .3s; -moz-transition: all .3s; -webkit-transition: all .3s; -ms-transition: all .3s; transition: all .3s;
-            }
-
-            button.btn:hover { opacity: 0.6; color: #fff; }
-
-            button.btn:active { outline: 0; opacity: 0.6; color: #fff; -moz-box-shadow: none; -webkit-box-shadow: none; box-shadow: none; }
-
-            button.btn:focus { outline: 0; opacity: 0.6; background: #de995e; color: #fff; }
-
-            button.btn:active:focus, button.btn.active:focus { outline: 0; opacity: 0.6; background: #de995e; color: #fff; }
-
-
-
-
-
-            /***** Top content *****/
-
-            .inner-bg {
-                padding: 100px 0 170px 0;
-            }
-
-            .top-content .text {
-                color: #fff;
-            }
-
-            .top-content .text h1 { color: #fff; }
-
-
-            .form-box {
-                margin-top: 35px;
-            }
-
-            .form-top {
-                overflow: hidden;
-                padding: 0 25px 15px 25px;
-                background: #fff;
-                -moz-border-radius: 4px 4px 0 0; -webkit-border-radius: 4px 4px 0 0; border-radius: 4px 4px 0 0;
-                text-align: left;
-            }
-
-            .form-top-left {
-                float: left;
-                width: 75%;
-                padding-top: 25px;
-            }
-
-            .form-top-left h3 { margin-top: 0; }
-
-            .form-top-right {
-                float: left;
-                width: 25%;
-                padding-top: 5px;
-                font-size: 66px;
-                color: #ddd;
-                line-height: 100px;
-                text-align: right;
-            }
-
-            .form-bottom {
-                padding: 25px 25px 30px 25px;
-                background: #eee;
-                -moz-border-radius: 0 0 4px 4px; -webkit-border-radius: 0 0 4px 4px; border-radius: 0 0 4px 4px;
-                text-align: left;
-            }
-
-            .form-bottom form textarea {
-                height: 100px;
-            }
-
-            .form-bottom form button.btn {
-                width: 100%;
-            }
-
-
-
-            /***** Media queries *****/
-
-            @media (min-width: 992px) and (max-width: 1199px) {}
-
-            @media (min-width: 768px) and (max-width: 991px) {}
-
-            @media (max-width: 767px) {
-                
-                .inner-bg { padding: 60px 0 110px 0; }
-
-            }
-
-            @media (max-width: 415px) {
-                
-                h1, h2 { font-size: 32px; }
-
-            }
+                    .next:hover, .next:focus, .next:active {
+                          color: #fff;
+                        }
+                        .next:hover:before, .next:focus:before, .next:active:before {
+                          -webkit-transform: scaleX(1);
+                          transform: scaleX(1);
+                        }
 </style>
-<script type="text/javascript">
 
-function register(){
-    var username= document.getElementById('username').value;
-    var password= document.getElementById('password').value;
-  
-
-
-        
-    if(username==""){
-                          document.getElementById('user').innerHTML="<span style ='color: red;' class='glyphicon glyphicon-exclamation-sign'></span>";
-                          return false;
-
-                        }else{
-                           document.getElementById('user').innerHTML="<span style ='color: green;' class='glyphicon glyphicon-ok'></span>";
-
-                        }
-
-
-   
-       
-
-                        if(password==""){
-                          document.getElementById('pass').innerHTML="<span style ='color: red;' class='glyphicon glyphicon-exclamation-sign'></span>";
-                          return false;
-
-                        }else{
-                           document.getElementById('pass').innerHTML="<span style ='color: green;' class='glyphicon glyphicon-ok'></span>";
-
-                        }
-
-    
-    }
-
-
-        var specialKeys = new Array();
-        specialKeys.push(8); //Backspace
-        specialKeys.push(9); //Tab
-        specialKeys.push(46); //Delete
-        specialKeys.push(36); //Home
-        specialKeys.push(35); //End
-        specialKeys.push(37); //Left
-        specialKeys.push(39); //Right
-
-
-
-        //Text validation for email
-        function forusername(e) {
-
-            var keyCode = e.keyCode == 0 ? e.charCode : e.keyCode; 
-                                     //48 to 57 (Numbers),       65 – 90 (Uppercase Alphabets) a      97 – 122 (Lowercase Alphabets)    
-            var ret = ((keyCode >= 48 && keyCode <= 57) || (keyCode >= 65 && keyCode <= 90) || (keyCode >= 97 && keyCode <= 122) || (specialKeys.indexOf(e.keyCode) != -1 && e.charCode != e.keyCode));
-            document.getElementById("error").style.display = ret ? "none" : "inline";
-            return ret;
-
-        }
-
-
-      //Text validation for password
-       function forpassword(e) {
-                  var keyCode = e.keyCode == 0 ? e.charCode : e.keyCode; 
-                                           //48 to 57 (Numbers),       65 – 90 (Uppercase Alphabets) a      97 – 122 (Lowercase Alphabets)
-                  var ret = ((keyCode >= 48 && keyCode <= 57) || (keyCode >= 65 && keyCode <= 90) || (keyCode >= 97 && keyCode <= 122) ||  (specialKeys.indexOf(e.keyCode) != -1 && e.charCode != e.keyCode));
-                  document.getElementById("error").style.display = ret ? "none" : "inline";
-                  return ret;
-
-              }  
-</script>
 
 </head>
+
 <body>
 
-<!-- Top content -->
-        <div class="top-content">
-          
-            <div class="inner-bg">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-sm-8 col-sm-offset-2 text">
-                            <h1>CASHIER</h1>
-                            
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-6 col-sm-offset-3 form-box">
-                          <div class="form-top">
-                            <div class="form-top-left">
-                              <h3> LOGIN FORM</h3>
-                              <i  id="error" style="color: Red; display: none"></i>
-                            </div>
-                            <div class="form-top-right">
-                              <i class="fa fa-lock"></i>
-                            </div>
-                            </div>
-                            <div class="form-bottom">
-                          <form role="form" onsubmit="return register(event)" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" class="login-form">
-                           
-                            <div class="form-group">
-                              
-                              <label class="sr-only" for="form-username">Username</label>
-                               <div class="input-group input-group-lg">
-                               <span class="input-group-addon">
-                                                <span class="glyphicon glyphicon-lock"></span>
-                                </span>
-                                <input id="username" class='form-control' name="username"  type="text"  maxlength="15" placeholder="Your username here.." value="" class="form-username form-control" onkeypress="return forusername(event);" ondrop="return false;" onpaste="return false;">
-                                <span id='username-addon' class="input-group-addon">
-                                               <i id='user'></i>
-                                </span>
-                              </div>
-                              </div>
+  <nav class="navbar-inner navbar-fixed-top">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+    
+      <a class="navbar-brand" href="#">MKS</a>
+    </div>
+  </div><!-- /.container-fluid -->
+</nav>
 
 
-                              <div class="form-group">
-                              
-                                <label class="sr-only" for="form-password">Password</label>
-                                <div class="input-group input-group-lg">
-                                <span class="input-group-addon">
-                                                <span class="glyphicon glyphicon-lock"></span>
-                                </span>
-                                <input id="password" class='form-control' name="password"  maxlength="15" type="password" placeholder="Your password here.." value="" class="form-password form-control" onkeypress="return forpassword(event);" ondrop="return false;" onpaste="return false;">
-                                <span id='password-addon' class="input-group-addon">
-                                               <i id='pass'></i>  
-                                </span>
-                                </div>
-                              </div>
-                              <button type="submit" class="btn" name="login">Sign in!</button>
-                          </form>
-                        </div>
-                        </div>
-                    </div>
-                  
-                </div>
-            </div>
-            
-        </div>
+        <div class="container">
+     <br><br>                                                     
+
+                                                       <div class="row">
+                                                             
+                                                              <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1">
+                                                                      <div class="panel panel-default" id="panel">
+                                                                          <div class="panel-heading">
+                                                                      <b>   (*) Note: Required Fields </b>  
+                                                                          </div>
+                                                                          <div class="panel-body">
+                                                                          <h2>CASHIER MODULE</h2>
+                                                                            <div align="center"> <img src="../../images/tuitionandfees.png" height="100px" width="100px"></div>
+                                                                               <h4>Please provide your details</h4>
+                                                                              <form role="form" method="POST" onsubmit="return freshmanlogin()"  action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+                                                                                      
+                                                                                      <?php if(isset($_GET['InvalidUsernameOrPassword'])){
+                                                                                              ?>
+                                                                                              <div style='color: red;'>Invalid Username or Password...</div>
+                                                                                              <?php
+                                                                                        }elseif(isset($_GET['InvalidUsernameorPassword'])){
+                                                                                              ?>
+                                                                                              <div style='color: red;'>Invalid Username or Password...</div>
+                                                                                              <?php
 
 
 
+                                                                                          } ?>
+
+                                                                                      <i  id="error" style="color: Red; display: none"></i>
+
+                                                                                      <div class="form-group input-group"><!--Username Validation -->
+                                                                                      <i id='validateusername' ></i>
+                                                                                      <i id='user'></i>
+                                                                                      </div>
+                                                                                      
+                                                                                      <input type='text' value='' class='form-control input' maxlength='25'  onkeypress="return forusernamelogin(event);" ondrop="return false;" onpaste="return false;" id='username' name='username' placeholder="Your Username *"/>
+                                                                                  
 
 
-                      
+
+                                                                                      <div class="form-group input-group"><!--Password Validation -->
+                                                                                      <i id='validatepassword' ></i>
+                                                                                      <i id='pass'></i>
+                                                                                      </div>
+                                                                                    
+                                                                                      <input type='password' value='' maxlength="25" class='form-control'  onkeypress="return forpasswordlogin(event);" ondrop="return false;" onpaste="return false;" id='password' name='password' placeholder='Your password *'/>
+                                                                                
+
+
+
+                                                                                      
+                                                                                      <input type='checkbox' name='remember'> Remember me
+                                                                                  <button type="submit"  name="login" class="next" value="Submit"   >Login</button>
+                                                                                  
+                                                                                  <hr />
+                                                                                
+                                                                                  </form>
+                                                                          </div>
+                                                                         
+                                                                      </div>
+                                                                  </div>
+                                                              
+                                                              
+                                                      </div>
+                                                  </div>
+     
 
 </body>
 </html>
 
 
-
-
-
-
-
-
-
-<?php }?>   
+ <?php }?>     

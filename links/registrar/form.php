@@ -53,7 +53,7 @@ $db_photofile=$qry['photo_file'];
           body{
 
                    
-                   background: url(../../images/registrationbackground.png); color:#838383; font: 13px/1.7em 'Calibri';
+                    background: url(../../images/45.gif); background-size: cover;  font: 15px/1.7em 'Calibri';
                     }
 
 
@@ -210,14 +210,15 @@ $db_photofile=$qry['photo_file'];
         <li><a href="registrar.php"><i class="fa fa-dashboard"></i><span>Home</span> </a> </li>
         <li><a href="reports.html"><i class="fa fa-plus"></i><span>Create acount</span> </a> </li>
         <li><a href="admission.php"><i class="fa fa-code"></i><span>Admission</span> </a></li>
-        <li><a href="charts.html"><i class="fa fa-bar-chart"></i><span>Inquiry</span> </a> </li>
+        <li><a href="inquiry.php"><i class="fa fa-bar-chart"></i><span>Inquiry</span> </a> </li>
         <li><a href="shortcodes.html"><i class="fa fa-code"></i><span>Course & Subjects</span> </a> </li>
         <li class="active"><a href="form.php"><i class="fa fa-file-pdf-o"></i><span>Form</span> </a> </li>
         <li><a href="event.php"><i class="fa fa-calendar"></i><span>Event & Annoucement</span> </a> </li>
-        <li class="dropdown"><a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"> <i class="fa fa-long-arrow-down"></i><span>Manage User</span> <b class="caret"></b></a>
+        <li class="dropdown"><a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"> <i class="fa fa-long-arrow-down"></i><span>Manage</span> <b class="caret"></b></a>
           <ul class="dropdown-menu">
-            <li><a href="manageuser.php">Profile</a></li>
+            <li><a href="manageuser.php">Admin Profile</a></li>
             <li><a href="deleteddetails.php">Deleted details</a></li>
+            <li><a href="breakdownoftuitionfees.php">Breakdown of tuition Fees</a></li>
           </ul>
         </li>
       </ul>
@@ -232,9 +233,9 @@ $db_photofile=$qry['photo_file'];
 
 
                           <div class="container">
-                          <h2>Form</h2>
+                          
                             <ul class="nav nav-tabs">
-                                <li class="active"><a href="#profile" data-toggle="tab">Profile</a>
+                                <li class="active"><a href="#profile" data-toggle="tab">Form</a>
                                 </li>
                          
                                
@@ -291,13 +292,13 @@ $db_photofile=$qry['photo_file'];
                                  
                                       <!--table -->
                                        <div class='demo_jui'>
-                                        <table class='display' id='tbl' class='jtable'>
+                                      <table cellpadding='0' cellspacing='1' border='1' class='display' id='tbl' class='jtable'>
                                         <thead>
                                                         <tr>
                                                        
-                                                        <td bgcolor='#FCAC45'><center>Newstudent Application Form</center></td>
-                                                        <td bgcolor='#FCAC45'><center>Transferee Application Form</center></td>
-                                                        <td bgcolor='#FCAC45'><center>Action</center></td>
+                                                        <td><center>Newstudent Application Form</center></td>
+                                                        <td><center>Transferee Application Form</center></td>
+                                                        <td><center>Action</center></td>
                                                         </tr>
 
                                         </thead>
