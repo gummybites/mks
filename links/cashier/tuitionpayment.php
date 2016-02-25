@@ -307,7 +307,11 @@ if(isset($_POST['enterpayment'])){
           body{
 
                     background: url(../../images/45.gif); background-size: cover;  font: 15px/1.7em 'Calibri';
+                      
+
                     }
+
+                    
                     
 </style>
 <script type="text/javascript">
@@ -354,7 +358,37 @@ if(cash==""){
             return ret;
 
         }
+
+   function PrintMe(el) {
+   var disp_setting="toolbar=yes,location=no,";
+   disp_setting+="directories=yes,menubar=yes,";
+   disp_setting+="scrollbars=yes,width=650, height=600, left=100, top=25";
+   var content_vlue = document.getElementById(el).innerHTML;
+   var docprint=window.open("","",disp_setting);
+   docprint.document.open();
+   docprint.document.write('<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"');
+   docprint.document.write('"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">');
+   docprint.document.write('<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">');
+   docprint.document.write('<head><title>MARIA KATRINA SCHOOL APPLICATION FORM</title>');
+   docprint.document.write('<link rel="stylesheet" href="../../css/bootstrap.min.css"></link>');
+   docprint.document.write('<link rel="stylesheet" href="../../css/bootstrap.css"></link>');                
+   docprint.document.write('<body onLoad="window.print()">');
+   docprint.document.write('<center><P>MARIA KATRINA SCHOOL</P></center>'); 
+   docprint.document.write('<br><center><P>No. 10 Mendoza St. Saog, Marilao Bulacan</P></center>'); 
+   docprint.document.write('<center><img src="../../images/mks.jpg" height="100px" width="100px"></link></center>');  
+   docprint.document.write('<br><center><B>THIS IS YOUR OFFICIAL RECEIPT</B></center>');
+
+   docprint.document.write(content_vlue);
+   docprint.document.write('</body></html>');
+   docprint.document.close();
+   docprint.focus();
+}
+
 </script>
+
+
+
+
 </head>
 <body>
 
@@ -467,13 +501,26 @@ if(isset($_GET['studentnumber'])){
 
     ?>
       <br>
-
         <div class="row">
+       <div class="col-md-12">
+        <div class="col-md-6">
+        </div>
+
+        <div class="col-md-6">
+        <button type='submit' href='#' class='next'  onclick="PrintMe('divid')"><i class='glyphicon glyphicon-print'></i> Print Receipt</button>
+        </div>
+
+        </div>
+        </div>
+        <br>
+
+        <div id="divid"><!--For printing -->
+        <div class="row" >
         <div class="col-md-6">
         </div>
        <div class="col-md-6">
        <div class="table-responsive">          
-          <table class="table" border="1">
+          <table class="table" border="1" >
               <thead>
                     <tr><th colspan="5"><center>Last Payment Details</center></th></tr>
                     <tr>
@@ -524,7 +571,7 @@ if(isset($_GET['studentnumber'])){
 
           <div class="row">
           <div class="col-md-12">
-          Student Status: <?//php echo //?>
+          Student Status: <?php   echo $status?>
           </div>
           </div>
 
@@ -559,7 +606,7 @@ if(isset($_GET['studentnumber'])){
 
 
     
-          <div class="row">
+          <div class="row" >
           <div class="col-md-12">
           Special Previleges: <?php echo $honor?> 
           </div>
@@ -569,12 +616,14 @@ if(isset($_GET['studentnumber'])){
 
         </div>
        <div class="col-md-6">
-        <div class="row">
+        <div class="row" >
         <div class="col-md-12">
        <div class="table-responsive">          
           <table class="table" border="1">
               <thead>
+                    <tr><th colspan="5"><center>Schedule of Payment</center></th></tr>
                     <tr>
+
                        <th><center></center></th>
                        <th><center>Cash</center></th>
                        <th><center>Semestral</center></th>
@@ -703,27 +752,7 @@ if(isset($_GET['studentnumber'])){
        </div>
        </div>
        </div>
-       <form method="POST" onsubmit="return tuitionfee(event)">
-          <i  id="error" style="color: Red; display: none;"></i>
-
-         <div class="row">
-        <div class="col-md-6">
-        </div>
-        <div class="col-md-6">
-              <center><p id="message"></p></center>
-              <center><p id="paymentamount"></p></center>
-          <div class='input-group'>
-          <input class='form-control' type='text' name="cash" id="cash" placeholder="Enter amount to pay here.."     onkeypress="return forcash(event);" ondrop="return false;" onpaste="return false;" maxlength='10' >
-          <span class='input-group-btn'>
-          <button class='btn btn-primary' type='submit' name='enterpayment'>Enter</button>
-          <input type="hidden" value="<?php echo $studentnumber?>" name="studentno"/>
- 
-          </span>
-          </div>
-        </div>
-        </div>
-        </form>
-        <br>
+      </div><!-- End of printing-->
      
 
       <div class="row">
@@ -753,9 +782,32 @@ if(isset($_GET['studentnumber'])){
         </div>
         </div>
 
+        
 
 
+          
 
+        <form method="POST" onsubmit="return tuitionfee(event)">
+          <i  id="error" style="color: Red; display: none;"></i>
+
+         <div class="row">
+        <div class="col-md-6">
+        </div>
+        <div class="col-md-6">
+              <center><p id="message"></p></center>
+              <center><p id="paymentamount"></p></center>
+          <div class='input-group'>
+          <input class='form-control' type='text' name="cash" id="cash" placeholder="Enter amount to pay here.."     onkeypress="return forcash(event);" ondrop="return false;" onpaste="return false;" maxlength='10' >
+          <span class='input-group-btn'>
+          <button class='btn btn-primary' type='submit' name='enterpayment'>Enter</button>
+          <input type="hidden" value="<?php echo $studentnumber?>" name="studentno"/>
+ 
+          </span>
+          </div>
+        </div>
+        </div>
+        </form>
+        <br>
                                    
     <?php
    }else{
@@ -915,6 +967,8 @@ if(isset($_GET['studentnumber'])){
         </div>
         </div>
         </div>
+
+
         <?php
 
 

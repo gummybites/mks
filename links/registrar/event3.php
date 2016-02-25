@@ -412,18 +412,20 @@ $(document).ready(function(){
   <div class="subnavbar-inner">
     <div class="container">
       <ul class="mainnav">
-        <li><a href="registrar.php"><i class="fa fa-dashboard"></i><span>Home</span> </a> </li>
-        <li><a href="reports.html"><i class="fa fa-plus"></i><span>Create acount</span> </a> </li>
-        <li><a href="admission.php"><i class="fa fa-code"></i><span>Admission</span> </a></li>
-        <li><a href="inquiry.php"><i class="fa fa-bar-chart"></i><span>Inquiry</span> </a> </li>
-        <li><a href="shortcodes.html"><i class="fa fa-code"></i><span>Course & Subjects</span> </a> </li>
+        <li ><a href="registrar.php"><i class="fa fa-home"></i><span>Home</span> </a> </li>
+        <li ><a href="createaccounts.php"><i class="fa fa-plus"></i><span>Create acount</span> </a> </li>
+        <li><a href="admission.php"><i class="fa fa-archive"></i><span>Admission</span> </a></li>
+        <li><a href="inquiry.php"><i class="fa fa-newspaper-o"></i><span>Inquiry</span> </a> </li>
+        <li><a href="faculty.php"><i class="fa fa-users"></i><span>Faculty</span> </a> </li>
         <li><a href="form.php"><i class="fa fa-file-pdf-o"></i><span>Form</span> </a> </li>
-        <li class="active"><a href="event.php"><i class="fa fa-calendar"></i><span>Event & Annoucement</span> </a> </li>
+        <li   class="active"><a href="event.php"><i class="fa fa-calendar-minus-o"></i><span>Event & Annoucement</span> </a> </li>
         <li class="dropdown"><a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"> <i class="fa fa-long-arrow-down"></i><span>Manage</span> <b class="caret"></b></a>
           <ul class="dropdown-menu">
-            <li><a href="manageuser.php">Admin Profile</a></li>
-            <li><a href="deleteddetails.php">Deleted details</a></li>
-            <li><a href="breakdownoftuitionfees.php">Breakdown of tuition Fees</a></li>
+            <li><a href="manageuser.php"><i class="fa fa-user-secret"></i> Admin Profile</a></li>
+            <li><a href="deleteddetails.php"><i class="fa fa-trash-o"></i> Deleted details</a></li>
+            <li><a href="listofsubjects.php"><i class="fa fa-th-list"></i><span> List of Subjects</span> </a> </li>
+            <li><a href="listofschedule.php"><i class="fa fa-clock-o"></i><span> List of Schedule</span> </a> </li>
+            <li><a href="breakdownoftuitionfees.php"><i class="fa fa-money"></i> Breakdown of tuition Fees</a></li>
           </ul>
         </li>
       </ul>
