@@ -403,8 +403,8 @@ if(isset($_GET['emailconfirmed'])){
 
     if($code==$db_confirmcode){
 
-    mysql_query("UPDATE tbl_studentregistration set code='1' where email='email'");
-    mysql_query("UPDATE tbl_studentregistration set confirm_code='0' where email='email'");
+    mysql_query("UPDATE tbl_studentregistration set code='1',confirm_code='0' where email='$email'");
+
     }else{
       echo "Code does not match!";
 
