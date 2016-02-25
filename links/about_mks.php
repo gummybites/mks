@@ -1,29 +1,32 @@
 <!DOCTYPE html>
 <html>
 <head>
-                    <!--Compatibility -->
+                    <meta charset="utf-8">
                     <meta http-equiv="X-UA-Compatible" content="IE=edge">
                     <meta name="viewport" content="width=device-width, initial-scale=1">
-                    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+                    <title>About MKS</title>
+                    <link rel="stylesheet" href="../css/bootstrap.min.css"></link>
+                    <link rel="stylesheet" href="../css/bootstrap.css"></link>
+                    <link rel="stylesheet" href="../css/style.css"></link>
+                    <link rel="stylesheet" href="../css/font-awesome.css"></link>
+                     <link rel="stylesheet" href="../css/font-awesome.min.css"></link>
 
-                    <title>About_mks</title>
-
-                   <!--Stylesheet for design -->
-                    <link href="../css/bootstrap.css" rel="stylesheet" type="text/css" media="all">
-                    <link href="../css/style.css" rel="stylesheet" type="text/css" media="all" />
-                    
-
-                     <!-- Custom styles for this template -->
-                    <link href="../css/owl.carousel.css" rel="stylesheet">
-                    <link href="../css/owl.theme.default.min.css"  rel="stylesheet">
-
-                    <script src="../js/jquery.min.js"></script>
-                    <script src="../js/modernizr.custom.js"></script>
+                    <script src="../js/dropdown.js"></script>
+                    <script src="../js/bootstrap.min.js"></script>
+                    <script src="../js/jquery.1.11.1.js"></script>
+                    <script src="../js/bootstrap.js"></script>
+                    <script src="../js/validation.js"></script>
 
 
 
 
 </head>
+<style>
+          body{
+
+                    background: url(../images/45.gif); background-size: cover;  font: 15px/1.7em 'Calibri';
+                    }
+</style>
 <body>
 
 
@@ -53,24 +56,18 @@
   
 
 
-	<div id="content" class='light-bg'>
 
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <h1 class="text-center">
-            BEGINNINGS
-    
-          </h1>
-          
-        </div>
-      </div>
-    </div>
+
+
+  
 
     
     <div class="container">
+    <br><br><br>
+    <h1 class="text-center">BEGINNINGS</h1>
       <div class="row">
         <div class="col-md-8">
+
           <h1 class="lead">Maria Katrina School</h1>
           <p> The year was 1996 when Mr. and Mrs. Camilon were offered to buy MIDES Learning Center, a preschool operated by Mrs. Luisa Garcia in a 312 sq.m. lot at Saog, Marilao, Bulacan.</p>
           <p>Armed with good business education and genuine love for children, this kind couple set forth to a determined endeavor of reviving the learning center and later developing it into an elementary school.</p>
@@ -80,7 +77,7 @@
       <h1 class="lead">Growth and Development</h1>
       <p>Maria Katrina School education recognizes each child as an individual in his own pattern of growth and development. The curriculum, therefore, provides rich and stimulating learning experiences, which enable him to
         acquire the maximum basic educational foundation and formation. </p>
-    </p>It gives due consideration of the child's attitudes in the process of his development into useful citizen of his country and an abiding child of God. Thus the
+    <p>It gives due consideration of the child's attitudes in the process of his development into useful citizen of his country and an abiding child of God. Thus the
         program offers to train and turn out children who:</p>
 
         <ol>
@@ -103,7 +100,9 @@
               <p><a href="" class="image-popup"><img src="" alt="" width='150px' height='150px' class="img-responsive img-rounded"></a></p>
             </div>
           </div>
-          <div></div>
+        
+
+
           <div class="row">
             <div class="col-md-6">
               <h1 class="lead">Mission</h1>
@@ -139,8 +138,8 @@
                 <a href="#">
                   <div><img src="images/slide_1.jpg" ></div>
                   <div>
-                    Some text here..Some text here..Some text here..Some text here..
-                    <span >Oct. 12, 2015</span>
+                    Caption Here..
+                    <span >Dec 25, 2016</span>
                   </div>
                 </a>
               </li>
@@ -148,8 +147,8 @@
                 <a href="#">
                   <div><img src="images/slide_2.jpg" ></div>
                   <div>
-                    Some text here..Some text here..Some text here..Some text here..
-                    <span >Oct. 12, 2015</span>
+                    Caption Here..
+                    <span >Dec 25, 2016</span>
                   </div>
                 </a>
               </li>
@@ -157,8 +156,8 @@
                 <a href="#">
                   <div ><img src="images/slide_3.jpg" ></div>
                   <div >
-                    Some text here..Some text here..Some text here..Some text here..Some text here.. 
-                    <span>Oct. 12, 2015</span>
+                    Caption Here..
+                    <span>Dec 25, 2016</span>
                   </div>
                 </a>
               </li>
@@ -166,10 +165,7 @@
             
           </div>
 
-          <div>
-            <h3>Paragraph</h3> 
-            <p>Some text here..Some text here..Some text here..Some text here..Some text here..Some text here..Some text here..Some text here..Some text here..Some text here..Some text here..</p>
-          </div>
+    
 
           <div>
             <h3>MKS hymn</h3>  
@@ -184,7 +180,7 @@
         
       </div>
     </div>
-  </div>
+    <br><br><br>
 
 
 
@@ -223,7 +219,7 @@
       
         <div class="col-md-12">
         <div class="foot-bottom">
-          <p>SMIS-MKS | Developed by the Students of STI College-Caloocan | <a href="#"><?php  $curYear= Date('Y');
+          <p>SIMS-MKS | Developed by the Students of STI College-Caloocan | <a href="#"><?php  $curYear= Date('Y');
                                         echo "$curYear";
                                       ?></a></p>
         </div>
@@ -234,9 +230,6 @@
 
 
 
-<!-- footer -->
-    <script src="../js/jquery.1.11.1.js"></script>
-    <script src="../js/owl.carousel.min.js"></script>
-    <script src="../js/mooz.themes.scripts.js"></script>
+
 </body>
 </html>

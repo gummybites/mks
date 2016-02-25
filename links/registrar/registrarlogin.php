@@ -90,10 +90,12 @@ if(isset($_COOKIE['mks'])){
                     <script src="../../js/validation.js"></script>
 
 <style>
-                   body{
+              
+          body{
 
-                   background: url(../../images/body-bg.png); color:#838383; font: 13px/1.7em 'Calibri';
+                    background: url(../../images/45.gif); background-size: cover;  font: 15px/1.7em 'Calibri';
                     }
+
 
                       #panel{
                       box-shadow: 10px 10px 5px #888888;;

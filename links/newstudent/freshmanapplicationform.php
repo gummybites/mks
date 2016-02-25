@@ -363,10 +363,10 @@ mysql_query("UPDATE tbl_studentregistration set confirm_code='$confirmed' where 
 
 $message= "Confirm your email
   Click the link below to verify your account 
-    http://www.sims-mks.com/links/newstudent/freshmanapplicationform.php?emailconfirmed=$email&code=$confirmed
+    http://www.sims-mks.com/links/newstudent/freshmanapplicationform.php?emailconfirmed=$email&&code=$confirmed
 ";  
 
-mail($email,"$email Confirm Email",$message,'From: $email');
+mail($email,"Confirm Email",$message,"From: DoNotReply@sims-mks.com");
 
     ?>
     <div class="container">

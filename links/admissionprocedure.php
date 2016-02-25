@@ -1,28 +1,30 @@
 <!DOCTYPE html>
 <html>
-                    <!--Compatibility -->
+                    <meta charset="utf-8">
                     <meta http-equiv="X-UA-Compatible" content="IE=edge">
                     <meta name="viewport" content="width=device-width, initial-scale=1">
-                    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-                    <title>Admission requirements And procedure</title>
-                    
+                    <title>Registrar Login Account</title>
+                    <link rel="stylesheet" href="../css/bootstrap.min.css"></link>
+                    <link rel="stylesheet" href="../css/bootstrap.css"></link>
+                    <link rel="stylesheet" href="../css/style.css"></link>
+                    <link rel="stylesheet" href="../css/font-awesome.css"></link>
+                     <link rel="stylesheet" href="../css/font-awesome.min.css"></link>
 
-                    <!--Stylesheet for design -->
-                    <link href="../css/bootstrap.css" rel="stylesheet" type="text/css" media="all">
-                    <link href="../css/style.css" rel="stylesheet" type="text/css" media="all" />
-                    
-
-                     <!-- Custom styles for this template -->
-                    <link href="../css/owl.carousel.css" rel="stylesheet">
-                    <link href="../css/owl.theme.default.min.css"  rel="stylesheet">
-
-                    <script src="../js/jquery.min.js"></script>
-                    <script src="../js/modernizr.custom.js"></script>
-
+                    <script src="../js/dropdown.js"></script>
+                    <script src="../js/bootstrap.min.js"></script>
+                    <script src="../js/jquery.1.11.1.js"></script>
+                    <script src="../js/bootstrap.js"></script>
+                    <script src="../js/validation.js"></script>
                  
 
 
 </head>
+<style>
+          body{
+
+                    background: url(../images/45.gif); background-size: cover;  font: 15px/1.7em 'Calibri';
+                    }
+</style>
 <body>
 
 
@@ -53,10 +55,10 @@
 
 
     <div class="container">
-      <div class="row">
+        <BR><BR><BR>
         <div class="col-md-8">
 
-        <h1 class="lead"></span>Admission Requirements</h1>
+        <h1 class="lead"><span>Admission Requirements</span></h1>
         <h1 class="lead">New Students/ Transferee</h1>
         <ul>
           <li>Application Form</li>
@@ -75,7 +77,7 @@
 
 
 
-         <h1 class="lead"> Admission Procedure</h1>
+         <h1 class="lead"> Admission Procedures</h1>
         <ol>
            <li>Present Application form to the Registrar Office and Pay testing fee.</li>
            <li>Secure examination permit for the Entrance examination.</li>
@@ -95,8 +97,9 @@
         </ol>
 
         </div>
+
         </div>
-        </div>
+      <BR><BR><BR>
 
 
 <!-- footer -->
@@ -126,7 +129,7 @@
       
         <div class="col-md-12">
         <div class="foot-bottom">
-          <p>SMIS-MKS | Developed by the Students of STI College-Caloocan | <a href="#"><?php  $curYear= Date('Y');
+          <p>SIMS-MKS | Developed by the Students of STI College-Caloocan | <a href="#"><?php  $curYear= Date('Y');
                                         echo "$curYear";
                                       ?></a></p>
         </div>

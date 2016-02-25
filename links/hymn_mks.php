@@ -18,11 +18,17 @@
                     <script src="../js/jquery.1.11.1.js"></script>
                     <script src="../js/bootstrap.js"></script>
 
-<style>     
+<style>             
+                  body{
+
+                    background: url(../images/45.gif); background-size: cover;  font: 15px/1.7em 'Calibri';
+                    }
                     #content{
                       margin-top: 50px;
 
                     }
+
+                  
 </style>
 
 
@@ -56,22 +62,13 @@
 
   
 
-
-
+    
     <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <h1 class="text-center">
+    <BR><BR><BR>
+      <h1 class="text-center">
             MKS HYMN
     
           </h1>
-          
-        </div>
-      </div>
-    </div>
-
-    
-    <div class="container">
       <div class="row">
         <div class="col-md-8">
           <h1 class="lead" id='lupanghinirang'>Lupang Hinirang</h1>
@@ -188,51 +185,11 @@
           
         </div>
 
-        <div class="col-md-4">
-          <div>
-            <h3>Image List</h3>  
-            <ul >
-              <li>
-                <a href="#">
-                  <div><img src="images/slide_1.jpg" ></div>
-                  <div>
-                    Some text here..Some text here..Some text here..Some text here..
-                    <span >Oct. 12, 2015</span>
-                  </div>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <div><img src="images/slide_2.jpg" ></div>
-                  <div>
-                    Some text here..Some text here..Some text here..Some text here..
-                    <span >Oct. 12, 2015</span>
-                  </div>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <div ><img src="images/slide_3.jpg" ></div>
-                  <div >
-                    Some text here..Some text here..Some text here..Some text here..Some text here.. 
-                    <span>Oct. 12, 2015</span>
-                  </div>
-                </a>
-              </li>
-            </ul>
-            
-          </div>
-
-          <div>
-            <h3>Paragraph</h3> 
-            <p>Some text here..Some text here..Some text here..Some text here..Some text here..Some text here..Some text here..Some text here..Some text here..Some text here..Some text here..</p>
-          </div>
-
-          
-        </div>
+      
         
       </div>
     </div>
+    <BR><BR><BR>
 
 
 
@@ -264,7 +221,7 @@
       
         <div class="col-md-12">
         <div class="foot-bottom">
-          <p>SMIS-MKS | Developed by the Students of STI College-Caloocan | <a href="#"><?php  $curYear= Date('Y');
+          <p>SIMS-MKS | Developed by the Students of STI College-Caloocan | <a href="#"><?php  $curYear= Date('Y');
                                         echo "$curYear";
                                       ?></a></p>
         </div>
@@ -276,9 +233,6 @@
 
 
 
-<!-- footer -->
-    <script src="../js/jquery.1.11.1.js"></script>
-    <script src="../js/owl.carousel.min.js"></script>
-    <script src="../js/mooz.themes.scripts.js"></script>
+
 </body>
 </html>
