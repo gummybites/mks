@@ -382,7 +382,7 @@ mail($email,"Confirm Email",$message,"From: DoNotReply@sims-mks.com");
 
 
 //kapag naka click yung EMAIL confirmation
-if(isset($_GET['emailconfirmed'])&& isset($_GET['code'])){
+if(isset($_GET['emailconfirmed'])){
     $email=$_GET['emailconfirmed'];
      $code=$_GET['code'];
 
