@@ -367,12 +367,13 @@ if(isset($_GET['email'])){
 $confirmed=rand(0,999);
 mysql_query("UPDATE tbl_studentregistration set confirm_code='$confirmed' where email='$email' ");
 
-$message= "Confirm your email
+$message= "Action required: Please verify your email address
   Click the link below to verify your account 
-    http://www.sims-mks.com/links/newstudent/transfereeapplicationform.php?emailconfirmed=$email&code=$confirmed
-";  
+    http://www.sims-mks.com/links/newstudent/transfereeapplicationform.php?emailconfirmed=$email&&code=$confirmed
+ 
+    You're receiving this email because you recently created a new account for application or added a new email address. If this wasn't you, please ignore this email.";   
 
-mail($email,"$email Confirm Email",$message,'From: $email');
+mail($email,"Confirm Email",$message,"From: DoNotReply@sims-mks.com");
 
     ?>
     <div class="container">
@@ -388,7 +389,7 @@ mail($email,"$email Confirm Email",$message,'From: $email');
 
 
 //kapag naka click yung EMAIL confirmation
-if(isset($_GET['emailconfirmed'])&& isset($_GET['code'])){
+if(isset($_GET['emailconfirmed'])){
     $email=$_GET['emailconfirmed'];
     $code=$_GET['code'];
 
@@ -400,7 +401,7 @@ if(isset($_GET['emailconfirmed'])&& isset($_GET['code'])){
 
     }
 
-    if($code==$db_code){
+    if($code==$db_confirmcode){
 
     mysql_query("UPDATE tbl_studentregistration set code='1' where email='email'");
     mysql_query("UPDATE tbl_studentregistration set confirm_code='0' where email='email'");
