@@ -204,7 +204,7 @@ p {   word-wrap: break-word; }
 				</div>
 				<div class="col-md-4">
 					<div class="team text-center">
-						<div class="cover" style="background:url('images/3.jpg'); background-size:cover;">
+						<div class="cover" style="background:url('images/04.jpg'); background-position: center; background-size:cover;">
 							<div class="overlay text-center">
 							</div>
 						</div>
@@ -217,7 +217,7 @@ p {   word-wrap: break-word; }
 				</div>
 				<div class="col-md-4">
 					<div class="team text-center">
-						<div class="cover" style="background:url('images/2.jpg'); background-size:cover;">
+						<div class="cover" style="background:url('images/04.jpg'); background-position: center; background-size:cover;">
 							<div class="overlay text-center">
 		
 							</div>
@@ -503,7 +503,7 @@ p {   word-wrap: break-word; }
 			
 				<div class="col-md-12">
 				<div class="foot-bottom">
-					<p>SMIS-MKS | Developed by the Students of STI College-Caloocan | <a href="#"><?php  $curYear= Date('Y');
+					<p>SIMS-MKS | Developed by the Students of STI College-Caloocan | <a href="#"><?php  $curYear= Date('Y');
                                         echo "$curYear";
                                       ?></a></p>
 				</div>

@@ -58,36 +58,39 @@
         <BR><BR><BR>
         <div class="col-md-8">
 
-        <h1 class="lead"><span>Admission Requirements</span></h1>
-        <h1 class="lead">New Students/ Transferee</h1>
+        <h1 class="lead"><span>ADMISSION REQUIREMENTS</span></h1>
+        <h1 class="lead">2.1 New Students</h1>
         <ul>
-          <li>Application Form</li>
-          <li>NSO Issued Birth Certificate. Present original copy for verification</li>
-          <li>For the Grade 7 and Grade 8 applicants – Present the original or certified true copy of the Grade VI or 1st year Report Card as the case maybe.</li>
-          <li>For the Grade 9 applicants – Present the unofficial Form 137 or certified true copy of the Report Cards  from 1st year to 2nd year.</li>
-          <li>For the Grade 10 applicants – Present the unofficial Form 137 or certified true copy of the Report Cards  from 1st year to 3rd year.
-              <br>The applicant’s average should be at least 80% and with no failing grade in any subject or dropped subjects.</li>
-
-          <li>Good moral character certificate</li>
-          <li>Two(2), 1” X 1” ID photos.</li>
-          <li>Must have passed both written and oral examinations conducted by the Admission Office</li>
+          <li>Birth Certificate, original copy if possible.</li>
+          <li>Form 138, original copy if possible.</li>
+          <li>1x1 picture will be taken at the school.</li>
+          <li>Good moral character certificate, original copy if possible.</li>
+          <li>Must have passed both written and oral examinations conducted by the admission office.</li>
         </ul> 
 
+        <h1 class="lead">2.2 Transferees</h1>
+        <ul>
+          <li>No failing grades or dropped subjects</li>
+          <li>Need to pass the entrance exam</li>
+          <li>Birth Certificate, original copy if possible.</li>
+          <li>Form 138, original copy if possible.</li>
+          <li>1x1 picture will be taken at the school.</li>
+          <li>Good moral character certificate, original copy if possible.</li>
+          <li>Form 137, original copy if possible.</li>
+          
+        </ul> 
+        <br>
 
 
-
-
-         <h1 class="lead"> Admission Procedures</h1>
+         <h1 class="lead"> ADMISSION PROCEDURES</h1>
         <ol>
-           <li>Present Application form to the Registrar Office and Pay testing fee.</li>
-           <li>Secure examination permit for the Entrance examination.</li>
-           <li>Submit examination permit at the Guidance Office and take the entrance examination. </li>
-           <li>If passed, proceed to the Principal's Office for interview.</li>
-           <li>After a week, see the result in the bulletin board or get the final result.</li>
-           <li>After having passed the entrance examination and interview the applicant will be  issued the Approval of Application for Admission.</li>
-           <li>Submit Approval of Application for admission issued by the principal, and all the required requirements specified above at Registrars Office.</li>
-           <li>Proceed to the Cashier's Office for assessment and payment of fees.</li>
-        
+           <li>Pay testing fee at the Cashier's office.</li>
+           <li>Submit copy of Admission Form, photocopy of Form 138 and take a picture to the Admission Secretary</li>
+           <li>Get testing permit.</li>
+           <li>Take the Admission Exam.</li>
+           <li>If passed, take an interview.</li>
+           <li>After a week, get the final result.</li>
+           <li>If admitted, pass the oginal copy of Form 138.</li>
         </ol>
 
          <h1 class="lead"> Old Students</h1>

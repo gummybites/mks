@@ -69,9 +69,9 @@ if(isset($_POST['submit'])){
                               $payment= $total-($total*(5/100));
                               mysql_query("UPDATE tbl_prospectivestudents set Mode='1',honors = 'No discount', Fee = $payment, Discount = $nonediscount where username='$studentnumber'");
                             
-                              mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','$payment','$studentnumber')");
+                              mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','','$studentnumber')");
 
-
+                              mysql_query("UPDATE tbl_cashierpayment set Balance='$payment' where username='$studentnumber'"); 
                               }
 
                           //kapag ang discount ay naka set ng honor discount
@@ -79,7 +79,9 @@ if(isset($_POST['submit'])){
                            $payment= $total-($total*(100/100));
                             mysql_query("UPDATE tbl_prospectivestudents set Mode='1',Fee = '$payment', honors = 'Valedictorian', Discount = '$honordiscount' where username='$studentnumber'");
 
-                                  mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','$payment','$studentnumber')");
+                                  mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','','$studentnumber')");
+
+                                  mysql_query("UPDATE tbl_cashierpayment set Balance='$payment' where username='$studentnumber'"); 
                      
                           }elseif($honordiscount=='50'){
                              $payment= $total-($total*(55/100));
@@ -87,17 +89,24 @@ if(isset($_POST['submit'])){
 
                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','$payment','$studentnumber')");
 
+                                   mysql_query("UPDATE tbl_cashierpayment set Balance='$payment' where username='$studentnumber'"); 
+
+
                           }elseif($honordiscount=='55'){
                              $payment= $total-($total*(60/100));
                              mysql_query("UPDATE tbl_prospectivestudents set Mode='1',Fee = '$payment',honors = 'Salutatorian w/ 3rd siblings enrolled',Discount = '$honordiscount' where username='$studentnumber'");
 
-                                   mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','$payment','$studentnumber')");
+                                   mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','','$studentnumber')");
+
+                                   mysql_query("UPDATE tbl_cashierpayment set Balance='$payment' where username='$studentnumber'"); 
           
                           }elseif($honordiscount=='57'){
                              $payment= $total-($total*(62/100));
                              mysql_query("UPDATE tbl_prospectivestudents set Mode='1',Fee = '$payment', honors = 'Salutatorian w/ 2nd siblings enrolled', Discount = '$honordiscount' where username='$studentnumber'");
 
-                                   mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','$payment','$studentnumber')");
+                                   mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','','$studentnumber')");
+
+                                   mysql_query("UPDATE tbl_cashierpayment set Balance='$payment' where username='$studentnumber'"); 
                      
                           }
 
@@ -106,60 +115,78 @@ if(isset($_POST['submit'])){
                                $payment= $total-($total*(35/100));
                               mysql_query("UPDATE tbl_prospectivestudents set Mode='1',Fee = '$payment',honors = 'Transferee 1st honor', Discount = '$transferdiscount' where username='$studentnumber'");
 
-                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','$payment','$studentnumber')");
+                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','','$studentnumber')");
+
+                                    mysql_query("UPDATE tbl_cashierpayment set Balance='$payment' where username='$studentnumber'"); 
 
                           }elseif($transferdiscount=='35'){
                                $payment= $total-($total*(40/100));
                               mysql_query("UPDATE tbl_prospectivestudents set Mode='1',Fee = '$payment',honors = 'Transferee 1st honor w/ 3rd siblings enrolled', Discount = '$transferdiscount' where username='$studentnumber");
 
-                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','$payment','$studentnumber')");
+                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','','$studentnumber')");
+
+                                    mysql_query("UPDATE tbl_cashierpayment set Balance='$payment' where username='$studentnumber'"); 
                              
                           
                           }elseif($transferdiscount=='37'){
                                $payment= $total-($total*(42/100));
                               mysql_query("UPDATE tbl_prospectivestudents set Mode='1',Fee = '$payment', honors = 'Transferee 1st honor w/ 2nd siblings enrolled', Discount = '$transferdiscount' where username='$studentnumber'");
 
-                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','$payment','$studentnumber')");
+                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','','$studentnumber')");
+
+                                    mysql_query("UPDATE tbl_cashierpayment set Balance='$payment' where username='$studentnumber'"); 
                     
                           
                           }elseif($transferdiscount=='20'){
                               $payment= $total-($total*(25/100));
                               mysql_query("UPDATE tbl_prospectivestudents set Mode='1',Fee = '$payment', honors = 'Transferee 2nd honor', Discount = '$transferdiscount' where username='$studentnumber'");
 
-                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','$payment','$studentnumber')");
+                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','','$studentnumber')");
+
+                                    mysql_query("UPDATE tbl_cashierpayment set Balance='$payment' where username='$studentnumber'"); 
                
                           
                           }elseif($transferdiscount=='25'){
                               $payment= $total-($total*(30/100));
                               mysql_query("UPDATE tbl_prospectivestudents set Mode='1',Fee = '$payment', honors = 'Transferee 2nd honor w/ 3rd siblings enrolled', Discount = '$transferdiscount' where username='$studentnumber'");
 
-                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','$payment','$studentnumber')");
+                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','','$studentnumber')");
+
+                                    mysql_query("UPDATE tbl_cashierpayment set Balance='$payment' where username='$studentnumber'"); 
                           
                           }elseif($transferdiscount=='27'){
                               $payment= $total-($total*(32/100));
                               mysql_query("UPDATE tbl_prospectivestudents set Mode='1',Fee = '$payment', honors = 'Transferee 2nd honor w/ 2nd siblings enrolled', Discount = '$transferdiscount' where username='$studentnumber'");
 
-                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','$payment','$studentnumber')");
+                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','','$studentnumber')");
+
+                                    mysql_query("UPDATE tbl_cashierpayment set Balance='$payment' where username='$studentnumber'"); 
                               
                           
                           }elseif($transferdiscount=='10'){
                               $payment= $total-($total*(15/100));
                               mysql_query("UPDATE tbl_prospectivestudents set Mode='1',Fee = '$payment', honors = 'Transferee 3rd honor', Discount = '$transferdiscount' where username='$studentnumber'");
 
-                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','$payment','$studentnumber')");
+                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','','$studentnumber')");
+
+                                    mysql_query("UPDATE tbl_cashierpayment set Balance='$payment' where username='$studentnumber'"); 
                          
                           }elseif($transferdiscount=='15'){
                               $payment= $total-($total*(20/100));
                               mysql_query("UPDATE tbl_prospectivestudents set Mode='1',Fee = '$payment', honors = 'Transferee 3rd honor w/ 3rd siblings enrolled', Discount = '$transferdiscount' where username='$studentnumber'");
 
-                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','$payment','$studentnumber')");
+                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','','$studentnumber')");
+
+                                    mysql_query("UPDATE tbl_cashierpayment set Balance='$payment' where username='$studentnumber'"); 
                            
                           
                           }elseif($transferdiscount=='17'){
                               $payment= $total-($total*(22/100));
                               mysql_query("UPDATE tbl_prospectivestudents set Mode='1',Fee = '$payment', honors = 'Transferee 3rd honor w/ 2nd siblings enrolled', Discount = '$transferdiscount' where username='$studentnumber'");
 
-                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','$payment','$studentnumber')");
+                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','','$studentnumber')");
+
+                                    mysql_query("UPDATE tbl_cashierpayment set Balance='$payment' where username='$studentnumber'"); 
                         
                           }
                           //kapag ang discount ay naka set ng old discount
@@ -167,55 +194,73 @@ if(isset($_POST['submit'])){
                               $payment= $total-($total*(55/100));
                               mysql_query("UPDATE  tbl_prospectivestudents set Mode='1',Fee = '$payment', honors = '1st honors', Discount = '$olddiscount' where username='$studentnumber'");
 
-                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','$payment','$studentnumber')");
+                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','','$studentnumber')");
+
+                                    mysql_query("UPDATE tbl_cashierpayment set Balance='$payment' where username='$studentnumber'"); 
                               
                         }elseif($olddiscount=='55'){
                               $payment= $total-($total*(60/100));
                               mysql_query("UPDATE  tbl_prospectivestudents set Mode='1',Fee = '$payment', honors = '1st honors w/ 3rd siblings enrolled', Discount = '$olddiscount' where username='$studentnumber'");
 
-                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','$payment','$studentnumber')");
+                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','','$studentnumber')");
+
+                                    mysql_query("UPDATE tbl_cashierpayment set Balance='$payment' where username='$studentnumber'"); 
           
                         }elseif($olddiscount=='57'){
                               $payment= $total-($total*(62/100));
                               mysql_query("UPDATE  tbl_prospectivestudents set Mode='1',Fee = '$payment', honors = '1st honors w/ 2nd siblings enrolled', Discount = '$olddiscount' where username='$studentnumber'");
 
-                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','$payment','$studentnumber')");
+                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','','$studentnumber')");
+
+                                    mysql_query("UPDATE tbl_cashierpayment set Balance='$payment' where username='$studentnumber'"); 
                      
                         }elseif($olddiscount=='30'){
                               $payment= $total-($total*(35/100));
                               mysql_query("UPDATE  tbl_prospectivestudents set Mode='1',Fee = '$payment', honors = '2nd honors', Discount = '$olddiscount' where username='$studentnumber'");
 
-                              mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','$payment','$studentnumber')");
+                              mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','','$studentnumber')");
+
+                              mysql_query("UPDATE tbl_cashierpayment set Balance='$payment' where username='$studentnumber'"); 
                         
                         }elseif($olddiscount=='35'){
                               $payment= $total-($total*(40/100));
                               mysql_query("UPDATE  tbl_prospectivestudents set Mode='1',Fee = '$payment', honors = '3rd honors w/ 3rd siblings enrolled', Discount = '$olddiscount' where username='$studentnumber'");
 
-                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','$payment','$studentnumber')");
+                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','','$studentnumber')");
+
+                                    mysql_query("UPDATE tbl_cashierpayment set Balance='$payment' where username='$studentnumber'"); 
                              
                         }elseif($olddiscount=='37'){
                               $payment= $total-($total*(42/100));
                               mysql_query("UPDATE  tbl_prospectivestudents set Mode='1',Fee = '$payment', honors = '2nd honors w/ 2nd siblings enrolled', Discount = '$olddiscount' where username='$studentnumber'");
 
-                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','$payment','$studentnumber')");
+                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','','$studentnumber')");
+
+                                    mysql_query("UPDATE tbl_cashierpayment set Balance='$payment' where username='$studentnumber'"); 
                            
                         }elseif($olddiscount=='20'){
                               $payment= $total-($total*(25/100));
                               mysql_query("UPDATE  tbl_prospectivestudents set Mode='1',Fee = '$payment', honors = '3rd honors', Discount = '$olddiscount' where username='$studentnumber'");
 
-                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','$payment','$studentnumber')");
+                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','','$studentnumber')");
+
+                                    mysql_query("UPDATE tbl_cashierpayment set Balance='$payment' where username='$studentnumber'"); 
           
                         }elseif($olddiscount=='25'){
                               $payment= $total-($total*(30/100));
                               mysql_query("UPDATE tbl_prospectivestudents set Mode='1',Fee = '$payment', honors = '3rd honors w/ 3rd siblings enrolled', Discount = '$olddiscount' where username='$studentnumber'");
 
-                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','$payment','$studentnumber')");
+                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','','$studentnumber')");
+
+                                    mysql_query("UPDATE tbl_cashierpayment set Balance='$payment' where username='$studentnumber'"); 
                               
                         }elseif($olddiscount=='27'){
                               $payment= $total-($total*(32/100));
                               mysql_query("UPDATE tbl_prospectivestudents set Mode='1',Fee = '$payment', honors = '3rd honors w/ 2nd siblings enrolled', Discount = '$olddiscount' where username='$studentnumber'");
 
-                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','$payment','$studentnumber')");
+                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','','$studentnumber')");
+
+                                    mysql_query("UPDATE tbl_cashierpayment set Balance='$payment' where username='$studentnumber'"); 
                         
                         }
 
@@ -224,19 +269,25 @@ if(isset($_POST['submit'])){
                               $payment= $total-($total*(10/100));
                               mysql_query("UPDATE tbl_prospectivestudents set Mode='1',Fee = '$payment', honors = '2nd Child', Discount = '$siblingdiscount' where username='$studentnumber'");
 
-                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','$payment','$studentnumber')");
+                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','','$studentnumber')");
+
+                                    mysql_query("UPDATE tbl_cashierpayment set Balance='$payment' where username='$studentnumber'"); 
                              
                           }elseif($siblingdiscount=='7'){
                               $payment= $total-($total*(12/100));
                               mysql_query("UPDATE tbl_prospectivestudents set Mode='1',Fee = '$payment', honors = '3rd Child', Discount = '$siblingdiscount' where username='$studentnumber'");
 
-                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','$payment','$studentnumber')");
+                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','','$studentnumber')");
+
+                                    mysql_query("UPDATE tbl_cashierpayment set Balance='$payment' where username='$studentnumber'"); 
                       
                           }elseif($siblingdiscount=='100'){
                               $payment= $total-($total*(100/100));
                               mysql_query("UPDATE tbl_prospectivestudents set Mode='1',Fee = '$payment', honors = '4th Child', Discount = '$siblingdiscount' where username='$studentnumber'");
 
-                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','$payment','$studentnumber')");
+                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','','$studentnumber')");
+
+                                    mysql_query("UPDATE tbl_cashierpayment set Balance='$payment' where username='$studentnumber'"); 
                            
                         }
                        
@@ -249,7 +300,9 @@ if(isset($_POST['submit'])){
                               $payment= $total+(544.50);
                               mysql_query("UPDATE tbl_prospectivestudents set Mode='2',honors = 'No discount', Fee = $payment, Discount = $nonediscount where username='$studentnumber'");
 
-                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','$payment','$studentnumber')");
+                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','','$studentnumber')");
+
+                                    mysql_query("UPDATE tbl_cashierpayment set Balance='$payment' where username='$studentnumber'"); 
                               }
 
                           //kapag ang discount ay naka set ng honor discount
@@ -257,28 +310,36 @@ if(isset($_POST['submit'])){
                            $payment= $total-($total*(100/100));
                             mysql_query("UPDATE tbl_prospectivestudents set Mode='2',Fee = '$payment', honors = 'Valedictorian', Discount = '$honordiscount' where username='$studentnumber'");
 
-                                  mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','$payment','$studentnumber')");
+                                  mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','','$studentnumber')");
+
+                                  mysql_query("UPDATE tbl_cashierpayment set Balance='$payment' where username='$studentnumber'"); 
                      
                           }elseif($honordiscount=='50'){
                              $totalpayment=$total+(544.50);
                              $payment= $totalpayment-($totalpayment*(50/100));
                              mysql_query("UPDATE tbl_prospectivestudents set Mode='2',honors = 'Salutatorian', Discount = '$honordiscount', Fee = '$payment' where username='$studentnumber'");
 
-                                   mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','$payment','$studentnumber')");
+                                   mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','','$studentnumber')");
+
+                                   mysql_query("UPDATE tbl_cashierpayment set Balance='$payment' where username='$studentnumber'"); 
 
                           }elseif($honordiscount=='55'){
                             $totalpayment=$total+(544.50);
                             $payment= $totalpayment-($totalpayment*(55/100));
                              mysql_query("UPDATE tbl_prospectivestudents set Mode='2',Fee = '$payment',honors = 'Salutatorian w/ 3rd siblings enrolled',Discount = '$honordiscount' where username='$studentnumber'");
 
-                                   mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','$payment','$studentnumber')");
+                                   mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','','$studentnumber')");
+
+                                   mysql_query("UPDATE tbl_cashierpayment set Balance='$payment' where username='$studentnumber'"); 
           
                           }elseif($honordiscount=='57'){
                             $totalpayment=$total+(544.50);
                             $payment= $totalpayment-($totalpayment*(57/100));
                              mysql_query("UPDATE tbl_prospectivestudents set Mode='2',Fee = '$payment', honors = 'Salutatorian w/ 2nd siblings enrolled', Discount = '$honordiscount' where username='$studentnumber'");
 
-                                   mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','$payment','$studentnumber')");
+                                   mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','','$studentnumber')");
+
+                                   mysql_query("UPDATE tbl_cashierpayment set Balance='$payment' where username='$studentnumber'"); 
                      
                           }
 
@@ -288,14 +349,18 @@ if(isset($_POST['submit'])){
                               $payment= $totalpayment-($totalpayment*(30/100));
                               mysql_query("UPDATE tbl_prospectivestudents set Mode='2',Fee = '$payment',honors = 'Transferee 1st honor', Discount = '$transferdiscount' where username='$studentnumber'");
 
-                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','$payment','$studentnumber')");
+                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','','$studentnumber')");
+
+                                    mysql_query("UPDATE tbl_cashierpayment set Balance='$payment' where username='$studentnumber'"); 
 
                           }elseif($transferdiscount=='35'){
                               $totalpayment=$total+(544.50);
                               $payment= $totalpayment-($totalpayment*(35/100));
                               mysql_query("UPDATE tbl_prospectivestudents set Mode='2',Fee = '$payment',honors = 'Transferee 1st honor w/ 3rd siblings enrolled', Discount = '$transferdiscount' where username='$studentnumber");
 
-                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','$payment','$studentnumber')");
+                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','','$studentnumber')");
+
+                                    mysql_query("UPDATE tbl_cashierpayment set Balance='$payment' where username='$studentnumber'"); 
                              
                           
                           }elseif($transferdiscount=='37'){
@@ -303,7 +368,9 @@ if(isset($_POST['submit'])){
                               $payment= $totalpayment-($totalpayment*(37/100));
                               mysql_query("UPDATE tbl_prospectivestudents set Mode='2',Fee = '$payment', honors = 'Transferee 1st honor w/ 2nd siblings enrolled', Discount = '$transferdiscount' where username='$studentnumber'");
 
-                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','$payment','$studentnumber')");
+                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','','$studentnumber')");
+
+                                    mysql_query("UPDATE tbl_cashierpayment set Balance='$payment' where username='$studentnumber'"); 
                     
                           
                           }elseif($transferdiscount=='20'){
@@ -311,7 +378,9 @@ if(isset($_POST['submit'])){
                               $payment= $totalpayment-($totalpayment*(20/100));
                               mysql_query("UPDATE tbl_prospectivestudents set Mode='2',Fee = '$payment', honors = 'Transferee 2nd honor', Discount = '$transferdiscount' where username='$studentnumber'");
 
-                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','$payment','$studentnumber')");
+                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','','$studentnumber')");
+
+                                    mysql_query("UPDATE tbl_cashierpayment set Balance='$payment' where username='$studentnumber'"); 
                
                           
                           }elseif($transferdiscount=='25'){
@@ -319,14 +388,18 @@ if(isset($_POST['submit'])){
                               $payment= $totalpayment-($totalpayment*(25/100));
                               mysql_query("UPDATE tbl_prospectivestudents set Mode='2',Fee = '$payment', honors = 'Transferee 2nd honor w/ 3rd siblings enrolled', Discount = '$transferdiscount' where username='$studentnumber'");
 
-                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','$payment','$studentnumber')");
+                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','','$studentnumber')");
+
+                                    mysql_query("UPDATE tbl_cashierpayment set Balance='$payment' where username='$studentnumber'"); 
                           
                           }elseif($transferdiscount=='27'){
                                 $totalpayment=$total+(544.50);
                               $payment= $totalpayment-($totalpayment*(27/100));
                               mysql_query("UPDATE tbl_prospectivestudents set Mode='2',Fee = '$payment', honors = 'Transferee 2nd honor w/ 2nd siblings enrolled', Discount = '$transferdiscount' where username='$studentnumber'");
 
-                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','$payment','$studentnumber')");
+                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','','$studentnumber')");
+
+                                    mysql_query("UPDATE tbl_cashierpayment set Balance='$payment' where username='$studentnumber'"); 
                               
                           
                           }elseif($transferdiscount=='10'){
@@ -334,14 +407,18 @@ if(isset($_POST['submit'])){
                               $payment= $totalpayment-($totalpayment*(10/100));
                               mysql_query("UPDATE tbl_prospectivestudents set Mode='2',Fee = '$payment', honors = 'Transferee 3rd honor', Discount = '$transferdiscount' where username='$studentnumber'");
 
-                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','$payment','$studentnumber')");
+                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','','$studentnumber')");
+
+                                    mysql_query("UPDATE tbl_cashierpayment set Balance='$payment' where username='$studentnumber'"); 
                          
                           }elseif($transferdiscount=='15'){
                                 $totalpayment=$total+(544.50);
                             $payment= $totalpayment-($totalpayment*(15/100));
                               mysql_query("UPDATE tbl_prospectivestudents set Mode='2',Fee = '$payment', honors = 'Transferee 3rd honor w/ 3rd siblings enrolled', Discount = '$transferdiscount' where username='$studentnumber'");
 
-                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','$payment','$studentnumber')");
+                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','','$studentnumber')");
+
+                                    mysql_query("UPDATE tbl_cashierpayment set Balance='$payment' where username='$studentnumber'"); 
                            
                           
                           }elseif($transferdiscount=='17'){
@@ -349,7 +426,9 @@ if(isset($_POST['submit'])){
                             $payment= $totalpayment-($totalpayment*(17/100));
                               mysql_query("UPDATE tbl_prospectivestudents set Mode='2',Fee = '$payment', honors = 'Transferee 3rd honor w/ 2nd siblings enrolled', Discount = '$transferdiscount' where username='$studentnumber'");
 
-                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','$payment','$studentnumber')");
+                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','','$studentnumber')");
+
+                                    mysql_query("UPDATE tbl_cashierpayment set Balance='$payment' where username='$studentnumber'"); 
                         
                           }
                           //kapag ang discount ay naka set ng old discount
@@ -358,63 +437,81 @@ if(isset($_POST['submit'])){
                             $payment= $totalpayment-($totalpayment*(50/100));
                               mysql_query("UPDATE  tbl_prospectivestudents set Mode='2',Fee = '$payment', honors = '1st honors', Discount = '$olddiscount' where username='$studentnumber'");
 
-                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','$payment','$studentnumber')");
+                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','','$studentnumber')");
+
+                                    mysql_query("UPDATE tbl_cashierpayment set Balance='$payment' where username='$studentnumber'"); 
                               
                         }elseif($olddiscount=='55'){
                                 $totalpayment=$total+(544.50);
                             $payment= $totalpayment-($totalpayment*(55/100));
                               mysql_query("UPDATE  tbl_prospectivestudents set Mode='2',Fee = '$payment', honors = '1st honors w/ 3rd siblings enrolled', Discount = '$olddiscount' where username='$studentnumber'");
 
-                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','$payment','$studentnumber')");
+                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','','$studentnumber')");
+
+                                    mysql_query("UPDATE tbl_cashierpayment set Balance='$payment' where username='$studentnumber'"); 
           
                         }elseif($olddiscount=='57'){
                                 $totalpayment=$total+(544.50);
                             $payment= $totalpayment-($totalpayment*(57/100));
                               mysql_query("UPDATE  tbl_prospectivestudents set Mode='2',Fee = '$payment', honors = '1st honors w/ 2nd siblings enrolled', Discount = '$olddiscount' where username='$studentnumber'");
 
-                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','$payment','$studentnumber')");
+                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','','$studentnumber')");
+
+                                    mysql_query("UPDATE tbl_cashierpayment set Balance='$payment' where username='$studentnumber'"); 
                      
                         }elseif($olddiscount=='30'){
                                 $totalpayment=$total+(544.50);
                             $payment= $totalpayment-($totalpayment*(30/100));
                               mysql_query("UPDATE  tbl_prospectivestudents set Mode='2',Fee = '$payment', honors = '2nd honors', Discount = '$olddiscount' where username='$studentnumber'");
 
-                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','$payment','$studentnumber')");
+                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','','$studentnumber')");
+
+                                    mysql_query("UPDATE tbl_cashierpayment set Balance='$payment' where username='$studentnumber'"); 
                         
                         }elseif($olddiscount=='35'){
                                 $totalpayment=$total+(544.50);
                             $payment= $totalpayment-($totalpayment*(35/100));
                               mysql_query("UPDATE  tbl_prospectivestudents set Mode='2',Fee = '$payment', honors = '3rd honors w/ 3rd siblings enrolled', Discount = '$olddiscount' where username='$studentnumber'");
 
-                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','$payment','$studentnumber')");
+                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','','$studentnumber')");
+
+                                    mysql_query("UPDATE tbl_cashierpayment set Balance='$payment' where username='$studentnumber'"); 
                              
                         }elseif($olddiscount=='37'){
                                 $totalpayment=$total+(544.50);
                             $payment= $totalpayment-($totalpayment*(37/100));
                               mysql_query("UPDATE  tbl_prospectivestudents set Mode='2',Fee = '$payment', honors = '2nd honors w/ 2nd siblings enrolled', Discount = '$olddiscount' where username='$studentnumber'");
 
-                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','$payment','$studentnumber')");
+                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','','$studentnumber')");
+
+                                    mysql_query("UPDATE tbl_cashierpayment set Balance='$payment' where username='$studentnumber'"); 
                            
                         }elseif($olddiscount=='20'){
                                 $totalpayment=$total+(544.50);
                             $payment= $totalpayment-($totalpayment*(20/100));
                               mysql_query("UPDATE  tbl_prospectivestudents set Mode='2',Fee = '$payment', honors = '3rd honors', Discount = '$olddiscount' where username='$studentnumber'");
 
-                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','$payment','$studentnumber')");
+                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','','$studentnumber')");
+
+                                    mysql_query("UPDATE tbl_cashierpayment set Balance='$payment' where username='$studentnumber'"); 
           
                         }elseif($olddiscount=='25'){
                                 $totalpayment=$total+(544.50);
                             $payment= $totalpayment-($totalpayment*(25/100));
                               mysql_query("UPDATE tbl_prospectivestudents set Mode='2',Fee = '$payment', honors = '3rd honors w/ 3rd siblings enrolled', Discount = '$olddiscount' where username='$studentnumber'");
 
-                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','$payment','$studentnumber')");
+                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','','$studentnumber')");
+
+                                    mysql_query("UPDATE tbl_cashierpayment set Balance='$payment' where username='$studentnumber'"); 
                               
                         }elseif($olddiscount=='27'){
                                 $totalpayment=$total+(544.50);
                             $payment= $totalpayment-($totalpayment*(27/100));
                               mysql_query("UPDATE tbl_prospectivestudents set Mode='2',Fee = '$payment', honors = '3rd honors w/ 2nd siblings enrolled', Discount = '$olddiscount' where username='$studentnumber'");
 
-                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','$payment','$studentnumber')");
+                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','','$studentnumber')");
+
+                                    mysql_query("UPDATE tbl_cashierpayment set Balance='$payment' where username='$studentnumber'"); 
                         
                         }
 
@@ -424,20 +521,26 @@ if(isset($_POST['submit'])){
                             $payment= $totalpayment-($totalpayment*(5/100));
                               mysql_query("UPDATE tbl_prospectivestudents set Mode='2',Fee = '$payment', honors = '2nd Child', Discount = '$siblingdiscount' where username='$studentnumber'");
 
-                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','$payment','$studentnumber')");
+                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','','$studentnumber')");
+
+                                    mysql_query("UPDATE tbl_cashierpayment set Balance='$payment' where username='$studentnumber'"); 
                              
                           }elseif($siblingdiscount=='7'){
                                 $totalpayment=$total+(544.50);
                             $payment= $totalpayment-($totalpayment*(7/100));
                               mysql_query("UPDATE tbl_prospectivestudents set Mode='2',Fee = '$payment', honors = '3rd Child', Discount = '$siblingdiscount' where username='$studentnumber'");
 
-                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','$payment','$studentnumber')");
+                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','','$studentnumber')");
+
+                                    mysql_query("UPDATE tbl_cashierpayment set Balance='$payment' where username='$studentnumber'"); 
                       
                           }elseif($siblingdiscount=='100'){
                               $payment= $total-($total*(100/100));
                               mysql_query("UPDATE tbl_prospectivestudents set Mode='2',Fee = '$payment', honors = '4th Child', Discount = '$siblingdiscount' where username='$studentnumber'");
 
-                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','$payment','$studentnumber')");
+                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','','$studentnumber')");
+
+                                    mysql_query("UPDATE tbl_cashierpayment set Balance='$payment' where username='$studentnumber'"); 
                            
                         }
 
@@ -450,7 +553,9 @@ if(isset($_POST['submit'])){
                               $payment= $total+(923.75);
                               mysql_query("UPDATE tbl_prospectivestudents set Mode='3',honors = 'No discount', Fee = $payment, Discount = $nonediscount where username='$studentnumber'");
 
-                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','$payment','$studentnumber')");
+                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','','$studentnumber')");
+
+                                    mysql_query("UPDATE tbl_cashierpayment set Balance='$payment' where username='$studentnumber'"); 
                               }
 
                           //kapag ang discount ay naka set ng honor discount
@@ -458,28 +563,36 @@ if(isset($_POST['submit'])){
                            $payment= $total-($total*(100/100));
                             mysql_query("UPDATE tbl_prospectivestudents set Mode='3',Fee = '$payment', honors = 'Valedictorian', Discount = '$honordiscount' where username='$studentnumber'");
 
-                                  mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','$payment','$studentnumber')");
+                                  mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','','$studentnumber')");
+
+                                  mysql_query("UPDATE tbl_cashierpayment set Balance='$payment' where username='$studentnumber'"); 
                      
                           }elseif($honordiscount=='50'){
                              $totalpayment=$total+(923.75);
                              $payment= $totalpayment-($totalpayment*(50/100));
                              mysql_query("UPDATE tbl_prospectivestudents set Mode='3',honors = 'Salutatorian', Discount = '$honordiscount', Fee = '$payment' where username='$studentnumber'");
 
-                                   mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','$payment','$studentnumber')");
+                                   mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','','$studentnumber')");
+
+                                   mysql_query("UPDATE tbl_cashierpayment set Balance='$payment' where username='$studentnumber'"); 
 
                           }elseif($honordiscount=='55'){
                             $totalpayment=$total+(923.75);
                             $payment= $totalpayment-($totalpayment*(55/100));
                              mysql_query("UPDATE tbl_prospectivestudents set Mode='3',Fee = '$payment',honors = 'Salutatorian w/ 3rd siblings enrolled',Discount = '$honordiscount' where username='$studentnumber'");
 
-                                   mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','$payment','$studentnumber')");
+                                   mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','','$studentnumber')");
+
+                                   mysql_query("UPDATE tbl_cashierpayment set Balance='$payment' where username='$studentnumber'"); 
           
                           }elseif($honordiscount=='57'){
                             $totalpayment=$total+(923.75);
                             $payment= $totalpayment-($totalpayment*(57/100));
                              mysql_query("UPDATE tbl_prospectivestudents set Mode='3',Fee = '$payment', honors = 'Salutatorian w/ 2nd siblings enrolled', Discount = '$honordiscount' where username='$studentnumber'");
 
-                                   mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','$payment','$studentnumber')");
+                                   mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','','$studentnumber')");
+
+                                   mysql_query("UPDATE tbl_cashierpayment set Balance='$payment' where username='$studentnumber'"); 
                      
                           }
 
@@ -489,14 +602,18 @@ if(isset($_POST['submit'])){
                               $payment= $totalpayment-($totalpayment*(30/100));
                               mysql_query("UPDATE tbl_prospectivestudents set Mode='3',Fee = '$payment',honors = 'Transferee 1st honor', Discount = '$transferdiscount' where username='$studentnumber'");
 
-                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','$payment','$studentnumber')");
+                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','','$studentnumber')");
+
+                                    mysql_query("UPDATE tbl_cashierpayment set Balance='$payment' where username='$studentnumber'"); 
 
                           }elseif($transferdiscount=='35'){
                               $totalpayment=$total+(923.75);
                               $payment= $totalpayment-($totalpayment*(35/100));
                               mysql_query("UPDATE tbl_prospectivestudents set Mode='3',Fee = '$payment',honors = 'Transferee 1st honor w/ 3rd siblings enrolled', Discount = '$transferdiscount' where username='$studentnumber");
 
-                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','$payment','$studentnumber')");
+                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','','$studentnumber')");
+
+                                    mysql_query("UPDATE tbl_cashierpayment set Balance='$payment' where username='$studentnumber'"); 
                              
                           
                           }elseif($transferdiscount=='37'){
@@ -504,7 +621,9 @@ if(isset($_POST['submit'])){
                               $payment= $totalpayment-($totalpayment*(37/100));
                               mysql_query("UPDATE tbl_prospectivestudents set Mode='3',Fee = '$payment', honors = 'Transferee 1st honor w/ 2nd siblings enrolled', Discount = '$transferdiscount' where username='$studentnumber'");
 
-                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','$payment','$studentnumber')");
+                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','','$studentnumber')");
+
+                                    mysql_query("UPDATE tbl_cashierpayment set Balance='$payment' where username='$studentnumber'"); 
                     
                           
                           }elseif($transferdiscount=='20'){
@@ -512,7 +631,9 @@ if(isset($_POST['submit'])){
                               $payment= $totalpayment-($totalpayment*(20/100));
                               mysql_query("UPDATE tbl_prospectivestudents set Mode='3',Fee = '$payment', honors = 'Transferee 2nd honor', Discount = '$transferdiscount' where username='$studentnumber'");
 
-                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','$payment','$studentnumber')");
+                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','','$studentnumber')");
+
+                                    mysql_query("UPDATE tbl_cashierpayment set Balance='$payment' where username='$studentnumber'"); 
                
                           
                           }elseif($transferdiscount=='25'){
@@ -520,14 +641,18 @@ if(isset($_POST['submit'])){
                               $payment= $totalpayment-($totalpayment*(25/100));
                               mysql_query("UPDATE tbl_prospectivestudents set Mode='3',Fee = '$payment', honors = 'Transferee 2nd honor w/ 3rd siblings enrolled', Discount = '$transferdiscount' where username='$studentnumber'");
 
-                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','$payment','$studentnumber')");
+                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','','$studentnumber')");
+
+                                    mysql_query("UPDATE tbl_cashierpayment set Balance='$payment' where username='$studentnumber'"); 
                           
                           }elseif($transferdiscount=='27'){
                                 $totalpayment=$total+(923.75);
                               $payment= $totalpayment-($totalpayment*(27/100));
                               mysql_query("UPDATE tbl_prospectivestudents set Mode='3',Fee = '$payment', honors = 'Transferee 2nd honor w/ 2nd siblings enrolled', Discount = '$transferdiscount' where username='$studentnumber'");
 
-                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','$payment','$studentnumber')");
+                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','','$studentnumber')");
+
+                                    mysql_query("UPDATE tbl_cashierpayment set Balance='$payment' where username='$studentnumber'"); 
                               
                           
                           }elseif($transferdiscount=='10'){
@@ -535,14 +660,18 @@ if(isset($_POST['submit'])){
                               $payment= $totalpayment-($totalpayment*(10/100));
                               mysql_query("UPDATE tbl_prospectivestudents set Mode='3',Fee = '$payment', honors = 'Transferee 3rd honor', Discount = '$transferdiscount' where username='$studentnumber'");
 
-                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','$payment','$studentnumber')");
+                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','','$studentnumber')");
+
+                                    mysql_query("UPDATE tbl_cashierpayment set Balance='$payment' where username='$studentnumber'"); 
                          
                           }elseif($transferdiscount=='15'){
                                 $totalpayment=$total+(923.75);
                             $payment= $totalpayment-($totalpayment*(15/100));
                               mysql_query("UPDATE tbl_prospectivestudents set Mode='3',Fee = '$payment', honors = 'Transferee 3rd honor w/ 3rd siblings enrolled', Discount = '$transferdiscount' where username='$studentnumber'");
 
-                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','$payment','$studentnumber')");
+                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','','$studentnumber')");
+
+                                    mysql_query("UPDATE tbl_cashierpayment set Balance='$payment' where username='$studentnumber'"); 
                            
                           
                           }elseif($transferdiscount=='17'){
@@ -550,7 +679,9 @@ if(isset($_POST['submit'])){
                             $payment= $totalpayment-($totalpayment*(17/100));
                               mysql_query("UPDATE tbl_prospectivestudents set Mode='3',Fee = '$payment', honors = 'Transferee 3rd honor w/ 2nd siblings enrolled', Discount = '$transferdiscount' where username='$studentnumber'");
 
-                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','$payment','$studentnumber')");
+                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','','$studentnumber')");
+
+                                    mysql_query("UPDATE tbl_cashierpayment set Balance='$payment' where username='$studentnumber'"); 
                         
                           }
                           //kapag ang discount ay naka set ng old discount
@@ -559,63 +690,81 @@ if(isset($_POST['submit'])){
                             $payment= $totalpayment-($totalpayment*(50/100));
                               mysql_query("UPDATE  tbl_prospectivestudents set Mode='3',Fee = '$payment', honors = '1st honors', Discount = '$olddiscount' where username='$studentnumber'");
 
-                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','$payment','$studentnumber')");
+                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','','$studentnumber')");
+
+                                    mysql_query("UPDATE tbl_cashierpayment set Balance='$payment' where username='$studentnumber'"); 
                               
                         }elseif($olddiscount=='55'){
                                 $totalpayment=$total+(923.75);
                             $payment= $totalpayment-($totalpayment*(55/100));
                               mysql_query("UPDATE  tbl_prospectivestudents set Mode='3',Fee = '$payment', honors = '1st honors w/ 3rd siblings enrolled', Discount = '$olddiscount' where username='$studentnumber'");
 
-                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','$payment','$studentnumber')");
+                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','','$studentnumber')");
+
+                                    mysql_query("UPDATE tbl_cashierpayment set Balance='$payment' where username='$studentnumber'"); 
           
                         }elseif($olddiscount=='57'){
                                 $totalpayment=$total+(923.75);
                             $payment= $totalpayment-($totalpayment*(57/100));
                               mysql_query("UPDATE  tbl_prospectivestudents set Mode='3',Fee = '$payment', honors = '1st honors w/ 2nd siblings enrolled', Discount = '$olddiscount' where username='$studentnumber'");
 
-                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','$payment','$studentnumber')");
+                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','','$studentnumber')");
+
+                                    mysql_query("UPDATE tbl_cashierpayment set Balance='$payment' where username='$studentnumber'"); 
                      
                         }elseif($olddiscount=='30'){
                                 $totalpayment=$total+(923.75);
                             $payment= $totalpayment-($totalpayment*(30/100));
                               mysql_query("UPDATE  tbl_prospectivestudents set Mode='3',Fee = '$payment', honors = '2nd honors', Discount = '$olddiscount' where username='$studentnumber'");
 
-                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','$payment','$studentnumber')");
+                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','','$studentnumber')");
+
+                                    mysql_query("UPDATE tbl_cashierpayment set Balance='$payment' where username='$studentnumber'"); 
                         
                         }elseif($olddiscount=='35'){
                                 $totalpayment=$total+(923.75);
                             $payment= $totalpayment-($totalpayment*(35/100));
                               mysql_query("UPDATE  tbl_prospectivestudents set Mode='3',Fee = '$payment', honors = '3rd honors w/ 3rd siblings enrolled', Discount = '$olddiscount' where username='$studentnumber'");
 
-                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','$payment','$studentnumber')");
+                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','','$studentnumber')");
+
+                                    mysql_query("UPDATE tbl_cashierpayment set Balance='$payment' where username='$studentnumber'"); 
                              
                         }elseif($olddiscount=='37'){
                                 $totalpayment=$total+(923.75);
                             $payment= $totalpayment-($totalpayment*(37/100));
                               mysql_query("UPDATE  tbl_prospectivestudents set Mode='3',Fee = '$payment', honors = '2nd honors w/ 2nd siblings enrolled', Discount = '$olddiscount' where username='$studentnumber'");
 
-                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','$payment','$studentnumber')");
+                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','','$studentnumber')");
+
+                                    mysql_query("UPDATE tbl_cashierpayment set Balance='$payment' where username='$studentnumber'"); 
                            
                         }elseif($olddiscount=='20'){
                                 $totalpayment=$total+(923.75);
                             $payment= $totalpayment-($totalpayment*(20/100));
                               mysql_query("UPDATE  tbl_prospectivestudents set Mode='3',Fee = '$payment', honors = '3rd honors', Discount = '$olddiscount' where username='$studentnumber'");
 
-                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','$payment','$studentnumber')");
+                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','','$studentnumber')");
+
+                                    mysql_query("UPDATE tbl_cashierpayment set Balance='$payment' where username='$studentnumber'"); 
           
                         }elseif($olddiscount=='25'){
                                 $totalpayment=$total+(923.75);
                             $payment= $totalpayment-($totalpayment*(25/100));
                               mysql_query("UPDATE tbl_prospectivestudents set Mode='3',Fee = '$payment', honors = '3rd honors w/ 3rd siblings enrolled', Discount = '$olddiscount' where username='$studentnumber'");
 
-                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','$payment','$studentnumber')");
+                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','','$studentnumber')");
+
+                                    mysql_query("UPDATE tbl_cashierpayment set Balance='$payment' where username='$studentnumber'"); 
                               
                         }elseif($olddiscount=='27'){
                                 $totalpayment=$total+(923.75);
                             $payment= $totalpayment-($totalpayment*(27/100));
                               mysql_query("UPDATE tbl_prospectivestudents set Mode='3',Fee = '$payment', honors = '3rd honors w/ 2nd siblings enrolled', Discount = '$olddiscount' where username='$studentnumber'");
 
-                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','$payment','$studentnumber')");
+                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','','$studentnumber')");
+
+                                    mysql_query("UPDATE tbl_cashierpayment set Balance='$payment' where username='$studentnumber'"); 
                         
                         }
 
@@ -625,20 +774,26 @@ if(isset($_POST['submit'])){
                             $payment= $totalpayment-($totalpayment*(5/100));
                               mysql_query("UPDATE tbl_prospectivestudents set Mode='3',Fee = '$payment', honors = '2nd Child', Discount = '$siblingdiscount' where username='$studentnumber'");
 
-                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','$payment','$studentnumber')");
+                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','','$studentnumber')");
+
+                                    mysql_query("UPDATE tbl_cashierpayment set Balance='$payment' where username='$studentnumber'"); 
                              
                           }elseif($siblingdiscount=='7'){
                                 $totalpayment=$total+(923.75);
                             $payment= $totalpayment-($totalpayment*(7/100));
                               mysql_query("UPDATE tbl_prospectivestudents set Mode='3',Fee = '$payment', honors = '3rd Child', Discount = '$siblingdiscount' where username='$studentnumber'");
 
-                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','$payment','$studentnumber')");
+                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','','$studentnumber')");
+
+                                    mysql_query("UPDATE tbl_cashierpayment set Balance='$payment' where username='$studentnumber'"); 
                       
                           }elseif($siblingdiscount=='100'){
                               $payment= $total-($total*(100/100));
                               mysql_query("UPDATE tbl_prospectivestudents set Mode='3',Fee = '$payment', honors = '4th Child', Discount = '$siblingdiscount' where username='$studentnumber'");
 
-                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','$payment','$studentnumber')");
+                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','','$studentnumber')");
+
+                                    mysql_query("UPDATE tbl_cashierpayment set Balance='$payment' where username='$studentnumber'"); 
                            
                         }
                      }elseif($select=='4'){
@@ -648,7 +803,9 @@ if(isset($_POST['submit'])){
                               $payment= $total+(3170);
                               mysql_query("UPDATE tbl_prospectivestudents set Mode='4',honors = 'No discount', Fee = $payment, Discount = $nonediscount where username='$studentnumber'");
 
-                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','$payment','$studentnumber')");
+                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','','$studentnumber')");
+
+                                    mysql_query("UPDATE tbl_cashierpayment set Balance='$payment' where username='$studentnumber'"); 
                               }
 
                           //kapag ang discount ay naka set ng honor discount
@@ -656,28 +813,36 @@ if(isset($_POST['submit'])){
                            $payment= $total-($total*(100/100));
                             mysql_query("UPDATE tbl_prospectivestudents set Mode='4',Fee = '$payment', honors = 'Valedictorian', Discount = '$honordiscount' where username='$studentnumber'");
 
-                                  mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','$payment','$studentnumber')");
+                                  mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','','$studentnumber')");
+
+                                  mysql_query("UPDATE tbl_cashierpayment set Balance='$payment' where username='$studentnumber'"); 
                      
                           }elseif($honordiscount=='50'){
                              $totalpayment=$total+(3170);
                              $payment= $totalpayment-($totalpayment*(50/100));
                              mysql_query("UPDATE tbl_prospectivestudents set Mode='4',honors = 'Salutatorian', Discount = '$honordiscount', Fee = '$payment' where username='$studentnumber'");
 
-                                   mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','$payment','$studentnumber')");
+                                   mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','','$studentnumber')");
+
+                                   mysql_query("UPDATE tbl_cashierpayment set Balance='$payment' where username='$studentnumber'"); 
 
                           }elseif($honordiscount=='55'){
                             $totalpayment=$total+(3170);
                             $payment= $totalpayment-($totalpayment*(55/100));
                              mysql_query("UPDATE tbl_prospectivestudents set Mode='4',Fee = '$payment',honors = 'Salutatorian w/ 3rd siblings enrolled',Discount = '$honordiscount' where username='$studentnumber'");
 
-                                   mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','$payment','$studentnumber')");
+                                   mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','','$studentnumber')");
+
+                                   mysql_query("UPDATE tbl_cashierpayment set Balance='$payment' where username='$studentnumber'"); 
           
                           }elseif($honordiscount=='57'){
                             $totalpayment=$total+(3170);
                             $payment= $totalpayment-($totalpayment*(57/100));
                              mysql_query("UPDATE tbl_prospectivestudents set Mode='4',Fee = '$payment', honors = 'Salutatorian w/ 2nd siblings enrolled', Discount = '$honordiscount' where username='$studentnumber'");
 
-                                   mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','$payment','$studentnumber')");
+                                   mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','','$studentnumber')");
+
+                                   mysql_query("UPDATE tbl_cashierpayment set Balance='$payment' where username='$studentnumber'"); 
                      
                           }
 
@@ -687,14 +852,18 @@ if(isset($_POST['submit'])){
                               $payment= $totalpayment-($totalpayment*(30/100));
                               mysql_query("UPDATE tbl_prospectivestudents set Mode='4',Fee = '$payment',honors = 'Transferee 1st honor', Discount = '$transferdiscount' where username='$studentnumber'");
 
-                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','$payment','$studentnumber')");
+                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','','$studentnumber')");
+
+                                    mysql_query("UPDATE tbl_cashierpayment set Balance='$payment' where username='$studentnumber'"); 
 
                           }elseif($transferdiscount=='35'){
                               $totalpayment=$total+(3170);
                               $payment= $totalpayment-($totalpayment*(35/100));
                               mysql_query("UPDATE tbl_prospectivestudents set Mode='4',Fee = '$payment',honors = 'Transferee 1st honor w/ 3rd siblings enrolled', Discount = '$transferdiscount' where username='$studentnumber");
 
-                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','$payment','$studentnumber')");
+                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','','$studentnumber')");
+
+                                    mysql_query("UPDATE tbl_cashierpayment set Balance='$payment' where username='$studentnumber'"); 
                              
                           
                           }elseif($transferdiscount=='37'){
@@ -702,7 +871,9 @@ if(isset($_POST['submit'])){
                               $payment= $totalpayment-($totalpayment*(37/100));
                               mysql_query("UPDATE tbl_prospectivestudents set Mode='4',Fee = '$payment', honors = 'Transferee 1st honor w/ 2nd siblings enrolled', Discount = '$transferdiscount' where username='$studentnumber'");
 
-                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','$payment','$studentnumber')");
+                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','','$studentnumber')");
+
+                                    mysql_query("UPDATE tbl_cashierpayment set Balance='$payment' where username='$studentnumber'"); 
                     
                           
                           }elseif($transferdiscount=='20'){
@@ -710,7 +881,9 @@ if(isset($_POST['submit'])){
                               $payment= $totalpayment-($totalpayment*(20/100));
                               mysql_query("UPDATE tbl_prospectivestudents set Mode='4',Fee = '$payment', honors = 'Transferee 2nd honor', Discount = '$transferdiscount' where username='$studentnumber'");
 
-                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','$payment','$studentnumber')");
+                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','','$studentnumber')");
+
+                                    mysql_query("UPDATE tbl_cashierpayment set Balance='$payment' where username='$studentnumber'"); 
                
                           
                           }elseif($transferdiscount=='25'){
@@ -718,14 +891,18 @@ if(isset($_POST['submit'])){
                               $payment= $totalpayment-($totalpayment*(25/100));
                               mysql_query("UPDATE tbl_prospectivestudents set Mode='4',Fee = '$payment', honors = 'Transferee 2nd honor w/ 3rd siblings enrolled', Discount = '$transferdiscount' where username='$studentnumber'");
 
-                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','$payment','$studentnumber')");
+                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','','$studentnumber')");
+
+                                    mysql_query("UPDATE tbl_cashierpayment set Balance='$payment' where username='$studentnumber'"); 
                           
                           }elseif($transferdiscount=='27'){
                                 $totalpayment=$total+(3170);
                               $payment= $totalpayment-($totalpayment*(27/100));
                               mysql_query("UPDATE tbl_prospectivestudents set Mode='4',Fee = '$payment', honors = 'Transferee 2nd honor w/ 2nd siblings enrolled', Discount = '$transferdiscount' where username='$studentnumber'");
 
-                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','$payment','$studentnumber')");
+                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','','$studentnumber')");
+
+                                    mysql_query("UPDATE tbl_cashierpayment set Balance='$payment' where username='$studentnumber'"); 
                               
                           
                           }elseif($transferdiscount=='10'){
@@ -733,14 +910,18 @@ if(isset($_POST['submit'])){
                               $payment= $totalpayment-($totalpayment*(10/100));
                               mysql_query("UPDATE tbl_prospectivestudents set Mode='4',Fee = '$payment', honors = 'Transferee 3rd honor', Discount = '$transferdiscount' where username='$studentnumber'");
 
-                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','$payment','$studentnumber')");
+                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','','$studentnumber')");
+
+                                    mysql_query("UPDATE tbl_cashierpayment set Balance='$payment' where username='$studentnumber'"); 
                          
                           }elseif($transferdiscount=='15'){
                                 $totalpayment=$total+(3170);
                             $payment= $totalpayment-($totalpayment*(15/100));
                               mysql_query("UPDATE tbl_prospectivestudents set Mode='4',Fee = '$payment', honors = 'Transferee 3rd honor w/ 3rd siblings enrolled', Discount = '$transferdiscount' where username='$studentnumber'");
 
-                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','$payment','$studentnumber')");
+                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','','$studentnumber')");
+
+                                    mysql_query("UPDATE tbl_cashierpayment set Balance='$payment' where username='$studentnumber'"); 
                            
                           
                           }elseif($transferdiscount=='17'){
@@ -748,7 +929,9 @@ if(isset($_POST['submit'])){
                             $payment= $totalpayment-($totalpayment*(17/100));
                               mysql_query("UPDATE tbl_prospectivestudents set Mode='4',Fee = '$payment', honors = 'Transferee 3rd honor w/ 2nd siblings enrolled', Discount = '$transferdiscount' where username='$studentnumber'");
 
-                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','$payment','$studentnumber')");
+                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','','$studentnumber')");
+
+                                    mysql_query("UPDATE tbl_cashierpayment set Balance='$payment' where username='$studentnumber'"); 
                         
                           }
                           //kapag ang discount ay naka set ng old discount
@@ -757,63 +940,81 @@ if(isset($_POST['submit'])){
                             $payment= $totalpayment-($totalpayment*(50/100));
                               mysql_query("UPDATE  tbl_prospectivestudents set Mode='4',Fee = '$payment', honors = '1st honors', Discount = '$olddiscount' where username='$studentnumber'");
 
-                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','$payment','$studentnumber')");
+                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','','$studentnumber')");
+
+                                    mysql_query("UPDATE tbl_cashierpayment set Balance='$payment' where username='$studentnumber'"); 
                               
                         }elseif($olddiscount=='55'){
                                 $totalpayment=$total+(3170);
                             $payment= $totalpayment-($totalpayment*(55/100));
                               mysql_query("UPDATE  tbl_prospectivestudents set Mode='4',Fee = '$payment', honors = '1st honors w/ 3rd siblings enrolled', Discount = '$olddiscount' where username='$studentnumber'");
 
-                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','$payment','$studentnumber')");
+                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','','$studentnumber')");
+
+                                    mysql_query("UPDATE tbl_cashierpayment set Balance='$payment' where username='$studentnumber'"); 
           
                         }elseif($olddiscount=='57'){
                                 $totalpayment=$total+(3170);
                             $payment= $totalpayment-($totalpayment*(57/100));
                               mysql_query("UPDATE  tbl_prospectivestudents set Mode='4',Fee = '$payment', honors = '1st honors w/ 2nd siblings enrolled', Discount = '$olddiscount' where username='$studentnumber'");
 
-                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','$payment','$studentnumber')");
+                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','','$studentnumber')");
+
+                                    mysql_query("UPDATE tbl_cashierpayment set Balance='$payment' where username='$studentnumber'"); 
                      
                         }elseif($olddiscount=='30'){
                                 $totalpayment=$total+(3170);
                             $payment= $totalpayment-($totalpayment*(30/100));
                               mysql_query("UPDATE  tbl_prospectivestudents set Mode='4',Fee = '$payment', honors = '2nd honors', Discount = '$olddiscount' where username='$studentnumber'");
 
-                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','$payment','$studentnumber')");
+                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','','$studentnumber')");
+
+                                    mysql_query("UPDATE tbl_cashierpayment set Balance='$payment' where username='$studentnumber'"); 
                         
                         }elseif($olddiscount=='35'){
                                 $totalpayment=$total+(3170);
                             $payment= $totalpayment-($totalpayment*(35/100));
                               mysql_query("UPDATE  tbl_prospectivestudents set Mode='4',Fee = '$payment', honors = '3rd honors w/ 3rd siblings enrolled', Discount = '$olddiscount' where username='$studentnumber'");
 
-                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','$payment','$studentnumber')");
+                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','','$studentnumber')");
+
+                                    mysql_query("UPDATE tbl_cashierpayment set Balance='$payment' where username='$studentnumber'"); 
                              
                         }elseif($olddiscount=='37'){
                                 $totalpayment=$total+(3170);
                             $payment= $totalpayment-($totalpayment*(37/100));
                               mysql_query("UPDATE  tbl_prospectivestudents set Mode='4',Fee = '$payment', honors = '2nd honors w/ 2nd siblings enrolled', Discount = '$olddiscount' where username='$studentnumber'");
 
-                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','$payment','$studentnumber')");
+                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','','$studentnumber')");
+
+                                    mysql_query("UPDATE tbl_cashierpayment set Balance='$payment' where username='$studentnumber'"); 
                            
                         }elseif($olddiscount=='20'){
                                 $totalpayment=$total+(3170);
                             $payment= $totalpayment-($totalpayment*(20/100));
                               mysql_query("UPDATE  tbl_prospectivestudents set Mode='4',Fee = '$payment', honors = '3rd honors', Discount = '$olddiscount' where username='$studentnumber'");
 
-                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','$payment','$studentnumber')");
+                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','','$studentnumber')");
+
+                                    mysql_query("UPDATE tbl_cashierpayment set Balance='$payment' where username='$studentnumber'"); 
           
                         }elseif($olddiscount=='25'){
                                 $totalpayment=$total+(3170);
                             $payment= $totalpayment-($totalpayment*(25/100));
                               mysql_query("UPDATE tbl_prospectivestudents set Mode='4',Fee = '$payment', honors = '3rd honors w/ 3rd siblings enrolled', Discount = '$olddiscount' where username='$studentnumber'");
 
-                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','$payment','$studentnumber')");
+                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','','$studentnumber')");
+
+                                    mysql_query("UPDATE tbl_cashierpayment set Balance='$payment' where username='$studentnumber'"); 
                               
                         }elseif($olddiscount=='27'){
                                 $totalpayment=$total+(3170);
                             $payment= $totalpayment-($totalpayment*(27/100));
                               mysql_query("UPDATE tbl_prospectivestudents set Mode='4',Fee = '$payment', honors = '3rd honors w/ 2nd siblings enrolled', Discount = '$olddiscount' where username='$studentnumber'");
 
-                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','$payment','$studentnumber')");
+                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','','$studentnumber')");
+
+                                    mysql_query("UPDATE tbl_cashierpayment set Balance='$payment' where username='$studentnumber'"); 
                         
                         }
 
@@ -823,20 +1024,26 @@ if(isset($_POST['submit'])){
                             $payment= $totalpayment-($totalpayment*(5/100));
                               mysql_query("UPDATE tbl_prospectivestudents set Mode='4',Fee = '$payment', honors = '2nd Child', Discount = '$siblingdiscount' where username='$studentnumber'");
 
-                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','$payment','$studentnumber')");
+                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','','$studentnumber')");
+
+                                    mysql_query("UPDATE tbl_cashierpayment set Balance='$payment' where username='$studentnumber'"); 
                              
                           }elseif($siblingdiscount=='7'){
                                 $totalpayment=$total+(3170);
                             $payment= $totalpayment-($totalpayment*(7/100));
                               mysql_query("UPDATE tbl_prospectivestudents set Mode='4',Fee = '$payment', honors = '3rd Child', Discount = '$siblingdiscount' where username='$studentnumber'");
 
-                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','$payment','$studentnumber')");
+                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','','$studentnumber')");
+
+                                    mysql_query("UPDATE tbl_cashierpayment set Balance='$payment' where username='$studentnumber'"); 
                       
                           }elseif($siblingdiscount=='100'){
                               $payment= $total-($total*(100/100));
                               mysql_query("UPDATE tbl_prospectivestudents set Mode='4',Fee = '$payment', honors = '4th Child', Discount = '$siblingdiscount' where username='$studentnumber'");
 
-                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','$payment','$studentnumber')");
+                                    mysql_query("INSERT INTO tbl_cashierpayment (id,Date_received,Amount,Or_number,First_Payment,Second_Payment,Third_Payment,Fourth_Payment,Balance,username) values ('$idnumber','','','','','','','','','$studentnumber')");
+
+                                    mysql_query("UPDATE tbl_cashierpayment set Balance='$payment' where username='$studentnumber'"); 
                            
                         }
                      }
@@ -1053,18 +1260,20 @@ if(isset($_POST['submit'])){
   <div class="subnavbar-inner">
     <div class="container">
       <ul class="mainnav">
-        <li><a href="registrar.php"><i class="fa fa-dashboard"></i><span>Home</span> </a> </li>
-        <li><a href="reports.html"><i class="fa fa-plus"></i><span>Create acount</span> </a> </li>
-        <li><a href="admission.php"><i class="fa fa-code"></i><span>Admission</span> </a></li>
-        <li class="active"><a href="#"><i class="fa fa-bar-chart"></i><span>Inquiry</span> </a> </li>
-        <li><a href="shortcodes.html"><i class="fa fa-code"></i><span>Course & Subjects</span> </a> </li>
+        <li ><a href="registrar.php"><i class="fa fa-home"></i><span>Home</span> </a> </li>
+        <li><a href="createaccounts.php"><i class="fa fa-plus"></i><span>Create acount</span> </a> </li>
+        <li><a href="admission.php"><i class="fa fa-archive"></i><span>Admission</span> </a></li>
+        <li class="active"><a href="inquiry.php"><i class="fa fa-newspaper-o"></i><span>Inquiry</span> </a> </li>
+        <li><a href="faculty.php"><i class="fa fa-users"></i><span>Faculty</span> </a> </li>
         <li><a href="form.php"><i class="fa fa-file-pdf-o"></i><span>Form</span> </a> </li>
-        <li><a href="event.php"><i class="fa fa-calendar"></i><span>Event & Annoucement</span> </a> </li>
+        <li><a href="event.php"><i class="fa fa-calendar-minus-o"></i><span>Event & Annoucement</span> </a> </li>
         <li class="dropdown"><a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"> <i class="fa fa-long-arrow-down"></i><span>Manage</span> <b class="caret"></b></a>
           <ul class="dropdown-menu">
-            <li><a href="manageuser.php">Admin Profile</a></li>
-            <li><a href="deleteddetails.php">Deleted details</a></li>
-            <li><a href="breakdownoftuitionfees.php">Breakdown of tuition Fees</a></li>
+            <li><a href="manageuser.php"><i class="fa fa-user-secret"></i> Admin Profile</a></li>
+            <li><a href="deleteddetails.php"><i class="fa fa-trash-o"></i> Deleted details</a></li>
+            <li><a href="listofsubjects.php"><i class="fa fa-th-list"></i><span> List of Subjects</span> </a> </li>
+            <li><a href="listofschedule.php"><i class="fa fa-clock-o"></i><span> List of Schedule</span> </a> </li>
+            <li><a href="breakdownoftuitionfees.php"><i class="fa fa-money"></i> Breakdown of tuition Fees</a></li>
           </ul>
         </li>
       </ul>
