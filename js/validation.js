@@ -6,7 +6,7 @@ function freshmanlogin(){
 
 
         if(username==""){
-          document.getElementById('user').innerHTML="<span style ='color: red;'>Username are required!</span>";
+          document.getElementById('user').innerHTML="<span style ='color: red;'>Username is required!</span>";
           return false;
 
         }else{
@@ -26,7 +26,7 @@ function freshmanlogin(){
         }//Firstname
 
                         if(password==""){
-                          document.getElementById('pass').innerHTML="<span style ='color: red;'>Password are required!</span>";
+                          document.getElementById('pass').innerHTML="<span style ='color: red;'>Password is required!</span>";
                           return false;
 
                         }else{
@@ -123,7 +123,7 @@ var captcha=document.getElementById('captcha').value.length;
 var surname=document.getElementById('surname').value.length;
 
          if(surname==""){
-          document.getElementById('sur').innerHTML="<span style ='color: red;'>Surname are required!</span>";
+          document.getElementById('sur').innerHTML="<span style ='color: red;'>Surname is required!</span>";
           return false;
 
         }else{
@@ -145,7 +145,7 @@ var surname=document.getElementById('surname').value.length;
 
 var firstname=document.getElementById('firstname').value.length;
         if(firstname==""){
-          document.getElementById('first').innerHTML="<span style ='color: red;'>Firstname are required!</span>";
+          document.getElementById('first').innerHTML="<span style ='color: red;'>Firstname is required!</span>";
           return false;
 
         }else{
@@ -167,7 +167,7 @@ var firstname=document.getElementById('firstname').value.length;
 
 var username=document.getElementById('username').value.length;
         if(username==""){
-          document.getElementById('user').innerHTML="<span style ='color: red;'>Username are required!</span>";
+          document.getElementById('user').innerHTML="<span style ='color: red;'>Username is required!</span>";
           return false;
 
         }else{
@@ -188,7 +188,7 @@ var username=document.getElementById('username').value.length;
 
 
 if(password==""){
-  document.getElementById('pass').innerHTML="<span style ='color: red;'>Password are required!</span>";
+  document.getElementById('pass').innerHTML="<span style ='color: red;'>Password is required!</span>";
   return false;
 
 }else{
@@ -210,7 +210,7 @@ if(password==""){
 
 
 if(cpassword==""){
-  document.getElementById('cpass').innerHTML="<span style ='color: red;'>Confirmpassword are required!</span>";
+  document.getElementById('cpass').innerHTML="<span style ='color: red;'>Confirmpassword is required!</span>";
   return false;
 
 }else{
@@ -234,7 +234,7 @@ if(cpassword==""){
 
 
 if(email==""){
-  document.getElementById('mail').innerHTML="<span style ='color: red;'>Email are required!</span>";
+  document.getElementById('mail').innerHTML="<span style ='color: red;'>Email is required!</span>";
   return false;
 }else{
             if (!email.match(re)) {
@@ -249,7 +249,7 @@ if(email==""){
 
 
 if(captcha==""){
-  document.getElementById('cap').innerHTML="<span style ='color: red;'>Captcha are required!</span>";
+  document.getElementById('cap').innerHTML="<span style ='color: red;'>Captcha is required!</span>";
   return false;
 
 }else{

@@ -1,524 +1,887 @@
 <?php 
-	include('./links/config.php');
+    include('./links/config.php');
 ?>
-<!DOCTYPE HTML>
-<html>
-<head>
-<title>SIMS-MKS</title>
-	<!--Compatibility -->
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!DOCTYPE html>
+<html lang="en">
 
-	<!--Stylesheet for design -->
-	<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all">
-	<link href="css/font-awesome.css" rel="stylesheet" type="text/css" media="all">
-	<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <head>
 
-	 <!-- Custom styles for this template -->
-	<link href="css/owl.carousel.css" rel="stylesheet">
-	<link href="css/owl.theme.default.min.css"  rel="stylesheet">
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
 
-	<script src="js/jquery.min.js"></script>
-	<script src="js/modernizr.custom.js"></script>
+        <title>sims-mks</title>
 
+        <!-- Bootstrap Core CSS -->
+        <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Font Awesome CSS -->
+        <link href="css/font-awesome.min.css" rel="stylesheet">
 		
+	
 
+        <!-- Custom CSS -->
+        <link href="css/style.css" rel="stylesheet">
 
+     
+        <!-- Custom Fonts -->
+        <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
 
+        <!-- Template js -->
+        <script src="js/jquery-2.1.1.min.js"></script>
+        <script src="bootstrap/js/bootstrap.min.js"></script>
+        <script src="js/jquery.appear.js"></script>
 
-</head>
-<style>
-.introduction {
+        <script src="js/modernizr.custom.js"></script>
+     
 
-  background: url(./images/b1.png); background-size:cover; color:white; font: 13px/1.7em 'Calibri';
-}
-.portal {
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
 
-  background: url(./images/45.gif); background-size:cover; font: 13px/1.7em 'Calibri';
-}
-
-.team {
-	margin: 80px 0;
-	padding-bottom: 60px;
-	background:white;	
-	box-shadow: 0 12px 15px 10px rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
-	border-radius: 3px;
-
-}
-
-.team .cover .overlay {
-	height: 250px;
-	padding-top: 60px;
-	opacity: 0;
-	background: rgba(0, 168, 255, 0.9);
-	-webkit-transition: opacity 0.45s ease;
-	transition: opacity 0.45s ease;
-}
-
-.team:hover .cover .overlay {
-	opacity: 1;
-}
-
-.team .avatar {
-	position: relative;
-	z-index: 2;
-	margin-top: -60px;
-	border-radius: 50%;
-}
-
-.team .title {
-	margin: 50px 0;
-}
-
+    </head>
+    <style>
+    
 .btn {
-	font-size: 18px;
-	display: inline-block;
-	padding: 15px 30px;
-	color: white;
-	border: 2px solid transparent;
-	border-radius: 2px;
-	background: transparent;
-	-webkit-transition: all 0.3s ease;
-	transition: all 0.3s ease;
+    font-size: 18px;
+    display: inline-block;
+    padding: 15px 30px;
+    color: white;
+    border: 2px solid transparent;
+    border-radius: 2px;
+    background: transparent;
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 .btn:hover,
 .btn:focus {
-	color: white;
+    color: white;
 }
 .btn.btn-blue {
-	background: #00a8ff;
+    background: #00a8ff;
 }
 
 .btn.btn-blue:hover {
-	background: #31b9ff;
+    background: #31b9ff;
 }
 
 .btn.btn-blue-fill {
-	color: #00a8ff;
-	border-color: #00a8ff;
-	background: transparent;
+    color: #00a8ff;
+    border-color: #00a8ff;
+    background: transparent;
 }
 
 .btn.btn-blue-fill:hover {
-	color: white;
-	background: #00a8ff;
+    color: white;
+    background: #00a8ff;
 }
-
-
-.box {
-    border-radius: 3px;
-    box-shadow: 0 12px 15px 10px rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
-    padding: 10px 25px;
-    text-align: right;
-    display: block;
-    margin-top: 60px;
-    background-color: white;
-}
-.box-icon {
-     background:#f5af02;
-    border-radius: 50%;
-    display: table;
-    height: 100px;
-    margin: 0 auto;
-    width: 100px;
-    margin-top: -61px;
-}
-.box-icon span {
-    color: #fff;
-    display: table-cell;
-    text-align: center;
-    vertical-align: middle;
-}
-.info h4 {
-    font-size: 26px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-}
-.info > p {
-    color: #717171;
-    font-size: 16px;
-    padding-top: 10px;
-    text-align: justify;
-}
-.info > a {
-    background-color: #03a9f4;
-    border-radius: 2px;
-    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
-    color: #fff;
-    transition: all 0.5s ease 0s;
-}
-.info > a:hover {
-    background-color: #0288d1;
-    box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.16), 0 2px 5px 0 rgba(0, 0, 0, 0.12);
-    color: #fff;
-    transition: all 0.5s ease 0s;
-}
-p {   word-wrap: break-word; }
-</style>
-<body>
-
-	<nav class="navbar-inner navbar-fixed-top">
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-    
-      <a class="navbar-brand" href="#">MKS</a>
-    </div>
-
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-    
-     
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#registration">Registration</a></li>
-        <li><a href="./links/admissionprocedure.php">Admission</a></li>
-        <li><a href="./links/about_mks.php">About</a></li>
-        <li><a href="#applicationform">Form</a></li>
-        <li><a href="#portal">Portal</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav>
-
-
-
-
-<div class="banner" id="home">
-	<div class="banner-top">
-			<div class="heading"></div>
-	</div>
-	</div><!--This is for mks home page banner -->
-
-
-<!--online registration-->	
-	<div id="registration" class="registration">
-		<div class="container">
-
-			<div class="row">
-				<div class="col-md-2">
-				
-				</div>
-				<div class="col-md-4">
-					<div class="team text-center">
-						<div class="cover" style="background:url('images/04.jpg'); background-position: center; background-size:cover;">
-							<div class="overlay text-center">
-							</div>
-						</div>
-						<div class="title">
-							<h4>Online Registration</h4>
-							<h5 class="muted regular">For Freshmen</h5>
-						</div>
-						<a href="./links/newstudent/freshmanregister.php" class="btn btn-blue-fill ripple">Register</a>	
-					</div>
-				</div>
-				<div class="col-md-4">
-					<div class="team text-center">
-						<div class="cover" style="background:url('images/04.jpg'); background-position: center; background-size:cover;">
-							<div class="overlay text-center">
-		
-							</div>
-						</div>
-						<div class="title">
-						    <h4>Online Registration</h4>
-							<h5 class="muted regular">For Transferee</h5>
-						</div>
-						<a href="./links/newstudent/transfereeregister.php" class="btn btn-blue-fill ripple">Register</a>	
-					</div>
-				</div>
-				<div class="col-md-2">
-				
-				</div>
-			</div>
-		</div>
-	</div>
-<!--online registration-->	
-
-
-
-
-
-<!-- introduction -->
-	<div class="introduction">
-		<div class="container">
-			<!--Mks Event -->
-			<div class="col-md-6">
-				<h2>Welcome!</h2>
-				 			  <p>
-						      We are indeed very grateful to have you back. Your stay here proved our as an institution where you can learn and at the same time enjoy what you are doing.
-						      </p> 
-						      <p>
-						      To our new students, we are welcoming you with open arms and hearts that you may consider Maria Katrina School your second home.
-						      </p> 
-						      <p>
-						      A lot of schools have been mushrooming nowadays and choosing to be at MKS is one thing we want you to be proud of. This school promises to mold you physically, morally, emotionally, socially, and intellectually through the different academic and cultural activities in store for you.
-						      </p> 
-						      <p>
-						      We believe that educations does not stop in a four-corner room so we also thought of putting up different clubs and organizations, which you may join. These aims to develop the various aspects of an individual to help them prepare themselves for a better tomorrow.
-						      </p>
-						      <p>
-						      We encourage you to actively participate in the realization of the psychological dictum "Learning while Enjoying" in which you will find your stay here educationally fulfilling and personally satisfying.
-						      </p>
-						      <p>
-						      We do hope that you will cooperate with us in all our endeavors.
-						      </p> 
-						      <p>
-						      God Bless!
-						      </p>
-			</div>
-		<div class="col-md-6">
-				
-                                           <?php
-                                           $event="SELECT * from tbl_event";
-                                           $res_event=mysql_query($event);
-
-                                           if(mysql_num_rows($res_event)>0){
-
-                                           while($event=mysql_fetch_array($res_event)){
-                                           	            $eventimage1= $event['event1_image'];
-                              							$eventdate1= $event['event1_date'];
-                              							$eventtitle1= $event['event1_title'];
-                              							$eventdescription1= $event['event1_description'];
-
-
-                              							$eventimage2= $event['event2_image'];
-                              							$eventdate2= $event['event2_date'];
-                              							$eventtitle2= $event['event2_title'];
-                              							$eventdescription2= $event['event2_description'];
-
-
-                              							$eventimage3= $event['event3_image'];
-                              							$eventdate3= $event['event3_date'];
-                              							$eventtitle3= $event['event3_title'];
-                              							$eventdescription3= $event['event3_description'];
-
-                                                   ?>
-                                                    <ul class="event-list">
-	                                                      <li>
-	                                                        <time datetime="2014-07-20">
-	                                                  
-	                                                          
-	                                                          <i class="fa fa-calendar fa-fw fa-5x" ></i>
-	                                                          <h5>D/M/Y</h5>
-	                                                   		  <h5><?php echo $eventdate1?></h5>
-	                                                        
-	                                                        </time>
-	                                                       <img alt="Event1" src="./photos/<?php echo $eventimage1?>" />
-	                                                        <div class="info">
-	                                                          <p class="title"><?php echo $eventtitle1?></p>
-	                                                          <p class="desc"><?php echo $eventdescription1?>
-	                                                       
-	                                                          </p>
-	                                                        </div>
-	                                                      </li>
-
-                                                       <li>
-															<time datetime="2014-07-20 0000">
-															
-															  <i class="fa fa-calendar fa-fw fa-5x" ></i>
-	                                                          <h5>D/M/Y</h5>
-	                                                   		  <h5><?php echo $eventdate2?></h5>
-															
-															</time>
-															<img alt="Event2" src="./photos/<?php echo $eventimage2?>" />
-															<div class="info">
-																<p class="title"><?php echo $eventtitle2?></p>
-	                                                          <p class="desc"><?php echo $eventdescription2?>
-															</div>
-														</li>
-
-
-														<li>
-															<time datetime="2014-07-20 2000">
-															  <i class="fa fa-calendar fa-fw fa-5x" ></i>
-	                                                          <h5>D/M/Y</h5>
-	                                                   		  <h5><?php echo $eventdate3?></h5>
-															</time>
-															<img alt="Event3" src="./photos/<?php echo $eventimage3?>" />
-															<div class="info">
-																<p class="title"><?php echo $eventtitle3?></p>
-	                                                          <p class="desc"><?php echo $eventdescription3?>
-															</div>
-														</li>
-                                                      </ul>
-                                                      <?php
-                                                  }
-                                                 }
-                                             
-
-                                           ?>
-                                          	
-                                              
-			</div>
-
-		
-			
-			<div class="clearfix"> </div>
-		</div>
-	</div>
-<!-- skills -->
-
-
-<!--online registration-->	
-	<div id="applicationform" class="applicationform">
-		<div class="container">
-
-		<?php 
-			
-			  $form="SELECT * from tbl_applicationform";
-			  $result=mysql_query($form);
-
-
-			  if(mysql_num_rows($result)>0){
-
-			  	while($form=mysql_fetch_array($result)){
-
-			  		$db_newstudentform=$form['newstudentform'];
-			  		$db_transfereeform=$form['transfereeform'];
-
-
-			
-
-			?>
-			<div class="row">
-				<div class="col-md-2">
-
-				</div>
-				<div class="col-md-4">
-					<div class="team text-center">
-						<div class="cover" style="background:url('images/pdf_icon.png'); background-size:cover;">
-							<div class="overlay text-center">
-							</div>
-						</div>
-						<div class="title">
-							<h4>Application Form</h4>
-							<h5 class="muted regular">For Freshmen</h5>
-						</div>
-						<a href='./applicationform/<?php echo $db_newstudentform ?>' download class="btn btn-blue-fill ripple">DOWNLOAD</a>
-					</div>
-				</div>
-				<div class="col-md-4">
-					<div class="team text-center">
-						<div class="cover" style="background:url('images/pdf_icon.png'); background-size:cover;">
-							<div class="overlay text-center">
-		
-							</div>
-						</div>
-						<div class="title">
-						    <h4>Application Form</h4>
-							<h5 class="muted regular">For Transferee</h5>
-						</div>
-						<a href='./applicationform/<?php echo $db_transfereeform ?>' download class="btn btn-blue-fill ripple">DOWNLOAD</a>
-					</div>
-				</div>
-				<div class="col-md-2">
-
-				</div>
-			</div>
-			<?php
-
-			  	}
-
-			  }
-
-
-
-		?>
-			  			
-
-			
-		</div>
-	</div>
-<!--online registration-->	
-
-
-
-
-
-
-
-<div id="portal" class="portal">
-<div class="container">
-    <div class="row">
-        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-            <div class="box">
-                <div class="box-icon">
-                    <span class="fa fa-4x fa-html5"></span>
-                </div>
-                <div class="info">
-                    <h4 class="text-center">Student Portal</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti atque, tenetur quam aspernatur corporis at explicabo nulla dolore necessitatibus doloremque exercitationem sequi dolorem architecto perferendis quas aperiam debitis dolor soluta!</p>
-                    <a href="" class="btn btn-blue-fill ripple">Login</a>
-                </div>
-            </div>
-        </div>
+    </style>
+    <body>
         
-        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-            <div class="box">
-                <div class="box-icon">
-                    <span class="fa fa-4x fa-css3"></span>
+        <!-- Start Logo Section -->
+        <section id="logo-section" class="text-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="logo text-center">
+                            <h1>Student Information Management System</h1>
+                            <span>Maria Katrina School</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="info">
-                    <h4 class="text-center">Teacher Portal</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti atque, tenetur quam aspernatur corporis at explicabo nulla dolore necessitatibus doloremque exercitationem sequi dolorem architecto perferendis quas aperiam debitis dolor soluta!</p>
-                    <a href="" class="btn btn-blue-fill ripple">Login</a>
+            </div>
+        </section>
+        <!-- End Logo Section -->
+        
+        
+        <!-- Start Main Body Section -->
+        <div class="mainbody-section text-center">
+            <div class="container">
+                <div class="row">
+                    
+                    <div class="col-md-3">
+                        
+                        <div class="menu-item blue">
+                            <a href="#feature-modal" data-toggle="modal">
+                                <i class="fa fa-laptop"></i>
+                                <p>Online Registration</p>
+
+                            </a>
+                        </div>
+                        
+                        <div class="menu-item green">
+                            <a href="#portfolio-modal" data-toggle="modal">
+                                <i class="fa fa-file-text"></i>
+                                <p>Admission</p>
+                            </a>
+                        </div>
+                        
+                        <div class="menu-item light-red">
+                            <a href="#about-modal" data-toggle="modal">
+                                <i class="fa fa-info-circle"></i>
+                                <p>About MKS</p>
+                            </a>
+                        </div>
+                        
+                    </div>
+                    
+                    <div class="col-md-6">
+                        
+                        <!-- Start Carousel Section -->
+                        <div class="home-slider">
+                            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" style="padding-bottom: 30px;">
+                                <!-- Indicators -->
+                                <ol class="carousel-indicators">
+                                    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                                    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                                    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                                </ol>
+
+                                <!-- Wrapper for slides -->
+                                <div class="carousel-inner">
+                                    <div class="item active">
+                                        <img src="images/about-03.jpg" class="img-responsive" alt="">
+                                    </div>
+                                    <div class="item">
+                                        <img src="images/about-02.jpg" class="img-responsive" alt="">
+                                    </div>
+                                    <div class="item">
+                                        <img src="images/about-01.jpg" class="img-responsive" alt="">
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+                        <!-- Start Carousel Section -->
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="menu-item color responsive">
+                                    <a href="#service-modal" data-toggle="modal">
+                                        <i class="fa fa-phone-square"></i>
+                                        <p>Contact</p>
+                                    </a>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6">
+                                <div class="menu-item light-orange responsive-2">
+                                    <a href="#team-modal" data-toggle="modal">
+                                        <i class="fa fa-file-pdf-o"></i>
+                                        <p>Application Form</p>
+                                    </a>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        
+                    </div>
+                    
+                    <div class="col-md-3">
+                        
+                        <div class="menu-item light-red">
+                            <a href="#contact-modal" data-toggle="modal">
+                                <i class="fa fa-users"></i>
+                                <p>Student Portal</p>
+                            </a>
+                        </div>
+                        
+                        <div class="menu-item color">
+                            <a href="#testimonial-modal" data-toggle="modal">
+                                <i class="fa fa-user"></i>
+                                <p>Teacher Portal</p>
+                            </a>
+                        </div>
+                        
+                        <div class="menu-item blue">
+                            <a href="#news-modal" data-toggle="modal">
+                                <i class="fa fa-calendar"></i>
+                                <p>Event/Annoucement</p>
+                            </a>
+                        </div>
+                        
+                    </div>
                 </div>
             </div>
         </div>
-	</div>
-</div>
-</div>
-
-
-
-
-
-<!-- footer -->
-	<div id="contact" class="footer" id="footer">
-		<div class="container">
-			<div class="col-md-3 footer-left">
-				<h3>Location</h3>
-				<ul>
-					<li><a href="#"><span></span>#10 Mendoza St., Saog,, 3019 Marilao, Bulacan</a></li>
-					 <li><a href="#"><span></span>Recognize by the government through the Department of Education.</a></li>
-
-				</ul>
-			</div>
-			<div class="col-md-3 footer-left">
-				<h3>Contact</h3>
-				<ul>
-					<li><a href="#"><span></span><i class="glyphicon glyphicon-phone"></i> 09063710368</a></li>
-				</ul>
-			</div>
-			<div class="col-md-3 footer-left">
-				<h3>School hours</h3>
-				<ul>
-				<li><a href="#"><span></span>Monday-Friday:	07:00am - 5:00pm</a></li>
-				</ul>
-					<div class="clearfix"> </div>
-			</div>
-			
-				<div class="col-md-12">
-				<div class="foot-bottom">
-					<p>SIMS-MKS | Developed by the Students of STI College-Caloocan | <a href="#"><?php  $curYear= Date('Y');
+        <!-- End Main Body Section -->
+        
+        <!-- Start Copyright Section -->
+        <div class="copyright text-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <p>SIMS-MKS | Developed by the Students of STI College-Caloocan | <a href="#"><?php  $curYear= Date('Y');
                                         echo "$curYear";
                                       ?></a></p>
-				</div>
-				</div>
-		
-	</div>
-	</div>
-<!-- footer -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Copyright Section -->
+        
+        
+        <!-- Start Feature Section -->
+        <div class="section-modal modal fade" id="feature-modal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-content">
+                <div class="close-modal" data-dismiss="modal">
+                    <div class="lr">
+                        <div class="rl">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="container">
+                    <div class="row">
+                        <div class="section-title text-center">
+                            <h3>Online Registration</h3>
+                            <p></p>
+                        </div>
+                    </div>
+                 
+                    <div class="row">
+                <div class="col-md-2 col-sm-6 col-xs-12">
+                </div>    
+                <div class="col-md-4 col-sm-6 col-xs-12">
+                    <div class="team text-center">
+                        <div class="cover" style="background:url('images/04.jpg'); background-position: center; background-size:cover;">
+                            <div class="overlay text-center">
+                            </div>
+                        </div>
+                        <div class="title">
+                            <h4>Online Registration</h4>
+                            <h5 class="muted regular">For Incoming Freshmen</h5>
+                        </div>
+                        <a href="./links/newstudent/freshmanregister.php" class="btn btn-blue-fill ripple">Register</a> 
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 col-xs-12">
+                    <div class="team text-center">
+                        <div class="cover" style="background:url('images/04.jpg'); background-position: center; background-size:cover;">
+                            <div class="overlay text-center">
+        
+                            </div>
+                        </div>
+                        <div class="title">
+                            <h4>Online Registration</h4>
+                            <h5 class="muted regular">For Transferee</h5>
+                        </div>
+                        <a href="./links/newstudent/transfereeregister.php" class="btn btn-blue-fill ripple">Register</a>   
+                    </div>
+                </div>
+                <div class="col-md-2 col-sm-6 col-xs-12">
+                </div>
+              
+            </div><!-- /.row -->
+                </div>
+                
+            </div>
+        </div>
+        <!-- End Feature Section -->
+        
+        
+        
+        <!-- Start Portfolio Section -->
+        <div class="section-modal modal fade" id="portfolio-modal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-content">
+                <div class="close-modal" data-dismiss="modal">
+                    <div class="lr">
+                        <div class="rl">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="container">
+                    <div class="row">
+                        <div class="section-title text-center">
+                            <h3>Admission requirements</h3>
+                            <p></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="about-text">
+                                <p></p>
+                                <div class="row">
+                                    <div class="col-md-4 col-sm-6">
+                                    <h3>2.1 New students</h3>
+                                        <ul>
+                                            <li><i class="fa fa-check-square-o"></i>Birth Certificate, original copy if possible.</li>
+                                            <li><i class="fa fa-check-square-o"></i>Form 138, original copy if possible.</li>
+                                            <li><i class="fa fa-check-square-o"></i>1x1 picture will be taken at the school.</li>
+                                            <li><i class="fa fa-check-square-o"></i>Good moral character certificate, original copy if possible.</li>
+                                            <li><i class="fa fa-check-square-o"></i>Must have passed both written and oral examinations conducted by the admission office.</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-4 col-sm-6">
+                                    <h3>2.2 Transferees</h3>
+                                        <ul>
+                                    
+                                            <li><i class="fa fa-check-square-o"></i>No failing grades or dropped subjects</li>
+                                            <li><i class="fa fa-check-square-o"></i>Need to pass the entrance exam</li>
+                                            <li><i class="fa fa-check-square-o"></i>Birth Certificate, original copy if possible.</li>
+                                            <li><i class="fa fa-check-square-o"></i>Form 138, original copy if possible.</li>
+                                            <li><i class="fa fa-check-square-o"></i>1x1 picture will be taken at the school.</li>
+                                            <li><i class="fa fa-check-square-o"></i>Good moral character certificate, original copy if possible.</li>
+                                            <li><i class="fa fa-check-square-o"></i>Form 137, original copy if possible.</li>
+                                        </ul>
+                                    </div>
+                                </div><!-- /.row -->
+                            </div>
+                        </div>
+                    </div><!-- /.row -->
+                    <div class="row">
+                        <div class="section-title text-center">
+                            <h3>Admission procedures</h3>
+                            <p></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="about-text">
+                                <p></p>
+                                <div class="row">
+                                    <div class="col-md-4 col-sm-6">
+                                        <ul>
+                                            <li><i class="fa fa-check-square-o"></i>Pay testing fee at the Cashier's office.</li>
+                                            <li><i class="fa fa-check-square-o"></i>Submit copy of Admission Form, photocopy of Form 138 and take a picture to the Admission Secretary</li>
+                                            <li><i class="fa fa-check-square-o"></i>Get testing permit.</li>
+                                            <li><i class="fa fa-check-square-o"></i>Take the Admission Exam.</li>
+                                            <li><i class="fa fa-check-square-o"></i>If passed, take an interview.</li>
+                                            <li><i class="fa fa-check-square-o"></i>After a week, get the final result.</li>
+                                            <li><i class="fa fa-check-square-o"></i>If admitted, pass the oginal copy of Form 138.</li>
+                                        </ul>
+                                    </div>
+                                  
+                                </div><!-- /.row -->
+
+                                <div class="row">
+                                    <div class="col-md-4 col-sm-6">
+                                    <h3>Old students</h3>
+                                        <ul>
+                                            <li><i class="fa fa-check-square-o"></i>Submit Original Report Card at the Cashier's Office.</li>
+                                            <li><i class="fa fa-check-square-o"></i>Proceed to the Cashier’s office for assessment and payment of fees.</li>
+                                           
+                                        </ul>
+                                    </div>
+                                  
+                                </div><!-- /.row -->
+                            </div>
+                        </div>
+                    </div><!-- /.row -->
+
+                </div>
+                
+            </div>
+        </div>
+        <!-- End Portfolio Section -->
+        
+        
+        <!-- Start About Us Section -->
+        <div class="section-modal modal fade" id="about-modal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-content">
+                <div class="close-modal" data-dismiss="modal">
+                    <div class="lr">
+                        <div class="rl">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="container">
+                    <div class="row">
+                        <div class="section-title text-center">
+                            <h3>About MKS</h3>
+                            <p></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="about-text">
+                            <h2>Welcome,</h2>
+                                <p>We are indeed very grateful to have you back. Your stay here proved our as an institution where you can learn and at the same time enjoy what you are doing.
+
+                                To our new students, we are welcoming you with open arms and hearts that you may consider Maria Katrina School your second home.
+
+                                A lot of schools have been mushrooming nowadays and choosing to be at MKS is one thing we want you to be proud of. This school promises to mold you physically, morally, emotionally, socially, and intellectually through the different academic and cultural activities in store for you.
+
+                                We believe that educations does not stop in a four-corner room so we also thought of putting up different clubs and organizations, which you may join. These aims to develop the various aspects of an individual to help them prepare themselves for a better tomorrow.
+
+                                We encourage you to actively participate in the realization of the psychological dictum "Learning while Enjoying" in which you will find your stay here educationally fulfilling and personally satisfying.
+
+                                We do hope that you will cooperate with us in all our endeavors.
+
+                                God Bless!</p>
+                              
+                            </div>
+                        </div>
+                    </div><!-- /.row -->
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="about-text">
+                            <h2>Beginnings</h2>
+                                <p><h1 class="lead">Maria Katrina School</h1>
+                                  <p> The year was 1996 when Mr. and Mrs. Camilon were offered to buy MIDES Learning Center, a preschool operated by Mrs. Luisa Garcia in a 312 sq.m. lot at Saog, Marilao, Bulacan.</p>
+                                  <p>Armed with good business education and genuine love for children, this kind couple set forth to a determined endeavor of reviving the learning center and later developing it into an elementary school.</p>
+
+                                   <h1 class="lead">Growth and Development</h1>
+                                  <p>Maria Katrina School education recognizes each child as an individual in his own pattern of growth and development. The curriculum, therefore, provides rich and stimulating learning experiences, which enable him to
+                                    acquire the maximum basic educational foundation and formation. </p>
+                                <p>It gives due consideration of the child's attitudes in the process of his development into useful citizen of his country and an abiding child of God. Thus the
+                                    program offers to train and turn out children who:</p>
+
+                                    <ul>
+                                        <li><i class="fa fa-check-square-o"></i> possess the basic understanding of their being children of a loving Father who is God himself;</li>
+                                        <li><i class="fa fa-check-square-o"></i> have developed self-discipline even at an early age;</li>
+                                        <li><i class="fa fa-check-square-o"></i> enjoy learning even at an early age;</li>
+                                        <li><i class="fa fa-check-square-o"></i> have developed motor coordination and creativity through the varied experiences learned in school and at home; and</li>
+                                        <li><i class="fa fa-check-square-o"></i> are able to interact and relate well with others.</li>
+                                    </ul>
+                              
+                            </div>
+                        </div>
+                    </div><!-- /.row -->
+                    <div class="row">
+                    
+                        <div class="col-md-12">
+                            <div class="custom-tab">
+                        
+                                <ul class="nav nav-tabs nav-justified" role="tablist">
+                                    <li class="active"><a href="#tab-1" role="tab" data-toggle="tab">Our Mission</a></li>
+                                    <li><a href="#tab-2" role="tab" data-toggle="tab">Goals and Objectives</a></li>
+                                    <li><a href="#tab-3" role="tab" data-toggle="tab">Our Vission</a></li>
+                                </ul>
+
+                                <div class="tab-content">
+
+                                    <div class="tab-pane active" id="tab-1">
+                                        <p>The Maria Katrina School adheres to the belief that it is through the quality of education a child gets that he is able to adapt himself to the changes of times; thus, preparing him to become a responsible citizen in the services of God and country.</p>
+                                     </div>
 
 
-		
+                                    <div class="tab-pane" id="tab-2">
+                                        <p>In June of 1997, the Learning Center, then catering to preschoolers and first graders, was named Maria Katrina School. Maria Katrina School started with 70 preschoolers and 20 grade I pupils, taught in improvised classrooms.</p>
+                                        <p>Soon enough,the need for additional classroom was felt and a six classroom - two-storey building was erected in summer of 1998. On its second year, Maria Katrina School operated preschool and elementary education from Grade I to Grade VI pupils.</p>
+                                        <p>The year 1999 is a very optimistic year for the Katrinians. Two additional rooms were built to accomodate an increasing population. Maria Katrina has yet to prove herself though, but she surely has gone a long way since her humble beginnings.</p>
+                                    </div>
 
 
-		<script src="js/jquery.1.11.1.js"></script>
-		<script src="js/owl.carousel.min.js"></script>
-		<script src="js/mooz.themes.scripts.js"></script>
-</body>
+                                    <div class="tab-pane" id="tab-3">
+                                        <br><p>"Yielding responsible citizens dedicated to the service of God and Country"..</p>
+                                    </div>
+
+                                </div><!-- /.tab-content -->
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        <!-- End About Us Section -->
+        
+        
+        <!-- Start Service Section -->
+        <div class="section-modal modal fade" id="service-modal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-content">
+                <div class="close-modal" data-dismiss="modal">
+                    <div class="lr">
+                        <div class="rl">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="container">
+                    <div class="row">
+                        <div class="section-title text-center">
+                            <h3>Contact</h3>
+                            <p></p>
+                        </div>
+                    </div>
+                    <div class="row"><br><br><br><br><br><br><br><br><br><br>
+                        
+                        <div class="col-md-4">
+                            <div class="footer-contact-info">
+                                <h4>Location</h4>
+                                <ul>
+                                    <li><strong>School Address:</strong>#10 Mendoza St., Saog,, 3019 Marilao, Bulacan</li>
+                                   
+                                    <li><strong>Mobile :</strong>  09063710368</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-4">
+                            <div class="footer-social text-center">
+                                <ul>
+                                    <li><a href="https://web.facebook.com/MariaKatrinaSchool/?fref=ts"><i class="fa fa-facebook"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-4">
+                            <div class="footer-contact-info">
+                                <h4>School Hours</h4>
+                                <ul>
+                                    <li><strong>Mon-Fri :</strong> 7 am to 5 pm</li>
+                                      <li>Recognize by the government through the Department of Education.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                    </div><!--/.row --> 
+                </div>
+            </div>
+        </div>
+        <!-- End Service Section -->
+        
+        
+        <!-- Start Team Member Section -->
+        <div class="section-modal modal fade" id="team-modal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-content">
+                <div class="close-modal" data-dismiss="modal">
+                    <div class="lr">
+                        <div class="rl">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="container">
+                    <div class="row">
+                        <div class="section-title text-center">
+                            <h3>Application form</h3>
+                            <p></p>
+                        </div>
+                    </div>
+                    
+                </div>
+                <?php 
+            
+              $form="SELECT * from tbl_applicationform";
+              $result=mysql_query($form);
+
+
+              if(mysql_num_rows($result)>0){
+
+                while($form=mysql_fetch_array($result)){
+
+                    $db_newstudentform=$form['newstudentform'];
+                    $db_transfereeform=$form['transfereeform'];
+
+
+            
+
+            ?>
+            <div class="row">
+                <div class="col-md-2">
+
+                </div>
+                <div class="col-md-4">
+                    <div class="team text-center">
+                        <div class="cover" style="background:url('images/pdf_icon.png'); background-size:cover;">
+                            <div class="overlay text-center">
+                            </div>
+                        </div>
+                        <div class="title">
+                            <h4>Application Form</h4>
+                            <h5 class="muted regular">For Freshmen</h5>
+                        </div>
+                        <a href='./applicationform/<?php echo $db_newstudentform ?>' download class="btn btn-blue-fill ripple">DOWNLOAD</a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="team text-center">
+                        <div class="cover" style="background:url('images/pdf_icon.png'); background-size:cover;">
+                            <div class="overlay text-center">
+        
+                            </div>
+                        </div>
+                        <div class="title">
+                            <h4>Application Form</h4>
+                            <h5 class="muted regular">For Transferee</h5>
+                        </div>
+                        <a href='./applicationform/<?php echo $db_transfereeform ?>' download class="btn btn-blue-fill ripple">DOWNLOAD</a>
+                    </div>
+                </div>
+                <div class="col-md-2">
+
+                </div>
+            </div>
+            <?php
+
+                }
+
+              }
+
+
+
+        ?>
+                
+            </div>
+        </div>
+        <!-- End Team Member Section -->
+        
+        
+        <!-- Start Latest News Section -->
+        <div class="section-modal modal fade" id="news-modal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-content">
+                <div class="close-modal" data-dismiss="modal">
+                    <div class="lr">
+                        <div class="rl">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="container">
+                    <div class="row">
+                        <div class="section-title text-center">
+                            <h3>Exclusive News</h3>
+                            <p>Duis aute irure dolor in reprehenderit in voluptate</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="latest-post">
+                                <img src="images/blog-01.jpg" class="img-responsive" alt="">
+                                <h4><a href="#">Standard Post with Image</a></h4>
+                                <div class="post-details">
+                                    <ul>
+                                        <li><i class="fa fa-user"></i> Auther : iThemesLab</li>
+                                        <li><i class="fa fa-calendar"></i> 07 Aug, 2014</li>
+                                        <li><i class="fa fa-tag"></i> Music</li>
+                                    </ul>
+                                </div>
+                                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur.</p>
+                                
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <div class="latest-post">
+                                <img src="images/blog-02.jpg" class="img-responsive" alt="">
+                                <h4><a href="#">Standard Post with Image</a></h4>
+                                <div class="post-details">
+                                    <ul>
+                                        <li><i class="fa fa-user"></i> Auther : iThemesLab</li>
+                                        <li><i class="fa fa-calendar"></i> 07 Aug, 2014</li>
+                                        <li><i class="fa fa-tag"></i> Music</li>
+                                    </ul>
+                                </div>
+                                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur.</p>
+                                
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <div class="latest-post">
+                                <img src="images/blog-03.jpg" class="img-responsive" alt="">
+                                <h4><a href="#">Standard Post with Image</a></h4>
+                                <div class="post-details">
+                                    <ul>
+                                        <li><i class="fa fa-user"></i> Auther : iThemesLab</li>
+                                        <li><i class="fa fa-calendar"></i> 07 Aug, 2014</li>
+                                        <li><i class="fa fa-tag"></i> Music</li>
+                                    </ul>
+                                </div>
+                                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur.</p>
+                                
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <div class="latest-post">
+                                <img src="images/blog-04.jpg" class="img-responsive" alt="">
+                                <h4><a href="#">Standard Post with Image</a></h4>
+                                <div class="post-details">
+                                    <ul>
+                                        <li><i class="fa fa-user"></i> Auther : iThemesLab</li>
+                                        <li><i class="fa fa-calendar"></i> 07 Aug, 2014</li>
+                                        <li><i class="fa fa-tag"></i> Music</li>
+                                    </ul>
+                                </div>
+                                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur.</p>
+                                
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        <!-- End Latest News Section -->
+        
+        
+        
+        <!-- Start Contact Section -->
+        <div class="section-modal modal fade contact" id="contact-modal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-content">
+                <div class="close-modal" data-dismiss="modal">
+                    <div class="lr">
+                        <div class="rl">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="container">
+                    <div class="row">
+                        <div class="section-title text-center">
+                            <h3>Contact With Us</h3>
+                            <p>Duis aute irure dolor in reprehenderit in voluptate</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        
+                        <div class="col-md-4">
+                            <div class="footer-contact-info">
+                                <h4>Contact info</h4>
+                                <ul>
+                                    <li><strong>E-mail :</strong> your-email@mail.com</li>
+                                    <li><strong>Phone :</strong> +8801-6778776</li>
+                                    <li><strong>Mobile :</strong> +8801-45565378</li>
+                                    <li><strong>Web :</strong> yourdomain.com</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-4">
+                            <div class="footer-social text-center">
+                                <ul>
+                                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-4">
+                            <div class="footer-contact-info">
+                                <h4>Working Hours</h4>
+                                <ul>
+                                    <li><strong>Mon-Wed :</strong> 9 am to 5 pm</li>
+                                    <li><strong>Thurs-Fri :</strong> 12 pm to 10 pm</li>
+                                    <li><strong>Sat :</strong> 9 am to 3 pm</li>
+                                    <li><strong>Sunday :</strong> Closed</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                    </div><!--/.row -->
+                    <div class="row" style="padding-top: 80px;">
+                        <div class="col-md-12">
+                            <form name="sentMessage" id="contactForm" novalidate>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="Your Name *" id="name" required data-validation-required-message="Please enter your name.">
+                                            <p class="help-block text-danger"></p>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="email" class="form-control" placeholder="Your Email *" id="email" required data-validation-required-message="Please enter your email address.">
+                                            <p class="help-block text-danger"></p>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="tel" class="form-control" placeholder="Your Phone *" id="phone" required data-validation-required-message="Please enter your phone number.">
+                                            <p class="help-block text-danger"></p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <textarea class="form-control" placeholder="Your Message *" id="message" required data-validation-required-message="Please enter a message."></textarea>
+                                            <p class="help-block text-danger"></p>
+                                        </div>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                    <div class="col-lg-12 text-center">
+                                        <div id="success"></div>
+                                        <button type="submit" class="btn btn-primary">Send Message</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        <!-- End Contact Section -->
+        
+        
+         <!-- Start Testimonial Section -->
+        <div class="section-modal modal fade contact" id="testimonial-modal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-content">
+                <div class="close-modal" data-dismiss="modal">
+                    <div class="lr">
+                        <div class="rl">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="container">
+                    <div class="row">
+                        <div class="section-title text-center">
+                            <h3>Client's Speech About Us</h3>
+                            <p>Duis aute irure dolor in reprehenderit in voluptate</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        
+                        <div class="col-md-6">
+                            <div class="testimonial">
+                                <img src="images/team/manage-1.png" class="img-responsive" alt="...">
+                                <h4>John Doe</h4>
+                                <div class="speech">
+                                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <div class="testimonial">
+                                <img src="images/team/manage-2.png" class="img-responsive" alt="...">
+                                <h4>John Doe</h4>
+                                <div class="speech">
+                                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <div class="testimonial">
+                                <img src="images/team/manage-3.png" class="img-responsive" alt="...">
+                                <h4>John Doe</h4>
+                                <div class="speech">
+                                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <div class="testimonial">
+                                <img src="images/team/manage-4.png" class="img-responsive" alt="...">
+                                <h4>John Doe</h4>
+                                <div class="speech">
+                                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div><!--/.row -->
+                    
+                </div>
+                
+            </div>
+        </div>
+        <!-- End Testimonial Section -->
+        
+    </body>
+    
 </html>

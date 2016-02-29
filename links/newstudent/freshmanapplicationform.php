@@ -176,21 +176,25 @@ while($qry=mysql_fetch_array($res)){
                                   }elseif($db_code=='1'){
                                   echo "Email Verified: Freshmen Application Form";
                                     } ?></title>
-                    <link rel="stylesheet" href="../../css/bootstrap.min.css"></link>
-                    <link rel="stylesheet" href="../../css/bootstrap.css"></link>
-                    <link rel="stylesheet" href="../../css/style.css"></link>
-                    <link rel="stylesheet" href="../../css/font-awesome.css"></link>
-                     <link rel="stylesheet" href="../../css/font-awesome.min.css"></link>
+                    <link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css"  rel="stylesheet" type="text/css">
+                    <link rel="stylesheet" href="../../bootstrap/css/bootstrap.css"  rel="stylesheet" type="text/css">
 
-                    <script src="../../js/dropdown.js"></script>
+                     <link rel="stylesheet" href="../../bootstrap/css/bootstrap-theme.css"  rel="stylesheet" type="text/css">
+
+                     <link rel="stylesheet" href="../../bootstrap/css/bootstrap-theme.min.css"  rel="stylesheet" type="text/css">
+
+                    <link rel="stylesheet" href="../../css/style.css"  rel="stylesheet" type="text/css">
+                    <link rel="stylesheet" href="../../css/font-awesome.css"  rel="stylesheet" type="text/css">
+                     <link rel="stylesheet" href="../../css/font-awesome.min.css"  rel="stylesheet" type="text/css">
+
+                    <script src="../../js/jquery-2.1.1.min.js"></script>
                     <script src="../../js/bootstrap.min.js"></script>
-                    <script src="../../js/jquery.1.11.1.js"></script>
                     <script src="../../js/bootstrap.js"></script>
                     <script src="../../js/validation.js"></script>
 
 <style>
                  
-                      body{ background: url(../../images/45.gif); background-size: cover; color:#838383; font: 13px/1.7em 'Calibri';}
+                      body{ background: url(../../images/); background-size: cover;}
 
                     .alert-warning
                     {
@@ -299,8 +303,8 @@ disp_setting+="scrollbars=yes,width=650, height=600, left=100, top=25";
    docprint.document.write('"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">');
    docprint.document.write('<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">');
    docprint.document.write('<head><title>MARIA KATRINA SCHOOL APPLICATION FORM</title>');
-   docprint.document.write('<link rel="stylesheet" href="../../css/bootstrap.min.css"></link>');
-   docprint.document.write('<link rel="stylesheet" href="../../css/bootstrap.css"></link>');                
+   docprint.document.write('<link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css"></link>');
+   docprint.document.write('<link rel="stylesheet" href="../../bootstrap/css/bootstrap.css"></link>');                
    docprint.document.write('</head><body onLoad="window.print()"><form>');
    docprint.document.write('<center><P>MARIA KATRINA SCHOOL</P></center>'); 
    docprint.document.write('<br><center><P>No. 10 Mendoza St. Saog, Marilao Bulacan</P></center>'); 
@@ -344,8 +348,39 @@ if($db_code=='0'){
 ?>
 <div class="container">
   <div class="col-sm-12 col-md-12 ">
+            <div class="row bs-wizard" style="border-bottom:0;">
+         
+                <div class="col-xs-3 bs-wizard-step complete">
+                  <div class="text-center bs-wizard-stepnum">Step 1</div>
+                  <div class="progress"><div class="progress-bar"></div></div>
+                  <a href="#" class="bs-wizard-dot"></a>
+                  <div class="bs-wizard-info text-center"><i class="fa fa-plus-circle"></i> Create account</div>
+                </div>
+                
+                <div class="col-xs-3 bs-wizard-step complete"><!-- complete -->
+                  <div class="text-center bs-wizard-stepnum">Step 2</div>
+                  <div class="progress"><div class="progress-bar"></div></div>
+                  <a href="#" class="bs-wizard-dot"></a>
+                  <div class="bs-wizard-info text-center"><i class="fa fa-sign-in"></i> Login and Confirm your email address</div>
+                </div>
+                
+                <div class="col-xs-3 bs-wizard-step disabled"><!-- complete -->
+                  <div class="text-center bs-wizard-stepnum">Step 3</div>
+                  <div class="progress"><div class="progress-bar"></div></div>
+                  <a href="#" class="bs-wizard-dot"></a>
+                  <div class="bs-wizard-info text-center"><i class="fa fa-file-text-o"></i>  Fill-up application form.</div>
+                </div>
+                
+                <div class="col-xs-3 bs-wizard-step disabled"><!-- active -->
+                  <div class="text-center bs-wizard-stepnum">Step 4</div>
+                  <div class="progress"><div class="progress-bar"></div></div>
+                  <a href="#" class="bs-wizard-dot"></a>
+                  <div class="bs-wizard-info text-center"><i class="fa fa-print"></i> Print your application form.</div>
+                </div>
+            </div>
+
             <div class="alert alert-warning">
-                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                
                  <p>Please check your email <strong><?php echo $db_email ?></strong> and click on the account activation link. If you have not received account activation link please click on link below to request new account activation link.</p>
                 <a href='freshmanapplicationform.php?email=<?php echo $db_email ?>' class='next'><i class='glyphicon glyphicon-refresh'></i> Resend confirmation link</a>
                 <a href='freshmanapplicationform.php?username=<?php echo $db_username ?>' class='next'><i class='glyphicon glyphicon-envelope'></i> Edit Email</a>
@@ -374,7 +409,7 @@ mail($email,"Confirm Email",$message,"From: DoNotReply@sims-mks.com");
     <div class="container">
     <div class="col-sm-12 col-md-12" >
     <div class="alert alert-info">
-    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    
     <b>Confirmation code has been send successfully. Please check and activate your account.</b> <i class="fa fa-check"></i>
     </div>
     </div>
@@ -431,12 +466,13 @@ if(isset($_GET['username'])){
   <i id='validateemail' ></i>
   <i id='mail'></i><!--For validation-->
 
-  <div class="form-group input-group">
+  <div class="form-group">
   <input type="text" class='form-control' value="<?php echo $email ?>" id="email" name="email" onkeypress="return foremailregistration(event);" ondrop="return false;" onpaste="return false;">
-  <span class='input-group-btn' >
-  <input type='submit' name='changeemail' value='update' class='btn btn-info'>
-  </span>
+ 
+
+
   </div>
+  <input type='submit' name='changeemail' value='update' class='btn btn-info'>
   <input type='hidden' name='username' value='<?php echo $username?>'>
   </form>
   </div>
@@ -450,7 +486,7 @@ if(isset($_GET['username'])){
     <div class="container">
     <div class="col-sm-12 col-md-12" >
     <div class="alert alert-info">
-    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    
     <b>Your Email Address has been updated successfully</b> <i class="fa fa-check"></i>
     </div>
     </div>
@@ -461,7 +497,7 @@ if(isset($_GET['username'])){
     <div class="container">
     <div class="col-sm-12 col-md-12" >
     <div class="alert alert-warning">
-    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    
     <b>Email Address you want to change is already registered. Please type another email..</b> <i class="fa fa-remove"></i>
     </div>
     </div>
@@ -505,8 +541,40 @@ if($db_email==0){
         ?>
         <div class="container">
           <div class="col-sm-12 col-md-12 ">
+                    <div class="row bs-wizard" style="border-bottom:0;">
+         
+                <div class="col-xs-3 bs-wizard-step complete">
+                  <div class="text-center bs-wizard-stepnum">Step 1</div>
+                  <div class="progress"><div class="progress-bar"></div></div>
+                  <a href="#" class="bs-wizard-dot"></a>
+                  <div class="bs-wizard-info text-center"><i class="fa fa-plus-circle"></i> Create account</div>
+                </div>
+                
+                <div class="col-xs-3 bs-wizard-step complete"><!-- complete -->
+                  <div class="text-center bs-wizard-stepnum">Step 2</div>
+                  <div class="progress"><div class="progress-bar"></div></div>
+                  <a href="#" class="bs-wizard-dot"></a>
+                  <div class="bs-wizard-info text-center"><i class="fa fa-sign-in"></i> Login and Confirm your email address</div>
+                </div>
+                
+                <div class="col-xs-3 bs-wizard-step complete"><!-- complete -->
+                  <div class="text-center bs-wizard-stepnum">Step 3</div>
+                  <div class="progress"><div class="progress-bar"></div></div>
+                  <a href="#" class="bs-wizard-dot"></a>
+                  <div class="bs-wizard-info text-center"><i class="fa fa-file-text-o"></i>  Fill-up application form.</div>
+                </div>
+                
+                <div class="col-xs-3 bs-wizard-step active"><!-- active -->
+                  <div class="text-center bs-wizard-stepnum">Step 4</div>
+                  <div class="progress"><div class="progress-bar"></div></div>
+                  <a href="#" class="bs-wizard-dot"></a>
+                  <div class="bs-wizard-info text-center"><i class="fa fa-print"></i> Print your application form.</div>
+                </div>
+            </div>
+          
+
                     <div class="alert alert-success">
-                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                        
                          <p>Your email has been verified <strong><?php echo $db_email ?></strong>.. You are ready to fill up the application form.</p>
                         
 
@@ -523,6 +591,8 @@ if($db_email==0){
 
                     <?php } ?>
                     </div>
+
+
           </div>
           </div>
 
@@ -1262,7 +1332,7 @@ if($db_email==0){
 
                       <div class='row'>
                       <div class="col-sm-4 col-md-4 ">
-                      Permanent Home address: <i>(required)</i> <i id='per'></i>
+                      Permanent Home address: <i>(required) </i> <i id='per'></i>
                        <input class='form-control' type='text' id='permanent' onkeypress="return forpermanent(event);" ondrop="return false;" onpaste="return false;" placeholder='Type your home address..' maxlength="35" value='<?php echo $per?>' name='permanent'/>
                       </div>
                       
@@ -1270,7 +1340,7 @@ if($db_email==0){
                       </div>
 
                       <div class="col-sm-4 col-md-4 ">
-                      Telephone number: <i>(optional)</i> <i id='tele'></i>
+                      Telephone number: <i>(optional)</i>  <i id='tele'></i>
                        <input class='form-control' type='text' id='telephone' onkeypress="return fortelephone(event);" ondrop="return false;" onpaste="return false;"  placeholder='Type your telephone number..' maxlength="7" value='<?php echo $tele?>' name='telephone'/> 
                       </div>
                       </div><!--row-->
@@ -1524,8 +1594,38 @@ if($db_email==0){
         ?>
         <div class="container">
         <div class="col-sm-12 col-md-12 ">
+        <div class="row bs-wizard" style="border-bottom:0;">
+         
+                <div class="col-xs-3 bs-wizard-step complete">
+                  <div class="text-center bs-wizard-stepnum">Step 1</div>
+                  <div class="progress"><div class="progress-bar"></div></div>
+                  <a href="#" class="bs-wizard-dot"></a>
+                  <div class="bs-wizard-info text-center"><i class="fa fa-plus-circle"></i> Create account</div>
+                </div>
+                
+                <div class="col-xs-3 bs-wizard-step complete"><!-- complete -->
+                  <div class="text-center bs-wizard-stepnum">Step 2</div>
+                  <div class="progress"><div class="progress-bar"></div></div>
+                  <a href="#" class="bs-wizard-dot"></a>
+                  <div class="bs-wizard-info text-center"><i class="fa fa-sign-in"></i> Login and Confirm your email address</div>
+                </div>
+                
+                <div class="col-xs-3 bs-wizard-step active"><!-- complete -->
+                  <div class="text-center bs-wizard-stepnum">Step 3</div>
+                  <div class="progress"><div class="progress-bar"></div></div>
+                  <a href="#" class="bs-wizard-dot"></a>
+                  <div class="bs-wizard-info text-center"><i class="fa fa-file-text-o"></i>  Fill-up application form.</div>
+                </div>
+                
+                <div class="col-xs-3 bs-wizard-step disabled"><!-- active -->
+                  <div class="text-center bs-wizard-stepnum">Step 4</div>
+                  <div class="progress"><div class="progress-bar"></div></div>
+                  <a href="#" class="bs-wizard-dot"></a>
+                  <div class="bs-wizard-info text-center"><i class="fa fa-print"></i> Print your application form.</div>
+                </div>
+            </div>
                   <div class="alert alert-success">
-                      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                      
                        <p>Your email has been verified <strong><?php echo $db_email ?></strong>.. You are ready to fill up the application form.</p>
                       
                   </div>
@@ -1628,7 +1728,7 @@ if($db_email==0){
 
                       <div class='row'>
                       <div class="col-sm-4 col-md-4 ">
-                      Permanent Home address: <i>(required)</i> <i id='per'></i>
+                      Permanent Home address: Street Address/City <i>(required)</i> <i id='per'></i>
                        <input class='form-control' type='text' id='permanent' onkeypress="return forpermanent(event);" ondrop="return false;" onpaste="return false;" placeholder='Type your home address..' maxlength="35" value='' name='permanent'/>
                       </div>
                       
@@ -1636,7 +1736,7 @@ if($db_email==0){
                       </div>
 
                       <div class="col-sm-4 col-md-4 ">
-                      Telephone number: <i>(optional)</i> <i id='tele'></i>
+                      Telephone number: XXX-XX-XX <i>(optional)</i> <i id='tele'></i>
                        <input class='form-control' type='text' id='telephone' onkeypress="return fortelephone(event);" ondrop="return false;" onpaste="return false;"  placeholder='Type your telephone number..' maxlength="7" value='' name='telephone'/> 
                       </div>
                       </div><!--row-->
@@ -1645,7 +1745,7 @@ if($db_email==0){
 
                       <div class='row'>
                       <div class="col-sm-4 col-md-4 ">
-                      Mobile number: <i>(required)</i> <i id='mobi'></i>
+                      Mobile number: XXX-XXX-XXX-XXX <i>(required)</i> <i id='mobi'></i>
                        <input class='form-control' type='text' id='mobile' onkeypress="return formobile(event);" ondrop="return false;" onpaste="return false;" placeholder='Type your mobile number here..' maxlength='11' value='' name='mobile' />
                       </div>
                       
@@ -1684,7 +1784,7 @@ if($db_email==0){
                       </div>
                       
                       <div class="col-sm-4 col-md-4">
-                       Birthplace: <i>(required)</i> <i id='places'></i>
+                       Birthplace: Street Address/City <i>(required)</i> <i id='places'></i>
                        <input class='form-control' type='text' onkeypress="return forbirthplace(event);" ondrop="return false;" onpaste="return false;"  id="birthplace" placeholder='Type your birthplace here..' maxlength="35" name="birthplace" />
                       </div>
 
@@ -1761,12 +1861,12 @@ if($db_email==0){
                       </div>
                       
                       <div class="col-sm-4 col-md-4">
-                       Address: <i>(required)</i>  <i id='gadd'></i>
+                       Address: Street Address/City <i>(required)</i>  <i id='gadd'></i>
                       <input class='form-control' type='text' id='guardianaddress' onkeypress="return forguardianaddress(event);" ondrop="return false;" onpaste="return false;"  name='guardianaddress' maxlength="25" placeholder='Type your guardianaddress..' value=''/>
                       </div>
 
                       <div class="col-sm-4 col-md-4 ">
-                      Mobile number: <i>(required)</i> <i id='gcon'></i>
+                      Mobile number: XXX-XXX-XXX-XXX <i>(required)</i> <i id='gcon'></i>
                        <input class='form-control' type='text' id='guardiancontact' onkeypress="return forguardiancontact(event);" ondrop="return false;" onpaste="return false;" maxlength="11" name='guardiancontact'  placeholder='Type your guardiancontact..' value=''/>
                       </div>
                       </div><!--row-->

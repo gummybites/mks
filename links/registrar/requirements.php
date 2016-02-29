@@ -94,18 +94,18 @@ if(isset($_POST['deletedrequirement4'])){
                     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
                     <meta name="viewport" content="width=device-width, initial-scale=1">
                     <title>Requirements</title>
+                    <link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css"  rel="stylesheet" type="text/css">
+                    <link rel="stylesheet" href="../../bootstrap/css/bootstrap.css"  rel="stylesheet" type="text/css">
+                    <link rel="stylesheet" href="../../css/style.css"  rel="stylesheet" type="text/css">
+                    <link rel="stylesheet" href="../../css/font-awesome.css"  rel="stylesheet" type="text/css">
+                     <link rel="stylesheet" href="../../css/font-awesome.min.css"  rel="stylesheet" type="text/css">
 
-                    <link rel="stylesheet" href="../../css/bootstrap.min.css"></link>
-                    <link rel="stylesheet" href="../../css/bootstrap.css"></link>
-                    <link rel="stylesheet" href="../../css/style.css"></link>
-                    <link rel="stylesheet" href="../../css/font-awesome.css"></link>
-                     <link rel="stylesheet" href="../../css/font-awesome.min.css"></link>
-
-                    <script src="../../js/dropdown.js"></script>
-                    <script src="../../js/bootstrap.min.js"></script>
-                    <script src="../../js/jquery.1.11.1.js"></script>
-                    <script src="../../js/bootstrap.js"></script>
+                    
+                    <script src="../../js/jquery-2.1.1.min.js"></script>
+                    <script src="../../bootstrap/js/bootstrap.min.js"></script>
                     <script src="../../js/validation.js"></script>
+                    <script src="../../js/jquery.appear.js"></script>
+                    <script src="../../js/modernizr.custom.js"></script>
 </head>
 
 
@@ -113,7 +113,8 @@ if(isset($_POST['deletedrequirement4'])){
 
 <style>
                     body{
-                    background: url(../../images/45.gif); background-size: cover;  font: 15px/1.7em 'Calibri';
+
+                    background: url(../../images/body-bg.png);
                     }
                     .btn-file {
                           position: relative;
@@ -234,7 +235,7 @@ if(isset($_POST['deletedrequirement4'])){
         <li class="dropdown"><a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"> <i class="fa fa-long-arrow-down"></i><span>Manage</span> <b class="caret"></b></a>
           <ul class="dropdown-menu">
             <li><a href="manageuser.php"><i class="fa fa-user-secret"></i> Admin Profile</a></li>
-            <li><a href="deleteddetails.php"><i class="fa fa-trash-o"></i> Deleted details</a></li>
+            <li><a href="deleteddetails.php"><i class="fa fa-trash-o"></i> Archive files</a></li>
             <li><a href="listofsubjects.php"><i class="fa fa-th-list"></i><span> List of Subjects</span> </a> </li>
             <li><a href="listofschedule.php"><i class="fa fa-clock-o"></i><span> List of Schedule</span> </a> </li>
             <li><a href="breakdownoftuitionfees.php"><i class="fa fa-money"></i> Breakdown of tuition Fees</a></li>

@@ -63,8 +63,8 @@
                                                                                                                                                               $qry=("INSERT into tbl_studentregistration (surname,firstname,username,password,email, code, confirm_code, seeking, status,prospectivestatus) values ('$sname','$fname','$username','$enc_password','$email','0','$confirmed','Grade 7','new student','pending')");
                                                                                                                                                               mysql_query($qry);
 
-                                                                                                                                                              $message= "Confirm your email
-                                                                                                                                                                Click the link below to verify your account 
+                                                                                                                                                              $message= "Confirm  email
+                                                                                                                                                                Click the link below to verify  account 
                                                                                                                                                                   http://www.sims-mks.com/freshmanapplicationform.php?email=$email&code=$confirmed
                                                                                                                                                               ";  
 
@@ -108,37 +108,23 @@
                     <meta http-equiv="X-UA-Compatible" content="IE=edge">
                     <meta name="viewport" content="width=device-width, initial-scale=1">
                     <title>Freshmen Create Account</title>
-                    <link rel="stylesheet" href="../../css/bootstrap.min.css"  rel="stylesheet" type="text/css">
-                    <link rel="stylesheet" href="../../css/bootstrap.css"  rel="stylesheet" type="text/css">
+                    <link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css"  rel="stylesheet" type="text/css">
+                    <link rel="stylesheet" href="../../bootstrap/css/bootstrap.css"  rel="stylesheet" type="text/css">
                     <link rel="stylesheet" href="../../css/style.css"  rel="stylesheet" type="text/css">
                     <link rel="stylesheet" href="../../css/font-awesome.css"  rel="stylesheet" type="text/css">
                      <link rel="stylesheet" href="../../css/font-awesome.min.css"  rel="stylesheet" type="text/css">
 
-                    <script src="../../js/dropdown.js"></script>
-                    <script src="../../js/bootstrap.min.js"></script>
-                    <script src="../../js/jquery.1.11.1.js"></script>
-                    <script src="../../js/bootstrap.js"></script>
+                     <link href="../../css/animate.css" rel="stylesheet">
+                    <script src="../../js/jquery-2.1.1.min.js"></script>
+                    <script src="../../bootstrap/js/bootstrap.min.js"></script>
                     <script src="../../js/validation.js"></script>
+                    <script src="../../js/jquery.appear.js"></script>
+                    <script src="../../js/modernizr.custom.js"></script>
 
 <style>
-                   body{ background: url(../../images/45.gif); background-size: cover; color:#838383; font: 13px/1.7em 'Calibri';}
+                   body{ background: url(../../images/); background-size: cover; color:#838383; }
 
-                    .content {
-                      padding: 16px 28px 23px;
-                    } 
-                 
-
-                    #panel{
-                      box-shadow: 10px 10px 5px #888888;;
-
-
-                    }
-
-                    .input-group-addon{
-                      background: transparent;
-
-                    }
-
+               
             
                     /* Shutter Out Horizontal */
                      .next {
@@ -192,7 +178,7 @@
                           transform: scaleX(1);
                         }
 
-
+        
                     
 
 </style>
@@ -213,10 +199,7 @@ function getcaptcha()
 } 
 </script>
 <body>
-
-
-
-  <nav class="navbar-inner navbar-fixed-top">
+<nav class="navbar-inner navbar-fixed-top">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -229,145 +212,302 @@ function getcaptcha()
     
      
       <ul class="nav navbar-nav navbar-right">
-        <li> <a href="../../index.php"><i class="glyphicon glyphicon-chevron-left"></i>Back to Home Page</a></li>
+        <li> <a href='freshmanlogin.php'> Already Registered? Login Here</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
-</nav>
+</nav> 
+<div class="container">
+   <br><br>
+            <div class="row text-center">
+                <div class="col-md-12">
+                    <strong>TO CREATE AN ACCOUNT READ THE <a href="#admission-modal" data-toggle="modal">ADMISSION PROCEDURE</a>  / FOR FRESHMEN ONLY</strong>  
+                    <li>Complete all the required requirements.</li>
+                    <li>Fill-up the Application Form to Register.</li>                       
+                </div>
+            </div>  
+        
+            <div class="row bs-wizard" style="border-bottom:0;">
+         
+                <div class="col-xs-3 bs-wizard-step active">
+                  <div class="text-center bs-wizard-stepnum">Step 1</div>
+                  <div class="progress"><div class="progress-bar"></div></div>
+                  <a href="#" class="bs-wizard-dot"></a>
+                  <div class="bs-wizard-info text-center"><i class="fa fa-plus-circle"></i> Create account</div>
+                </div>
+                
+                <div class="col-xs-3 bs-wizard-step disabled"><!-- complete -->
+                  <div class="text-center bs-wizard-stepnum">Step 2</div>
+                  <div class="progress"><div class="progress-bar"></div></div>
+                  <a href="#" class="bs-wizard-dot"></a>
+                  <div class="bs-wizard-info text-center"><i class="fa fa-sign-in"></i> Login and Confirm your email address</div>
+                  
+                </div>
+                
+                <div class="col-xs-3 bs-wizard-step disabled"><!-- complete -->
+                  <div class="text-center bs-wizard-stepnum">Step 3</div>
+                  <div class="progress"><div class="progress-bar"></div></div>
+                  <a href="#" class="bs-wizard-dot"></a>
+                  <div class="bs-wizard-info text-center"><i class="fa fa-file-text-o"></i>  Fill-up application form.</div>
+                </div>
+                
+                <div class="col-xs-3 bs-wizard-step disabled"><!-- active -->
+                  <div class="text-center bs-wizard-stepnum">Step 4</div>
+                  <div class="progress"><div class="progress-bar"></div></div>
+                  <a href="#" class="bs-wizard-dot"></a>
+                  <div class="bs-wizard-info text-center"><i class="fa fa-print"></i> Print your application form.</div>
+                </div>
+            </div>
 
- 
 
+</div>
 
-                                            
+ <!-- Start Portfolio Section -->
+        <div class="section-modal modal fade" id="admission-modal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-content">
+                <div class="close-modal" data-dismiss="modal">
+                    <div class="lr">
+                        <div class="rl">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="container">
+                    <div class="row">
+                        <div class="section-title text-center">
+                            <h3>Admission requirements</h3>
+                            <p></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="about-text">
+                                <p></p>
+                                <div class="row">
+                                    <div class="col-md-4 col-sm-6">
+                                    <h3>2.1 New students</h3>
+                                        <ul>
+                                            <li><i class="fa fa-check-square-o"></i>Birth Certificate, original copy if possible.</li>
+                                            <li><i class="fa fa-check-square-o"></i>Form 138, original copy if possible.</li>
+                                            <li><i class="fa fa-check-square-o"></i>1x1 picture will be taken at the school.</li>
+                                            <li><i class="fa fa-check-square-o"></i>Good moral character certificate, original copy if possible.</li>
+                                            <li><i class="fa fa-check-square-o"></i>Must have passed both written and oral examinations conducted by the admission office.</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-4 col-sm-6">
+                                    <h3>2.2 Transferees</h3>
+                                        <ul>
+                                    
+                                            <li><i class="fa fa-check-square-o"></i>No failing grades or dropped subjects</li>
+                                            <li><i class="fa fa-check-square-o"></i>Need to pass the entrance exam</li>
+                                            <li><i class="fa fa-check-square-o"></i>Birth Certificate, original copy if possible.</li>
+                                            <li><i class="fa fa-check-square-o"></i>Form 138, original copy if possible.</li>
+                                            <li><i class="fa fa-check-square-o"></i>1x1 picture will be taken at the school.</li>
+                                            <li><i class="fa fa-check-square-o"></i>Good moral character certificate, original copy if possible.</li>
+                                            <li><i class="fa fa-check-square-o"></i>Form 137, original copy if possible.</li>
+                                        </ul>
+                                    </div>
+                                </div><!-- /.row -->
+                            </div>
+                        </div>
+                    </div><!-- /.row -->
+                    <div class="row">
+                        <div class="section-title text-center">
+                            <h3>Admission procedures</h3>
+                            <p></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="about-text">
+                                <p></p>
+                                <div class="row">
+                                    <div class="col-md-4 col-sm-6">
+                                        <ul>
+                                            <li><i class="fa fa-check-square-o"></i>Pay testing fee at the Cashier's office.</li>
+                                            <li><i class="fa fa-check-square-o"></i>Submit copy of Admission Form, photocopy of Form 138 and take a picture to the Admission Secretary</li>
+                                            <li><i class="fa fa-check-square-o"></i>Get testing permit.</li>
+                                            <li><i class="fa fa-check-square-o"></i>Take the Admission Exam.</li>
+                                            <li><i class="fa fa-check-square-o"></i>If passed, take an interview.</li>
+                                            <li><i class="fa fa-check-square-o"></i>After a week, get the final result.</li>
+                                            <li><i class="fa fa-check-square-o"></i>If admitted, pass the oginal copy of Form 138.</li>
+                                        </ul>
+                                    </div>
+                                  
+                                </div><!-- /.row -->
 
+                                <div class="row">
+                                    <div class="col-md-4 col-sm-6">
+                                    <h3>Old students</h3>
+                                        <ul>
+                                            <li><i class="fa fa-check-square-o"></i>Submit Original Report Card at the Cashier's Office.</li>
+                                            <li><i class="fa fa-check-square-o"></i>Proceed to the Cashier’s office for assessment and payment of fees.</li>
+                                           
+                                        </ul>
+                                    </div>
+                                  
+                                </div><!-- /.row -->
+                            </div>
+                        </div>
+                    </div><!-- /.row -->
 
-                                              <div class="container">
-                                                 <br><br>
-                                                      <div class="row text-center pad-top ">
-                                                          <div class="col-md-12">
-                                                              <strong>TO CREATE AN ACCOUNT READ THE <a href='../admissionprocedure.php'>ADMISSION PROCEDURE</a>  / FOR FRESHMEN ONLY</strong>  
-                                                              <li>Complete all the required requirements.</li>
-                                                              <li>Fill-up the Application Form to Register.</li>                       
-                                                          </div>
-                                                      </div>
-                                                       <div class="row">
-                                                             
-                                                              <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1">
-                                                                      <div class="panel panel-default" id="panel">
-                                                                          <div class="panel-heading">
-                                                                      <b>   (*) Note: Required Fields </b>  
-                                                                          </div>
-                                                                          <div class="panel-body">
-                                                                         <div align="center"> <img src="../../images/registration-icon.png" id='registration-icon' height="100px" width="100px"></div>
-                                                                              <form role="form" method="POST" onsubmit="return freshmanregister()"  action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+                </div>
+                
+            </div>
+        </div>
+        <!-- End Portfolio Section -->
+                                    
+
+<div class="container">                                        
+
+         
+
+            <div class="row">
+            <div class="col-xs-3">
+            </div>
+
+            <div class="col-xs-6">
+            <center><H1>REGISTRATION</H1></center>
+            <form role="form" method="POST" onsubmit="return freshmanregister()"  action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
                                                                                       
-                                                                                       <?php
-                                                                                      if(isset($_GET['EmailAlreadyRegistered'])){
-                                                                                      echo "<div style='color: red;'>Email is already registered! Please type another email...</div>";
-                                                                                      } elseif(isset($_GET['UsernameAlreadyRegistered'])){
-                                                                                      echo "<div style='color: red;'>Username is already registered! Please type another username...</div>";
-                                                                                      }elseif(isset($_GET['PasswordAlreadyRegistered'])){
-                                                                                      echo "<div style='color: red;'>Password is already registered! Please type another password...</div>";
-                                                                                      }elseif(isset($_GET['Success'])){
-                                                                                      echo "<div style='color: green;'>Account Succesfully Created! You may now login.</div>";
+              <?php
+              if(isset($_GET['EmailAlreadyRegistered'])){
+                 ?>
+                <div class="alert alert-danger">
+                  <p class='text-center'>Email is already registered! Please type another email.</p> 
+                </div>
+                <?php
+              } elseif(isset($_GET['UsernameAlreadyRegistered'])){
+                ?>
+                <div class="alert alert-danger">
+                  <p class='text-center'>Username is already registered!</p> 
+                </div>
+                <?php
+            
+              }elseif(isset($_GET['PasswordAlreadyRegistered'])){
+                ?>
+                <div class="alert alert-danger">
+                  <p class='text-center'>Password is already registered! Please type another password.</p> 
+                </div>
+                <?php
+              }elseif(isset($_GET['Success'])){
+                 ?>
+                <div class="alert alert-success">
+                  <p class='text-center'>Account Succesfully Created! You may now login.</p> 
+                </div>
+                <?php
 
-                                                                                      }elseif(isset($_GET['WrongCodeEntered'])){
-                                                                                      echo "<div style='color: red;'>Wrong Code Entered</div>";
+              }elseif(isset($_GET['WrongCodeEntered'])){
+                ?>
+                <div class="alert alert-danger">
+                  <p class='text-center'>Wrong code entered!</p> 
+                </div>
+                <?php
+              }elseif(isset($_GET['Atleast6characters'])){
+                ?>
+                <div class="alert alert-danger">
+                  <p class='text-center'>Atleast 6 to 25 characters!</p> 
+                </div>
+                <?php
+              }elseif(isset($_GET['InvalidPassword'])){
+                  ?>
+                <div class="alert alert-danger">
+                  <p class='text-center'>Invalid! Password don't match!</p> 
+                </div>
+                <?php
+              }
 
-                                                                                      }elseif(isset($_GET['Atleast6characters'])){
-                                                                                      echo "<div style='color: red;'>Atleast 6 to 25 characters!</div>";
+              ?>
 
-                                                                                      }elseif(isset($_GET['InvalidPassword'])){
-                                                                                      echo "<div style='color: red;'>Invalid! Password don't match!</div>";
+              <i  id="error" style="color: Red; display: none"></i>
+              <b><i style="color:red;">(*)</i> Note: Required Fields </b>
+            
+             
+            <div class="form-group"><!--Firstname Validation -->
+            <b> Surname <i style="color:red;">(*)</i>  <i id='validatesurname' ></i> <i id='sur'></i></b>                                                                       
+            <input class='form-control  '  type='text' onkeypress="return forsurnameregistration(event);" ondrop="return false;" onpaste="return false;"  id='surname' name='surname' maxlength="25"  value=''/>
+            </div>                                                         
 
-                                                                                      }
+       
+               
 
-                                                                                       ?>
+            <div class="form-group"><!--Firstname Validation -->
+            <b> Firstname <i style="color:red;">(*)</i>  <i id='validatefirstname' ></i> <i id='first'></i></b>                                                                     
+            <input class='form-control  ' type='text' id='firstname' onkeypress="return forfirstnameregistration(event);" ondrop="return false;" onpaste="return false;"  name='firstname' maxlength="25" value=''/>
+            </div>
+                                                                                      
+   
+            
 
-                                                                                      <i  id="error" style="color: Red; display: none"></i>
-                                                                                      <h3>Create your free account:</h3>
-                                                                                      <div class="form-group  input-group"><!--Surname Validation -->
-                                                                                      <i id='validatesurname' ></i>
-                                                                                      <i id='sur'></i>
-                                                                                      </div>
+            <div class="form-group"><!--Firstname Validation -->
+            <b> Desired username  <i style="color:red;">(*)</i> <i id='validateusername' ></i> <i id='user'></i></b>                                                                       
+            <input type="text" class="form-control  "  name="username" id="username" maxlength="25" onkeypress="return forusernameregistration(event);" ondrop="return false;" onpaste="return false;"/>
+            </div>                                                          
+
+
+                        
+            <div class="form-group"><!--Firstname Validation -->
+            <b> Password  <i style="color:red;">(*)</i> <i id='validatepassword' ></i> <i id='pass'></i></b>                                                            
+            <input type='password' value='' maxlength="25" class='form-control  ' onkeypress="return forpasswordregistration(event);" ondrop="return false;" onpaste="return false;" id='password' name='password' />
+            </div>                                                                               
                                                                                      
-                                                                                      <input class='form-control' type='text' onkeypress="return forsurnameregistration(event);" ondrop="return false;" onpaste="return false;"  id='surname' name='surname' maxlength="25" placeholder='Your Surname *' value=''/>
-                                                                                  
-
-                                                                                      <div class="form-group input-group"><!--Firstname Validation -->
-                                                                                      <i id='validatefirstname' ></i>
-                                                                                      <i id='first'></i>
-                                                                                      </div>
-                                                                                    
-                                                                                      <input class='form-control' type='text' id='firstname' onkeypress="return forfirstnameregistration(event);" ondrop="return false;" onpaste="return false;"  name='firstname' maxlength="25" placeholder='Your Firstname *' value=''/>
-                                                                                      
 
 
 
-                                                                                      <div class="form-group input-group"><!--Username Validation -->
-                                                                                      <i id='validateusername' ></i>
-                                                                                      <i id='user'></i>
-                                                                                      </div>
-                                                                                       
-                                                                                      <input type="text" class="form-control" placeholder="Desired username *" name="username" id="username" maxlength="25" onkeypress="return forusernameregistration(event);" ondrop="return false;" onpaste="return false;"/>
-                                                                                      
+            
+            <div class="form-group"><!--Firstname Validation -->
+            <b> Confirm Password  <i style="color:red;">(*)</i> <i id='validateconfirmpassword' ></i> <i id='cpass'></i></b>
+             <input type='password' value=''  maxlength="25" class='form-control  ' onkeypress="return forconfirmpasswordregistration(event);" ondrop="return false;" onpaste="return false;"  id='confirmpassword' name='confirmpassword'/> 
+            <span class="input-group-btn"></span>
+            </div>
+                                                                          
 
 
-                                                                                      <div class="form-group input-group"><!--Password Validation -->
-                                                                                      <i id='validatepassword' ></i>
-                                                                                      <i id='pass'></i>
-                                                                                      </div>
-                                                                                    
-                                                                                      <input type='password' value='' maxlength="25" class='form-control' onkeypress="return forpasswordregistration(event);" ondrop="return false;" onpaste="return false;" id='password' name='password' placeholder='Password *'/>
-                                                                                          
-                                                                                     
-
-
-                                                                                      <div class="form-group input-group"><!--Confirmpassword Validation -->
-                                                                                      <i id='validateconfirmpassword' ></i>
-                                                                                      <i id='cpass'></i>
-                                                                                      </div>
-                                                                                      <div class="input-group">
-                                                                                           <input type='password' value=''  maxlength="25" class='form-control' onkeypress="return forconfirmpasswordregistration(event);" ondrop="return false;" onpaste="return false;"  id='confirmpassword' name='confirmpassword' placeholder='Confirm Password *'/> 
-                                                                                          <span class="input-group-btn"><button  id='togglebuttonconfirmpassword'  class='btn btn-default' onclick="toggleconfirmpassword()"><span class='glyphicon glyphicon-eye-open'></span></button></span>
-                                                                                      </div>
-
-
-                                                                                      <div class="form-group input-group"><!--Email Validation -->
-                                                                                      <i id='validateemail' ></i>
-                                                                                      <i id='mail'></i>
-                                                                                      </div>
-                                                                                      
-                                                                                      <input type='text' value='' class='form-control' maxlength='35' onkeypress="return foremailregistration(event);" ondrop="return false;" onpaste="return false;" id='email' name='email' placeholder="Your Email *"/>
-                                                                                      
-
-
-                                                                                      <div class="form-group input-group"><!--Captcha Validation -->
-                                                                                      <i id='validatecaptcha' ></i>
-                                                                                      <i id='cap'></i>
-                                                                                      </div>
-                                                                                   
-                                                                                       <input name="captcha" id="captcha" class='form-control' maxlength="6" type="text" onkeypress="return forcaptcharegistration(event);" ondrop="return false;" onpaste="return false;" placeholder='Enter Captcha *'>
-                                                                                    
-
-                                                                                    <div class="input-group">
-                                                                                          <img src="captcha.php"  width="340" height="100" id="captcha_code">
-                                                                                         
-                                                                                    </div>  
-                                                                                     <button type="button" class="next" value="Reload Captcha" onclick="getcaptcha();">Reload Captcha <i class='fa fa-refresh'></i></button>
-                                                                                  <button type="submit"  name="submit" class="next" value="Submit"   >Create</button>
-                                                                                  <hr />
-                                                                                  Already Registered ?   <a href='freshmanlogin.php'>Login Here</a>
-                                                                                  </form>
-                                                                          </div>
-                                                                         
-                                                                      </div>
-                                                                  </div>
-                                                              
-                                                              
-                                                      </div>
-                                                  </div>
   
+            
+            <div class="form-group"><!--Firstname Validation -->
+            <b> Email Address  <i style="color:red;">(*)</i> <i id='validateemail' ></i> <i id='mail'></i></b>                                                                          
+            <input type='text' value='' class='form-control  ' maxlength='35' onkeypress="return foremailregistration(event);" ondrop="return false;" onpaste="return false;" id='email' name='email' />
+            </div>
+                                                                                      
+
+              
+              <div class="form-group"><!--Firstname Validation -->
+            <b>Enter Captcha   <i style="color:red;">(*)</i> <i id='validatecaptcha' ></i> <i id='cap'></i></b>                                                             
+                <input name="captcha" id="captcha" class='form-control  ' maxlength="6" type="text" onkeypress="return forcaptcharegistration(event);" ondrop="return false;" onpaste="return false;" >
+            </div>
+                                                                                    
+
+            <div class="input-group">
+            <img src="captcha.php"  width="340" height="100" id="captcha_code">
+            </div>  
+            
+            <button type="button" class="next" value="Reload Captcha" onclick="getcaptcha();">Reload Captcha <i class='fa fa-refresh'></i></button>
+            <button type="submit"  name="submit" class="next" value="Submit"   >Create</button>
+                                                                               
+                                                                                  
+            </form><br>
+            </div>
+            <div class="col-xs-3">
+            </div>
+            </div>  
+                                                                         
+            </div>
+
+  
+  <!-- Start Copyright Section -->
+        <div class="copyright text-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <p>SIMS-MKS | Developed by the Students of STI College-Caloocan | <a href="#"><?php  $curYear= Date('Y');
+                                        echo "$curYear";
+                                      ?></a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Copyright Section -->  
 
 
 

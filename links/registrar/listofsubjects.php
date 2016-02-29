@@ -165,7 +165,7 @@ if(isset($_POST['updatesubjectdescription'])){
         <li class="dropdown"><a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"> <i class="fa fa-long-arrow-down"></i><span>Manage</span> <b class="caret"></b></a>
           <ul class="dropdown-menu">
             <li><a href="manageuser.php"><i class="fa fa-user-secret"></i> Admin Profile</a></li>
-            <li ><a href="deleteddetails.php"><i class="fa fa-trash-o"></i> Deleted details</a></li>
+            <li ><a href="deleteddetails.php"><i class="fa fa-trash-o"></i> Archive files</a></li>
             <li class="active"><a href="listofsubjects.php"><i class="fa fa-th-list"></i><span> List of Subjects</span> </a> </li>
             <li><a href="listofschedule.php"><i class="fa fa-clock-o"></i><span> List of Schedule</span> </a> </li>
             <li><a href="breakdownoftuitionfees.php"><i class="fa fa-money"></i> Breakdown of tuition Fees</a></li>

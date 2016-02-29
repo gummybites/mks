@@ -185,21 +185,25 @@ while($qry=mysql_fetch_array($res)){
                                   }elseif($db_code=='1'){
                                   echo "Email Verified: Transferee Application Form";
                                     } ?></title>
-                    <link rel="stylesheet" href="../../css/bootstrap.min.css"></link>
-                    <link rel="stylesheet" href="../../css/bootstrap.css"></link>
-                    <link rel="stylesheet" href="../../css/style.css"></link>
-                    <link rel="stylesheet" href="../../css/font-awesome.css"></link>
-                     <link rel="stylesheet" href="../../css/font-awesome.min.css"></link>
+                      <link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css"  rel="stylesheet" type="text/css">
+                    <link rel="stylesheet" href="../../bootstrap/css/bootstrap.css"  rel="stylesheet" type="text/css">
 
-                    <script src="../../js/dropdown.js"></script>
+                     <link rel="stylesheet" href="../../bootstrap/css/bootstrap-theme.css"  rel="stylesheet" type="text/css">
+
+                     <link rel="stylesheet" href="../../bootstrap/css/bootstrap-theme.min.css"  rel="stylesheet" type="text/css">
+
+                    <link rel="stylesheet" href="../../css/style.css"  rel="stylesheet" type="text/css">
+                    <link rel="stylesheet" href="../../css/font-awesome.css"  rel="stylesheet" type="text/css">
+                     <link rel="stylesheet" href="../../css/font-awesome.min.css"  rel="stylesheet" type="text/css">
+
+                    <script src="../../js/jquery-2.1.1.min.js"></script>
                     <script src="../../js/bootstrap.min.js"></script>
-                    <script src="../../js/jquery.1.11.1.js"></script>
                     <script src="../../js/bootstrap.js"></script>
                     <script src="../../js/validation.js"></script>
 
 <style>
                  
-                        body{ background: url(../../images/45.gif); background-size: cover; color:#838383; font: 13px/1.7em 'Calibri';}
+                     body{ background: url(../../images/); background-size: cover;}
                     .alert-warning
                     {
 
@@ -350,8 +354,38 @@ if($db_code=='0'){
 ?>
 <div class="container">
   <div class="col-sm-12 col-md-12 ">
+  <div class="row bs-wizard" style="border-bottom:0;">
+         
+                <div class="col-xs-3 bs-wizard-step complete">
+                  <div class="text-center bs-wizard-stepnum">Step 1</div>
+                  <div class="progress"><div class="progress-bar"></div></div>
+                  <a href="#" class="bs-wizard-dot"></a>
+                  <div class="bs-wizard-info text-center"><i class="fa fa-plus-circle"></i> Create account</div>
+                </div>
+                
+                <div class="col-xs-3 bs-wizard-step complete"><!-- complete -->
+                  <div class="text-center bs-wizard-stepnum">Step 2</div>
+                  <div class="progress"><div class="progress-bar"></div></div>
+                  <a href="#" class="bs-wizard-dot"></a>
+                  <div class="bs-wizard-info text-center"><i class="fa fa-sign-in"></i> Login and Confirm your email address</div>
+                </div>
+                
+                <div class="col-xs-3 bs-wizard-step disabled"><!-- complete -->
+                  <div class="text-center bs-wizard-stepnum">Step 3</div>
+                  <div class="progress"><div class="progress-bar"></div></div>
+                  <a href="#" class="bs-wizard-dot"></a>
+                  <div class="bs-wizard-info text-center"><i class="fa fa-file-text-o"></i>  Fill-up application form.</div>
+                </div>
+                
+                <div class="col-xs-3 bs-wizard-step disabled"><!-- active -->
+                  <div class="text-center bs-wizard-stepnum">Step 4</div>
+                  <div class="progress"><div class="progress-bar"></div></div>
+                  <a href="#" class="bs-wizard-dot"></a>
+                  <div class="bs-wizard-info text-center"><i class="fa fa-print"></i> Print your application form.</div>
+                </div>
+            </div>
             <div class="alert alert-warning">
-                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                
                  <p>Please check your email <strong><?php echo $db_email ?></strong> and click on the account activation link. If you have not received account activation link please click on link below to request new account activation link.</p>
                 <a href='transfereeapplicationform.php?email=<?php echo $db_email ?>' class='next'><i class='glyphicon glyphicon-refresh'></i> Resend confirmation link</a>
                 <a href='transfereeapplicationform.php?username=<?php echo $db_username ?>' class='next'><i class='glyphicon glyphicon-envelope'></i> Edit Email</a>
@@ -379,7 +413,7 @@ mail($email,"Confirm Email",$message,"From: DoNotReply@sims-mks.com");
     <div class="container">
     <div class="col-sm-12 col-md-12" >
     <div class="alert alert-info">
-    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    
     <b>Confirmation code has been send successfully. Please check and activate your account.</b> <i class="fa fa-check"></i>
     </div>
     </div>
@@ -456,7 +490,7 @@ if(isset($_GET['username'])){
     <div class="container">
     <div class="col-sm-12 col-md-12" >
     <div class="alert alert-info">
-    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    
     <b>Your Email Address has been updated successfully</b> <i class="fa fa-check"></i>
     </div>
     </div>
@@ -467,7 +501,7 @@ if(isset($_GET['username'])){
     <div class="container">
     <div class="col-sm-12 col-md-12" >
     <div class="alert alert-warning">
-    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    
     <b>Email Address you want to change is already registered. Please type another email..</b> <i class="fa fa-remove"></i>
     </div>
     </div>
@@ -509,8 +543,38 @@ if($db_email==0){
         ?>
         <div class="container">
           <div class="col-sm-12 col-md-12 ">
+          <div class="row bs-wizard" style="border-bottom:0;">
+         
+                <div class="col-xs-3 bs-wizard-step complete">
+                  <div class="text-center bs-wizard-stepnum">Step 1</div>
+                  <div class="progress"><div class="progress-bar"></div></div>
+                  <a href="#" class="bs-wizard-dot"></a>
+                  <div class="bs-wizard-info text-center"><i class="fa fa-plus-circle"></i> Create account</div>
+                </div>
+                
+                <div class="col-xs-3 bs-wizard-step complete"><!-- complete -->
+                  <div class="text-center bs-wizard-stepnum">Step 2</div>
+                  <div class="progress"><div class="progress-bar"></div></div>
+                  <a href="#" class="bs-wizard-dot"></a>
+                  <div class="bs-wizard-info text-center"><i class="fa fa-sign-in"></i> Login and Confirm your email address</div>
+                </div>
+                
+                <div class="col-xs-3 bs-wizard-step complete"><!-- complete -->
+                  <div class="text-center bs-wizard-stepnum">Step 3</div>
+                  <div class="progress"><div class="progress-bar"></div></div>
+                  <a href="#" class="bs-wizard-dot"></a>
+                  <div class="bs-wizard-info text-center"><i class="fa fa-file-text-o"></i>  Fill-up application form.</div>
+                </div>
+                
+                <div class="col-xs-3 bs-wizard-step active"><!-- active -->
+                  <div class="text-center bs-wizard-stepnum">Step 4</div>
+                  <div class="progress"><div class="progress-bar"></div></div>
+                  <a href="#" class="bs-wizard-dot"></a>
+                  <div class="bs-wizard-info text-center"><i class="fa fa-print"></i> Print your application form.</div>
+                </div>
+            </div>
                     <div class="alert alert-success">
-                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                        
                          <p>Your email has been verified <strong><?php echo $db_email ?></strong>.. You are ready to fill up the application form.</p>
                         
 
@@ -1718,8 +1782,39 @@ if($db_email==0){
         ?>
         <div class="container">
         <div class="col-sm-12 col-md-12 ">
+                  <div class="row bs-wizard" style="border-bottom:0;">
+         
+                <div class="col-xs-3 bs-wizard-step complete">
+                  <div class="text-center bs-wizard-stepnum">Step 1</div>
+                  <div class="progress"><div class="progress-bar"></div></div>
+                  <a href="#" class="bs-wizard-dot"></a>
+                  <div class="bs-wizard-info text-center"><i class="fa fa-plus-circle"></i> Create account</div>
+                </div>
+                
+                <div class="col-xs-3 bs-wizard-step complete"><!-- complete -->
+                  <div class="text-center bs-wizard-stepnum">Step 2</div>
+                  <div class="progress"><div class="progress-bar"></div></div>
+                  <a href="#" class="bs-wizard-dot"></a>
+                  <div class="bs-wizard-info text-center"><i class="fa fa-sign-in"></i> Login and Confirm your email address</div>
+                </div>
+                
+                <div class="col-xs-3 bs-wizard-step active"><!-- complete -->
+                  <div class="text-center bs-wizard-stepnum">Step 3</div>
+                  <div class="progress"><div class="progress-bar"></div></div>
+                  <a href="#" class="bs-wizard-dot"></a>
+                  <div class="bs-wizard-info text-center"><i class="fa fa-file-text-o"></i>  Fill-up application form.</div>
+                </div>
+                
+                <div class="col-xs-3 bs-wizard-step disabled"><!-- active -->
+                  <div class="text-center bs-wizard-stepnum">Step 4</div>
+                  <div class="progress"><div class="progress-bar"></div></div>
+                  <a href="#" class="bs-wizard-dot"></a>
+                  <div class="bs-wizard-info text-center"><i class="fa fa-print"></i> Print your application form.</div>
+                </div>
+            </div>
+
                   <div class="alert alert-success">
-                      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                      
                        <p>Your email has been verified <strong><?php echo $db_email ?></strong>.. You are ready to fill up the application form.</p>
                       
                   </div>
