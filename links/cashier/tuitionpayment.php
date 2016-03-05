@@ -291,16 +291,18 @@ if(isset($_POST['enterpayment'])){
                     <meta http-equiv="X-UA-Compatible" content="IE=edge">
                     <meta name="viewport" content="width=device-width, initial-scale=1">
                     <title>Tuition Payment Section</title>
-                    <link rel="stylesheet" href="../../css/bootstrap.min.css"></link>
-                    <link rel="stylesheet" href="../../css/bootstrap.css"></link>
-                    <link rel="stylesheet" href="../../css/style.css"></link>
-                    <link rel="stylesheet" href="../../css/font-awesome.css"></link>
-                     <link rel="stylesheet" href="../../css/font-awesome.min.css"></link>
+                     <link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css"  rel="stylesheet" type="text/css">
+                    <link rel="stylesheet" href="../../bootstrap/css/bootstrap.css"  rel="stylesheet" type="text/css">
+                    <link rel="stylesheet" href="../../css/style.css"  rel="stylesheet" type="text/css">
+                    <link rel="stylesheet" href="../../css/font-awesome.css"  rel="stylesheet" type="text/css">
+                     <link rel="stylesheet" href="../../css/font-awesome.min.css"  rel="stylesheet" type="text/css">
 
-                    <script src="../../js/dropdown.js"></script>
-                    <script src="../../js/bootstrap.min.js"></script>
-                    <script src="../../js/jquery.1.11.1.js"></script>
-                    <script src="../../js/bootstrap.js"></script>
+                     <link href="../../css/animate.css" rel="stylesheet">
+                    <script src="../../js/jquery-2.1.1.min.js"></script>
+                    <script src="../../bootstrap/js/bootstrap.min.js"></script>
+                    <script src="../../js/validation.js"></script>
+                    <script src="../../js/jquery.appear.js"></script>
+                    <script src="../../js/modernizr.custom.js"></script>
                    
 <head>
 <style>
@@ -370,8 +372,8 @@ if(cash==""){
    docprint.document.write('"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">');
    docprint.document.write('<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">');
    docprint.document.write('<head><title>MARIA KATRINA SCHOOL APPLICATION FORM</title>');
-   docprint.document.write('<link rel="stylesheet" href="../../css/bootstrap.min.css"></link>');
-   docprint.document.write('<link rel="stylesheet" href="../../css/bootstrap.css"></link>');                
+   docprint.document.write('<link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css"></link>');
+   docprint.document.write('<link rel="stylesheet" href="../../bootstrap/css/bootstrap.css"></link>');                
    docprint.document.write('<body onLoad="window.print()">');
    docprint.document.write('<center><P>MARIA KATRINA SCHOOL</P></center>'); 
    docprint.document.write('<br><center><P>No. 10 Mendoza St. Saog, Marilao Bulacan</P></center>'); 

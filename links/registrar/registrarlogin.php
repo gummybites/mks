@@ -94,7 +94,7 @@ if(isset($_COOKIE['mks'])){
               
           body{
 
-                    background: url(../../images/45.gif); background-size: cover;  font: 15px/1.7em 'Calibri';
+                    background: url(../../images/body-bg.png);
                     }
 
 
@@ -105,7 +105,7 @@ if(isset($_COOKIE['mks'])){
                     }
 
                     /* Shutter Out Horizontal */
-                     .next {
+                     #next {
                       display: inline-block;
                       vertical-align: middle;
                       padding: 0.9em 2.3em;
@@ -126,7 +126,7 @@ if(isset($_COOKIE['mks'])){
                       margin:1em 0 0;
                       border: transparent;
                     }
-                    .next:before {
+                    #next:before {
                       content: "";
                       position: absolute;
                       z-index: -1;
@@ -148,10 +148,10 @@ if(isset($_COOKIE['mks'])){
                       text-decoration:none;
                     }
 
-                    .next:hover, .next:focus, .next:active {
+                    #next:hover, #next:focus, #next:active {
                           color: #fff;
                         }
-                        .next:hover:before, .next:focus:before, .next:active:before {
+                        #next:hover:before, #next:focus:before, #next:active:before {
                           -webkit-transform: scaleX(1);
                           transform: scaleX(1);
                         }
@@ -174,69 +174,72 @@ if(isset($_COOKIE['mks'])){
         <div class="container">
      <br><br>                                                     
 
-                                                       <div class="row">
-                                                             
-                                                              <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1">
-                                                                      <div class="panel panel-default" id="panel">
-                                                                          <div class="panel-heading">
-                                                                      <b>   (*) Note: Required Fields </b>  
-                                                                          </div>
-                                                                          <div class="panel-body">
-                                                                          <h2>REGISTRAR LOGIN</h2>
-                                                                            <div align="center"> <img src="../../images/secure.png" height="100px" width="100px"></div>
-                                                                               <h4>Please provide your details</h4>
-                                                                              <form role="form" method="POST" onsubmit="return freshmanlogin()"  action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+         <div class="row">
+         <div class="col-md-3">
+         </div>
+           <div class="col-md-6 ">
+             <div class="panel panel-default" id="panel">
+                <div class="panel-heading">
+                <p>  <b style="color:red;">(*) </b> Note: Required Fields </p>
+                </div>
+         
+         <div class="panel-body">
+            <div class="text-center"><h2>REGISTRAR LOGIN</h2></div>
+         
+            <h4>Please provide your details</h4>
+            <form role="form" method="POST" onsubmit="return freshmanlogin()"  action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+            
+            <?php if(isset($_GET['InvalidUsernameOrPassword'])){
+              ?>
+              <div style='color: red;'>Invalid Username or Password...</div>
+              <?php
+            }elseif(isset($_GET['InvalidUsernameorPassword'])){
+              ?>
+              <div style='color: red;'>Invalid Username or Password...</div>
+              <?php
+            } ?>
+
+            <i  id="error" style="color: Red; display: none"></i>
+
+            
+            
+            
+         
+            
+
+            <div class="form-group"><!--Username Validation -->
+            <b> Username <i style="color:red;">(*)</i> <i id='validateusername' ></i><i id='user'></i></b>                                                                    
+            <input type='text' value='' class='form-control input' maxlength='25'  onkeypress="return forusernamelogin(event);" ondrop="return false;" onpaste="return false;" id='username' name='username'/>
+            </div>                                                                      
+
+
+
+            
+            
+            
+         
+            
+            <div class="form-group"><!--Password Validation -->
+            <b> Password <i style="color:red;">(*)</i> <i id='validatepassword' ></i><i id='pass'></i></b>                                                                       
+            <input type='password' value='' maxlength="25" class='form-control'  onkeypress="return forpasswordlogin(event);" ondrop="return false;" onpaste="return false;" id='password' name='password'/>
+           </div>                                                                    
+
+
+
                                                                                       
-                                                                                      <?php if(isset($_GET['InvalidUsernameOrPassword'])){
-                                                                                              ?>
-                                                                                              <div style='color: red;'>Invalid Username or Password...</div>
-                                                                                              <?php
-                                                                                        }elseif(isset($_GET['InvalidUsernameorPassword'])){
-                                                                                              ?>
-                                                                                              <div style='color: red;'>Invalid Username or Password...</div>
-                                                                                              <?php
-
-
-
-                                                                                          } ?>
-
-                                                                                      <i  id="error" style="color: Red; display: none"></i>
-
-                                                                                      <div class="form-group input-group"><!--Username Validation -->
-                                                                                      <i id='validateusername' ></i>
-                                                                                      <i id='user'></i>
-                                                                                      </div>
-                                                                                      
-                                                                                      <input type='text' value='' class='form-control input' maxlength='25'  onkeypress="return forusernamelogin(event);" ondrop="return false;" onpaste="return false;" id='username' name='username' placeholder="Your Username *"/>
-                                                                                  
-
-
-
-                                                                                      <div class="form-group input-group"><!--Password Validation -->
-                                                                                      <i id='validatepassword' ></i>
-                                                                                      <i id='pass'></i>
-                                                                                      </div>
-                                                                                    
-                                                                                      <input type='password' value='' maxlength="25" class='form-control'  onkeypress="return forpasswordlogin(event);" ondrop="return false;" onpaste="return false;" id='password' name='password' placeholder='Your password *'/>
-                                                                                
-
-
-
-                                                                                      
-                                                                                      <input type='checkbox' name='remember'> Remember me
-                                                                                  <button type="submit"  name="login" class="next" value="Submit"   >Login</button>
-                                                                                  
-                                                                                  <hr />
-                                                                                
-                                                                                  </form>
-                                                                          </div>
-                                                                         
-                                                                      </div>
-                                                                  </div>
-                                                              
-                                                              
-                                                      </div>
-                                                  </div>
+            
+            <button type="submit"  name="login" id="next" value="Submit"   >Login</button>
+            <hr />
+            <input type='checkbox' name='remember'/> Remember me
+            <div class="pull-right"><a href="#">Forgot password?</a></div>                                                                  
+            </form>
+            </div>
+            </div>
+            </div>
+             <div class="col-md-3">
+            </div>
+            </div>
+            </div>
      
 
 </body>

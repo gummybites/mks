@@ -113,6 +113,19 @@ while($qry=mysql_fetch_array($res)){
                               $per = mysql_real_escape_string(htmlspecialchars(trim(ucfirst($_POST['permanent']))));
                               $tele = mysql_real_escape_string(htmlspecialchars(trim($_POST ['telephone'])));
                               $mobi = mysql_real_escape_string(htmlspecialchars(trim($_POST['mobile'])));
+
+                              $month= $_POST['month'];
+                              $day= $_POST['day'];
+                              $years= $_POST['years'];
+                              $birthday= $day.'/'.$month.'/'.$years;
+                              $age =  date('Y')-$years;
+
+                              $seeking= mysql_real_escape_string(htmlspecialchars(trim(ucfirst($_POST ['seeking']))));
+
+                              $Sex= mysql_real_escape_string(htmlspecialchars(trim(ucfirst($_POST ['gender']))));
+
+                              $reli = mysql_real_escape_string(htmlspecialchars(trim(ucfirst($_POST['religion']))));
+
                               $bplace = mysql_real_escape_string(htmlspecialchars(trim(ucfirst($_POST ['birthplace']))));
 
                               $gname= mysql_real_escape_string(htmlspecialchars(trim(ucfirst($_POST ['guardianname']))));
@@ -121,55 +134,11 @@ while($qry=mysql_fetch_array($res)){
 
 
 
-                              mysql_query("UPDATE tbl_prospectivestudents set surname='$Sname', firstname='$Fname', middlename='$Mname' where id='$id' ");
-                              mysql_query("UPDATE tbl_studentdetails set peraddress='$per', telephone='$tele', mobile='$mobi', birthplace='$bplace',guardianname='$gname',guardianaddress='$gadd',guardiancontact='$gcon' where id='$id'");
-                              header("Location: transfereeapplicationform.php?editapplication=$email");
+                              mysql_query("UPDATE tbl_prospectivestudents set seeking='$seeking',surname='$Sname', firstname='$Fname', middlename='$Mname' where id='$id' ");
+                              mysql_query("UPDATE tbl_studentdetails set peraddress='$per', telephone='$tele', mobile='$mobi', birthdate='$birthday',age='$age',gender='$Sex',birthplace='$bplace',religion='$reli',guardianname='$gname',guardianaddress='$gadd',guardiancontact='$gcon' where id='$id'");
                         }
 
-                        elseif(isset($_POST['edit_birthdate'])){
-                              $id=$_POST['id'];
-                              $email=$_POST['email'];
-
-
-                              $month= $_POST['month'];
-                              $day= $_POST['day'];
-                              $years= $_POST['years'];
-                              $birthday= $day.'/'.$month.'/'.$years;
-                              $age =  date('Y')-$years;
-
-                              mysql_query("UPDATE tbl_studentdetails set birthdate='$birthday', age='$age' where id='$id'");
-                              header("Location: transfereeapplicationform.php?editbirthdate=$email");
-                        }elseif(isset($_POST['edit_gender'])){
-                              $id=$_POST['id'];
-                              $email=$_POST['email'];
-
-                              $Sex= mysql_real_escape_string(htmlspecialchars(trim(ucfirst($_POST ['gender']))));
-
-                              mysql_query("UPDATE tbl_studentdetails set gender='$Sex' where id='$id'");
-                              header("Location: transfereeapplicationform.php?editgender=$email");
-
-
-
-                        }elseif(isset($_POST['edit_religion'])){
-                              $id=$_POST['id'];
-                              $email=$_POST['email'];
-
-                              $reli = mysql_real_escape_string(htmlspecialchars(trim(ucfirst($_POST['religion']))));
-
-                              mysql_query("UPDATE tbl_studentdetails set religion='$reli' where id='$id'");
-                              header("Location: transfereeapplicationform.php?editreligion=$email");
-
-                        }elseif(isset($_POST['edit_seeking'])){
-                              $id=$_POST['id'];
-                              $email=$_POST['email'];
-
-                              $seeking= $_POST['seeking'];
-
-                              mysql_query("UPDATE tbl_prospectivestudents set seeking='$seeking' where id='$id'");
-                              header("Location: transfereeapplicationform.php?editseeking=$email");
-
-                        }
-
+                      
                           ?>
 
 <!DOCTYPE html>
@@ -185,21 +154,18 @@ while($qry=mysql_fetch_array($res)){
                                   }elseif($db_code=='1'){
                                   echo "Email Verified: Transferee Application Form";
                                     } ?></title>
-                      <link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css"  rel="stylesheet" type="text/css">
+                     <link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css"  rel="stylesheet" type="text/css">
                     <link rel="stylesheet" href="../../bootstrap/css/bootstrap.css"  rel="stylesheet" type="text/css">
-
-                     <link rel="stylesheet" href="../../bootstrap/css/bootstrap-theme.css"  rel="stylesheet" type="text/css">
-
-                     <link rel="stylesheet" href="../../bootstrap/css/bootstrap-theme.min.css"  rel="stylesheet" type="text/css">
-
                     <link rel="stylesheet" href="../../css/style.css"  rel="stylesheet" type="text/css">
                     <link rel="stylesheet" href="../../css/font-awesome.css"  rel="stylesheet" type="text/css">
                      <link rel="stylesheet" href="../../css/font-awesome.min.css"  rel="stylesheet" type="text/css">
 
+                      <link href="../../css/animate.css" rel="stylesheet">
                     <script src="../../js/jquery-2.1.1.min.js"></script>
-                    <script src="../../js/bootstrap.min.js"></script>
-                    <script src="../../js/bootstrap.js"></script>
+                    <script src="../../bootstrap/js/bootstrap.min.js"></script>
                     <script src="../../js/validation.js"></script>
+                    <script src="../../js/jquery.appear.js"></script>
+                    <script src="../../js/modernizr.custom.js"></script>
 
 <style>
                  
@@ -298,6 +264,12 @@ while($qry=mysql_fetch_array($res)){
                       background: #0064d2;
 
                    }
+
+                   .form-control{
+                        border: solid gray 1px;
+                        border-radius: 0px;
+                      
+                      }
 </style>
 <script language="javascript">
 function PrintMe(el) {
@@ -311,8 +283,8 @@ disp_setting+="scrollbars=yes,width=650, height=600, left=100, top=25";
    docprint.document.write('"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">');
    docprint.document.write('<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">');
    docprint.document.write('<head><title>MARIA KATRINA SCHOOL APPLICATION FORM</title>');
-   docprint.document.write('<link rel="stylesheet" href="../../css/bootstrap.min.css"></link>');
-   docprint.document.write('<link rel="stylesheet" href="../../css/bootstrap.css"></link>');                
+   docprint.document.write('<link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css"></link>');
+   docprint.document.write('<link rel="stylesheet" href="../../bootstrap/css/bootstrap.css"></link>');                
    docprint.document.write('</head><body onLoad="window.print()"><form>');
    docprint.document.write('<center><P>MARIA KATRINA SCHOOL</P></center>'); 
    docprint.document.write('<br><center><P>No. 10 Mendoza St. Saog, Marilao Bulacan</P></center>'); 
@@ -325,6 +297,118 @@ disp_setting+="scrollbars=yes,width=650, height=600, left=100, top=25";
    docprint.focus();
 }
 
+
+  function AllowSingleSpaceNotInFirstAndLast() {
+        var surname = document.getElementById('surname');
+        surname.value = surname.value.replace(/^\s+|\s+$/g, "");
+        var forsurname = surname.value.split(" ");
+
+        var firstname= document.getElementById('firstname');
+        firstname.value = firstname.value.replace(/^\s+|\s+$/g, "");
+        var forfirstname = firstname.value.split(" ");
+
+          var middlename= document.getElementById('middlename');
+        middlename.value = middlename.value.replace(/^\s+|\s+$/g, "");
+        var formiddlename = middlename.value.split(" ");
+
+        var permanent= document.getElementById('permanent');
+        permanent.value = permanent.value.replace(/^\s+|\s+$/g, "");
+        var forpermanent = permanent.value.split(" ");
+
+        var telephone= document.getElementById('telephone');
+        telephone.value = telephone.value.replace(/^\s+|\s+$/g, "");
+        var fortelephone = telephone.value.split(" ");
+
+        var mobile= document.getElementById('mobile');
+        mobile.value = mobile.value.replace(/^\s+|\s+$/g, "");
+        var formobile = mobile.value.split(" ");
+
+        var birthplace= document.getElementById('birthplace');
+        birthplace.value = birthplace.value.replace(/^\s+|\s+$/g, "");
+        var forbirthplace = birthplace.value.split(" ");
+
+        var guardianname= document.getElementById('guardianname');
+        guardianname.value =guardianname.value.replace(/^\s+|\s+$/g, "");
+        var forguardianname = guardianname.value.split(" ");
+
+        var guardianaddress= document.getElementById('guardianaddress');
+        guardianaddress.value =guardianaddress.value.replace(/^\s+|\s+$/g, "");
+        var forguardianaddress = guardianaddress.value.split(" ");
+
+         var guardiancontact= document.getElementById('guardiancontact');
+        guardiancontact.value =guardiancontact.value.replace(/^\s+|\s+$/g, "");
+        var forguardiancontact = guardiancontact.value.split(" ");
+
+
+
+
+       
+
+         if (forsurname.length > 10) {
+            return false;
+        }
+        else {
+        }
+
+
+        if (forfirstname.length > 10) {
+            return false;
+        }
+        else {
+        }
+
+        if (formiddlename.length > 10) {
+            return false;
+        }
+        else {
+        }
+
+        if (forpermanent.length > 10) {
+            return false;
+        }
+        else {
+        }
+
+        if (fortelephone.length > 10) {
+            return false;
+        }
+        else {
+        }
+
+        if (formobile.length > 10) {
+            return false;
+        }
+        else {
+        }
+
+        if (forbirthplace.length > 10) {
+            return false;
+        }
+        else {
+        }
+
+        if (forguardianname.length > 10) {
+            return false;
+        }
+        else {
+        }
+
+
+        if (forguardianaddress.length > 10) {
+            return false;
+        }
+        else {
+        }
+
+        if (forguardiancontact.length > 10) {
+            return false;
+        }
+        else {
+        }
+
+
+        return true;
+    }
 </script>
 </head>
 <body>
@@ -573,33 +657,41 @@ if($db_email==0){
                   <div class="bs-wizard-info text-center"><i class="fa fa-print"></i> Print your application form.</div>
                 </div>
             </div>
-                    <div class="alert alert-success">
-                        
-                         <p>Your email has been verified <strong><?php echo $db_email ?></strong>.. You are ready to fill up the application form.</p>
-                        
+                 
+          </div>
+          </div>
 
+          <div class="container">
+          <div class="col-sm-12 col-md-12 ">
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a href="#profile" data-toggle="tab"><i class="fa fa-file-o"></i> Application Form</a>
+                                </li>
+                                <li class=""><a href="#editapplication-modal" data-toggle="modal"><i class="fa fa-edit"></i> Edit</a>
+                                </li>
+                                <li class=""><a href="#" onclick="PrintMe('divid')" data-toggle="tab"><i class="fa fa-print"></i> Print </a>
+                                </li>
+                            </ul>
 
-                    <?php if(isset($_GET['view'])){ ?>
-                    <a href='transfereeapplicationform.php?editapplication=<?php echo $db_email ?>' class='next'><i class='glyphicon glyphicon-edit'> </i> Edit Application</a>    
-                        <button type='submit' href='#' class='next'  onclick="PrintMe('divid')"><i class='glyphicon glyphicon-print'></i> Print</button>
-                    <?php }elseif(isset($_GET['editapplication'])){?>
-                        <a href='transfereeapplicationform.php?view=<?php echo $db_email ?>' class='next'><i class='glyphicon glyphicon-search'> </i> View Application</a>
-                        
-                    
-                    <?php }else{ ?>
-                          <a href='transfereeapplicationform.php?view=<?php echo $db_email ?>' class='next'><i class='glyphicon glyphicon-search'> </i> View Application</a>
+                            <div class="tab-content">
+                                <div class="tab-pane fade active in" id="profile">
+                                </div>
+                            </div>
+         </div>
+         </div>
 
-                    <?php } ?>
+         <!-- Start Portfolio Section -->
+        <div class="section-modal modal fade" id="editapplication-modal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-content">
+                <div class="close-modal" data-dismiss="modal">
+                    <div class="lr">
+                        <div class="rl">
+                        </div>
                     </div>
-          </div>
-          </div>
-
-
-       
-          <?php
-        if(isset($_GET['editseeking'])){
-          $email=$_GET['editseeking'];
-          $qry="SELECT * from tbl_prospectivestudents inner join tbl_studentdetails on tbl_prospectivestudents.id=tbl_studentdetails.id where email='$email' ";
+                </div>
+                
+                <div class="container">
+                 <?php
+                   $qry="SELECT * from tbl_prospectivestudents inner join tbl_studentdetails on tbl_prospectivestudents.id=tbl_studentdetails.id where email='$db_email' ";
           $res=mysql_query($qry);
           while($qry=mysql_fetch_array($res)){
                             $id=$qry['id'];
@@ -622,21 +714,39 @@ if($db_email==0){
                             $gadd=$qry['guardianaddress'];
                             $gcon=$qry['guardiancontact'];
                           }
+
                           ?>
-                      
+        <i  id="error" style="color: Red; display: none"></i>
+     
 
         <div class="container">
-        <div class="col-sm-12 col-md-12 ">
 
-                  <div class="alert alert-warning">
-                  <legend><a href="transfereeapplicationform.php?editapplication=<?php echo $db_email?>">Edit Application</a> > Edit Seeking admission</legend>
-                    <form   onsubmit='return freshmanapplicationseekingupdate()' action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST"  enctype="multipart/form-data">
+        <div class="col-md-12 ">
+
+                <h3 class="text-center">APPLICATION FORM</h3>
+
+                    <form   onsubmit='return transfereeapplicationupdate()' action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST"  enctype="multipart/form-data">
                 
                       <i  id="error" style="color: Red; display: none"></i>
 
                       <div class='row'>
                       <div class="col-sm-4 col-md-4 ">
-                      School Year:
+                        <b id="sy"></b>
+                      </div>
+                      
+                      <div class="col-sm-4 col-md-4">
+                  
+        
+                      </div>
+
+                      <div class="col-sm-4 col-md-4 ">
+                      <b>Seeking admission as:</b> <?php echo $level ?> <b id="seek"></b> 
+                      </div>
+                      </div><!--row-->
+
+                      <div class='row'>
+                      <div class="col-sm-4 col-md-4 ">
+                      <b>School Year:</b> 
                       <p class='form-control' readonly="readonly"><?php echo $year;  ?></p>
                       </div>
                       
@@ -644,15 +754,13 @@ if($db_email==0){
                       </div>
 
                       <div class="col-sm-4 col-md-4 ">
-                      Seeking Admission As: <i id="seek"></i>  <?php echo $level;?>
-                      <select class='form-control' id='seeking' name='seeking'>
+                      <b>Edit Seeking Admission As:</b> <b style="color:red;">(*)</b>
+                       <select class='form-control' id='seeking' name='seeking'>
                                                   <option></option>
                                                   <option>Grade 7</option>
                                                   <option>Grade 8</option>
                                                   <option>Grade 9</option>
                                                   <option>Grade 10</option>
-                                                  <option>Grade 11</option>
-                                                  <option>Grade 12</option>
                                                 </select>
                       </div>
                       </div><!--row-->
@@ -663,280 +771,179 @@ if($db_email==0){
 
 
 
-
+                      <br>
                       <div class='row'>
                       <div class="col-sm-4 col-md-4 ">
-                      Applied date:
-                      <p class="form-control" readonly="readonly"><?php echo $date; ?></p>
+                      <b>Applied date:</b>
+                      <input type="text" class='form-control' readonly="readonly"value="<?php 
+                                                          $applied = date("F j,Y");
+                                                          echo "$applied";
+                                                          ?>">
                       </div>
                       
                       <div class="col-sm-4 col-md-4">
                       </div>
 
                       <div class="col-sm-4 col-md-4 ">
-                      Status:
-                      <p class="form-control" readonly="readonly"><?php echo $stat;?></p>
+                      <b>Status:</b>
+                      <input type="text" class='form-control' readonly="readonly"value="<?php 
+                                                        echo $db_status;
+                                                          ?>">
                       </div>
                       </div><!--row-->
 
 
 
-
+                      <br>
                       <div class='row'>
                       <div class="col-sm-4 col-md-4 ">
-                      Surname:
-                       <p class='form-control' readonly="readonly"><?php echo $sname;  ?></p>
+                      <b id='sur'></b> <b id='validatesurname'></b>
                       </div>
                       
                       <div class="col-sm-4 col-md-4">
-                      Firstname:
-                       <p class='form-control' readonly="readonly"><?php echo $fname;  ?></p>
+                      <b id='first'></b> <b id='validatefirstname'></b>
+        
                       </div>
 
                       <div class="col-sm-4 col-md-4 ">
-                      Middlename: 
-                       <p class='form-control' readonly="readonly"><?php echo $mname;  ?></p>
+                      <b id='middle'></b> <b id='validatemiddlename'></b>
+                      </div>
+                      </div><!--row-->
+
+                      <div class='row'>
+                      <div class="col-sm-4 col-md-4 ">
+                      <b>Surname:</b> <b style="color:red;">(*)</b>  
+                      <input class='form-control' type='text' onkeypress="return forsurname(event);" ondrop="return false;" onpaste="return false;"  id='surname' name='surname' maxlength="25" placeholder='Type your surname..' value='<?php echo $sname ?>'/>
+                      </div>
+                      
+                      <div class="col-sm-4 col-md-4">
+                      <b>Firstname:</b>  <b style="color:red;">(*)</b>  
+                      <input class='form-control' type='text' id='firstname' onkeypress="return forfirstname(event);" ondrop="return false;" onpaste="return false;"  name='firstname' maxlength="25" placeholder='Type your firstname..' value='<?php echo $fname ?>'/>
+                      </div>
+
+                      <div class="col-sm-4 col-md-4 ">
+                      <b>Middlename:</b>  <i>(optional)</i> 
+                      <input class='form-control' type='text' id='middlename' onkeypress="return formiddlename(event);" ondrop="return false;" onpaste="return false;" maxlength="25" name='middlename'  placeholder='Type your middlename..' value='<?php echo $mname ?>'/>
                       </div>
                       </div><!--row-->
                   
 
 
-
-                      <div class='row'>
-                      <div class="col-sm-4 col-md-4 ">
-                      Permanent Home address: 
-                        <p class='form-control' readonly="readonly"><?php echo $per;  ?></p>
-                      </div>
-                      
-                      <div class="col-sm-4 col-md-4">
-                      </div>
-
-                      <div class="col-sm-4 col-md-4 ">
-                      Telephone number:
-                        <p class='form-control' readonly="readonly"><?php echo $tele;  ?></p>
-                      </div>
-                      </div><!--row-->
-
-
-
-                      <div class='row'>
-                      <div class="col-sm-4 col-md-4 ">
-                      Mobile number:
-                       <p class='form-control' readonly="readonly"><?php echo $mob;  ?></p>
-                      </div>
-                      
-                      <div class="col-sm-4 col-md-4">
-                      Birthdate: (Day/Month/Year) <a href="transfereeapplicationform.php?editbirthdate=<?php echo $db_email?>">Change</a>
                       <br>
-                      <p id='age' class='form-control' readonly="readonly"><?php echo $birt;  ?></p>  
-                      </div>
-
-
-
-                      <div class="col-sm-4 col-md-4 ">
-                      Age: <br>  
-                       <p id='age' class='form-control' readonly="readonly"><?php echo $ages;  ?></p>
-                      </div>
-                      </div><!--row-->
-
-
-
                       <div class='row'>
-                       <div class="col-sm-4 col-md-4 ">
-                      Gender: <i>(required)</i> <i id='gen'></i><a href="transfereeapplicationform.php?editgender=<?php echo $db_email?>">Change</a>
-                      <p id='age' class='form-control' readonly="readonly"><?php echo $sex;  ?></p>
+                      <div class="col-sm-4 col-md-4 ">
+                      <b id='per'></b> <b id='validatepermanent'></b>
+      
                       </div>
                       
                       <div class="col-sm-4 col-md-4">
-                       Birthplace:
-                        <p class='form-control' readonly="readonly"><?php echo $place;  ?></p>
-                      </div>
-
-                      <div class="col-sm-4 col-md-4 ">
-                      Religion: <a href="transfereeapplicationform.php?editreligion=<?php echo $db_email?>">Change</a>
-                      <p id='age' class='form-control' readonly="readonly"><?php echo $reli?></p>
-                      </div><!--row-->
-                      </div>
-
-
-
-                       <div class='row'>
-                      <div class="col-sm-4 col-md-4 ">
-                      Guardian's name:
-                        <p class='form-control' readonly="readonly"><?php echo $gname;  ?></p>
-                      </div>
                       
-                      <div class="col-sm-4 col-md-4">
-                       Address:
-                       <p class='form-control' readonly="readonly"><?php echo $gadd;  ?></p>
+        
                       </div>
 
                       <div class="col-sm-4 col-md-4 ">
-                      Mobile number:
-                        <p class='form-control' readonly="readonly"><?php echo $gcon;  ?></p>
+                      <b id='tele'></b> <b id='validatetelephone'></b>
                       </div>
                       </div><!--row-->
-
-                        <input type='hidden' name='id' value="<?php echo $id ?>">
-                        <input type='hidden' name='email' value="<?php echo $db_email ?>">
-                       <button type="submit"  name="edit_seeking"  value="Submit" class='next'>Update</button>
-                       </form>
-                  </div>
-        </div>
-        </div>
-        <?php
-
-
-        }elseif(isset($_GET['editreligion'])){
-          $email=$_GET['editreligion'];
-          $qry="SELECT * from tbl_prospectivestudents inner join tbl_studentdetails on tbl_prospectivestudents.id=tbl_studentdetails.id where email='$email' ";
-          $res=mysql_query($qry);
-          while($qry=mysql_fetch_array($res)){
-                            $id=$qry['id'];
-                            $year=$qry['year'];
-                            $level=$qry['seeking'];
-                            $date=$qry['applieddate'];
-                            $stat=$qry['status'];
-                            $sname=$qry['surname'];
-                            $fname=$qry['firstname'];
-                            $mname=$qry['middlename'];
-                            $per=$qry['peraddress'];
-                            $tele=$qry['telephone'];        
-                            $mob=$qry['mobile'];
-                            $birt=$qry['birthdate'];
-                            $ages=$qry['age'];
-                            $sex=$qry['gender'];
-                            $place=$qry['birthplace'];          
-                            $reli=$qry['religion'];
-                            $gname=$qry['guardianname'];
-                            $gadd=$qry['guardianaddress'];
-                            $gcon=$qry['guardiancontact'];
-                          }
-                          ?>
-                      
-
-        <div class="container">
-        <div class="col-sm-12 col-md-12 ">
-
-                  <div class="alert alert-warning">
-                  <legend><a href="transfereeapplicationform.php?editapplication=<?php echo $db_email?>">Edit Application</a> > Edit Religion</legend>
-                    <form   onsubmit='return freshmanapplicationreligionupdate()' action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST"  enctype="multipart/form-data">
-                
-                      <i  id="error" style="color: Red; display: none"></i>
 
                       <div class='row'>
                       <div class="col-sm-4 col-md-4 ">
-                      School Year:
-                      <p class='form-control' readonly="readonly"><?php echo $year;  ?></p>
+                      <b>Permanent Home address:</b> Street Address/City <b style="color:red;">(*)</b>  
+                        <input class='form-control' type='text' id='permanent' onkeypress="return forpermanent(event);" ondrop="return false;" onpaste="return false;" placeholder='Type your home address..' maxlength="35" value='<?php echo $per?>' name='permanent'/>
                       </div>
                       
                       <div class="col-sm-4 col-md-4">
                       </div>
 
                       <div class="col-sm-4 col-md-4 ">
-                      Seeking Admission As: <a href="transfereeapplicationform.php?editseeking=<?php echo $db_email?>">Change</a>
-                      <p class="form-control" readonly="readonly"><?php echo $level;?></p>
+                      <b>Telephone number:</b> 3******<i>(optional)</i> 
+                       <input class='form-control' type='text' id='telephone' onkeypress="return fortelephone(event);" ondrop="return false;" onpaste="return false;"  placeholder='Type your telephone number..' maxlength="7" value='<?php echo $tele?>' name='telephone'/> 
                       </div>
                       </div><!--row-->
 
 
-
-
-
-
-
-
+                      <br>
                       <div class='row'>
                       <div class="col-sm-4 col-md-4 ">
-                      Applied date:
-                      <p class="form-control" readonly="readonly"><?php echo $date; ?></p>
+                      <b id='mobi'></b>  <b id='validatemobile'></b>
+      
                       </div>
-                      
+
                       <div class="col-sm-4 col-md-4">
+                      <b>Birthdate:</b> <?php echo $birt ?> <b id="birth"></b>
+        
                       </div>
 
                       <div class="col-sm-4 col-md-4 ">
-                      Status:
-                      <p class="form-control" readonly="readonly"><?php echo $stat;?></p>
-                      </div>
-                      </div><!--row-->
-
-
-
-
-                      <div class='row'>
-                      <div class="col-sm-4 col-md-4 ">
-                      Surname:
-                       <p class='form-control' readonly="readonly"><?php echo $sname;  ?></p>
-                      </div>
-                      
-                      <div class="col-sm-4 col-md-4">
-                      Firstname:
-                       <p class='form-control' readonly="readonly"><?php echo $fname;  ?></p>
-                      </div>
-
-                      <div class="col-sm-4 col-md-4 ">
-                      Middlename: 
-                       <p class='form-control' readonly="readonly"><?php echo $mname;  ?></p>
-                      </div>
-                      </div><!--row-->
                   
-
-
-
-                      <div class='row'>
-                      <div class="col-sm-4 col-md-4 ">
-                      Permanent Home address: 
-                        <p class='form-control' readonly="readonly"><?php echo $per;  ?></p>
-                      </div>
-                      
-                      <div class="col-sm-4 col-md-4">
-                      </div>
-
-                      <div class="col-sm-4 col-md-4 ">
-                      Telephone number:
-                        <p class='form-control' readonly="readonly"><?php echo $tele;  ?></p>
                       </div>
                       </div><!--row-->
 
-
-
                       <div class='row'>
                       <div class="col-sm-4 col-md-4 ">
-                      Mobile number:
-                       <p class='form-control' readonly="readonly"><?php echo $mob;  ?></p>
+                      <b>Mobile number:</b> 09********* <b style="color:red;">(*)</b>  
+                       <input class='form-control' type='text' id='mobile' onkeypress="return formobile(event);" ondrop="return false;" onpaste="return false;" placeholder='Type your mobile number here..' maxlength='11' value='<?php echo $mob?>' name='mobile' />
                       </div>
                       
                       <div class="col-sm-4 col-md-4">
-                      Birthdate: (Day/Month/Year) <a href="transfereeapplicationform.php?editbirthdate=<?php echo $db_email?>">Change</a>
+                      <b>Edit Birthdate:</b> (Day/Month/Year) <b style="color:red;">(*)</b>  
                       <br>
-                      <p id='age' class='form-control' readonly="readonly"><?php echo $birt;  ?></p>  
+                      <select   id='days' name="day">
+                            <option></option>
+                      </select>
+                                    
+                      <select id='months' name="month">
+                          <option></option>
+                      </select>
+                                                                       
+                      <select  id='years' name="years">
+                            <option></option>
+                      </select>                                                       
                       </div>
-
-
 
                       <div class="col-sm-4 col-md-4 ">
-                      Age: <br>  
-                       <p id='age' class='form-control' readonly="readonly"><?php echo $ages;  ?></p>
-                      </div>
+                      Age:
+                       <label id='age' class='form-control' readonly="readonly" ><?php echo $ages ?></label>
+                      </div>  
                       </div><!--row-->
 
 
-
+                      <br>
                       <div class='row'>
-                       <div class="col-sm-4 col-md-4 ">
-                      Gender: <i>(required)</i> <i id='gen'></i><a href="transfereeapplicationform.php?editgender=<?php echo $db_email?>">Change</a>
-                      <p id='age' class='form-control' readonly="readonly"><?php echo $sex;  ?></p>
+                      <div class="col-sm-4 col-md-4 ">
+                      <b>Gender:</b> <?php echo $sex?> <b id='gen'></b> 
+      
                       </div>
-                      
+                         
+   
                       <div class="col-sm-4 col-md-4">
-                       Birthplace:
-                        <p class='form-control' readonly="readonly"><?php echo $place;  ?></p>
+                      <b id='places'></b> <b id='validatebirthplace'></b>
+            
                       </div>
 
                       <div class="col-sm-4 col-md-4 ">
-                      Religion:<i>(required)</i>  <i id="reli"></i> <?php echo $reli?>
-                      <select class='form-control' id='religion' name='religion'>
+                      <b>Religion:</b> <?php echo $reli?> <b id="reli"></b>
+                      </div>
+                      </div><!--row-->
+
+                      <div class='row'>
+                      <div class="col-sm-4 col-md-4 ">
+                      <b>Edit Gender:</b> <b style="color:red;">(*)</b>  
+                       <select class='form-control' id="gender" name="gender">
+                        <option></option>
+                        <option>Female</option>
+                        <option>Male</option>
+                      </select>
+                      </div>
+                      
+                      <div class="col-sm-4 col-md-4">
+                       <b>Birthplace:</b> Street Address/City <b style="color:red;">(*)</b>  
+                       <input class='form-control' type='text' onkeypress="return forbirthplace(event);" ondrop="return false;" onpaste="return false;"  id="birthplace" placeholder='Type your birthplace here..' maxlength="35" value="<?php echo $place?>" name="birthplace" />
+                      </div>
+
+                      <div class="col-sm-4 col-md-4 ">
+                      <b>Edit Religion:</b> <b style="color:red;">(*)</b>   
+                       <select class='form-control' id='religion' name='religion'>
                                                         <option>                                       </option>
                                                         <option>4TH WATCH                                         </option>
                                                         <option>7TH DAY ADVENTIST</option>
@@ -995,616 +1002,89 @@ if($db_email==0){
                                                         <option >UNITED CHURCH OF CHRIST IN THE PHILIPPINES</option>
                                                         <option>OTHERS</option>
                                                       </select>
-                      </div><!--row-->
-                      </div>
-
-
-
-                       <div class='row'>
-                      <div class="col-sm-4 col-md-4 ">
-                      Guardian's name:
-                        <p class='form-control' readonly="readonly"><?php echo $gname;  ?></p>
-                      </div>
-                      
-                      <div class="col-sm-4 col-md-4">
-                       Address:
-                       <p class='form-control' readonly="readonly"><?php echo $gadd;  ?></p>
-                      </div>
-
-                      <div class="col-sm-4 col-md-4 ">
-                      Mobile number:
-                        <p class='form-control' readonly="readonly"><?php echo $gcon;  ?></p>
-                      </div>
-                      </div><!--row-->
-
-                        <input type='hidden' name='id' value="<?php echo $id ?>">
-                        <input type='hidden' name='email' value="<?php echo $db_email ?>">
-                       <button type="submit"  name="edit_religion"  value="Submit" class='next'>Update</button>
-                       </form>
-                  </div>
-        </div>
-        </div>
-        <?php
-
-
-        }elseif(isset($_GET['editgender'])){
-          $email=$_GET['editgender'];
-          $qry="SELECT * from tbl_prospectivestudents inner join tbl_studentdetails on tbl_prospectivestudents.id=tbl_studentdetails.id where email='$email' ";
-          $res=mysql_query($qry);
-          while($qry=mysql_fetch_array($res)){
-                            $id=$qry['id'];
-                            $year=$qry['year'];
-                            $level=$qry['seeking'];
-                            $date=$qry['applieddate'];
-                            $stat=$qry['status'];
-                            $sname=$qry['surname'];
-                            $fname=$qry['firstname'];
-                            $mname=$qry['middlename'];
-                            $per=$qry['peraddress'];
-                            $tele=$qry['telephone'];        
-                            $mob=$qry['mobile'];
-                            $birt=$qry['birthdate'];
-                            $ages=$qry['age'];
-                            $sex=$qry['gender'];
-                            $place=$qry['birthplace'];          
-                            $reli=$qry['religion'];
-                            $gname=$qry['guardianname'];
-                            $gadd=$qry['guardianaddress'];
-                            $gcon=$qry['guardiancontact'];
-                          }
-                          ?>
-                      
-
-        <div class="container">
-        <div class="col-sm-12 col-md-12 ">
-
-                  <div class="alert alert-warning">
-                  <legend><a href="transfereeapplicationform.php?editapplication=<?php echo $db_email?>">Edit Application</a> > Edit Gender</legend>
-                    <form   onsubmit='return freshmanapplicationgenderupdate()' action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST"  enctype="multipart/form-data">
-                
-                      <i  id="error" style="color: Red; display: none"></i>
-
-                      <div class='row'>
-                      <div class="col-sm-4 col-md-4 ">
-                      School Year:
-                      <p class='form-control' readonly="readonly"><?php echo $year;  ?></p>
-                      </div>
-                      
-                      <div class="col-sm-4 col-md-4">
-                      </div>
-
-                      <div class="col-sm-4 col-md-4 ">
-                      Seeking Admission As: <a href="transfereeapplicationform.php?editseeking=<?php echo $db_email?>">Change</a>
-                      <p class="form-control" readonly="readonly"><?php echo $level;?></p>
                       </div>
                       </div><!--row-->
 
 
-
-
-
-
-
-
-                      <div class='row'>
-                      <div class="col-sm-4 col-md-4 ">
-                      Applied date:
-                      <p class="form-control" readonly="readonly"><?php echo $date; ?></p>
-                      </div>
-                      
-                      <div class="col-sm-4 col-md-4">
-                      </div>
-
-                      <div class="col-sm-4 col-md-4 ">
-                      Status:
-                      <p class="form-control" readonly="readonly"><?php echo $stat;?></p>
-                      </div>
-                      </div><!--row-->
-
-
-
-
-                      <div class='row'>
-                      <div class="col-sm-4 col-md-4 ">
-                      Surname:
-                       <p class='form-control' readonly="readonly"><?php echo $sname;  ?></p>
-                      </div>
-                      
-                      <div class="col-sm-4 col-md-4">
-                      Firstname:
-                       <p class='form-control' readonly="readonly"><?php echo $fname;  ?></p>
-                      </div>
-
-                      <div class="col-sm-4 col-md-4 ">
-                      Middlename: 
-                       <p class='form-control' readonly="readonly"><?php echo $mname;  ?></p>
-                      </div>
-                      </div><!--row-->
-                  
-
-
-
-                      <div class='row'>
-                      <div class="col-sm-4 col-md-4 ">
-                      Permanent Home address: 
-                        <p class='form-control' readonly="readonly"><?php echo $per;  ?></p>
-                      </div>
-                      
-                      <div class="col-sm-4 col-md-4">
-                      </div>
-
-                      <div class="col-sm-4 col-md-4 ">
-                      Telephone number:
-                        <p class='form-control' readonly="readonly"><?php echo $tele;  ?></p>
-                      </div>
-                      </div><!--row-->
-
-
-
-                      <div class='row'>
-                      <div class="col-sm-4 col-md-4 ">
-                      Mobile number:
-                       <p class='form-control' readonly="readonly"><?php echo $mob;  ?></p>
-                      </div>
-                      
-                      <div class="col-sm-4 col-md-4">
-                      Birthdate: (Day/Month/Year) <a href="transfereeapplicationform.php?editbirthdate=<?php echo $db_email?>">Change</a>
                       <br>
-                      <p id='age' class='form-control' readonly="readonly"><?php echo $birt;  ?></p>  
-                      </div>
-
-
-
+                       <div class='row'>
                       <div class="col-sm-4 col-md-4 ">
-                      Age: <br>  
-                       <p id='age' class='form-control' readonly="readonly"><?php echo $ages;  ?></p>
-                      </div>
-                      </div><!--row-->
-
-
-
-                      <div class='row'>
-                       <div class="col-sm-4 col-md-4 ">
-                      Gender: <i>(required)</i> <i id='gen'></i><?php echo $sex?>
-                       <select class='form-control' id="gender" name="gender">
-                        <option></option>
-                        <option>Female</option>
-                        <option>Male</option>
-                      </select>
+                       <b id='gname'></b> <b id='validateguardianname'></b>
+       
+        
+        
                       </div>
                       
                       <div class="col-sm-4 col-md-4">
-                       Birthplace:
-                        <p class='form-control' readonly="readonly"><?php echo $place;  ?></p>
+                      <b id='gadd'></b> <b id='validateguardianaddress'></b>
+            
                       </div>
 
                       <div class="col-sm-4 col-md-4 ">
-                      Religion:<a href="transfereeapplicationform.php?editreligion=<?php echo $db_email ?>" id="changereligion">Change</a>
-                      <input type="text" id='religion' class='form-control' readonly="readonly" value="<?php echo $reli ?>"> 
-                      </div><!--row-->
+                      <b id='gcon'></b> <b id='validateguardiancontact'></b>
                       </div>
-
-
+                      </div><!--row-->
 
                        <div class='row'>
                       <div class="col-sm-4 col-md-4 ">
-                      Guardian's name:
-                        <p class='form-control' readonly="readonly"><?php echo $gname;  ?></p>
-                      </div>
-                      
-                      <div class="col-sm-4 col-md-4">
-                       Address:
-                       <p class='form-control' readonly="readonly"><?php echo $gadd;  ?></p>
-                      </div>
-
-                      <div class="col-sm-4 col-md-4 ">
-                      Mobile number:
-                        <p class='form-control' readonly="readonly"><?php echo $gcon;  ?></p>
-                      </div>
-                      </div><!--row-->
-
-                        <input type='hidden' name='id' value="<?php echo $id ?>">
-                        <input type='hidden' name='email' value="<?php echo $db_email ?>">
-                       <button type="submit"  name="edit_gender"  value="Submit" class='next'>Update</button>
-                       </form>
-                  </div>
-        </div>
-        </div>
-        <?php
-
-        }elseif(isset($_GET['editbirthdate'])){
-          $email=$_GET['editbirthdate'];
-          $qry="SELECT * from tbl_prospectivestudents inner join tbl_studentdetails on tbl_prospectivestudents.id=tbl_studentdetails.id where email='$email' ";
-          $res=mysql_query($qry);
-          while($qry=mysql_fetch_array($res)){
-                            $id=$qry['id'];
-                            $year=$qry['year'];
-                            $level=$qry['seeking'];
-                            $date=$qry['applieddate'];
-                            $stat=$qry['status'];
-                            $sname=$qry['surname'];
-                            $fname=$qry['firstname'];
-                            $mname=$qry['middlename'];
-                            $per=$qry['peraddress'];
-                            $tele=$qry['telephone'];        
-                            $mob=$qry['mobile'];
-                            $birt=$qry['birthdate'];
-                            $ages=$qry['age'];
-                            $sex=$qry['gender'];
-                            $place=$qry['birthplace'];          
-                            $reli=$qry['religion'];
-                            $gname=$qry['guardianname'];
-                            $gadd=$qry['guardianaddress'];
-                            $gcon=$qry['guardiancontact'];
-                          }
-                          ?>
-                      
-
-        <div class="container">
-        <div class="col-sm-12 col-md-12 ">
-
-                  <div class="alert alert-warning">
-                  <legend><a href="transfereeapplicationform.php?editapplication=<?php echo $db_email?>">Edit Application</a> > Edit birthdate</legend>
-                    <form   onsubmit='return freshmanapplicationbirthdateupdate()' action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST"  enctype="multipart/form-data">
-                
-                      <i  id="error" style="color: Red; display: none"></i>
-
-                      <div class='row'>
-                      <div class="col-sm-4 col-md-4 ">
-                      School Year:
-                      <p class='form-control' readonly="readonly"><?php echo $year;  ?></p>
-                      </div>
-                      
-                      <div class="col-sm-4 col-md-4">
-                      </div>
-
-                      <div class="col-sm-4 col-md-4 ">
-                      Seeking Admission As: <a href="transfereeapplicationform.php?editseeking=<?php echo $db_email?>">Change</a>
-                      <p class="form-control" readonly="readonly"><?php echo $level;?></p>
-                      </div>
-                      </div><!--row-->
-
-
-
-
-
-
-
-
-                      <div class='row'>
-                      <div class="col-sm-4 col-md-4 ">
-                      Applied date:
-                      <p class="form-control" readonly="readonly"><?php echo $date; ?></p>
-                      </div>
-                      
-                      <div class="col-sm-4 col-md-4">
-                      </div>
-
-                      <div class="col-sm-4 col-md-4 ">
-                      Status:
-                      <p class="form-control" readonly="readonly"><?php echo $stat;?></p>
-                      </div>
-                      </div><!--row-->
-
-
-
-
-                      <div class='row'>
-                      <div class="col-sm-4 col-md-4 ">
-                      Surname:
-                       <p class='form-control' readonly="readonly"><?php echo $sname;  ?></p>
-                      </div>
-                      
-                      <div class="col-sm-4 col-md-4">
-                      Firstname:
-                       <p class='form-control' readonly="readonly"><?php echo $fname;  ?></p>
-                      </div>
-
-                      <div class="col-sm-4 col-md-4 ">
-                      Middlename: 
-                       <p class='form-control' readonly="readonly"><?php echo $mname;  ?></p>
-                      </div>
-                      </div><!--row-->
-                  
-
-
-
-                      <div class='row'>
-                      <div class="col-sm-4 col-md-4 ">
-                      Permanent Home address: 
-                        <p class='form-control' readonly="readonly"><?php echo $per;  ?></p>
-                      </div>
-                      
-                      <div class="col-sm-4 col-md-4">
-                      </div>
-
-                      <div class="col-sm-4 col-md-4 ">
-                      Telephone number:
-                        <p class='form-control' readonly="readonly"><?php echo $tele;  ?></p>
-                      </div>
-                      </div><!--row-->
-
-
-
-                      <div class='row'>
-                      <div class="col-sm-4 col-md-4 ">
-                      Mobile number:
-                       <p class='form-control' readonly="readonly"><?php echo $mob;  ?></p>
-                      </div>
-                      
-                      <div class="col-sm-4 col-md-4">
-                      Birthdate: (Day/Month/Year) <i>(required)</i> <i id="birth"></i>
-                      <br>
-                      <?php echo $birt;  ?>  
-                      <select   id='days' name="day">
-                            <option></option>
-                      </select>
-                                    
-                      <select id='months' name="month">
-                          <option></option>
-                      </select>
-                                                                       
-                      <select  id='years' name="years">
-                            <option></option>
-                      </select>   
-
-                      </div>
-
-
-
-                      <div class="col-sm-4 col-md-4 ">
-                      Age: <br>  
-                       <p id='age' class='form-control' readonly="readonly"><?php echo $ages;  ?></p>
-                      </div>
-                      </div><!--row-->
-
-
-
-                      <div class='row'>
-                      <div class="col-sm-4 col-md-4 ">
-                      Gender: <a href="transfereeapplicationform.php?editgender=<?php echo $db_email ?>" id="changegender">Change</a>
-                      <input type="text" id='gender' class='form-control' readonly="readonly" value="<?php echo $sex ?>"> 
-                      </div>
-                      
-                      <div class="col-sm-4 col-md-4">
-                       Birthplace:
-                        <p class='form-control' readonly="readonly"><?php echo $place;  ?></p>
-                      </div>
-
-                      <div class="col-sm-4 col-md-4 ">
-                      Religion:<a href="transfereeapplicationform.php?editreligion=<?php echo $db_email ?>" id="changereligion">Change</a>
-                      <input type="text" id='religion' class='form-control' readonly="readonly" value="<?php echo $reli ?>"> 
-                      </div><!--row-->
-                      </div>
-
-
-
-                       <div class='row'>
-                      <div class="col-sm-4 col-md-4 ">
-                      Guardian's name:
-                        <p class='form-control' readonly="readonly"><?php echo $gname;  ?></p>
-                      </div>
-                      
-                      <div class="col-sm-4 col-md-4">
-                       Address:
-                       <p class='form-control' readonly="readonly"><?php echo $gadd;  ?></p>
-                      </div>
-
-                      <div class="col-sm-4 col-md-4 ">
-                      Mobile number:
-                        <p class='form-control' readonly="readonly"><?php echo $gcon;  ?></p>
-                      </div>
-                      </div><!--row-->
-
-                        <input type='hidden' name='id' value="<?php echo $id ?>">
-                        <input type='hidden' name='email' value="<?php echo $db_email ?>">
-                       <button type="submit"  name="edit_birthdate"  value="Submit" class='next'>Update</button>
-                       </form>
-                  </div>
-        </div>
-        </div>
-        <?php
-
-
-
-        }elseif(isset($_GET['editapplication'])){
-          $email=$_GET['editapplication'];
-          $qry="SELECT * from tbl_prospectivestudents inner join tbl_studentdetails on tbl_prospectivestudents.id=tbl_studentdetails.id where email='$email' ";
-          $res=mysql_query($qry);
-          while($qry=mysql_fetch_array($res)){
-                            $id=$qry['id'];
-                            $year=$qry['year'];
-                            $level=$qry['seeking'];
-                            $date=$qry['applieddate'];
-                            $stat=$qry['status'];
-                            $sname=$qry['surname'];
-                            $fname=$qry['firstname'];
-                            $mname=$qry['middlename'];
-                            $per=$qry['peraddress'];
-                            $tele=$qry['telephone'];        
-                            $mob=$qry['mobile'];
-                            $birt=$qry['birthdate'];
-                            $ages=$qry['age'];
-                            $sex=$qry['gender'];
-                            $place=$qry['birthplace'];          
-                            $reli=$qry['religion'];
-                            $gname=$qry['guardianname'];
-                            $gadd=$qry['guardianaddress'];
-                            $gcon=$qry['guardiancontact'];
-                          }
-
-                          ?>
-        <i  id="error" style="color: Red; display: none"></i>
-        <div class="container">
-        <div class="col-sm-12 col-md-12 ">
-        <i id='validatesurname'></i>
-        <i id='validatefirstname'></i>
-        <i id='validatemiddlename'></i>
-        <i id='validatepermanent'></i>
-        <i id='validatetelephone'></i>
-        <i id='validatemobile'></i>
-        <i id='validatebirthplace'></i>
-        <i id='validateguardianname'></i>
-        <i id='validateguardianaddress'></i>
-        <i id='validateguardiancontact'></i>
-        </div></div>
-
-        <div class="container">
-        <div class="col-sm-12 col-md-12 ">
-
-                  <div class="alert alert-warning">
-                  <legend>Edit Application</legend>
-                    <form   onsubmit='return freshmanapplicationupdate()' action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST"  enctype="multipart/form-data">
-                
-                      <i  id="error" style="color: Red; display: none"></i>
-
-                      <div class='row'>
-                      <div class="col-sm-4 col-md-4 ">
-                      School Year:<i>(required)</i> <i id="sy"></i>
-                      <p class='form-control' readonly="readonly"><?php echo $year;  ?></p>
-                      </div>
-                      
-                      <div class="col-sm-4 col-md-4">
-                      </div>
-
-                      <div class="col-sm-4 col-md-4 ">
-                      Seeking Admission As:  <a href="transfereeapplicationform.php?editseeking=<?php echo $db_email ?>" id="changeseeking">Change</a>
-                      <p class="form-control" readonly="readonly"><?php echo $level;?></p>
-                      </div>
-                      </div><!--row-->
-
-
-
-
-
-
-
-
-                      <div class='row'>
-                      <div class="col-sm-4 col-md-4 ">
-                      Applied date:
-                      <p class="form-control" readonly="readonly"><?php echo $date; ?></p>
-                      </div>
-                      
-                      <div class="col-sm-4 col-md-4">
-                      </div>
-
-                      <div class="col-sm-4 col-md-4 ">
-                      Status:
-                      <p class="form-control" readonly="readonly"><?php echo $stat;?></p>
-                      </div>
-                      </div><!--row-->
-
-
-
-
-                      <div class='row'>
-                      <div class="col-sm-4 col-md-4 ">
-                      Surname: <i>(required)</i> <i id='sur'></i>
-                      <input class='form-control' type='text' onkeypress="return forsurname(event);" ondrop="return false;" onpaste="return false;"  id='surname' name='surname' maxlength="25" placeholder='Type your surname..' value='<?php echo $sname ?>'/>
-                      </div>
-                      
-                      <div class="col-sm-4 col-md-4">
-                      Firstname:  <i>(required)</i> <i id='first'></i>
-                      <input class='form-control' type='text' id='firstname' onkeypress="return forfirstname(event);" ondrop="return false;" onpaste="return false;"  name='firstname' maxlength="25" placeholder='Type your firstname..' value='<?php echo $fname ?>'/>
-                      </div>
-
-                      <div class="col-sm-4 col-md-4 ">
-                      Middlename:  <i>(optional)</i> <i id='middle'></i>
-                      <input class='form-control' type='text' id='middlename' onkeypress="return formiddlename(event);" ondrop="return false;" onpaste="return false;" maxlength="25" name='middlename'  placeholder='Type your middlename..' value='<?php echo $mname ?>'/>
-                      </div>
-                      </div><!--row-->
-                  
-
-
-
-                      <div class='row'>
-                      <div class="col-sm-4 col-md-4 ">
-                      Permanent Home address: <i>(required)</i> <i id='per'></i>
-                       <input class='form-control' type='text' id='permanent' onkeypress="return forpermanent(event);" ondrop="return false;" onpaste="return false;" placeholder='Type your home address..' maxlength="35" value='<?php echo $per?>' name='permanent'/>
-                      </div>
-                      
-                      <div class="col-sm-4 col-md-4">
-                      </div>
-
-                      <div class="col-sm-4 col-md-4 ">
-                      Telephone number: <i>(optional)</i> <i id='tele'></i>
-                       <input class='form-control' type='text' id='telephone' onkeypress="return fortelephone(event);" ondrop="return false;" onpaste="return false;"  placeholder='Type your telephone number..' maxlength="7" value='<?php echo $tele?>' name='telephone'/> 
-                      </div>
-                      </div><!--row-->
-
-
-
-                      <div class='row'>
-                      <div class="col-sm-4 col-md-4 ">
-                      Mobile number: <i>(required)</i> <i id='mobi'></i>
-                       <input class='form-control' type='text' id='mobile' onkeypress="return formobile(event);" ondrop="return false;" onpaste="return false;" placeholder='Type your mobile number here..' maxlength='11' value='<?php echo $mob?>' name='mobile' />
-                      </div>
-                      
-                      <div class="col-sm-4 col-md-4">
-                      Birthdate: (Day/Month/Year) <i id="birth"></i> <a href="transfereeapplicationform.php?editbirthdate=<?php echo $db_email?>" id='changebirthdate'>Change</a>
-                      <input type="text" id='hidebirthday' class='form-control' readonly="readonly" value="<?php echo $birt ?>"> 
-                      </div>
-
-                      <div class="col-sm-4 col-md-4 ">
-                      Age:<br>
-                       <input type="text" id='age' class='form-control' readonly="readonly" value="<?php echo $ages ?>"> 
-                      </div>
-                      </div><!--row-->
-
-
-
-                      <div class='row'>
-                      <div class="col-sm-4 col-md-4 ">
-                      Gender: <a href="transfereeapplicationform.php?editgender=<?php echo $db_email ?>" id="changegender">Change</a>
-                      <input type="text" id='gender' class='form-control' readonly="readonly" value="<?php echo $sex ?>"> 
-                      </div>
-                      
-                      <div class="col-sm-4 col-md-4">
-                       Birthplace: <i>(required)</i> <i id='places'></i>
-                       <input class='form-control' type='text' onkeypress="return forbirthplace(event);" ondrop="return false;" onpaste="return false;"  id="birthplace" placeholder='Type your birthplace here..' maxlength="35" value="<?php echo $place?>" name="birthplace" />
-                      </div>
-
-                      <div class="col-sm-4 col-md-4 ">
-                      Religion:<a href="transfereeapplicationform.php?editreligion=<?php echo $db_email ?>" id="changereligion">Change</a>
-                      <input type="text" id='religion' class='form-control' readonly="readonly" value="<?php echo $reli ?>"> 
-                      </div><!--row-->
-                      </div>
-
-
-
-                       <div class='row'>
-                      <div class="col-sm-4 col-md-4 ">
-                      Guardian's name: <i>(required)</i> <i id='gname'></i>
+                      <b>Guardian's name:</b> <b style="color:red;">(*)</b> 
                        <input class='form-control' type='text' onkeypress="return forguardianname(event);" ondrop="return false;" onpaste="return false;"  id='guardianname' name='guardianname' maxlength="25" placeholder="Type your guardian's name.." value='<?php echo $gname?>'/>
                       </div>
                       
                       <div class="col-sm-4 col-md-4">
-                       Address: <i>(required)</i>  <i id='gadd'></i>
+                       <b>Address:</b> Street Address/City <b style="color:red;">(*)</b>   
                       <input class='form-control' type='text' id='guardianaddress' onkeypress="return forguardianaddress(event);" ondrop="return false;" onpaste="return false;"  name='guardianaddress' maxlength="25" placeholder='Type your guardianaddress..' value='<?php echo $gadd?>'/>
                       </div>
 
                       <div class="col-sm-4 col-md-4 ">
-                      Mobile number: <i>(required)</i> <i id='gcon'></i>
+                      <b>Mobile number:</b> 09********* <b style="color:red;">(*)</b>  
                        <input class='form-control' type='text' id='guardiancontact' onkeypress="return forguardiancontact(event);" ondrop="return false;" onpaste="return false;" maxlength="11" name='guardiancontact'  placeholder='Type your guardiancontact..' value='<?php echo $gcon?>'/>
                       </div>
                       </div><!--row-->
 
+
+
+                      <div class='row'>
+                      <div class="col-sm-4 col-md-4 ">
+          
+                      </div>
+                      
+                      <div class="col-sm-4 col-md-4">
+           
+                      </div>
+
+                      <div class="col-sm-4 col-md-4 ">
                         <input type='hidden' name='id' value="<?php echo $id ?>">
                         <input type='hidden' name='email' value="<?php echo $db_email ?>">
-                       <button type="submit"  name="edit_update"  value="Submit" class='next'>Update</button>
+                       <button type="submit"  name="edit_update"  value="Submit" class='next' onclick="return AllowSingleSpaceNotInFirstAndLast();">Update</button>
+                      </div>
+                      </div><!--row-->
+                       
+
                        </form>
-                  </div>
+                       <br>
+
         </div>
         </div>
+
+
+
+
+
+
+
+       
 
                           <?php
+                          ?>
+                   
 
-        }
-    elseif(isset($_GET['view'])){
-      $email=$_GET['view'];
-
-       $qry="SELECT * from tbl_prospectivestudents inner join tbl_studentdetails on tbl_prospectivestudents.id=tbl_studentdetails.id where email='$email' ";
+                </div>
+                
+            </div>
+        </div>
+ <?php 
+                    $qry="SELECT * from tbl_prospectivestudents inner join tbl_studentdetails on tbl_prospectivestudents.id=tbl_studentdetails.id where email='$db_email' ";
        $res=mysql_query($qry);
 
        while($qry=mysql_fetch_array($res)){
@@ -1631,7 +1111,14 @@ if($db_email==0){
            ?>
             <div class="container">
         <div class="col-sm-12 col-md-12 ">
-                  <div class="alert alert-warning">
+                    <h3 class="text-center">APPLICATION FORM</h3>
+                 
+                 <?php if(isset($_POST['edit_update'])){
+                  ?>
+                  <div class="alert alert-success"><h3 class="text-center">Application form successfully updated <i class="fa fa-check-circle"></i></h3></div>
+                  <?php
+                  }?>
+                
                     <form id='divid'   onsubmit='return freshmanapplication()' action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST"  enctype="multipart/form-data">
                 
                       <i  id="error" style="color: Red; display: none"></i>
@@ -1769,20 +1256,24 @@ if($db_email==0){
                       </div><!--row-->
 
                        </form>
-                  </div>
         </div>
         </div>
 
            <?php               
-    }
+
+           ?> 
 
 
+       
+                      
+
+<?php  
 }
 }else{
-        ?>
-        <div class="container">
-        <div class="col-sm-12 col-md-12 ">
-                  <div class="row bs-wizard" style="border-bottom:0;">
+?>
+        
+        <div class="col-md-12 ">
+        <div class="row bs-wizard" style="border-bottom:0;">
          
                 <div class="col-xs-3 bs-wizard-step complete">
                   <div class="text-center bs-wizard-stepnum">Step 1</div>
@@ -1811,40 +1302,39 @@ if($db_email==0){
                   <a href="#" class="bs-wizard-dot"></a>
                   <div class="bs-wizard-info text-center"><i class="fa fa-print"></i> Print your application form.</div>
                 </div>
-            </div>
-
-                  <div class="alert alert-success">
-                      
-                       <p>Your email has been verified <strong><?php echo $db_email ?></strong>.. You are ready to fill up the application form.</p>
-                      
-                  </div>
+            </div>          
         </div>
-        </div>
+        
 
+       
         <div class="container">
-        <div class="col-sm-12 col-md-12 ">
-        <i id='validatesurname'></i>
-        <i id='validatefirstname'></i>
-        <i id='validatemiddlename'></i>
-        <i id='validatepermanent'></i>
-        <i id='validatetelephone'></i>
-        <i id='validatemobile'></i>
-        <i id='validatebirthplace'></i>
-        <i id='validateguardianname'></i>
-        <i id='validateguardianaddress'></i>
-        <i id='validateguardiancontact'></i>
-        </div></div>
 
-        <div class="container">
-        <div class="col-sm-12 col-md-12 ">
-                  <div class="alert alert-warning">
+        <div class="col-md-12 ">
+
+                <h3 class="text-center">APPLICATION FORM</h3>
+
                     <form   onsubmit='return transfereeapplication()' action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST"  enctype="multipart/form-data">
                 
                       <i  id="error" style="color: Red; display: none"></i>
 
                       <div class='row'>
                       <div class="col-sm-4 col-md-4 ">
-                      School Year:<i>(required)</i> <i id="sy"></i>
+                        <b id="sy"></b>
+                      </div>
+                      
+                      <div class="col-sm-4 col-md-4">
+                  
+        
+                      </div>
+
+                      <div class="col-sm-4 col-md-4 ">
+                      <b id="seek"></b> 
+                      </div>
+                      </div><!--row-->
+
+                      <div class='row'>
+                      <div class="col-sm-4 col-md-4 ">
+                      <b>School Year:</b> <b style="color:red;">(*)</b> 
                       <select class='form-control'   id="year" name="year" >
                         <option></option>
                         <option><?php 
@@ -1860,17 +1350,14 @@ if($db_email==0){
                       </div>
 
                       <div class="col-sm-4 col-md-4 ">
-                      Seeking Admission As:   <i id="seek"></i>      
-                      <select class='form-control' id='seeking' name='seeking'>
+                      <b>Seeking Admission As:</b> <b style="color:red;">(*)</b>  
+                       <select class='form-control' id='seeking' name='seeking'>
                                                   <option></option>
                                                   <option>Grade 7</option>
                                                   <option>Grade 8</option>
                                                   <option>Grade 9</option>
                                                   <option>Grade 10</option>
-                                                  <option>Grade 11</option>
-                                                  <option>Grade 12</option>
                                                 </select>
-                                                                  
                       </div>
                       </div><!--row-->
 
@@ -1880,10 +1367,10 @@ if($db_email==0){
 
 
 
-
+                      <br>
                       <div class='row'>
                       <div class="col-sm-4 col-md-4 ">
-                      Applied date:
+                      <b>Applied date:</b>
                       <input type="text" class='form-control' readonly="readonly"value="<?php 
                                                           $applied = date("F j,Y");
                                                           echo "$applied";
@@ -1894,7 +1381,7 @@ if($db_email==0){
                       </div>
 
                       <div class="col-sm-4 col-md-4 ">
-                      Status:
+                      <b>Status:</b>
                       <input type="text" class='form-control' readonly="readonly"value="<?php 
                                                         echo $db_status;
                                                           ?>">
@@ -1903,52 +1390,99 @@ if($db_email==0){
 
 
 
-
+                      <br>
                       <div class='row'>
                       <div class="col-sm-4 col-md-4 ">
-                      Surname: <i>(required)</i> <i id='sur'></i>
-                      <input class='form-control' type='text' onkeypress="return forsurname(event);" ondrop="return false;" onpaste="return false;"  id='surname' name='surname' maxlength="25" placeholder='Type your surname..' value='<?php echo $db_surname ?>'/>
+                      <b id='sur'></b> <b id='validatesurname'></b>
                       </div>
                       
                       <div class="col-sm-4 col-md-4">
-                      Firstname:  <i>(required)</i> <i id='first'></i>
-                      <input class='form-control' type='text' id='firstname' onkeypress="return forfirstname(event);" ondrop="return false;" onpaste="return false;"  name='firstname' maxlength="25" placeholder='Type your firstname..' value='<?php echo $db_firstname ?>'/>
+                      <b id='first'></b> <b id='validatefirstname'></b>
+        
                       </div>
 
                       <div class="col-sm-4 col-md-4 ">
-                      Middlename:  <i>(optional)</i> <i id='middle'></i>
-                      <input class='form-control' type='text' id='middlename' onkeypress="return formiddlename(event);" ondrop="return false;" onpaste="return false;" maxlength="25" name='middlename'  placeholder='Type your middlename..' value=''/>
+                      <b id='middle'></b> <b id='validatemiddlename'></b>
+                      </div>
+                      </div><!--row-->
+
+                      <div class='row'>
+                      <div class="col-sm-4 col-md-4 ">
+                      <b>Surname:</b> <b style="color:red;">(*)</b>  
+                      <input class='form-control' type='text' onkeypress="return forsurname(event);" ondrop="return false;" onpaste="return false;"  id='surname' name='surname' maxlength="25"  value='<?php echo $db_surname ?>'/>
+                      </div>
+                      
+                      <div class="col-sm-4 col-md-4">
+                      <b>Firstname:</b>  <b style="color:red;">(*)</b>  
+                      <input class='form-control' type='text' id='firstname' onkeypress="return forfirstname(event);" ondrop="return false;" onpaste="return false;"  name='firstname' maxlength="25"  value='<?php echo $db_firstname ?>'/>
+                      </div>
+
+                      <div class="col-sm-4 col-md-4 ">
+                      <b>Middlename:</b>  <i>(optional)</i> 
+                      <input class='form-control' type='text' id='middlename' onkeypress="return formiddlename(event);" ondrop="return false;" onpaste="return false;" maxlength="25" name='middlename'   value=''/>
                       </div>
                       </div><!--row-->
                   
 
 
+                      <br>
+                      <div class='row'>
+                      <div class="col-sm-4 col-md-4 ">
+                      <b id='per'></b> <b id='validatepermanent'></b>
+      
+                      </div>
+                      
+                      <div class="col-sm-4 col-md-4">
+                      
+        
+                      </div>
+
+                      <div class="col-sm-4 col-md-4 ">
+                      <b id='tele'></b> <b id='validatetelephone'></b>
+                      </div>
+                      </div><!--row-->
 
                       <div class='row'>
                       <div class="col-sm-4 col-md-4 ">
-                      Permanent Home address: <i>(required)</i> <i id='per'></i>
-                       <input class='form-control' type='text' id='permanent' onkeypress="return forpermanent(event);" ondrop="return false;" onpaste="return false;" placeholder='Type your home address..' maxlength="35" value='' name='permanent'/>
+                      <b>Permanent Home address:</b> Street Address/City <b style="color:red;">(*)</b>  
+                       <input class='form-control' type='text' id='permanent' onkeypress="return forpermanent(event);" ondrop="return false;" onpaste="return false;"  maxlength="35" value='' name='permanent'/>
                       </div>
                       
                       <div class="col-sm-4 col-md-4">
                       </div>
 
                       <div class="col-sm-4 col-md-4 ">
-                      Telephone number: <i>(optional)</i> <i id='tele'></i>
-                       <input class='form-control' type='text' id='telephone' onkeypress="return fortelephone(event);" ondrop="return false;" onpaste="return false;"  placeholder='Type your telephone number..' maxlength="7" value='' name='telephone'/> 
+                      <b>Telephone number:</b> 3******<i>(optional)</i> 
+                       <input class='form-control' type='text' id='telephone' onkeypress="return fortelephone(event);" ondrop="return false;" onpaste="return false;"   maxlength="7" value='' name='telephone'/> 
                       </div>
                       </div><!--row-->
 
 
+                      <br>
+                      <div class='row'>
+                      <div class="col-sm-4 col-md-4 ">
+                      <b id='mobi'></b>  <b id='validatemobile'></b>
+      
+                      </div>
+
+                      <div class="col-sm-4 col-md-4">
+                      <b id="birth"></b>
+        
+                      </div>
+
+                      <div class="col-sm-4 col-md-4 ">
+                  
+                      </div>
+                      </div><!--row-->
 
                       <div class='row'>
                       <div class="col-sm-4 col-md-4 ">
-                      Mobile number: <i>(required)</i> <i id='mobi'></i>
-                       <input class='form-control' type='text' id='mobile' onkeypress="return formobile(event);" ondrop="return false;" onpaste="return false;" placeholder='Type your mobile number here..' maxlength='11' value='' name='mobile' />
+                      <b>Mobile number:</b> 09********* <b style="color:red;">(*)</b>  
+                       <input class='form-control' type='text' id='mobile' onkeypress="return formobile(event);" ondrop="return false;" onpaste="return false;"  maxlength='11' value='' name='mobile' />
                       </div>
                       
                       <div class="col-sm-4 col-md-4">
-                      Birthdate: (Day/Month/Year) <i>(required)</i> <i id="birth"></i>
+                      <b>Birthdate:</b> (Day/Month/Year) <b style="color:red;">(*)</b>  
                       <br>
                       <select   id='days' name="day">
                             <option></option>
@@ -1970,10 +1504,27 @@ if($db_email==0){
                       </div><!--row-->
 
 
+                      <br>
+                      <div class='row'>
+                      <div class="col-sm-4 col-md-4 ">
+                      <b id='gen'></b>
+      
+                      </div>
+                         
+   
+                      <div class="col-sm-4 col-md-4">
+                      <b id='places'></b> <b id='validatebirthplace'></b>
+            
+                      </div>
+
+                      <div class="col-sm-4 col-md-4 ">
+                      <b id="reli"></b>
+                      </div>
+                      </div><!--row-->
 
                       <div class='row'>
                       <div class="col-sm-4 col-md-4 ">
-                      Gender: <i>(required)</i> <i id='gen'></i>
+                      <b>Gender:</b> <b style="color:red;">(*)</b>  
                        <select class='form-control' id="gender" name="gender">
                         <option></option>
                         <option>Female</option>
@@ -1982,12 +1533,12 @@ if($db_email==0){
                       </div>
                       
                       <div class="col-sm-4 col-md-4">
-                       Birthplace: <i>(required)</i> <i id='places'></i>
-                       <input class='form-control' type='text' onkeypress="return forbirthplace(event);" ondrop="return false;" onpaste="return false;"  id="birthplace" placeholder='Type your birthplace here..' maxlength="35" name="birthplace" />
+                       <b>Birthplace:</b> Street Address/City <b style="color:red;">(*)</b>  
+                       <input class='form-control' type='text' onkeypress="return forbirthplace(event);" ondrop="return false;" onpaste="return false;"  id="birthplace"  maxlength="35" name="birthplace" />
                       </div>
 
                       <div class="col-sm-4 col-md-4 ">
-                      Religion: <i>(required)</i>  <i id="reli"></i>
+                      <b>Religion:</b> <b style="color:red;">(*)</b>   
                        <select class='form-control' id='religion' name='religion'>
                                                         <option>                                       </option>
                                                         <option>4TH WATCH                                         </option>
@@ -2051,27 +1602,62 @@ if($db_email==0){
                       </div><!--row-->
 
 
-
+                      <br>
                        <div class='row'>
                       <div class="col-sm-4 col-md-4 ">
-                      Guardian's name: <i>(required)</i> <i id='gname'></i>
-                       <input class='form-control' type='text' onkeypress="return forguardianname(event);" ondrop="return false;" onpaste="return false;"  id='guardianname' name='guardianname' maxlength="25" placeholder="Type your guardian's name.." value=''/>
+                       <b id='gname'></b> <b id='validateguardianname'></b>
+       
+        
+        
                       </div>
                       
                       <div class="col-sm-4 col-md-4">
-                       Address: <i>(required)</i>  <i id='gadd'></i>
-                      <input class='form-control' type='text' id='guardianaddress' onkeypress="return forguardianaddress(event);" ondrop="return false;" onpaste="return false;"  name='guardianaddress' maxlength="25" placeholder='Type your guardianaddress..' value=''/>
+                      <b id='gadd'></b> <b id='validateguardianaddress'></b>
+            
                       </div>
 
                       <div class="col-sm-4 col-md-4 ">
-                      Mobile number: <i>(required)</i> <i id='gcon'></i>
-                       <input class='form-control' type='text' id='guardiancontact' onkeypress="return forguardiancontact(event);" ondrop="return false;" onpaste="return false;" maxlength="11" name='guardiancontact'  placeholder='Type your guardiancontact..' value=''/>
+                      <b id='gcon'></b> <b id='validateguardiancontact'></b>
                       </div>
                       </div><!--row-->
 
-                       <button type="submit"  name="submit"  value="Submit" class='next'>Submit</button>
+                       <div class='row'>
+                      <div class="col-sm-4 col-md-4 ">
+                      <b>Guardian's name:</b> <b style="color:red;">(*)</b> 
+                       <input class='form-control' type='text' onkeypress="return forguardianname(event);" ondrop="return false;" onpaste="return false;"  id='guardianname' name='guardianname' maxlength="25"  value=''/>
+                      </div>
+                      
+                      <div class="col-sm-4 col-md-4">
+                       <b>Address:</b> Street Address/City <b style="color:red;">(*)</b>   
+                      <input class='form-control' type='text' id='guardianaddress' onkeypress="return forguardianaddress(event);" ondrop="return false;" onpaste="return false;"  name='guardianaddress' maxlength="25"  value=''/>
+                      </div>
+
+                      <div class="col-sm-4 col-md-4 ">
+                      <b>Mobile number:</b> 09********* <b style="color:red;">(*)</b>  
+                       <input class='form-control' type='text' id='guardiancontact' onkeypress="return forguardiancontact(event);" ondrop="return false;" onpaste="return false;" maxlength="11" name='guardiancontact'   value=''/>
+                      </div>
+                      </div><!--row-->
+
+
+
+                      <div class='row'>
+                      <div class="col-sm-4 col-md-4 ">
+          
+                      </div>
+                      
+                      <div class="col-sm-4 col-md-4">
+           
+                      </div>
+
+                      <div class="col-sm-4 col-md-4 ">
+                        <button type="submit"  name="submit"  value="Submit" onclick="return AllowSingleSpaceNotInFirstAndLast();" class='next'>Submit</button>
+                      </div>
+                      </div><!--row-->
+                       
+
                        </form>
-                  </div>
+                       <br>
+
         </div>
         </div>
         <?php
@@ -2094,7 +1680,20 @@ if($db_email==0){
 
 
 
-
+<br><br><br><br><br><br><br><br><br><br><br><br>
+  <!-- Start Copyright Section -->
+        <div class="copyright text-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <p>SIMS-MKS | Developed by the Students of STI College-Caloocan | <a href="#"><?php  $curYear= Date('Y');
+                                        echo "$curYear";
+                                      ?></a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Copyright Section -->
 
 
 

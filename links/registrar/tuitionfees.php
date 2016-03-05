@@ -1077,25 +1077,27 @@ if(isset($_POST['submit'])){
                     <meta name="viewport" content="width=device-width, initial-scale=1">
                     <title>Tuition Fees</title>
 
-                    <link rel="stylesheet" href="../../css/bootstrap.min.css"></link>
-                    <link rel="stylesheet" href="../../css/bootstrap.css"></link>
-                    <link rel="stylesheet" href="../../css/style.css"></link>
-                    <link rel="stylesheet" href="../../css/font-awesome.css"></link>
-                     <link rel="stylesheet" href="../../css/font-awesome.min.css"></link>
+                    <link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css"  rel="stylesheet" type="text/css">
+                    <link rel="stylesheet" href="../../bootstrap/css/bootstrap.css"  rel="stylesheet" type="text/css">
+                    <link rel="stylesheet" href="../../css/style.css"  rel="stylesheet" type="text/css">
+                    <link rel="stylesheet" href="../../css/font-awesome.css"  rel="stylesheet" type="text/css">
+                     <link rel="stylesheet" href="../../css/font-awesome.min.css"  rel="stylesheet" type="text/css">
 
-                    <script src="../../js/dropdown.js"></script>
-                    <script src="../../js/bootstrap.min.js"></script>
-                    <script src="../../js/jquery.1.11.1.js"></script>
-                    <script src="../../js/bootstrap.js"></script>
+              
+                    <script src="../../js/jquery-2.1.1.min.js"></script>
+                    <script src="../../bootstrap/js/bootstrap.min.js"></script>
                     <script src="../../js/validation.js"></script>
+                    <script src="../../js/jquery.appear.js"></script>
+                    <script src="../../js/modernizr.custom.js"></script>
 </head>
 
 
 
 
 <style>
-                    body{
-                    background: url(../../images/45.gif); background-size: cover;  font: 15px/1.7em 'Calibri';
+                   body{
+
+                    background: url(../../images/body-bg.png);
                     }
                     /* Shutter Out Horizontal */
                      #next {

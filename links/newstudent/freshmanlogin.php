@@ -79,7 +79,18 @@ while($qry=mysql_fetch_array($result)){
                       body{ background: url(../../images/); background-size: cover; color:#838383; }
                  
 
-               
+                    .alert-danger
+                    {
+
+                        margin: 20px 0;
+                        padding: 15px;
+                        border-left: 6px solid #d73814;
+                        margin-bottom: 10px;
+                        border-radius: 0px;
+                        -webkit-box-shadow: 0 5px 8px -6px rgba(0,0,0,.2);
+                           -moz-box-shadow: 0 5px 8px -6px rgba(0,0,0,.2);
+                                box-shadow: 0 5px 8px -6px rgba(0,0,0,.2);
+                    }
 
                  
             
@@ -134,8 +145,39 @@ while($qry=mysql_fetch_array($result)){
                           -webkit-transform: scaleX(1);
                           transform: scaleX(1);
                         }
+                     .form-control{
+                        border: solid gray 1px;
+                        border-radius: 0px;
+                      
+                      }
 </style>
+<script type="text/javascript">
+ 
+    function AllowSingleSpaceNotInFirstAndLast() {
+        var password = document.getElementById('password');
+        password.value = password.value.replace(/^\s+|\s+$/g, "");
+        var forpassword = password.value.split(" ");
 
+        var username = document.getElementById('username');
+        username.value = username.value.replace(/^\s+|\s+$/g, "");
+        var forusername = username.value.split(" ");
+
+        if (forpassword.length > 2) {
+            return false;
+        }
+        else {
+        }
+
+        if (forusername.length > 2) {
+            return false;
+        }
+        else {
+        }
+
+
+        return true;
+    }
+</script>
 
 </head>
 
@@ -317,13 +359,13 @@ while($qry=mysql_fetch_array($result)){
             <?php if(isset($_GET['InvalidUsernameOrPassword'])){
                 ?>
                 <div class="alert alert-danger">
-                  <p class='text-center'>Invalid username or password.</p> 
+                  <h3 class='text-center'>Invalid username or password <i class="fa fa-remove"></i></h3> 
                 </div>
                 <?php
            }elseif(isset($_GET['InvalidUsernameorPassword'])){
                 ?>
                 <div class="alert alert-danger">
-                  <p class='text-center'>Invalid username or password.</p> 
+                  <h3 class='text-center'>Invalid username or password <i class="fa fa-remove"></i></h3> 
                 </div>
                 <?php
             } ?>
@@ -349,7 +391,7 @@ while($qry=mysql_fetch_array($result)){
             </div>
                                                                                 
 
-              <button type="submit"  name="login" class="next" value="Submit"   >Login</button>
+              <button type="submit"  name="login" class="next" value="Submit"   onclick="return AllowSingleSpaceNotInFirstAndLast();" >Login</button>
       
             
           </form><br><br>

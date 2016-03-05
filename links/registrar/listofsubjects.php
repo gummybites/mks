@@ -53,22 +53,23 @@ if(isset($_POST['updatesubjectdescription'])){
                     <meta http-equiv="X-UA-Compatible" content="IE=edge">
                     <meta name="viewport" content="width=device-width, initial-scale=1">
                     <title>List of Subjects</title>
-                    <link rel="stylesheet" href="../../css/bootstrap.min.css"></link>
-                    <link rel="stylesheet" href="../../css/bootstrap.css"></link>
-                    <link rel="stylesheet" href="../../css/style.css"></link>
-                    <link rel="stylesheet" href="../../css/font-awesome.css"></link>
-                     <link rel="stylesheet" href="../../css/font-awesome.min.css"></link>
+                    <link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css"  rel="stylesheet" type="text/css">
+                    <link rel="stylesheet" href="../../bootstrap/css/bootstrap.css"  rel="stylesheet" type="text/css">
+                    <link rel="stylesheet" href="../../css/style.css"  rel="stylesheet" type="text/css">
+                    <link rel="stylesheet" href="../../css/font-awesome.css"  rel="stylesheet" type="text/css">
+                     <link rel="stylesheet" href="../../css/font-awesome.min.css"  rel="stylesheet" type="text/css">
 
-                    <script src="../../js/dropdown.js"></script>
-                    <script src="../../js/bootstrap.min.js"></script>
-                    <script src="../../js/jquery.1.11.1.js"></script>
-                    <script src="../../js/bootstrap.js"></script>
+              
+                    <script src="../../js/jquery-2.1.1.min.js"></script>
+                    <script src="../../bootstrap/js/bootstrap.min.js"></script>
                     <script src="../../js/validation.js"></script>
+                    <script src="../../js/jquery.appear.js"></script>
+                    <script src="../../js/modernizr.custom.js"></script>
 <head>
 <style>
 					body{
 
-                    background: url(../../images/45.gif); background-size: cover;  font: 15px/1.7em 'Calibri';
+                    background: url(../../images/body-bg.png);
                     }
 
                     #next {
@@ -161,7 +162,7 @@ if(isset($_POST['updatesubjectdescription'])){
         <li><a href="inquiry.php"><i class="fa fa-newspaper-o"></i><span>Inquiry</span> </a> </li>
         <li><a href="faculty.php"><i class="fa fa-users"></i><span>Faculty</span> </a> </li>
         <li><a href="form.php"><i class="fa fa-file-pdf-o"></i><span>Form</span> </a> </li>
-        <li><a href="event.php"><i class="fa fa-calendar-minus-o"></i><span>Event & Annoucement</span> </a> </li>
+        <li><a href="event.php"><i class="fa fa-calendar"></i><span>Event & Annoucement</span> </a> </li>
         <li class="dropdown"><a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"> <i class="fa fa-long-arrow-down"></i><span>Manage</span> <b class="caret"></b></a>
           <ul class="dropdown-menu">
             <li><a href="manageuser.php"><i class="fa fa-user-secret"></i> Admin Profile</a></li>

@@ -89,7 +89,7 @@
                     <div class="col-md-12">
                         <div class="logo text-center">
                             <h1>Student Information Management System</h1>
-                            <span>Maria Katrina School</span>
+                            <h1></h1>
                         </div>
                     </div>
                 </div>
@@ -637,59 +637,77 @@
                         </div>
                     </div>
                 </div>
-                
+                                           <?php
+                                           $event="SELECT * from tbl_event";
+                                           $res_event=mysql_query($event);
+
+                                           if(mysql_num_rows($res_event)>0){
+
+                                           while($event=mysql_fetch_array($res_event)){
+                                                        $eventimage1= $event['event1_image'];
+                                                        $eventdate1= $event['event1_date'];
+                                                        $eventtitle1= $event['event1_title'];
+                                                        $eventdescription1= $event['event1_description'];
+
+
+                                                        $eventimage2= $event['event2_image'];
+                                                        $eventdate2= $event['event2_date'];
+                                                        $eventtitle2= $event['event2_title'];
+                                                        $eventdescription2= $event['event2_description'];
+
+
+                                                        $eventimage3= $event['event3_image'];
+                                                        $eventdate3= $event['event3_date'];
+                                                        $eventtitle3= $event['event3_title'];
+                                                        $eventdescription3= $event['event3_description'];
+
+                                                   ?>
                 <div class="container">
                     <div class="row">
                         <div class="section-title text-center">
-                            <h3>Exclusive News</h3>
-                            <p>Duis aute irure dolor in reprehenderit in voluptate</p>
+                            <h3>Event and Announcement</h3>
+                            <p></p>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-6">
                             <div class="latest-post">
-                                <img src="images/blog-01.jpg" class="img-responsive" alt="">
-                                <h4><a href="#">Standard Post with Image</a></h4>
+                                <img src="./photos/<?php echo $eventimage1?>" class="img-responsive" alt="" >
+                                <h4><a href="#"><?php echo $eventtitle1?></a></h4>
                                 <div class="post-details">
                                     <ul>
-                                        <li><i class="fa fa-user"></i> Auther : iThemesLab</li>
-                                        <li><i class="fa fa-calendar"></i> 07 Aug, 2014</li>
-                                        <li><i class="fa fa-tag"></i> Music</li>
+                                        <li><i class="fa fa-calendar"></i> <?php echo $eventdate1?></li>
                                     </ul>
                                 </div>
-                                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur.</p>
+                                <p><?php echo $eventdescription1?></p>
                                 
                             </div>
                         </div>
                         
                         <div class="col-md-6">
                             <div class="latest-post">
-                                <img src="images/blog-02.jpg" class="img-responsive" alt="">
-                                <h4><a href="#">Standard Post with Image</a></h4>
+                                <img src="./photos/<?php echo $eventimage2?>" class="img-responsive" alt="">
+                                <h4><a href="#"><?php echo $eventtitle2?></a></h4>
                                 <div class="post-details">
                                     <ul>
-                                        <li><i class="fa fa-user"></i> Auther : iThemesLab</li>
-                                        <li><i class="fa fa-calendar"></i> 07 Aug, 2014</li>
-                                        <li><i class="fa fa-tag"></i> Music</li>
+                                        <li><i class="fa fa-calendar"></i> <?php echo $eventdate2?></li>
                                     </ul>
                                 </div>
-                                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur.</p>
+                                <p><?php echo $eventdescription2?></p>
                                 
                             </div>
                         </div>
                         
                         <div class="col-md-6">
                             <div class="latest-post">
-                                <img src="images/blog-03.jpg" class="img-responsive" alt="">
-                                <h4><a href="#">Standard Post with Image</a></h4>
+                                <img src="./photos/<?php echo $eventimage3?>" class="img-responsive" alt="">
+                                <h4><a href="#"><?php echo $eventtitle3?></a></h4>
                                 <div class="post-details">
                                     <ul>
-                                        <li><i class="fa fa-user"></i> Auther : iThemesLab</li>
-                                        <li><i class="fa fa-calendar"></i> 07 Aug, 2014</li>
-                                        <li><i class="fa fa-tag"></i> Music</li>
+                                        <li><i class="fa fa-calendar"></i><?php echo $eventdate3?></li>
                                     </ul>
                                 </div>
-                                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur.</p>
+                                <p><?php echo $eventdescription3?></p>
                                 
                             </div>
                         </div>
@@ -712,7 +730,12 @@
                         
                     </div>
                 </div>
-                
+                     <?php
+                                                  }
+                                                 }
+                                             
+
+                                           ?>
             </div>
         </div>
         <!-- End Latest News Section -->
@@ -732,82 +755,25 @@
                 <div class="container">
                     <div class="row">
                         <div class="section-title text-center">
-                            <h3>Contact With Us</h3>
-                            <p>Duis aute irure dolor in reprehenderit in voluptate</p>
+                            <h3>Student portal</h3>
+                            <p></p>
                         </div>
                     </div>
                     <div class="row">
                         
                         <div class="col-md-4">
-                            <div class="footer-contact-info">
-                                <h4>Contact info</h4>
-                                <ul>
-                                    <li><strong>E-mail :</strong> your-email@mail.com</li>
-                                    <li><strong>Phone :</strong> +8801-6778776</li>
-                                    <li><strong>Mobile :</strong> +8801-45565378</li>
-                                    <li><strong>Web :</strong> yourdomain.com</li>
-                                </ul>
-                            </div>
+                           
                         </div>
                         
                         <div class="col-md-4">
-                            <div class="footer-social text-center">
-                                <ul>
-                                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-                                </ul>
-                            </div>
+                           
                         </div>
                         
                         <div class="col-md-4">
-                            <div class="footer-contact-info">
-                                <h4>Working Hours</h4>
-                                <ul>
-                                    <li><strong>Mon-Wed :</strong> 9 am to 5 pm</li>
-                                    <li><strong>Thurs-Fri :</strong> 12 pm to 10 pm</li>
-                                    <li><strong>Sat :</strong> 9 am to 3 pm</li>
-                                    <li><strong>Sunday :</strong> Closed</li>
-                                </ul>
-                            </div>
+                          
                         </div>
                         
                     </div><!--/.row -->
-                    <div class="row" style="padding-top: 80px;">
-                        <div class="col-md-12">
-                            <form name="sentMessage" id="contactForm" novalidate>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="Your Name *" id="name" required data-validation-required-message="Please enter your name.">
-                                            <p class="help-block text-danger"></p>
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="email" class="form-control" placeholder="Your Email *" id="email" required data-validation-required-message="Please enter your email address.">
-                                            <p class="help-block text-danger"></p>
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="tel" class="form-control" placeholder="Your Phone *" id="phone" required data-validation-required-message="Please enter your phone number.">
-                                            <p class="help-block text-danger"></p>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <textarea class="form-control" placeholder="Your Message *" id="message" required data-validation-required-message="Please enter a message."></textarea>
-                                            <p class="help-block text-danger"></p>
-                                        </div>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                    <div class="col-lg-12 text-center">
-                                        <div id="success"></div>
-                                        <button type="submit" class="btn btn-primary">Send Message</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
                 </div>
                 
             </div>
@@ -828,50 +794,26 @@
                 <div class="container">
                     <div class="row">
                         <div class="section-title text-center">
-                            <h3>Client's Speech About Us</h3>
-                            <p>Duis aute irure dolor in reprehenderit in voluptate</p>
+                            <h3>Teacher portal</h3>
+                            <p></p>
                         </div>
                     </div>
                     <div class="row">
                         
                         <div class="col-md-6">
-                            <div class="testimonial">
-                                <img src="images/team/manage-1.png" class="img-responsive" alt="...">
-                                <h4>John Doe</h4>
-                                <div class="speech">
-                                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
-                                </div>
-                            </div>
+
                         </div>
                         
                         <div class="col-md-6">
-                            <div class="testimonial">
-                                <img src="images/team/manage-2.png" class="img-responsive" alt="...">
-                                <h4>John Doe</h4>
-                                <div class="speech">
-                                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
-                                </div>
-                            </div>
+ 
                         </div>
                         
                         <div class="col-md-6">
-                            <div class="testimonial">
-                                <img src="images/team/manage-3.png" class="img-responsive" alt="...">
-                                <h4>John Doe</h4>
-                                <div class="speech">
-                                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
-                                </div>
-                            </div>
+
                         </div>
                         
                         <div class="col-md-6">
-                            <div class="testimonial">
-                                <img src="images/team/manage-4.png" class="img-responsive" alt="...">
-                                <h4>John Doe</h4>
-                                <div class="speech">
-                                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
-                                </div>
-                            </div>
+
                         </div>
                         
                     </div><!--/.row -->

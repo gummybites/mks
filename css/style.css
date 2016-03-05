@@ -868,27 +868,3 @@ and (max-width : 991px) {
     color: #FF432E;
 }
 
-
-
-/**** Start Testimonial Section ****/
-
-.testimonial {
-    margin-bottom: 80px;
-}
-
-.testimonial h4 {
-    font-family: 'Oswald', sans-serif;
-    font-weight: 300;
-    padding-top: 20px;
-    padding-bottom: 20px;
-}
-
-.testimonial .speech {
-    background: #FF432E;
-    padding: 20px;
-    color: #fff;
-}
-
-
-
-

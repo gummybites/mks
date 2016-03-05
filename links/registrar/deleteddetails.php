@@ -61,23 +61,23 @@ $db_photofile=$qry['photo_file'];
                     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
                     <meta name="viewport" content="width=device-width, initial-scale=1">
                     <title>Deleted Details</title>
+                    <link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css"  rel="stylesheet" type="text/css">
+                    <link rel="stylesheet" href="../../bootstrap/css/bootstrap.css"  rel="stylesheet" type="text/css">
+                    <link rel="stylesheet" href="../../css/style.css"  rel="stylesheet" type="text/css">
+                    <link rel="stylesheet" href="../../css/font-awesome.css"  rel="stylesheet" type="text/css">
+                     <link rel="stylesheet" href="../../css/font-awesome.min.css"  rel="stylesheet" type="text/css">
 
-                    <link rel="stylesheet" href="../../css/bootstrap.min.css"></link>
-                    <link rel="stylesheet" href="../../css/bootstrap.css"></link>
-                    <link rel="stylesheet" href="../../css/style.css"></link>
-                    <link rel="stylesheet" href="../../css/font-awesome.css"></link>
-                     <link rel="stylesheet" href="../../css/font-awesome.min.css"></link>
-
-                    <script src="../../js/dropdown.js"></script>
-                    <script src="../../js/bootstrap.min.js"></script>
-                    <script src="../../js/jquery.1.11.1.js"></script>
-                    <script src="../../js/bootstrap.js"></script>
+              
+                    <script src="../../js/jquery-2.1.1.min.js"></script>
+                    <script src="../../bootstrap/js/bootstrap.min.js"></script>
                     <script src="../../js/validation.js"></script>
+                    <script src="../../js/jquery.appear.js"></script>
+                    <script src="../../js/modernizr.custom.js"></script>
 </head>
 <style>
           body{
 
-                   background: url(../../images/45.gif); background-size: cover;  font: 15px/1.7em 'Calibri';
+                    background: url(../../images/body-bg.png);
                     }
 
 
@@ -190,6 +190,94 @@ $db_photofile=$qry['photo_file'];
                       textarea {
                           resize: none;
                       }
+                      .modal {
+                            display:none;    
+                            position: fixed; /* Stay in place */
+                            z-index: 1; /* Sit on top */
+                            padding-top: 100px; /* Location of the box */
+                            left: 0;
+                            top: 0;
+                            width: 100%; /* Full width */
+                            height: 100%; /* Full height */
+                            overflow: auto; /* Enable scroll if needed */
+                            background-color: rgb(0,0,0); /* Fallback color */
+                            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+                        }
+
+                        /* Modal Content */
+                        .modal-content {
+                            position: relative;
+                            background-color: #fefefe;
+                            margin: auto;
+                            padding: 0;
+                            border: 1px solid #888;
+                            width: 50%;
+                            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+                            -webkit-animation-name: animatetop;
+                            -webkit-animation-duration: 0.4s;
+                            animation-name: animatetop;
+                            animation-duration: 0.4s
+                        }
+
+                        /* Add Animation */
+                        @-webkit-keyframes animatetop {
+                            from {top:-300px; opacity:0} 
+                            to {top:0; opacity:1}
+                        }
+
+                        @keyframes animatetop {
+                            from {top:-300px; opacity:0}
+                            to {top:0; opacity:1}
+                        }
+
+                        /* The Close Button */
+                        #close {
+                            color: white;
+                            float: right;
+                            font-size: 28px;
+                            font-weight: bold;
+                        }
+
+                        #close:hover,
+                        #close:focus {
+                            color:  #f5af02;
+                            text-decoration: none;
+                            cursor: pointer;
+                        }
+
+                        .modal-header {
+                            padding: 30px 20px;
+                            background-color: #0064d2; 
+                            color: white;
+                        }
+
+                        .modal-body {
+                          padding: 5px 16px;}
+
+                        .modal-footer {
+                            padding: 20px 16px;
+                            background-color: #0064d2; 
+                            color: white;
+                        }
+
+                        #cancel{
+                          background-color: #f5af02;
+                          box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+                          -webkit-backface-visibility: hidden;
+                          backface-visibility: hidden;
+                          -moz-osx-font-smoothing: grayscale;
+                          border: transparent;
+
+                        }
+                        #ok{
+                          background-color: #f5af02;
+                          box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+                          -webkit-backface-visibility: hidden;
+                          backface-visibility: hidden;
+                          -moz-osx-font-smoothing: grayscale;
+                          border:transparent;
+
+                        }
 </style>  
 
 

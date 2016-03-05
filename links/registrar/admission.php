@@ -193,8 +193,7 @@ if(isset($_POST['submit']))
                           transform: scaleX(1);
                         }
 
-                          /* For modal*/
-  .modal {
+                       .modal {
                             display:none;    
                             position: fixed; /* Stay in place */
                             z-index: 1; /* Sit on top */
@@ -250,13 +249,13 @@ if(isset($_POST['submit']))
                         }
 
                         .modal-header {
-                            padding: 10px 16px;
+                            padding: 30px 20px;
                             background-color: #0064d2; 
                             color: white;
                         }
 
                         .modal-body {
-                          padding: 2px 16px;}
+                          padding: 5px 16px;}
 
                         .modal-footer {
                             padding: 20px 16px;

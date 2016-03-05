@@ -124,7 +124,18 @@
 <style>
                    body{ background: url(../../images/); background-size: cover; color:#838383; }
 
-               
+                    .alert-danger
+                    {
+
+                        margin: 20px 0;
+                        padding: 15px;
+                        border-left: 6px solid #d73814;
+                        margin-bottom: 10px;
+                        border-radius: 0px;
+                        -webkit-box-shadow: 0 5px 8px -6px rgba(0,0,0,.2);
+                           -moz-box-shadow: 0 5px 8px -6px rgba(0,0,0,.2);
+                                box-shadow: 0 5px 8px -6px rgba(0,0,0,.2);
+                    }
             
                     /* Shutter Out Horizontal */
                      .next {
@@ -178,7 +189,12 @@
                           transform: scaleX(1);
                         }
 
-        
+
+                       .form-control{
+                        border: solid gray 1px;
+                        border-radius: 0px;
+                      
+                      }
                     
 
 </style>
@@ -197,6 +213,86 @@ function getcaptcha()
       }
        });
 } 
+
+
+
+
+   function AllowSingleSpaceNotInFirstAndLast() {
+        var surname = document.getElementById('surname');
+        surname.value = surname.value.replace(/^\s+|\s+$/g, "");
+        var forsurname = surname.value.split(" ");
+
+        var firstname= document.getElementById('firstname');
+        firstname.value = firstname.value.replace(/^\s+|\s+$/g, "");
+        var forfirstname = firstname.value.split(" ");
+
+        var password = document.getElementById('password');
+        password.value = password.value.replace(/^\s+|\s+$/g, "");
+        var forpassword = password.value.split(" ");
+
+        var username = document.getElementById('username');
+        username.value = username.value.replace(/^\s+|\s+$/g, "");
+        var forusername = username.value.split(" ");
+
+        var cpassword = document.getElementById('confirmpassword');
+        cpassword.value = cpassword.value.replace(/^\s+|\s+$/g, "");
+        var forcpassword = cpassword.value.split(" ");
+
+        var email = document.getElementById('email');
+        email.value = email.value.replace(/^\s+|\s+$/g, "");
+        var foremail = email.value.split(" ");
+
+        var captcha = document.getElementById('captcha');
+        captcha.value = captcha.value.replace(/^\s+|\s+$/g, "");
+        var forcaptcha = captcha.value.split(" ");
+
+        if (forpassword.length > 2) {
+            return false;
+        }
+        else {
+        }
+
+        if (forusername.length > 2) {
+            return false;
+        }
+        else {
+        }
+
+         if (forsurname.length > 2) {
+            return false;
+        }
+        else {
+        }
+
+
+        if (forfirstname.length > 2) {
+            return false;
+        }
+        else {
+        }
+
+        if (forcpassword.length > 2) {
+            return false;
+        }
+        else {
+        }
+
+        if (foremail.length > 2) {
+            return false;
+        }
+        else {
+        }
+
+        if (forcaptcha.length > 2) {
+            return false;
+        }
+        else {
+        }
+
+
+
+        return true;
+    }
 </script>
 <body>
 <nav class="navbar-inner navbar-fixed-top">
@@ -367,52 +463,52 @@ function getcaptcha()
             </div>
 
             <div class="col-xs-6">
-            <center><H1>REGISTRATION</H1></center>
+            <center><H1>Create account</H1></center>
             <form role="form" method="POST" onsubmit="return freshmanregister()"  action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
                                                                                       
               <?php
               if(isset($_GET['EmailAlreadyRegistered'])){
                  ?>
                 <div class="alert alert-danger">
-                  <p class='text-center'>Email is already registered! Please type another email.</p> 
-                </div>
+                  <h3 class='text-center'>Email is already registered! Please type another email</h3> 
+                 <i class="fa fa-remove"></i></div>
                 <?php
               } elseif(isset($_GET['UsernameAlreadyRegistered'])){
                 ?>
                 <div class="alert alert-danger">
-                  <p class='text-center'>Username is already registered!</p> 
+                  <h3 class='text-center'>Username is already registered! <i class="fa fa-remove"></i></h3> 
                 </div>
                 <?php
             
               }elseif(isset($_GET['PasswordAlreadyRegistered'])){
                 ?>
                 <div class="alert alert-danger">
-                  <p class='text-center'>Password is already registered! Please type another password.</p> 
+                  <h3 class='text-center'>Password is already registered! Please type another password<i class="fa fa-remove"></i></h3> 
                 </div>
                 <?php
               }elseif(isset($_GET['Success'])){
                  ?>
                 <div class="alert alert-success">
-                  <p class='text-center'>Account Succesfully Created! You may now login.</p> 
+                  <h3 class='text-center'>Account Succesfully Created! You may now login <i class="fa fa-check-circle"></i></h3> 
                 </div>
                 <?php
 
               }elseif(isset($_GET['WrongCodeEntered'])){
                 ?>
                 <div class="alert alert-danger">
-                  <p class='text-center'>Wrong code entered!</p> 
+                  <h3 class='text-center'>Wrong code entered! <i class="fa fa-remove"></i></h3> 
                 </div>
                 <?php
               }elseif(isset($_GET['Atleast6characters'])){
                 ?>
                 <div class="alert alert-danger">
-                  <p class='text-center'>Atleast 6 to 25 characters!</p> 
+                  <h3 class='text-center'>Atleast 6 to 25 characters! <i class="fa fa-remove"></i></h3> 
                 </div>
                 <?php
               }elseif(isset($_GET['InvalidPassword'])){
                   ?>
                 <div class="alert alert-danger">
-                  <p class='text-center'>Invalid! Password don't match!</p> 
+                  <h3 class='text-center'>Invalid! Password don't match! <i class="fa fa-remove"></i></h3> 
                 </div>
                 <?php
               }
@@ -425,7 +521,7 @@ function getcaptcha()
              
             <div class="form-group"><!--Firstname Validation -->
             <b> Surname <i style="color:red;">(*)</i>  <i id='validatesurname' ></i> <i id='sur'></i></b>                                                                       
-            <input class='form-control  '  type='text' onkeypress="return forsurnameregistration(event);" ondrop="return false;" onpaste="return false;"  id='surname' name='surname' maxlength="25"  value=''/>
+            <input class='form-control'  type='text' onkeypress="return forsurnameregistration(event);" ondrop="return false;" onpaste="return false;"  id='surname' name='surname' maxlength="25"  value=''/>
             </div>                                                         
 
        
@@ -483,7 +579,7 @@ function getcaptcha()
             </div>  
             
             <button type="button" class="next" value="Reload Captcha" onclick="getcaptcha();">Reload Captcha <i class='fa fa-refresh'></i></button>
-            <button type="submit"  name="submit" class="next" value="Submit"   >Create</button>
+            <button type="submit"  name="submit" class="next" value="Submit"   onclick="return AllowSingleSpaceNotInFirstAndLast();">Create</button>
                                                                                
                                                                                   
             </form><br>
